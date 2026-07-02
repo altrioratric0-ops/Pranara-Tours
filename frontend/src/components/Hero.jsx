@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 
 const BACKGROUND_IMAGES = [
-  'https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=1600&q=80', // Munnar
-  'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1600&q=80', // Alleppey
-  'https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=1600&q=80', // Athirappilly
-  'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=1600&q=80', // Western Ghats
+  '/assets/insta_resort.png',
+  '/assets/insta_houseboat.png',
+  '/assets/insta_waterfall.png',
+  '/assets/insta_balloon.png',
 ];
 
 export default function Hero() {

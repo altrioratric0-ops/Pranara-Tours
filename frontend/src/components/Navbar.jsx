@@ -20,7 +20,7 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container nav-inner">
         <a href="#home" className="logo" onClick={(e) => { e.preventDefault(); scrollTo('home'); }}>
-          Pranara <span>Kerala</span>
+          Pranara
         </a>
         <button
           className={`hamburger${menuOpen ? ' open' : ''}`}

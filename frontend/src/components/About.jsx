@@ -11,9 +11,9 @@ export default function About() {
           }}>
           </div>
           <div>
-            <h2>Welcome to <span className="accent">Pranara Kerala</span></h2>
+            <h2>Welcome to <span className="accent">Pranara</span></h2>
             <p>
-              Pranara Kerala is your trusted gateway to the breathtaking landscapes of
+              Pranara is your trusted gateway to the breathtaking landscapes of
               God's Own Country. We specialize in crafting immersive travel experiences that blend adventure, nature, and cultural discovery across Munnar, Alleppey, Wayanad, and beyond.
             </p>
             <p>
