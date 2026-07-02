@@ -4,7 +4,7 @@ export default function About() {
       <div className="container">
         <div className="about-grid">
           <div className="about-image" style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80')",
+            backgroundImage: "url('/assets/insta_resort.png')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             minHeight: '300px'

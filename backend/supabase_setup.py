@@ -29,10 +29,10 @@ SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY", "")
 # Seed data matching in-memory fallback from app.py
 # ============================================================
 SEED_TOURS = [
-    {"title": "Munnar 2 Days 1 Night", "description": "A quick escape to the misty tea gardens, viewpoints, and waterfalls of Munnar. Perfect for weekend travelers.", "price": 4999, "duration": "2 Days 1 Night", "tag": "Weekend Gateway", "featured": True, "image_url": "https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=800&q=80"},
-    {"title": "Munnar + Thekkady", "description": "Explore the rolling hills of Munnar combined with wildlife safari, spice plantation tours, and boating in Thekkady.", "price": 7999, "duration": "3 Days 2 Nights", "tag": "Popular", "featured": True, "image_url": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&q=80"},
-    {"title": "Munnar + Alleppey", "description": "The quintessential Kerala tour. Walk the misty hills of Munnar and stay overnight in a premium houseboat on Alleppey's backwaters.", "price": 11999, "duration": "4 Days 3 Nights", "tag": "Trending", "featured": True, "image_url": "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80"},
-    {"title": "Complete Kerala Tour", "description": "A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.", "price": 24999, "duration": "7 Days 6 Nights", "tag": "Best Value", "featured": True, "image_url": "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80"},
+    {"title": "Munnar 2 Days 1 Night", "description": "A quick escape to the misty tea gardens, viewpoints, and waterfalls of Munnar. Perfect for weekend travelers.", "price": 4999, "duration": "2 Days 1 Night", "tag": "Weekend Gateway", "featured": True, "image_url": "/assets/tour_munnar.png"},
+    {"title": "Munnar + Thekkady", "description": "Explore the rolling hills of Munnar combined with wildlife safari, spice plantation tours, and boating in Thekkady.", "price": 7999, "duration": "3 Days 2 Nights", "tag": "Popular", "featured": True, "image_url": "/assets/tour_thekkady.png"},
+    {"title": "Munnar + Alleppey", "description": "The quintessential Kerala tour. Walk the misty hills of Munnar and stay overnight in a premium houseboat on Alleppey's backwaters.", "price": 11999, "duration": "4 Days 3 Nights", "tag": "Trending", "featured": True, "image_url": "/assets/tour_alleppey.png"},
+    {"title": "Complete Kerala Tour", "description": "A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.", "price": 24999, "duration": "7 Days 6 Nights", "tag": "Best Value", "featured": True, "image_url": "/assets/tour_kerala.png"},
 ]
 
 SEED_TESTIMONIALS = [
