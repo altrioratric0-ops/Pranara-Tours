@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pranara Munnar | Gateway to Munnar's Misty Hills</title>
+  <style>
+    /* ───── Reset & Base ───── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #1e293b;
+      background: #f8fafc;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ───── Typography ───── */
+    h1, h2, h3, h4 { line-height: 1.2; font-weight: 700; }
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+    .accent { color: #059669; }
+    .accent2 { color: #d97706; }
+
+    /* ───── Hero ───── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a2f 50%, #0f172a 100%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(5,150,105,.15) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(16,185,129,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* mist overlay */
+    .hero-mist {
+      position: absolute;
+      inset: 0;
+      opacity: 0.06;
+      background:
+        repeating-linear-gradient(90deg, transparent, transparent 300px, rgba(255,255,255,.3) 300px, transparent 600px);
+      animation: drift 20s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes drift {
+      to { transform: translateX(-50%); }
+    }
+    /* mountain silhouette */
+    .hero-mountains {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 30vh;
+      background:
+        /* far */
+        radial-gradient(ellipse 45% 100% at 10% 100%, rgba(255,255,255,.02) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 100% at 30% 100%, rgba(255,255,255,.03) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 100% at 55% 100%, rgba(255,255,255,.02) 0%, transparent 70%),
+        radial-gradient(ellipse 55% 100% at 80% 100%, rgba(255,255,255,.03) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 100% at 95% 100%, rgba(255,255,255,.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 24px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(5,150,105,.15);
+      border: 1px solid rgba(5,150,105,.3);
+      color: #34d399;
+      padding: 6px 20px;
+      border-radius: 100px;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      backdrop-filter: blur(4px);
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #34d399, #059669);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 20px auto 36px;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(5,150,105,.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(5,150,105,.45);
+    }
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,.2);
+    }
+    .btn-outline:hover {
+      border-color: #059669;
+      background: rgba(5,150,105,.1);
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,.3);
+      animation: bounce 2s infinite;
+      font-size: 1.5rem;
+    }
+    @keyframes bounce {
+      0%,100%{transform:translateX(-50%) translateY(0)}
+      50%{transform:translateX(-50%) translateY(8px)}
+    }
+
+    /* ───── Nav ───── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      transition: all .3s ease;
+    }
+    nav.scrolled {
+      background: rgba(15,23,42,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding: 10px 0;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .logo span { color: #34d399; }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: #34d399; }
+    .nav-cta {
+      background: rgba(5,150,105,.15);
+      border: 1px solid rgba(5,150,105,.3);
+      color: #34d399 !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+    }
+    .nav-cta:hover { background: rgba(5,150,105,.25) !important; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ───── About ───── */
+    .about {
+      padding: 100px 0;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-image {
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #059669, #047857);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.2);
+      font-size: 4rem;
+      position: relative;
+    }
+    .about-image::after {
+      content: '🌄';
+      font-size: 6rem;
+      position: absolute;
+    }
+    .about h2 { font-size: 2.2rem; margin-bottom: 16px; }
+    .about p { color: #475569; margin-bottom: 16px; font-size: 1.05rem; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #059669;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    /* ───── Tours ───── */
+    .tours {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .tour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+    .tour-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s ease;
+    }
+    .tour-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.08);
+    }
+    .tour-card-image {
+      height: 200px;
+      background: linear-gradient(135deg, #0f172a, #1e3a2f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      position: relative;
+    }
+    .tour-card-image .tag {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: rgba(5,150,105,.9);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+    .tour-card-body {
+      padding: 24px;
+    }
+    .tour-card-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+    .tour-card-body p {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .tour-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid #e2e8f0;
+    }
+    .tour-price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #059669;
+    }
+    .tour-price small {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: #94a3b8;
+    }
+    .tour-duration {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+    .tour-duration::before { content: '⏱ '; }
+
+    /* ───── Highlights / Features ───── */
+    .features {
+      padding: 100px 0;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.04);
+      border: 1px solid #f1f5f9;
+      transition: all .3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.06);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .feature-card h4 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+    .feature-card p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* ───── Gallery ───── */
+    .gallery {
+      padding: 100px 0;
+      background: #fff;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      transition: all .3s;
+    }
+    .gallery-item:hover {
+      transform: scale(1.02);
+    }
+    .gallery-item .label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 12px;
+      background: linear-gradient(transparent, rgba(0,0,0,.6));
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* ───── Booking ───── */
+    .booking {
+      padding: 100px 0;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a2f 100%);
+      color: #fff;
+    }
+    .booking .section-subtitle { color: #94a3b8; }
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .booking-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .booking-info p {
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: #cbd5e1;
+    }
+    .contact-detail .icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(5,150,105,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    .booking-form {
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 36px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all .2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: #059669;
+      box-shadow: 0 0 0 3px rgba(5,150,105,.15);
+    }
+    .form-group select option { color: #1e293b; }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s;
+    }
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(5,150,105,.35);
+    }
+
+    /* ───── Footer ───── */
+    footer {
+      background: #0f172a;
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding: 48px 0 24px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 32px;
+    }
+    .footer-brand .logo { margin-bottom: 12px; display: block; }
+    .footer-brand p {
+      color: #64748b;
+      font-size: 0.9rem;
+      max-width: 320px;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    .footer-col ul li a {
+      color: #64748b;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover { color: #34d399; }
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .social-links a {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all .2s;
+    }
+    .social-links a:hover {
+      background: rgba(5,150,105,.15);
+      border-color: rgba(5,150,105,.3);
+    }
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.05);
+      text-align: center;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+
+    /* ───── Testimonials ───── */
+    .testimonials {
+      padding: 100px 0;
+      background: #f8fafc;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: #fff;
+      padding: 28px;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+    }
+    .testimonial-card .stars {
+      color: #f59e0b;
+      margin-bottom: 12px;
+    }
+    .testimonial-card blockquote {
+      color: #475569;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 16px;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-author .avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #059669, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+    .testimonial-author .name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .testimonial-author .location {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    /* ───── Responsive ───── */
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(15,23,42,.95);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+      .nav-links.open { display: flex; }
+      .about-grid,
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+      .booking-grid { gap: 40px; }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .tour-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ───── Toast ───── */
+    .toast {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      background: #059669;
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.2);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all .4s ease;
+      z-index: 200;
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ───── Navigation ───── -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="logo">Pranara <span>Munnar</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tours">Tours</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#booking" class="nav-cta">Book Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ───── Hero ───── -->
+<section class="hero" id="home">
+  <div class="hero-mist"></div>
+  <div class="hero-mountains"></div>
+  <div class="hero-content">
+    <div class="hero-badge">&#127748; Munnar, Kerala</div>
+    <h1>
+      Discover the<br>
+      <span>Misty Hills</span> of Munnar
+    </h1>
+    <p>
+      Your gateway to Munnar's misty hills &amp; scenic trails.
+      Adventure, nature, and guided tourism crafted for unforgettable memories.
+    </p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary">&#128073; Book Your Trip</a>
+      <a href="#tours" class="btn btn-outline">&#128065; Explore Tours</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">&#8964;</div>
+</section>
+
+<!-- ───── About ───── -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image"></div>
+      <div>
+        <h2>Welcome to <span class="accent">Pranara Munnar</span></h2>
+        <p>
+          Pranara Munnar is your trusted gateway to the breathtaking landscapes of
+          Munnar &mdash; Kerala&rsquo;s crown jewel of hill stations. We specialize in
+          crafting immersive travel experiences that blend adventure, nature, and
+          cultural discovery.
+        </p>
+        <p>
+          Whether you&rsquo;re trekking through mist-laden tea plantations, exploring
+          hidden waterfalls, or soaking in panoramic sunrise views, our guided tours
+          ensure every moment is unforgettable.
+        </p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">23+</div>
+            <div class="stat-label">Expeditions</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">8</div>
+            <div class="stat-label">Happy Explorers</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Munnar Trails</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Features ───── -->
+<section class="features">
+  <div class="container">
+    <h2 class="section-title">Why Choose <span class="accent">Pranara</span></h2>
+    <p class="section-subtitle">We make every journey extraordinary</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">&#127748;</div>
+        <h4>Guided Tours</h4>
+        <p>Expert local guides who know every trail, viewpoint, and hidden gem of Munnar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#127796;</div>
+        <h4>Nature &amp; Adventure</h4>
+        <p>Trekking, wildlife spotting, and off-the-beaten-path adventures in pristine landscapes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#128248;</div>
+        <h4>Scenic Photography</h4>
+        <p>Capture the magic of misty hills, tea gardens, and golden sunrises at every stop.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">&#129309;</div>
+        <h4>Small Groups</h4>
+        <p>Intimate group sizes ensure personalized attention and a meaningful experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Tours ───── -->
+<section class="tours" id="tours">
+  <div class="container">
+    <h2 class="section-title">Popular <span class="accent">Tour Packages</span></h2>
+    <p class="section-subtitle">Handpicked experiences across Munnar's finest landscapes</p>
+    <div class="tour-grid">
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#065f46);">
+          <span class="tag">Popular</span>
+          &#127748;
+        </div>
+        <div class="tour-card-body">
+          <h3>Misty Hills Trek</h3>
+          <p>A guided trek through Munnar&rsquo;s rolling tea plantations and mist-covered hills. Perfect for nature lovers and photography enthusiasts.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;1,499 <small>/ person</small></span>
+            <span class="tour-duration">4-5 hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#1e40af);">
+          <span class="tag">Trending</span>
+          &#128507;
+        </div>
+        <div class="tour-card-body">
+          <h3>Sunrise Valley Expedition</h3>
+          <p>An early morning expedition to catch the golden sunrise over the valleys of Munnar. Includes tea estate visit and breakfast.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;2,499 <small>/ person</small></span>
+            <span class="tour-duration">6-7 hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#78350f);">
+          &#127797;
+        </div>
+        <div class="tour-card-body">
+          <h3>Waterfall &amp; Wildlife Trail</h3>
+          <p>Discover hidden waterfalls and spot exotic birds and wildlife in the lush forests surrounding Munnar.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;1,999 <small>/ person</small></span>
+            <span class="tour-duration">Full Day</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#4c1d95);">
+          &#127959;&#65039;
+        </div>
+        <div class="tour-card-body">
+          <h3>Munnar City &amp; Culture Walk</h3>
+          <p>Explore Munnar town, spice plantations, local markets, and learn about the rich history and culture of the region.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;1,299 <small>/ person</small></span>
+            <span class="tour-duration">3-4 hrs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#166534);">
+          &#127796;
+        </div>
+        <div class="tour-card-body">
+          <h3>Tea Estate &amp; Plantation Tour</h3>
+          <p>Walk through sprawling tea gardens, learn about tea processing, and enjoy freshly brewed tea with panoramic views.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;1,799 <small>/ person</small></span>
+            <span class="tour-duration">Half Day</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tour-card">
+        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#b45309);">
+          <span class="tag">Best Value</span>
+          &#128310;
+        </div>
+        <div class="tour-card-body">
+          <h3>Combo: Hills + Waterfalls</h3>
+          <p>The ultimate Munnar experience combining misty hill treks and waterfall discovery in one action-packed day.</p>
+          <div class="tour-meta">
+            <span class="tour-price">&#8377;2,999 <small>/ person</small></span>
+            <span class="tour-duration">Full Day</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ───── Gallery ───── -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <h2 class="section-title">Explore <span class="accent">Munnar</span></h2>
+    <p class="section-subtitle">A glimpse into the beauty that awaits you</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#065f46);">&#127748;<span class="label">Misty Hills</span></div>
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#1e40af);">&#127754;<span class="label">Tea Gardens</span></div>
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#78350f);">&#128167;<span class="label">Waterfalls</span></div>
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#4c1d95);">&#9728;&#65039;<span class="label">Sunrise Views</span></div>
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#166534);">&#127793;<span class="label">Wildlife</span></div>
+      <div class="gallery-item" style="background: linear-gradient(135deg,#1e293b,#b45309);">&#127749;<span class="label">Adventure Trails</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Testimonials ───── -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">What <span class="accent">Explorers Say</span></h2>
+    <p class="section-subtitle">Real experiences from fellow travelers</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"An absolutely magical experience! The sunrise trek was breathtaking. Our guide knew all the best spots away from the crowds. Highly recommend Pranara Munnar!"</blockquote>
+        <div class="testimonial-author">
+          <div class="avatar">AR</div>
+          <div>
+            <div class="name">Arjun R.</div>
+            <div class="location">Bangalore</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"The tea plantation walk was the highlight of our Kerala trip. So much history and beauty in every direction. The guide was knowledgeable and friendly."</blockquote>
+        <div class="testimonial-author">
+          <div class="avatar">PM</div>
+          <div>
+            <div class="name">Priya M.</div>
+            <div class="location">Chennai</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+        <blockquote>"Great value for money. The combo tour covered everything we wanted to see. The waterfalls were stunning! Would definitely book again."</blockquote>
+        <div class="testimonial-author">
+          <div class="avatar">VS</div>
+          <div>
+            <div class="name">Vikram S.</div>
+            <div class="location">Mumbai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Booking ───── -->
+<section class="booking" id="booking">
+  <div class="container">
+    <h2 class="section-title">Book Your <span class="accent">Munnar Adventure</span></h2>
+    <p class="section-subtitle">Reserve your spot and we&rsquo;ll take care of the rest</p>
+    <div class="booking-grid">
+      <div class="booking-info">
+        <h3>Get in Touch</h3>
+        <p>
+          Ready to explore the misty hills of Munnar? Fill out the form
+          and we&rsquo;ll get back to you within 24 hours with availability,
+          pricing, and personalized recommendations.
+        </p>
+        <div class="contact-detail">
+          <div class="icon">&#128231;</div>
+          <span>DM us on Instagram: <strong>@pranara_co</strong></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#128222;</div>
+          <span>Call / WhatsApp: <strong>+91 [Contact on Instagram]</strong></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#128205;</div>
+          <span>Location: <strong>Munnar, Idukki, Kerala</strong></span>
+        </div>
+        <div class="contact-detail">
+          <div class="icon">&#128337;</div>
+          <span>Response time: <strong>Within 24 hours</strong></span>
+        </div>
+        <div style="margin-top:24px;">
+          <a href="https://www.instagram.com/pranara_co" target="_blank" class="btn btn-primary" style="display:inline-flex;">&#128247; Follow @pranara_co</a>
+        </div>
+      </div>
+      <form class="booking-form" id="bookingForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="+91 9X XXX XXXX" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tour">Preferred Tour</label>
+            <select id="tour">
+              <option value="">Select a tour...</option>
+              <option>Misty Hills Trek</option>
+              <option>Sunrise Valley Expedition</option>
+              <option>Waterfall &amp; Wildlife Trail</option>
+              <option>Munnar City &amp; Culture Walk</option>
+              <option>Tea Estate &amp; Plantation Tour</option>
+              <option>Combo: Hills + Waterfalls</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="people">Number of People</label>
+            <select id="people">
+              <option>1</option>
+              <option selected>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="date">Preferred Date</label>
+          <input type="date" id="date">
+        </div>
+        <div class="form-group">
+          <label for="message">Special Requests</label>
+          <textarea id="message" placeholder="Any special requirements, dietary needs, or questions..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">&#128228; Send Booking Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ───── Footer ───── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">Pranara <span>Munnar</span></a>
+        <p>Your gateway to Munnar&rsquo;s misty hills &amp; scenic trails. Adventure, nature, and guided tourism crafted for unforgettable memories.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/pranara_co" target="_blank" title="Instagram">&#128247;</a>
+          <a href="#" title="YouTube">&#9654;&#65039;</a>
+          <a href="#" title="Facebook">&#120156;</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#tours">Tours</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#tours">Trekking</a></li>
+          <li><a href="#tours">Tea Plantations</a></li>
+          <li><a href="#tours">Waterfall Trails</a></li>
+          <li><a href="#tours">Sunrise Tours</a></li>
+          <li><a href="#tours">Wildlife Safari</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Pranara Munnar. All rights reserved. | Follow us on <a href="https://www.instagram.com/pranara_co" style="color:#34d399;">@pranara_co</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ───── Toast ───── -->
+<div class="toast" id="toast">&#9989; Booking request sent! We&rsquo;ll get back to you soon.</div>
+
+<script>
+  // ─── Navbar scroll ───
+  const nav = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ─── Hamburger ───
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // ─── Smooth scroll for nav links ───
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // ─── Booking form ───
+  const form = document.getElementById('bookingForm');
+  const toast = document.getElementById('toast');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = form.querySelector('.btn-submit');
+    btn.textContent = '&#128190; Sending...';
+    btn.disabled = true;
+
+    // Gather form data
+    const data = {
+      name: document.getElementById('name').value,
+      phone: document.getElementById('phone').value,
+      email: document.getElementById('email').value,
+      tour: document.getElementById('tour').value,
+      people: document.getElementById('people').value,
+      date: document.getElementById('date').value,
+      message: document.getElementById('message').value
+    };
+
+    console.log('Booking request:', data);
+
+    // Simulate sending (in production, POST to your backend)
+    setTimeout(() => {
+      btn.textContent = '&#10003; Sent Successfully!';
+      btn.style.background = 'linear-gradient(135deg, #059669, #047857)';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 4000);
+      form.reset();
+      setTimeout(() => {
+        btn.textContent = '&#128228; Send Booking Request';
+        btn.disabled = false;
+        btn.style.background = '';
+      }, 2000);
+    }, 1200);
+  });
+
+  // ─── Set min date to today ───
+  document.getElementById('date').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
