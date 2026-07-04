@@ -274,44 +274,6 @@ _fallback_db = {
             ]
         },
         {
-            "id": 6, "title": "Alleppey Houseboat Experience",
-            "subtitle": "Float Through Paradise",
-            "description": "Spend a luxurious overnight stay on a traditional Kettuvallam houseboat drifting through Alleppey's serene palm-fringed backwaters with gourmet Kerala meals onboard.",
-            "price": 8999, "duration": "2 Days 1 Night", "tag": "Popular", "featured": True,
-            "image_url": "https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=600&q=80",
-            "rating": 4.9, "reviews": 212,
-            "max_people": 6,
-            "difficulty": "Easy",
-            "meeting_point": "Alleppey Boat Jetty / Kochi",
-            "cancellation": "Free cancellation up to 48 hours before the trip",
-            "highlights": [
-                "Overnight stay in a premium air-conditioned houseboat",
-                "Gourmet Kerala lunch, sunset tea, and dinner onboard",
-                "Cruise through the scenic Vembanad Lake and narrow canal villages",
-                "Sunset views from the open deck with complimentary beverages",
-                "Morning canoe ride through the small village canals"
-            ],
-            "itinerary": [
-                {"day": 1, "title": "Boarding & Backwater Cruise", "description": "Pickup from Kochi or Alleppey. Board your private houseboat by noon. Welcome drink and safety briefing. Cruise through the scenic Punnamada Lake and narrow palm-fringed canals. Watch local village life along the banks. Kerala-style lunch served onboard. Evening sunset cruise. Candlelight dinner under the stars. Overnight on the houseboat."},
-                {"day": 2, "title": "Morning Cruise & Departure", "description": "Early morning traditional canoe ride through small village canals. Breakfast onboard. Disembark by 9 AM. Optional visit to Alleppey beach or Kumarakom bird sanctuary. Drop-off at Kochi or Alleppey."}
-            ],
-            "inclusions": [
-                "1 night in a luxury AC houseboat", "All meals — welcome drink, lunch, tea, dinner, breakfast",
-                "Private houseboat with dedicated crew (captain, chef, helper)", "Canoe ride through village canals",
-                "Pickup and drop-off from Kochi or Alleppey", "All houseboat taxes and service charges"
-            ],
-            "exclusions": [
-                "Alcoholic beverages (available at extra cost)", "Personal expenses and shopping",
-                "Tips for houseboat crew", "Transportation outside of pickup/drop-off",
-                "Entry fees to Kumarakom bird sanctuary if visiting"
-            ],
-            "faqs": [
-                {"q": "Is the houseboat private for couples?", "a": "Yes, each booking gets a private houseboat. Perfect for couples, families, or small groups."},
-                {"q": "What if it rains?", "a": "Houseboats are fully covered with a/c bedrooms and a shaded deck. Rain actually enhances the beauty of the backwaters!"},
-                {"q": "Can we customize the menu?", "a": "Absolutely. Let us know dietary preferences or allergies at booking and the chef will customize the meals."}
-            ]
-        },
-        {
             "id": 7, "title": "Vagamon Weekend Getaway",
             "subtitle": "Serenity in the Pine Forests",
             "description": "Unwind in Vagamon's pristine pine forests, rolling green meadows, and misty hills. Perfect for a quiet weekend surrounded by nature far from the crowds.",
@@ -390,7 +352,7 @@ _fallback_db = {
             "subtitle": "Romance in the Mist",
             "description": "A curated romantic escape for couples featuring luxury hilltop stays, private candlelight dinners, couple's spa treatments, and exclusive sunset-viewpoint experiences in Munnar.",
             "price": 9999, "duration": "3 Days 2 Nights", "tag": "Romantic", "featured": True,
-            "image_url": "https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=600&q=80",
+            "image_url": "/assets/tour_munnar_honeymoon.png",
             "rating": 5.0, "reviews": 189,
             "max_people": 2,
             "difficulty": "Easy",
@@ -585,7 +547,6 @@ def get_tour(tour_id):
             resp = table.select("*").eq("id", tour_id).execute()
             if resp.data:
                 return json_response(resp.data[0])
-            return error_response("Tour not found", 404)
         except Exception as e:
             logger.error(f"Supabase tour query error: {e}")
     

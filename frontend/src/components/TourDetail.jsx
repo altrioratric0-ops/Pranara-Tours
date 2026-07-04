@@ -154,6 +154,37 @@ export default function TourDetail() {
           </section>
         )}
 
+        {/* ─── Photo Gallery ─── */}
+        <section className="detail-section">
+          <h2 className="detail-section-title">Photo Gallery</h2>
+          <div className="tour-gallery-grid">
+            {[
+              { src: '/assets/munnar_honeymoon_hero.png', alt: 'Munnar honeymoon couple viewpoint' },
+              { src: '/assets/munnar_honeymoon_dinner.png', alt: 'Romantic candlelight dinner' },
+              { src: '/assets/munnar_honeymoon_tea.png', alt: 'Tea garden landscape in Munnar' },
+              { src: '/assets/munnar_honeymoon_sunrise.png', alt: 'Sunrise over Munnar hills' },
+              { src: '/assets/munnar_honeymoon_spa.png', alt: 'Couple spa treatment' },
+              { src: '/assets/munnar_honeymoon_couple.png', alt: 'Romantic couple in nature' }
+            ].map((img, i) => (
+              <div className="tour-gallery-item" key={i}>
+                <div
+                  className="tour-gallery-img"
+                  style={{
+                    background: `url(${img.src}) center/cover no-repeat`,
+                    paddingBottom: '66%',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    transition: 'transform 0.3s',
+                    cursor: 'pointer'
+                  }}
+                  onClick={() => window.open(img.src, '_blank')}
+                  title={img.alt}
+                ></div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ─── Itinerary ─── */}
         {tour.itinerary && tour.itinerary.length > 0 && (
           <section className="detail-section">
