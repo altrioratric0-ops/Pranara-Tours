@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchTour } from '../api/client';
 
+
 export default function TourDetail() {
   const { id } = useParams();
   const navigate = useNavigate();

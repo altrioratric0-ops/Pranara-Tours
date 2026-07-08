@@ -42,7 +42,6 @@ export default function Navbar() {
           <li><a href={isHome ? '#tours' : '/#tours'} onClick={(e) => { e.preventDefault(); scrollTo('tours'); }}>Packages</a></li>
           <li><a href={isHome ? '#experiences' : '/#experiences'} onClick={(e) => { e.preventDefault(); scrollTo('experiences'); }}>Experiences</a></li>
           <li><a href={isHome ? '#planner' : '/#planner'} onClick={(e) => { e.preventDefault(); scrollTo('planner'); }}>Planner</a></li>
-          <li><a href={isHome ? '#kerala-map' : '/#kerala-map'} onClick={(e) => { e.preventDefault(); scrollTo('kerala-map'); }}>Map</a></li>
           <li><a href={isHome ? '#testimonials' : '/#testimonials'} onClick={(e) => { e.preventDefault(); scrollTo('testimonials'); }}>Reviews</a></li>
           <li><Link to="/#booking" className="nav-cta" onClick={() => setMenuOpen(false)}>Book Now</Link></li>
         </ul>

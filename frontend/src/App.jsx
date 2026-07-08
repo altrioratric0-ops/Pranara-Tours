@@ -7,7 +7,6 @@ import Features from './components/Features';
 import Tours from './components/Tours';
 import Experiences from './components/Experiences';
 import TripPlanner from './components/TripPlanner';
-import KeralaMap from './components/KeralaMap';
 import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import TravelTips from './components/TravelTips';
@@ -25,7 +24,6 @@ function HomePage() {
       <Tours />
       <Experiences />
       <TripPlanner />
-      <KeralaMap />
       <Gallery />
       <Testimonials />
       <TravelTips />

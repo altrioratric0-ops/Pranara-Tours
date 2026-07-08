@@ -7,8 +7,41 @@ export default function Gallery() {
 
   useEffect(() => {
     fetchGallery()
-      .then(setImages)
-      .catch(() => setImages([]))
+      .then((data) => {
+        // Filter to ensure only Munnar sights are shown
+        const munnarKeywords = ['munnar', 'kolukkumalai', 'top station', 'eravikulam', 'mattupetty', 'echo point', 'kundala', 'attukad', 'tea museum', 'misty hills', 'tea garden'];
+        const filtered = (data || []).filter(item => 
+          (item.image_url && item.image_url.toLowerCase().includes('munnar')) ||
+          (item.caption && munnarKeywords.some(keyword => item.caption.toLowerCase().includes(keyword)))
+        );
+        
+        if (filtered.length === 0) {
+          setImages([
+            { id: 1, image_url: "/assets/munnar_top_station.png", caption: "Top Station Valley" },
+            { id: 2, image_url: "/assets/munnar_tea_museum.png", caption: "Tea Museum & Estates" },
+            { id: 3, image_url: "/assets/munnar_attukad.png", caption: "Attukad Waterfalls" },
+            { id: 4, image_url: "/assets/munnar_kolukkumalai.png", caption: "Kolukkumalai Sunrise" },
+            { id: 5, image_url: "/assets/munnar_eravikulam.png", caption: "Eravikulam National Park" },
+            { id: 6, image_url: "/assets/munnar_mattupetty.png", caption: "Mattupetty Dam & Lake" },
+            { id: 7, image_url: "/assets/munnar_echo_point.png", caption: "Misty Echo Point Lake" },
+            { id: 8, image_url: "/assets/munnar_kundala.png", caption: "Kundala Lake" }
+          ]);
+        } else {
+          setImages(filtered);
+        }
+      })
+      .catch(() => {
+        setImages([
+          { id: 1, image_url: "/assets/munnar_top_station.png", caption: "Top Station Valley" },
+          { id: 2, image_url: "/assets/munnar_tea_museum.png", caption: "Tea Museum & Estates" },
+          { id: 3, image_url: "/assets/munnar_attukad.png", caption: "Attukad Waterfalls" },
+          { id: 4, image_url: "/assets/munnar_kolukkumalai.png", caption: "Kolukkumalai Sunrise" },
+          { id: 5, image_url: "/assets/munnar_eravikulam.png", caption: "Eravikulam National Park" },
+          { id: 6, image_url: "/assets/munnar_mattupetty.png", caption: "Mattupetty Dam & Lake" },
+          { id: 7, image_url: "/assets/munnar_echo_point.png", caption: "Misty Echo Point Lake" },
+          { id: 8, image_url: "/assets/munnar_kundala.png", caption: "Kundala Lake" }
+        ]);
+      })
       .finally(() => setLoading(false));
   }, []);
 

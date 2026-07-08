@@ -26,6 +26,7 @@ CREATE TABLE tours (
   price INTEGER NOT NULL,
   duration TEXT NOT NULL,
   tag TEXT,
+  category TEXT DEFAULT 'Experience',
   featured BOOLEAN DEFAULT false,
   image_url TEXT,
   rating NUMERIC(3,1) DEFAULT 4.5,
@@ -145,11 +146,11 @@ CREATE POLICY "Public insert contact" ON contact_messages FOR INSERT WITH CHECK 
 -- SEED DATA — Full 9 Packages
 -- ============================================================
 
-INSERT INTO tours (id, title, subtitle, description, price, duration, tag, featured, image_url, rating, reviews, max_people, difficulty, meeting_point, cancellation, highlights, itinerary, inclusions, exclusions, faqs)
+INSERT INTO tours (id, title, subtitle, description, price, duration, tag, featured, category, image_url, rating, reviews, max_people, difficulty, meeting_point, cancellation, highlights, itinerary, inclusions, exclusions, faqs)
 VALUES
 (1, 'Munnar 2 Days 1 Night', 'Weekend Gateway to the Misty Hills',
   'A quick escape to the misty tea gardens, viewpoints, and waterfalls of Munnar. Perfect for weekend travelers seeking tranquility and breathtaking landscapes.',
-  4999, '2 Days 1 Night', 'Weekend Gateway', true,
+  4999, '2 Days 1 Night', 'Weekend Gateway', true, 'Experience',
   '/assets/tour_munnar.png', 4.8, 124, 6, 'Easy',
   'Munnar Bus Stand / Kochi Airport',
   'Free cancellation up to 48 hours before the trip',
@@ -161,7 +162,7 @@ VALUES
 ),
 (2, 'Munnar + Thekkady', 'Hills & Wildlife Combo',
   'Explore the rolling hills of Munnar combined with wildlife safari, spice plantation tours, and boating in Thekkady. A perfect blend of nature and adventure.',
-  7999, '3 Days 2 Nights', 'Popular', true,
+  7999, '3 Days 2 Nights', 'Popular', true, 'Adventures',
   'https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&q=80', 4.7, 98, 8, 'Moderate',
   'Kochi Airport / Railway Station',
   'Free cancellation up to 48 hours before the trip',
@@ -173,7 +174,7 @@ VALUES
 ),
 (3, 'Munnar + Alleppey', 'Hills & Backwaters',
   'The quintessential Kerala tour. Walk the misty hills of Munnar and stay overnight in a premium houseboat on Alleppey serene backwaters.',
-  11999, '4 Days 3 Nights', 'Trending', true,
+  11999, '4 Days 3 Nights', 'Trending', true, 'Experience',
   'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80', 4.9, 156, 10, 'Easy',
   'Kochi Airport / Railway Station',
   'Free cancellation up to 72 hours before the trip',
@@ -185,7 +186,7 @@ VALUES
 ),
 (4, 'Complete Kerala Tour', 'The Grand Kerala Experience',
   'A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.',
-  24999, '7 Days 6 Nights', 'Best Value', true,
+  24999, '7 Days 6 Nights', 'Best Value', true, 'Experience',
   'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80', 4.9, 203, 10, 'Moderate',
   'Kochi Airport / Trivandrum Airport',
   'Free cancellation up to 7 days before the trip',
@@ -197,7 +198,7 @@ VALUES
 ),
 (5, 'Wayanad 2 Days 1 Night', 'Escape to Nature',
   'Escape to Wayanad lush green landscapes, ancient Edakkal caves, stunning waterfalls like Meenmutty and Soochipara, and spot wild elephants at Muthanga Wildlife Sanctuary.',
-  5499, '2 Days 1 Night', 'New', true,
+  5499, '2 Days 1 Night', 'New', true, 'Adventures',
   'https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=800&q=80', 4.6, 87, 8, 'Moderate',
   'Calicut Airport / Kozhikode Railway Station',
   'Free cancellation up to 48 hours before the trip',
@@ -209,7 +210,7 @@ VALUES
 ),
 (7, 'Vagamon Weekend Getaway', 'Serenity in the Pine Forests',
   'Unwind in Vagamon pristine pine forests, rolling green meadows, and misty hills. Perfect for a quiet weekend surrounded by nature far from the crowds.',
-  3999, '2 Days 1 Night', 'Budget Friendly', false,
+  3999, '2 Days 1 Night', 'Budget Friendly', false, 'Off Road',
   'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80', 4.5, 62, 6, 'Easy',
   'Kottayam Railway Station / Kochi Airport',
   'Free cancellation up to 24 hours before the trip',
@@ -221,7 +222,7 @@ VALUES
 ),
 (8, 'Kovalam Beach Holiday', 'Sun, Sand & Ayurveda',
   'Relax on Kovalam iconic crescent beaches — Lighthouse Beach, Hawah Beach, and Samudra Beach. Combine sunbathing with Ayurvedic spa treatments and seafood dinners.',
-  6999, '3 Days 2 Nights', 'Trending', true,
+  6999, '3 Days 2 Nights', 'Trending', true, 'Meditation',
   'https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=800&q=80', 4.7, 143, 8, 'Easy',
   'Trivandrum Airport / Railway Station',
   'Free cancellation up to 48 hours before the trip',
@@ -233,7 +234,7 @@ VALUES
 ),
 (9, 'Munnar Honeymoon Special', 'Romance in the Mist',
   'A curated romantic escape for couples featuring luxury hilltop stays, private candlelight dinners, couple spa treatments, and exclusive sunset-viewpoint experiences in Munnar.',
-  9999, '3 Days 2 Nights', 'Romantic', true,
+  9999, '3 Days 2 Nights', 'Romantic', true, 'Meditation',
   '/assets/tour_munnar_honeymoon.png', 5.0, 189, 2, 'Easy',
   'Kochi Airport / Railway Station',
   'Free cancellation up to 72 hours before the trip',
@@ -245,7 +246,7 @@ VALUES
 ),
 (10, 'Kerala North Explorer', 'Untamed Beauty of North Kerala',
   'Explore the untouched beauty of North Kerala — Bekal Fort, pristine beaches of Kasaragod, Theyyam performances, and serene backwaters of Valiyaparamba.',
-  14999, '4 Days 3 Nights', 'Adventure', true,
+  14999, '4 Days 3 Nights', 'Adventure', true, 'Off Road',
   'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80', 4.6, 71, 8, 'Moderate',
   'Kannur Airport / Mangalore Airport',
   'Free cancellation up to 72 hours before the trip',
@@ -254,6 +255,30 @@ VALUES
   ARRAY['3 nights accommodation', '1 night houseboat with all meals', 'Daily breakfast', 'Private AC vehicle', 'Theyyam performance tickets', 'English-speaking guide'],
   ARRAY['Flight/train tickets', 'Entry fees to monuments', 'Lunch and dinner (except houseboat)', 'Personal expenses'],
   '[{"q": "What is Theyyam?", "a": "Theyyam is a 2000-year-old ritual dance form of North Kerala, featuring elaborate costumes, face paint, and divine storytelling."}, {"q": "Is North Kerala safe for tourists?", "a": "Absolutely. North Kerala is known for its welcoming locals, pristine beaches, and well-maintained tourism infrastructure."}]'
+),
+(11, 'Misty Munnar Meditation & Yoga Retreat', 'Spiritual Rejuvenation in the Tea Hills',
+  'Find your inner peace with daily sunrise meditation above the clouds, yoga sessions in spice gardens, and professional Ayurvedic spa treatments in the cool mountain climate of Munnar.',
+  8499, '3 Days 2 Nights', 'New', true, 'Meditation',
+  'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80', 4.9, 34, 6, 'Easy',
+  'Kochi Airport / Railway Station',
+  'Free cancellation up to 48 hours before the trip',
+  ARRAY['Daily yoga and pranayama sessions with certified instructors', 'Silent meditation walks through historic tea trails', 'Sunrise meditation at Kolukkumalai Peak', '1-hour full body Ayurvedic Abhyanga massage session', 'Organic vegetarian meals served on banana leaf'],
+  '[{"day": 1, "title": "Arrival & Welcome Wellness", "description": "Pickup from Kochi. Drive to Munnar (3.5 hrs). Check into a tranquil wellness retreat. Consultation with Ayurvedic doctor. Gentle yoga session. Evening meditation and silent dinner."}, {"day": 2, "title": "Sunrise Meditation & Spa", "description": "Sunrise meditation at Kolukkumalai. Return for healthy breakfast. Silent tea garden walk. Ayurvedic massage. Sound healing meditation."}, {"day": 3, "title": "Yoga & Closing", "description": "Hatha Yoga session. Closed meditation circle. Checkout and drive back to Kochi."}]',
+  ARRAY['2 nights in premium room at wellness retreat', 'All healthy vegetarian organic meals', 'Daily yoga and meditation sessions', '1 Ayurvedic massage session per person', 'Private AC transfers Kochi-Munnar-Kochi'],
+  ARRAY['Wellness shop purchases', 'Lunch on travel days', 'Tips and personal expenses'],
+  '[{"q": "Are beginners welcome?", "a": "Absolutely. Our certified teachers accommodate all experience levels."}, {"q": "Is the diet strictly vegetarian?", "a": "Yes, we serve fresh organic vegetarian food matching Ayurvedic guidelines."}]'
+),
+(12, 'Kolukkumalai Off-Road Jeep Safari', 'Rugged Mountain Adventure',
+  'Hold on tight as you conquer the highest organic tea gardens in the world on a rugged 4x4 off-road jeep safari, followed by camping and sunrise above the clouds.',
+  4499, '2 Days 1 Night', 'Trending', true, 'Off Road',
+  'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80', 4.9, 92, 12, 'Hard',
+  'Munnar Town / Suryanelli',
+  'Free cancellation up to 24 hours before the trip',
+  ARRAY['Rugged 4x4 jeep off-roading through steep mountain tracks', 'Camp under the stars on a windy clifftop with a bonfire', 'Breathtaking sunrise above the cloud bed at Kolukkumalai Peak', 'Guided tour of the heritage 100-year-old tea factory', 'Fresh hot cardamom tea brewed at the peak'],
+  '[{"day": 1, "title": "Off-Road Safari & Camping", "description": "Meet at Suryanelli. Board 4x4 jeeps for off-road ride up to clifftops. Pitch tents. Campfire, barbecue, stargazing."}, {"day": 2, "title": "Sunrise & Tea Heritage", "description": "Sunrise trek. Guided tour of 1935 tea factory. Off-road descent back by noon."}]',
+  ARRAY['1 night clifftop camping with tents and sleeping bags', 'Campfire dinner and hot breakfast', '4x4 jeep safari round trip from Suryanelli', 'Guided tea factory tour and permit fees', 'Qualified camp coordinator'],
+  ARRAY['Transfers to/from Suryanelli', 'Lunch on both days', 'Tips and personal expenses'],
+  '[{"q": "Is the off-road ride very bumpy?", "a": "Yes, the track is steep and rocky. Not recommended for pregnant women or back issues."}, {"q": "Are there toilets at the campsite?", "a": "Yes, clean basic western/eastern toilets are available at our base camp."}]'
 );
 
 -- Reset the sequence to the max ID
@@ -265,20 +290,21 @@ INSERT INTO testimonials (name, location, avatar_initials, rating, quote) VALUES
   ('Priya & Family', 'Chennai', 'PF', 5, 'The itinerary covered every beautiful place without feeling rushed. The houseboat in Alleppey and the tea estate walks in Munnar were outstanding highlights!'),
   ('Vikram S.', 'Mumbai', 'VS', 5, 'Excellent hotels, smooth transport, and amazing support. The 24/7 travel coordination was incredibly comforting during our Poovar and Kovalam trip.'),
   ('Ananya & Raj', 'Delhi', 'AR', 5, 'We took the Munnar Honeymoon package and it exceeded every expectation. The candlelight dinner and photoshoot were magical.'),
-  ('Ramesh K.', 'Hyderabad', 'RK', 4, 'Great family tour. Kids loved the spice garden and wildlife safari. The vehicle was comfortable and the driver very experienced.');
+  ('Ramesh K.', 'Hyderabad', 'RK', 4, 'Great family tour. Kids loved the spice garden and wildlife safari. The vehicle was comfortable and the driver very experienced.'),
+  ('Sarah & Thomas', 'London, UK', 'ST', 5, 'Absolutely top-notch service! Booking the Complete Kerala Tour was the best decision we made. The houseboat experience in Alleppey was dreamlike, and our driver was exceptionally professional.'),
+  ('Rahul Verma', 'Delhi, India', 'RV', 5, 'Wayanad was beautiful! Edakkal Caves and Muthanga safari were perfectly organized. The local guides provided by Pranara really know their way around.'),
+  ('Elena G.', 'Munich, Germany', 'EG', 5, 'Vagamon was a peaceful paradise. The pine forest walk was incredibly soothing, and the booking process was seamless. Excellent customer support!');
 
 -- Seed Gallery
 INSERT INTO gallery (image_url, caption, source) VALUES
-  ('https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=800&q=80', 'Lush Tea Estates of Munnar', 'manual'),
-  ('https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80', 'Houseboats in Alleppey Backwaters', 'manual'),
-  ('https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800&q=80', 'Majestic Athirappilly Waterfalls', 'manual'),
-  ('https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=800&q=80', 'Serene Wayanad Hills', 'manual'),
-  ('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=80', 'Deep Pine Forests of Vagamon', 'manual'),
-  ('https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&q=80', 'Periyar Wildlife Sanctuary', 'manual'),
-  ('https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=800&q=80', 'Traditional Kerala Cuisine on Banana Leaf', 'manual'),
-  ('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80', 'Hilltop Campfire and Stargazing', 'manual'),
-  ('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=800&q=80', 'Kolukkumalai Offroad Jeep Ride', 'manual'),
-  ('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=800&q=80', 'Spectacular Western Ghats Sunrise', 'manual');
+  ('/assets/munnar_top_station.png', 'Top Station Panoramic Valley', 'manual'),
+  ('/assets/munnar_tea_museum.png', 'Munnar Tea Museum & Estates', 'manual'),
+  ('/assets/munnar_attukad.png', 'Attukad Waterfalls', 'manual'),
+  ('/assets/munnar_kolukkumalai.png', 'Kolukkumalai Sunrise Viewpoint', 'manual'),
+  ('/assets/munnar_eravikulam.png', 'Eravikulam National Park', 'manual'),
+  ('/assets/munnar_mattupetty.png', 'Mattupetty Dam & Lake', 'manual'),
+  ('/assets/munnar_echo_point.png', 'Misty Echo Point Lake', 'manual'),
+  ('/assets/munnar_kundala.png', 'Kundala Lake Shikara Ride', 'manual');
 
 -- Seed Destinations
 INSERT INTO destinations (name, description, best_season, price, duration, image_url) VALUES

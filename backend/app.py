@@ -75,6 +75,7 @@ _fallback_db = {
             "subtitle": "Weekend Gateway to the Misty Hills",
             "description": "A quick escape to the misty tea gardens, viewpoints, and waterfalls of Munnar. Perfect for weekend travelers seeking tranquility and breathtaking landscapes.",
             "price": 4999, "duration": "2 Days 1 Night", "tag": "Weekend Gateway", "featured": True,
+            "category": "Experience",
             "image_url": "/assets/tour_munnar.png",
             "rating": 4.8, "reviews": 124,
             "max_people": 10,
@@ -113,6 +114,7 @@ _fallback_db = {
             "subtitle": "Hills & Wildlife Combo",
             "description": "Explore the rolling hills of Munnar combined with wildlife safari, spice plantation tours, and boating in Thekkady. A perfect blend of nature and adventure.",
             "price": 7999, "duration": "3 Days 2 Nights", "tag": "Popular", "featured": True,
+            "category": "Adventures",
             "image_url": "/assets/tour_thekkady.png",
             "rating": 4.9, "reviews": 89,
             "max_people": 8,
@@ -152,6 +154,7 @@ _fallback_db = {
             "subtitle": "Hills & Backwaters in One Trip",
             "description": "The quintessential Kerala tour. Walk the misty hills of Munnar and stay overnight in a premium houseboat on Alleppey's serene backwaters.",
             "price": 11999, "duration": "4 Days 3 Nights", "tag": "Trending", "featured": True,
+            "category": "Experience",
             "image_url": "/assets/tour_alleppey.png",
             "rating": 4.9, "reviews": 156,
             "max_people": 6,
@@ -193,6 +196,7 @@ _fallback_db = {
             "subtitle": "The Ultimate Kerala Experience",
             "description": "A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.",
             "price": 24999, "duration": "7 Days 6 Nights", "tag": "Best Value", "featured": True,
+            "category": "Experience",
             "image_url": "/assets/tour_kerala.png",
             "rating": 5.0, "reviews": 203,
             "max_people": 8,
@@ -232,7 +236,7 @@ _fallback_db = {
             "faqs": [
                 {"q": "Can I join the tour midway?", "a": "We recommend starting from Day 1, but we can arrange pickup at any point along the route with prior coordination."},
                 {"q": "Are single rooms available?", "a": "Yes, single occupancy is available at a supplemental cost. Please mention this during booking."},
-                {"q": "What is the best season for this tour?", "a": "September to May is ideal. The monsoon season (June-August) offers lush greenery but some water activities may be limited."},
+                {"q": "What is the best season for this tour?", "a": "September to May is ideal. The monsoon season (June-August) offers health benefits but some water activities may be limited."},
                 {"q": "Is travel insurance included?", "a": "Travel insurance is not included but we strongly recommend purchasing it for international travelers."}
             ]
         },
@@ -241,6 +245,7 @@ _fallback_db = {
             "subtitle": "Misty Hills & Ancient Caves",
             "description": "Escape to Wayanad's lush green landscapes, ancient Edakkal caves, stunning waterfalls like Meenmutty and Soochipara, and spot wild elephants at Muthanga Wildlife Sanctuary.",
             "price": 5499, "duration": "2 Days 1 Night", "tag": "New", "featured": True,
+            "category": "Adventures",
             "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&q=80",
             "rating": 4.7, "reviews": 78,
             "max_people": 10,
@@ -278,6 +283,7 @@ _fallback_db = {
             "subtitle": "Serenity in the Pine Forests",
             "description": "Unwind in Vagamon's pristine pine forests, rolling green meadows, and misty hills. Perfect for a quiet weekend surrounded by nature far from the crowds.",
             "price": 3999, "duration": "2 Days 1 Night", "tag": "Budget Friendly", "featured": True,
+            "category": "Off Road",
             "image_url": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80",
             "rating": 4.6, "reviews": 65,
             "max_people": 12,
@@ -314,6 +320,7 @@ _fallback_db = {
             "subtitle": "Sun, Sand & Ayurveda",
             "description": "Relax on Kovalam's iconic crescent beaches — Lighthouse Beach, Hawah Beach, and Samudra Beach. Combine sunbathing with Ayurvedic spa treatments and seafood dinners.",
             "price": 6999, "duration": "3 Days 2 Nights", "tag": "Trending", "featured": True,
+            "category": "Meditation",
             "image_url": "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&q=80",
             "rating": 4.7, "reviews": 142,
             "max_people": 8,
@@ -352,6 +359,7 @@ _fallback_db = {
             "subtitle": "Romance in the Mist",
             "description": "A curated romantic escape for couples featuring luxury hilltop stays, private candlelight dinners, couple's spa treatments, and exclusive sunset-viewpoint experiences in Munnar.",
             "price": 9999, "duration": "3 Days 2 Nights", "tag": "Romantic", "featured": True,
+            "category": "Meditation",
             "image_url": "/assets/tour_munnar_honeymoon.png",
             "rating": 5.0, "reviews": 189,
             "max_people": 2,
@@ -394,6 +402,7 @@ _fallback_db = {
             "subtitle": "Wayanad, Kozhikode & Bekal",
             "description": "Explore the unexplored beauty of North Kerala — the misty hills of Wayanad, the historic spice town of Kozhikode, and the breathtaking Bekal Fort on the Arabian coast.",
             "price": 14999, "duration": "5 Days 4 Nights", "tag": "New", "featured": True,
+            "category": "Off Road",
             "image_url": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80",
             "rating": 4.8, "reviews": 56,
             "max_people": 8,
@@ -432,6 +441,87 @@ _fallback_db = {
                 {"q": "Can we extend the stay in Bekal?", "a": "Absolutely! Bekal's beaches are pristine and relaxing. We can arrange additional nights at the beach resort."}
             ]
         },
+        {
+            "id": 11, "title": "Misty Munnar Meditation & Yoga Retreat",
+            "subtitle": "Spiritual Rejuvenation in the Tea Hills",
+            "description": "Find your inner peace with daily sunrise meditation above the clouds, yoga sessions in spice gardens, and professional Ayurvedic spa treatments in the cool mountain climate of Munnar.",
+            "price": 8499, "duration": "3 Days 2 Nights", "tag": "New", "featured": True,
+            "category": "Meditation",
+            "image_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
+            "rating": 4.9, "reviews": 34,
+            "max_people": 6,
+            "difficulty": "Easy",
+            "meeting_point": "Kochi Airport / Railway Station",
+            "cancellation": "Free cancellation up to 48 hours before the trip",
+            "highlights": [
+                "Daily yoga and pranayama sessions with certified instructors",
+                "Silent meditation walks through historic tea trails",
+                "Sunrise meditation at Kolukkumalai Peak",
+                "1-hour full body Ayurvedic Abhyanga massage session",
+                "Organic vegetarian meals served on banana leaf"
+            ],
+            "itinerary": [
+                {"day": 1, "title": "Arrival & Welcome Wellness", "description": "Pickup from Kochi. Drive to Munnar (3.5 hrs). Check into a tranquil hilltop wellness retreat. Welcome consultation with an Ayurvedic doctor. Afternoon gentle yoga session. Evening meditation and silent dinner. Overnight at retreat."},
+                {"day": 2, "title": "Sunrise Meditation & Spa", "description": "Early morning Kolukkumalai sunrise meditation. Return for healthy breakfast. Silent walking meditation in tea gardens. Afternoon traditional Abhyanga oil massage session. Evening sound healing meditation. Overnight at retreat."},
+                {"day": 3, "title": "Yoga & Departure", "description": "Morning Hatha Yoga session. Healthy breakfast. Closing meditation circle. Checkout and drive back to Kochi for drop-off by evening."}
+            ],
+            "inclusions": [
+                "2 nights in a premium room at a wellness retreat",
+                "All healthy vegetarian organic meals",
+                "Daily yoga, meditation, and sound healing sessions",
+                "1 professional Ayurvedic massage session per person",
+                "Private AC transfers to and from Kochi"
+            ],
+            "exclusions": [
+                "Personal wellness purchases and medications",
+                "Tips and gratuities",
+                "Anything not explicitly mentioned in inclusions"
+            ],
+            "faqs": [
+                {"q": "Are beginners welcome for yoga and meditation?", "a": "Absolutely. Our certified teachers tailor all sessions to accommodate beginners as well as advanced practitioners."},
+                {"q": "Is the diet strictly vegetarian?", "a": "Yes, we serve organic, detoxifying Ayurvedic vegetarian meals to complement your wellness journey."}
+            ]
+        },
+        {
+            "id": 12, "title": "Kolukkumalai Off-Road Jeep Safari",
+            "subtitle": "Rugged Mountain Adventure",
+            "description": "Hold on tight as you conquer the highest organic tea gardens in the world on a rugged 4x4 off-road jeep safari, followed by camping and sunrise above the clouds.",
+            "price": 4499, "duration": "2 Days 1 Night", "tag": "Trending", "featured": True,
+            "category": "Off Road",
+            "image_url": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80",
+            "rating": 4.9, "reviews": 92,
+            "max_people": 12,
+            "difficulty": "Hard",
+            "meeting_point": "Munnar Town / Suryanelli",
+            "cancellation": "Free cancellation up to 24 hours before the trip",
+            "highlights": [
+                "Rugged 4x4 jeep off-roading through steep mountain tracks",
+                "Camp under the stars on a windy clifftop with a bonfire",
+                "Breathtaking sunrise above the cloud bed at Kolukkumalai Peak",
+                "Guided tour of the heritage 100-year-old tea factory",
+                "Fresh hot cardamom tea brewed at the peak"
+            ],
+            "itinerary": [
+                {"day": 1, "title": "Off-Road Safari & Camping", "description": "Meet at Suryanelli by 2 PM. Board the 4x4 safari jeeps. Scenic, bumpy 1-hour off-road ride up the steep cliffs of Kolukkumalai. Pitch tents at the campsite. Evening campfire with barbecue dinner, stargazing, and music. Overnight in tents."},
+                {"day": 2, "title": "Sunrise & Tea Heritage", "description": "Wake up at 5 AM for a short trek to the sunrise point. Witness the sun rising above a thick blanket of clouds. Breakfast. Guided tour of the historic tea factory built in 1935. Off-road jeep descent back to Suryanelli by noon."}
+            ],
+            "inclusions": [
+                "1 night clifftop camping in dual-sharing tents with sleeping bags",
+                "Campfire dinner (barbecue + main course) and hot breakfast",
+                "4x4 jeep safari transfers from Suryanelli to peak and back",
+                "Guided tea factory tour and entry permit fees",
+                "Qualified camp coordinator and safety equipment"
+            ],
+            "exclusions": [
+                "Transfers from Kochi/other cities to Suryanelli",
+                "Lunch on both days",
+                "Tips and gratuities"
+            ],
+            "faqs": [
+                {"q": "Is the off-road ride very bumpy?", "a": "Yes, the route is extremely rugged and rocky. It is not recommended for pregnant women or individuals with severe back issues."},
+                {"q": "Are toilets available at the campsite?", "a": "Yes, clean basic western/eastern toilets are available at our base camp near the tents."}
+            ]
+        }
     ],
     "testimonials": [
         {"id": 1, "name": "Arjun & Sneha", "location": "Bangalore", "avatar_initials": "AS", "rating": 5,
@@ -440,6 +530,12 @@ _fallback_db = {
          "quote": "The itinerary covered every beautiful place without feeling rushed. The houseboat in Alleppey and the tea estate walks in Munnar were outstanding highlights!"},
         {"id": 3, "name": "Vikram S.", "location": "Mumbai", "avatar_initials": "VS", "rating": 5,
          "quote": "Excellent hotels, smooth transport, and amazing support. The 24/7 travel coordination was incredibly comforting during our Poovar and Kovalam trip."},
+        {"id": 4, "name": "Sarah & Thomas", "location": "London, UK", "avatar_initials": "ST", "rating": 5,
+         "quote": "Absolutely top-notch service! Booking the Complete Kerala Tour was the best decision we made. The houseboat experience in Alleppey was dreamlike, and our driver was exceptionally professional."},
+        {"id": 5, "name": "Rahul Verma", "location": "Delhi, India", "avatar_initials": "RV", "rating": 5,
+         "quote": "Wayanad was beautiful! Edakkal Caves and Muthanga safari were perfectly organized. The local guides provided by Pranara really know their way around."},
+        {"id": 6, "name": "Elena G.", "location": "Munich, Germany", "avatar_initials": "EG", "rating": 5,
+         "quote": "Vagamon was a peaceful paradise. The pine forest walk was incredibly soothing, and the booking process was seamless. Excellent customer support!"},
     ],
     "destinations": [
         {"id": 1, "name": "Munnar", "description": "Lush green tea plantations, misty valleys, and cool mountain air.", "best_season": "Sept to May", "price": 4999, "duration": "3 Days", "image_url": "https://images.unsplash.com/photo-1506461883276-594a12b11cf4?w=600&q=80"},
@@ -493,7 +589,7 @@ _fallback_db = {
         {"id": 8, "image_url": "/assets/munnar_tea_museum.png", "caption": "Munnar Tea Estate Garden", "source": "manual"},
     ],
     "contact_messages": [],
-    "_next_id": {"tours": 11, "testimonials": 4, "bookings": 1, "gallery": 11, "contact_messages": 1},
+    "_next_id": {"tours": 13, "testimonials": 7, "bookings": 1, "gallery": 11, "contact_messages": 1},
 }
 
 _fallback_gallery_instagram = []

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const MAP_DESTINATIONS = [
   {
@@ -164,6 +165,44 @@ export default function KeralaMap() {
   const [mapReady, setMapReady] = useState(false);
   const mapRef = useRef(null);
   const markersRef = useRef([]);
+  const location = useLocation();
+
+  // Handle URL param selection (e.g. ?mapDest=Munnar)
+  useEffect(() => {
+    if (!mapReady || !window.L) return;
+    const params = new URLSearchParams(location.search);
+    const destName = params.get('mapDest');
+    if (destName) {
+      const found = MAP_DESTINATIONS.find(d => d.name.toLowerCase() === destName.toLowerCase());
+      if (found) {
+        setSelected(found);
+        if (mapRef.current) {
+          mapRef.current.flyTo(found.latLng, 8.5, { duration: 1.2 });
+        }
+      }
+    }
+  }, [location.search, mapReady]);
+
+  // Handle custom event selection from same-page clicks
+  useEffect(() => {
+    if (!mapReady || !window.L) return;
+    const handleSelectDest = (e) => {
+      const destName = e.detail;
+      const found = MAP_DESTINATIONS.find(d => d.name.toLowerCase() === destName.toLowerCase());
+      if (found) {
+        setSelected(found);
+        if (mapRef.current) {
+          mapRef.current.flyTo(found.latLng, 8.5, { duration: 1.2 });
+        }
+        const el = document.getElementById('kerala-map');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    };
+    window.addEventListener('select-map-destination', handleSelectDest);
+    return () => window.removeEventListener('select-map-destination', handleSelectDest);
+  }, [mapReady]);
 
   // Poll for Leaflet availability to handle dynamic script loading
   useEffect(() => {
