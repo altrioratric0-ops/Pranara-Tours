@@ -5,6 +5,9 @@ import { fetchTours } from '../api/client';
 export default function Tours() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+
+  const categories = ["All", "Experience", "Adventures", "Off Road", "Meditation"];
 
   useEffect(() => {
     fetchTours()
@@ -30,13 +33,31 @@ export default function Tours() {
     );
   }
 
+  const filteredTours = selectedCategory === 'All'
+    ? tours
+    : tours.filter(tour => (tour.category || 'Experience').toLowerCase() === selectedCategory.toLowerCase());
+
   return (
     <section className="tours" id="tours">
       <div className="container">
         <h2 className="section-title">Popular <span className="accent">Tour Packages</span></h2>
         <p className="section-subtitle">Handpicked experiences across Kerala's finest landscapes</p>
+        
+        {/* Category Filter Tabs */}
+        <div className="category-tabs">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              className={`category-tab-btn ${selectedCategory === cat ? 'active' : ''}`}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
         <div className="tour-grid">
-          {tours.map((tour) => (
+          {filteredTours.map((tour) => (
             <Link to={`/tour/${tour.id}`} className="tour-card" key={tour.id}>
               <div
                 className="tour-card-image"
@@ -46,6 +67,7 @@ export default function Tours() {
                     : 'linear-gradient(135deg, #0f172a, #065f46)',
                 }}
               >
+                <span className="category-badge">{tour.category || 'Experience'}</span>
                 {tour.tag && <span className={`tag ${getTagClass(tour.tag)}`}>{tour.tag}</span>}
               </div>
               <div className="tour-card-body">

@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS tours (
   duration TEXT NOT NULL,
   image_url TEXT,
   tag TEXT,
+  category TEXT DEFAULT 'Experience',
   featured BOOLEAN DEFAULT false,
   itinerary TEXT[] DEFAULT '{}',
   includes TEXT[] DEFAULT '{}',
