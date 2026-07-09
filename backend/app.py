@@ -355,49 +355,6 @@ _fallback_db = {
             ]
         },
         {
-            "id": 9, "title": "Munnar Honeymoon Special",
-            "subtitle": "Romance in the Mist",
-            "description": "A curated romantic escape for couples featuring luxury hilltop stays, private candlelight dinners, couple's spa treatments, and exclusive sunset-viewpoint experiences in Munnar.",
-            "price": 9999, "duration": "3 Days 2 Nights", "tag": "Romantic", "featured": True,
-            "category": "Meditation",
-            "image_url": "/assets/tour_munnar_honeymoon.png",
-            "rating": 5.0, "reviews": 189,
-            "max_people": 2,
-            "difficulty": "Easy",
-            "meeting_point": "Kochi Airport / Railway Station",
-            "cancellation": "Free cancellation up to 72 hours before the trip",
-            "highlights": [
-                "Luxury resort stay with a private balcony overlooking tea gardens",
-                "Private candlelight dinner arranged at the resort",
-                "Couple's Ayurvedic massage session",
-                "Sunrise at Kolukkumalai — walk above the clouds together",
-                "Horse carriage ride through the tea plantations",
-                "Complimentary couple photoshoot at the tea gardens"
-            ],
-            "itinerary": [
-                {"day": 1, "title": "Arrival & Romantic Check-in", "description": "Pickup from Kochi. Scenic drive to Munnar. Welcome with fresh flowers and a fruit basket at the resort. Check into a luxury suite with valley-view balcony. Afternoon horse carriage ride through tea plantations. Evening couple's spa session. Private candlelight dinner on the resort lawn. Overnight at Munnar."},
-                {"day": 2, "title": "Tea Gardens & Sunset", "description": "Pre-dawn departure to Kolukkumalai for a magical sunrise. Return for elaborate breakfast. Visit Eravikulam National Park hand-in-hand. Afternoon couple photoshoot at the tea gardens. Evening at Mattupetty Dam with a walk along the lake. Romantic dinner at a cliffside restaurant. Overnight at Munnar."},
-                {"day": 3, "title": "Leisurely Morning & Departure", "description": "Breakfast in bed option. Late checkout. Visit the Tea Museum for a souvenir. Drive back to Kochi with a stop at Cheeyappara Waterfalls for photos. Drop-off at Kochi airport or railway station."}
-            ],
-            "inclusions": [
-                "2 nights in a luxury suite with valley view", "All breakfast meals",
-                "Private candlelight dinner (once during stay)", "Couple's Ayurvedic massage (1 session)",
-                "Complimentary couple photoshoot (10 edited photos)", "Horse carriage ride through tea gardens",
-                "Private AC vehicle throughout", "Fresh flower bouquet and fruit basket on arrival",
-                "Pickup and drop-off from Kochi"
-            ],
-            "exclusions": [
-                "Kolukkumalai entry fees", "Eravikulam National Park entry fees",
-                "Lunch meals", "Personal expenses and shopping",
-                "Tips and gratuities"
-            ],
-            "faqs": [
-                {"q": "Is this package only for honeymoon couples?", "a": "It's designed for couples celebrating love — honeymooners, anniversary couples, or romantic getaways."},
-                {"q": "Can we upgrade to a private pool villa?", "a": "Yes, we have premium villa options available at an additional cost. Let us know at booking."},
-                {"q": "Are the photos professionally edited?", "a": "Yes, a professional photographer accompanies the shoot and delivers 10 high-resolution edited photos."}
-            ]
-        },
-        {
             "id": 10, "title": "Kerala North Explorer",
             "subtitle": "Wayanad, Kozhikode & Bekal",
             "description": "Explore the unexplored beauty of North Kerala — the misty hills of Wayanad, the historic spice town of Kozhikode, and the breathtaking Bekal Fort on the Arabian coast.",
@@ -618,18 +575,50 @@ def health_check():
     })
 
 
+_tours_db_outdated = None
+
+
+def check_tours_db_status():
+    global _tours_db_outdated
+    if _tours_db_outdated is not None:
+        return _tours_db_outdated
+    
+    sb = get_supabase()
+    if not sb:
+        _tours_db_outdated = True
+        return _tours_db_outdated
+    
+    try:
+        resp = sb.table("tours").select("id, category").execute()
+        data = resp.data or []
+        if len(data) < len(_fallback_db["tours"]):
+            logger.warning(f"Supabase tours table has only {len(data)} rows (expected at least {len(_fallback_db['tours'])}). Using fallback database.")
+            _tours_db_outdated = True
+        elif any(t.get("category") is None for t in data):
+            logger.warning("Supabase tours table has None values in category column. Using fallback database.")
+            _tours_db_outdated = True
+        else:
+            _tours_db_outdated = False
+    except Exception as e:
+        logger.error(f"Failed to check Supabase tours status: {e}")
+        _tours_db_outdated = True
+        
+    return _tours_db_outdated
+
+
 # ---------------------------------------------------------------------------
 # API Routes - Tours
 # ---------------------------------------------------------------------------
 @app.route("/api/tours", methods=["GET"])
 def get_tours():
-    table = db_table("tours")
-    if table:
-        try:
-            resp = table.select("*").order("id").execute()
-            return json_response(resp.data)
-        except Exception as e:
-            logger.error(f"Supabase tours query error: {e}")
+    if not check_tours_db_status():
+        table = db_table("tours")
+        if table:
+            try:
+                resp = table.select("*").order("id").execute()
+                return json_response(resp.data)
+            except Exception as e:
+                logger.error(f"Supabase tours query error: {e}")
     
     # Fallback
     return json_response(_fallback_db["tours"])
@@ -637,14 +626,15 @@ def get_tours():
 
 @app.route("/api/tours/<int:tour_id>", methods=["GET"])
 def get_tour(tour_id):
-    table = db_table("tours")
-    if table:
-        try:
-            resp = table.select("*").eq("id", tour_id).execute()
-            if resp.data:
-                return json_response(resp.data[0])
-        except Exception as e:
-            logger.error(f"Supabase tour query error: {e}")
+    if not check_tours_db_status():
+        table = db_table("tours")
+        if table:
+            try:
+                resp = table.select("*").eq("id", tour_id).execute()
+                if resp.data:
+                    return json_response(resp.data[0])
+            except Exception as e:
+                logger.error(f"Supabase tour query error: {e}")
     
     # Fallback
     tour = next((t for t in _fallback_db["tours"] if t["id"] == tour_id), None)

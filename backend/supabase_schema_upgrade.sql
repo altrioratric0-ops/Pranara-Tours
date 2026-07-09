@@ -232,18 +232,6 @@ VALUES
   ARRAY['Lunch and dinner', 'Seafood dinners at shacks', 'Personal expenses', 'Tips'],
   '[{"q": "Is the beach safe for swimming?", "a": "Lighthouse Beach has lifeguards and designated swimming areas. Samudra Beach is more secluded."}, {"q": "Are Ayurvedic treatments safe?", "a": "All sessions are conducted by certified therapists using authentic Kerala oils and herbs."}]'
 ),
-(9, 'Munnar Honeymoon Special', 'Romance in the Mist',
-  'A curated romantic escape for couples featuring luxury hilltop stays, private candlelight dinners, couple spa treatments, and exclusive sunset-viewpoint experiences in Munnar.',
-  9999, '3 Days 2 Nights', 'Romantic', true, 'Meditation',
-  '/assets/tour_munnar_honeymoon.png', 5.0, 189, 2, 'Easy',
-  'Kochi Airport / Railway Station',
-  'Free cancellation up to 72 hours before the trip',
-  ARRAY['Luxury resort stay with a private balcony overlooking tea gardens', 'Private candlelight dinner arranged at the resort', 'Couple Ayurvedic massage session', 'Sunrise at Kolukkumalai — walk above the clouds together', 'Horse carriage ride through the tea plantations', 'Complimentary couple photoshoot at the tea gardens'],
-  '[{"day": 1, "title": "Arrival & Romantic Check-in", "description": "Pickup from Kochi. Check into luxury hillside resort. Welcome drink and fresh flower bouquet. Relax on your private balcony. Evening couple spa session. Candlelight dinner under the stars."}, {"day": 2, "title": "Tea Gardens & Sunset", "description": "Late breakfast in bed. Horse carriage ride through tea gardens. Couple photoshoot session. Lunch at a scenic viewpoint. Sunset walk through tea plantations."}, {"day": 3, "title": "Leisurely Morning & Departure", "description": "Sunrise coffee on the balcony. Complimentary breakfast. Check out and drop at Kochi."}]',
-  ARRAY['2 nights in a luxury suite with valley view', 'All breakfast meals', 'Private candlelight dinner (once during stay)', 'Couple Ayurvedic massage (1 session)', 'Complimentary couple photoshoot (10 edited photos)', 'Horse carriage ride through tea gardens', 'Private AC vehicle throughout', 'Fresh flower bouquet and fruit basket on arrival', 'Pickup and drop-off from Kochi'],
-  ARRAY['Kolukkumalai entry fees', 'Eravikulam National Park entry fees', 'Lunch meals', 'Personal expenses and shopping', 'Tips and gratuities'],
-  '[{"q": "Is this package only for honeymoon couples?", "a": "It is designed for couples, ideal for honeymooners and anniversary celebrations."}, {"q": "Can we upgrade to a private pool villa?", "a": "Yes, a pool villa upgrade is available at additional cost. Check with our team at booking."}, {"q": "Are the photos professionally edited?", "a": "Yes, 10 professionally edited digital photos are included in the package."}]'
-),
 (10, 'Kerala North Explorer', 'Untamed Beauty of North Kerala',
   'Explore the untouched beauty of North Kerala — Bekal Fort, pristine beaches of Kasaragod, Theyyam performances, and serene backwaters of Valiyaparamba.',
   14999, '4 Days 3 Nights', 'Adventure', true, 'Off Road',
