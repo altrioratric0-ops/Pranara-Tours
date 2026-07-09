@@ -5,9 +5,8 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Features from './components/Features';
 import Tours from './components/Tours';
-import Experiences from './components/Experiences';
+import ExploreMunnar from './components/ExploreMunnar';
 import TripPlanner from './components/TripPlanner';
-import Gallery from './components/Gallery';
 import Testimonials from './components/Testimonials';
 import TravelTips from './components/TravelTips';
 import FAQ from './components/FAQ';
@@ -22,9 +21,8 @@ function HomePage() {
       <About />
       <Features />
       <Tours />
-      <Experiences />
+      <ExploreMunnar />
       <TripPlanner />
-      <Gallery />
       <Testimonials />
       <TravelTips />
       <FAQ />

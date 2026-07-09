@@ -160,12 +160,12 @@ export default function TourDetail() {
           <h2 className="detail-section-title">Photo Gallery</h2>
           <div className="tour-gallery-grid">
             {[
-              { src: '/assets/munnar_honeymoon_hero.png', alt: 'Munnar honeymoon couple viewpoint' },
-              { src: '/assets/munnar_honeymoon_dinner.png', alt: 'Romantic candlelight dinner' },
-              { src: '/assets/munnar_honeymoon_tea.png', alt: 'Tea garden landscape in Munnar' },
-              { src: '/assets/munnar_honeymoon_sunrise.png', alt: 'Sunrise over Munnar hills' },
-              { src: '/assets/munnar_honeymoon_spa.png', alt: 'Couple spa treatment' },
-              { src: '/assets/munnar_honeymoon_couple.png', alt: 'Romantic couple in nature' }
+              { src: '/assets/munnar_top_station.png', alt: 'Top Station Valley View' },
+              { src: '/assets/munnar_kolukkumalai.png', alt: 'Kolukkumalai Sunrise above the clouds' },
+              { src: '/assets/munnar_tea_museum.png', alt: 'Munnar Tea Museum & Gardens' },
+              { src: '/assets/munnar_eravikulam.png', alt: 'Eravikulam National Park Nilgiri Tahr' },
+              { src: '/assets/munnar_mattupetty.png', alt: 'Mattupetty Dam & Lake' },
+              { src: '/assets/munnar_attukad.png', alt: 'Attukad Waterfalls' }
             ].map((img, i) => (
               <div className="tour-gallery-item" key={i}>
                 <div

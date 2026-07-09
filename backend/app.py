@@ -246,7 +246,7 @@ _fallback_db = {
             "description": "Escape to Wayanad's lush green landscapes, ancient Edakkal caves, stunning waterfalls like Meenmutty and Soochipara, and spot wild elephants at Muthanga Wildlife Sanctuary.",
             "price": 5499, "duration": "2 Days 1 Night", "tag": "New", "featured": True,
             "category": "Adventures",
-            "image_url": "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&q=80",
+            "image_url": "/assets/tour_wayanad.png",
             "rating": 4.7, "reviews": 78,
             "max_people": 10,
             "difficulty": "Easy",
@@ -284,7 +284,7 @@ _fallback_db = {
             "description": "Unwind in Vagamon's pristine pine forests, rolling green meadows, and misty hills. Perfect for a quiet weekend surrounded by nature far from the crowds.",
             "price": 3999, "duration": "2 Days 1 Night", "tag": "Budget Friendly", "featured": True,
             "category": "Off Road",
-            "image_url": "https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600&q=80",
+            "image_url": "/assets/tour_vagamon.png",
             "rating": 4.6, "reviews": 65,
             "max_people": 12,
             "difficulty": "Easy",
@@ -321,7 +321,7 @@ _fallback_db = {
             "description": "Relax on Kovalam's iconic crescent beaches — Lighthouse Beach, Hawah Beach, and Samudra Beach. Combine sunbathing with Ayurvedic spa treatments and seafood dinners.",
             "price": 6999, "duration": "3 Days 2 Nights", "tag": "Trending", "featured": True,
             "category": "Meditation",
-            "image_url": "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&q=80",
+            "image_url": "/assets/tour_kovalam.png",
             "rating": 4.7, "reviews": 142,
             "max_people": 8,
             "difficulty": "Easy",
@@ -360,7 +360,7 @@ _fallback_db = {
             "description": "Explore the unexplored beauty of North Kerala — the misty hills of Wayanad, the historic spice town of Kozhikode, and the breathtaking Bekal Fort on the Arabian coast.",
             "price": 14999, "duration": "5 Days 4 Nights", "tag": "New", "featured": True,
             "category": "Off Road",
-            "image_url": "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80",
+            "image_url": "/assets/tour_bekal.png",
             "rating": 4.8, "reviews": 56,
             "max_people": 8,
             "difficulty": "Moderate",
@@ -404,7 +404,7 @@ _fallback_db = {
             "description": "Find your inner peace with daily sunrise meditation above the clouds, yoga sessions in spice gardens, and professional Ayurvedic spa treatments in the cool mountain climate of Munnar.",
             "price": 8499, "duration": "3 Days 2 Nights", "tag": "New", "featured": True,
             "category": "Meditation",
-            "image_url": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80",
+            "image_url": "/assets/tour_meditation.png",
             "rating": 4.9, "reviews": 34,
             "max_people": 6,
             "difficulty": "Easy",
@@ -445,7 +445,7 @@ _fallback_db = {
             "description": "Hold on tight as you conquer the highest organic tea gardens in the world on a rugged 4x4 off-road jeep safari, followed by camping and sunrise above the clouds.",
             "price": 4499, "duration": "2 Days 1 Night", "tag": "Trending", "featured": True,
             "category": "Off Road",
-            "image_url": "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=80",
+            "image_url": "/assets/tour_offroad.png",
             "rating": 4.9, "reviews": 92,
             "max_people": 12,
             "difficulty": "Hard",
@@ -536,14 +536,15 @@ _fallback_db = {
     ],
     "bookings": [],
     "gallery": [
-        {"id": 1, "image_url": "/assets/munnar_kolukkumalai.png", "caption": "Kolukkumalai Sunrise Viewpoint", "source": "manual"},
-        {"id": 2, "image_url": "/assets/munnar_top_station.png", "caption": "Top Station Panoramic Valley", "source": "manual"},
+        {"id": 1, "image_url": "/assets/tour_offroad.png", "caption": "Kolukkumalai Offroad Jeep Ride", "source": "manual"},
+        {"id": 2, "image_url": "/assets/munnar_top_station.png", "caption": "Top Station Valley", "source": "manual"},
         {"id": 3, "image_url": "/assets/munnar_eravikulam.png", "caption": "Eravikulam National Park", "source": "manual"},
         {"id": 4, "image_url": "/assets/munnar_mattupetty.png", "caption": "Mattupetty Dam & Lake", "source": "manual"},
-        {"id": 5, "image_url": "/assets/munnar_echo_point.png", "caption": "Misty Lake Echo Point", "source": "manual"},
-        {"id": 6, "image_url": "/assets/munnar_kundala.png", "caption": "Shikara Ride at Kundala Lake", "source": "manual"},
+        {"id": 5, "image_url": "/assets/munnar_echo_point.png", "caption": "Misty Echo Point Lake", "source": "manual"},
+        {"id": 6, "image_url": "/assets/munnar_kundala.png", "caption": "Kundala Lake Shikara Ride", "source": "manual"},
         {"id": 7, "image_url": "/assets/munnar_attukad.png", "caption": "Attukad Waterfalls", "source": "manual"},
-        {"id": 8, "image_url": "/assets/munnar_tea_museum.png", "caption": "Munnar Tea Estate Garden", "source": "manual"},
+        {"id": 8, "image_url": "/assets/munnar_lakkom.png", "caption": "Lakkom Waterfalls", "source": "manual"},
+        {"id": 9, "image_url": "/assets/munnar_anamudi.png", "caption": "Anamudi Peak (Highest in South India)", "source": "manual"},
     ],
     "contact_messages": [],
     "_next_id": {"tours": 13, "testimonials": 7, "bookings": 1, "gallery": 11, "contact_messages": 1},
@@ -604,6 +605,45 @@ def check_tours_db_status():
         _tours_db_outdated = True
         
     return _tours_db_outdated
+
+
+_gallery_db_outdated = None
+
+
+def check_gallery_db_status():
+    global _gallery_db_outdated
+    if _gallery_db_outdated is not None:
+        return _gallery_db_outdated
+    
+    sb = get_supabase()
+    if not sb:
+        _gallery_db_outdated = True
+        return _gallery_db_outdated
+    
+    try:
+        resp = sb.table("gallery").select("image_url, caption").execute()
+        data = resp.data or []
+        captions = [item.get("caption", "") for item in data if item.get("caption")]
+        image_urls = [item.get("image_url", "") for item in data if item.get("image_url")]
+        
+        # Enforce fallback if there are duplicates, Unsplash URLs, or mentions of tea estates
+        if len(captions) != len(set(captions)):
+            logger.warning("Supabase gallery table has duplicate items. Using fallback database.")
+            _gallery_db_outdated = True
+        elif any("unsplash" in url.lower() for url in image_urls):
+            logger.warning("Supabase gallery table contains external Unsplash URLs. Using fallback database.")
+            _gallery_db_outdated = True
+        elif any("tea estate" in c.lower() or "tea museum" in c.lower() for c in captions):
+            logger.warning("Supabase gallery table contains tea estate/museum entries. Using fallback database.")
+            _gallery_db_outdated = True
+        else:
+            _gallery_db_outdated = False
+    except Exception as e:
+        logger.error(f"Failed to check Supabase gallery status: {e}")
+        _gallery_db_outdated = True
+        
+    return _gallery_db_outdated
+
 
 
 # ---------------------------------------------------------------------------
@@ -704,21 +744,18 @@ def get_attractions():
 @app.route("/api/gallery", methods=["GET"])
 def get_gallery():
     """Get all gallery images including Instagram-synced ones."""
-    table = db_table("gallery")
-    all_images = []
+    if not check_gallery_db_status():
+        table = db_table("gallery")
+        if table:
+            try:
+                resp = table.select("*").order("created_at", desc=True).execute()
+                return json_response(resp.data or [])
+            except Exception as e:
+                logger.error(f"Supabase gallery query error: {e}")
     
-    if table:
-        try:
-            resp = table.select("*").order("created_at", desc=True).execute()
-            all_images = resp.data or []
-        except Exception as e:
-            logger.error(f"Supabase gallery query error: {e}")
-    
-    if not all_images:
-        # Combine manual + instagram fallback
-        all_images = list(_fallback_db["gallery"])
-        all_images.extend(_fallback_gallery_instagram)
-    
+    # Combine manual + instagram fallback
+    all_images = list(_fallback_db["gallery"])
+    all_images.extend(_fallback_gallery_instagram)
     return json_response(all_images)
 
 
