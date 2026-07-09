@@ -48,7 +48,7 @@ export default function Features() {
     <section className="features" id="features">
       <div className="container">
         <h2 className="section-title">Why Choose <span className="accent">Pranara</span></h2>
-        <p class="section-subtitle">We make every journey extraordinary</p>
+        <p className="section-subtitle">We make every journey extraordinary</p>
         <div className="features-grid">
           {features.map((f, i) => (
             <div className="feature-card" key={i}>

@@ -115,12 +115,7 @@ export default function ExploreMunnar() {
         {loading ? (
           <p style={{ textAlign: 'center', color: 'var(--text-light)', marginTop: '40px' }}>Loading attractions...</p>
         ) : (
-          <div className="gallery-grid" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '20px',
-            marginTop: '50px'
-          }}>
+          <div className="explore-munnar-grid">
             {sights.map((item) => (
               <div
                 className="explore-munnar-card"

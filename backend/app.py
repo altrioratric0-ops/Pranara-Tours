@@ -191,55 +191,7 @@ _fallback_db = {
                 {"q": "Can we customize the itinerary?", "a": "Absolutely! We can add or remove destinations and adjust the duration as per your preferences."}
             ]
         },
-        {
-            "id": 4, "title": "Complete Kerala Tour",
-            "subtitle": "The Ultimate Kerala Experience",
-            "description": "A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.",
-            "price": 24999, "duration": "7 Days 6 Nights", "tag": "Best Value", "featured": True,
-            "category": "Experience",
-            "image_url": "/assets/tour_kerala.png",
-            "rating": 5.0, "reviews": 203,
-            "max_people": 8,
-            "difficulty": "Moderate",
-            "meeting_point": "Kochi Airport / Railway Station",
-            "cancellation": "Free cancellation up to 7 days before the trip",
-            "highlights": [
-                "7-day grand tour across 5 iconic Kerala destinations",
-                "Houseboat night on Alleppey backwaters with gourmet dinner",
-                "Wildlife boat safari at Periyar Tiger Reserve, Thekkady",
-                "Sunrise at Kolukkumalai — highest tea estate in the world",
-                "Beach sunset at Varkala cliff and Kovalam lighthouse",
-                "Spice plantation tour and authentic Kerala cooking demo",
-                "Kathakali performance and Ayurvedic spa session"
-            ],
-            "itinerary": [
-                {"day": 1, "title": "Arrival in Kochi — Drive to Munnar", "description": "Pickup from Kochi airport or railway station. Scenic drive to Munnar (3.5 hrs). Check into a premium hill resort. Evening walk through tea gardens and local market. Overnight at Munnar."},
-                {"day": 2, "title": "Munnar — Full Day Exploration", "description": "Pre-dawn departure to Kolukkumalai for sunrise. Return for breakfast. Visit Eravikulam National Park, Tea Museum, Mattupetty Dam, and Echo Point. Overnight at Munnar."},
-                {"day": 3, "title": "Munnar to Thekkady", "description": "Breakfast and checkout. Drive to Thekkady (3 hrs). Check into resort. Afternoon spice plantation tour with aroma tasting. Evening boat safari on Periyar Lake. Kathakali show. Overnight at Thekkady."},
-                {"day": 4, "title": "Thekkady to Alleppey", "description": "Morning bamboo rafting or nature trek. Breakfast and checkout. Drive to Alleppey (4 hrs). Board premium houseboat. Cruise through backwaters with lunch and sunset dinner. Overnight on houseboat."},
-                {"day": 5, "title": "Alleppey to Varkala", "description": "Breakfast on houseboat. Disembark. Drive to Varkala (3 hrs). Check into cliff-top resort. Afternoon at Varkala beach — swim and explore the cliffside cafes. Sunset on the cliff. Overnight at Varkala."},
-                {"day": 6, "title": "Varkala to Kovalam", "description": "Leisurely breakfast. Drive to Kovalam (1.5 hrs). Check into beach resort. Ayurvedic spa session. Visit Lighthouse Beach and Hawah Beach. Evening farewell dinner. Overnight at Kovalam."},
-                {"day": 7, "title": "Departure from Trivandrum", "description": "Breakfast at resort. Leisure time at the beach. Checkout and drop at Trivandrum International Airport or Railway Station. Tour ends with wonderful memories."}
-            ],
-            "inclusions": [
-                "6 nights accommodation across premium properties", "All breakfast and dinner meals",
-                "1 night in luxury houseboat with all meals", "Private AC vehicle for entire trip",
-                "English-speaking guide throughout", "All boat safaris and national park entry fees",
-                "Kathakali show tickets", "Ayurvedic spa session (1 per person)",
-                "Kerala cooking demonstration", "Pickup from Kochi, drop at Trivandrum"
-            ],
-            "exclusions": [
-                "Lunch on most days (available at cafes along the way)", "Camera fees at monuments and parks",
-                "Personal shopping and expenses", "Tips and gratuities",
-                "Airfare or train fare to/from Kerala"
-            ],
-            "faqs": [
-                {"q": "Can I join the tour midway?", "a": "We recommend starting from Day 1, but we can arrange pickup at any point along the route with prior coordination."},
-                {"q": "Are single rooms available?", "a": "Yes, single occupancy is available at a supplemental cost. Please mention this during booking."},
-                {"q": "What is the best season for this tour?", "a": "September to May is ideal. The monsoon season (June-August) offers health benefits but some water activities may be limited."},
-                {"q": "Is travel insurance included?", "a": "Travel insurance is not included but we strongly recommend purchasing it for international travelers."}
-            ]
-        },
+
         {
             "id": 5, "title": "Wayanad 2 Days 1 Night",
             "subtitle": "Misty Hills & Ancient Caves",

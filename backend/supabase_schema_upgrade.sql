@@ -184,18 +184,7 @@ VALUES
   ARRAY['Entry fees to national parks', 'Lunch meals at resort days', 'Alcoholic beverages on houseboat', 'Personal expenses'],
   '[{"q": "Is the houseboat private?", "a": "Yes, the houseboat is exclusively for your group, regardless of size."}, {"q": "Can we customize the menu on the houseboat?", "a": "Absolutely. Inform us of dietary preferences at booking and the chef will prepare accordingly."}]'
 ),
-(4, 'Complete Kerala Tour', 'The Grand Kerala Experience',
-  'A comprehensive journey covering Munnar, Thekkady wildlife sanctuary, Alleppey backwaters, and the stunning beaches of Varkala and Kovalam.',
-  24999, '7 Days 6 Nights', 'Best Value', true, 'Experience',
-  '/assets/tour_kerala.png', 4.9, 203, 10, 'Moderate',
-  'Kochi Airport / Trivandrum Airport',
-  'Free cancellation up to 7 days before the trip',
-  ARRAY['Munnar tea gardens and viewpoints', 'Thekkady wildlife safari', 'Alleppey overnight houseboat cruise', 'Kovalam beach stay', 'Varkala cliff walk and sunset', 'Kathakali performance', 'Spice plantation tour'],
-  '[{"day": 1, "title": "Arrival in Kochi → Munnar", "description": "Pickup from Kochi. Drive to Munnar. Evening tea garden walk."}, {"day": 2, "title": "Munnar", "description": "Full day Munnar sightseeing."}, {"day": 3, "title": "Munnar → Thekkady", "description": "Drive to Thekkady. Spice tour. Boat cruise."}, {"day": 4, "title": "Thekkady → Alleppey", "description": "Wildlife trek. Drive to Alleppey. Houseboat."}, {"day": 5, "title": "Alleppey → Varkala", "description": "Disembark. Drive to Varkala. Cliff sunset."}, {"day": 6, "title": "Varkala → Kovalam", "description": "Beach day. Drive to Kovalam."}, {"day": 7, "title": "Departure", "description": "Breakfast. Drop at Trivandrum airport."}]',
-  ARRAY['6 nights accommodation (various properties)', 'Daily breakfast', '1 night houseboat with all meals', 'Private AC vehicle with driver', 'All inter-city transfers', 'English-speaking guide'],
-  ARRAY['Flight/train tickets', 'Entry fees to monuments and parks', 'Lunch and dinner (except houseboat)', 'Personal expenses and tips'],
-  '[{"q": "Can we start from Trivandrum instead of Kochi?", "a": "Yes, the itinerary can be reversed to start from Trivandrum."}, {"q": "Is this suitable for families with kids?", "a": "Yes, the pace is comfortable and activities are family-friendly."}]'
-),
+
 (5, 'Wayanad 2 Days 1 Night', 'Escape to Nature',
   'Escape to Wayanad lush green landscapes, ancient Edakkal caves, stunning waterfalls like Meenmutty and Soochipara, and spot wild elephants at Muthanga Wildlife Sanctuary.',
   5499, '2 Days 1 Night', 'New', true, 'Adventures',
@@ -285,14 +274,15 @@ INSERT INTO testimonials (name, location, avatar_initials, rating, quote) VALUES
 
 -- Seed Gallery
 INSERT INTO gallery (image_url, caption, source) VALUES
-  ('/assets/munnar_top_station.png', 'Top Station Panoramic Valley', 'manual'),
-  ('/assets/munnar_tea_museum.png', 'Munnar Tea Museum & Estates', 'manual'),
-  ('/assets/munnar_attukad.png', 'Attukad Waterfalls', 'manual'),
-  ('/assets/munnar_kolukkumalai.png', 'Kolukkumalai Sunrise Viewpoint', 'manual'),
+  ('/assets/tour_offroad.png', 'Kolukkumalai Offroad Jeep Ride', 'manual'),
+  ('/assets/munnar_top_station.png', 'Top Station Valley', 'manual'),
   ('/assets/munnar_eravikulam.png', 'Eravikulam National Park', 'manual'),
   ('/assets/munnar_mattupetty.png', 'Mattupetty Dam & Lake', 'manual'),
   ('/assets/munnar_echo_point.png', 'Misty Echo Point Lake', 'manual'),
-  ('/assets/munnar_kundala.png', 'Kundala Lake Shikara Ride', 'manual');
+  ('/assets/munnar_kundala.png', 'Kundala Lake Shikara Ride', 'manual'),
+  ('/assets/munnar_attukad.png', 'Attukad Waterfalls', 'manual'),
+  ('/assets/munnar_lakkom.png', 'Lakkom Waterfalls', 'manual'),
+  ('/assets/munnar_anamudi.png', 'Anamudi Peak (Highest in South India)', 'manual');
 
 -- Seed Destinations
 INSERT INTO destinations (name, description, best_season, price, duration, image_url) VALUES

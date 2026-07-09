@@ -6,7 +6,10 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#home" className="logo">Pranara</a>
+            <a href="#home" className="logo flex-logo">
+              <img src="/assets/logo.jpg" alt="Pranara Logo" className="logo-img" />
+              <span>Pranara</span>
+            </a>
             <p>Your gateway to Kerala's misty hills, backwaters & scenic beaches. Adventure, nature, and guided tourism crafted for unforgettable memories.</p>
             <div className="social-links">
               <a href="https://www.instagram.com/pranara_co" target="_blank" rel="noopener noreferrer" title="Instagram">
@@ -50,10 +53,13 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          &copy; {year} Pranara. All rights reserved. | Follow us on{' '}
-          <a href="https://www.instagram.com/pranara_co" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>
-            @pranara_co
-          </a>
+          <div>&copy; {year} Pranara. All rights reserved.</div>
+          <div>
+            Follow us on{' '}
+            <a href="https://www.instagram.com/pranara_co" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)' }}>
+              @pranara_co
+            </a>
+          </div>
         </div>
       </div>
     </footer>
