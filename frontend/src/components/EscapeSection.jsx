@@ -184,9 +184,6 @@ export default function EscapeSection() {
                       className="adventure-image" 
                       style={{ backgroundImage: `url(${item.imageUrl})` }}
                     />
-                    <div className="adventure-icon-badge">
-                      {item.icon}
-                    </div>
                   </div>
                   <div className="adventure-body">
                     <h4 className="adventure-title">{item.title}</h4>
@@ -202,9 +199,6 @@ export default function EscapeSection() {
                       className="adventure-image" 
                       style={{ backgroundImage: `url(${item.imageUrl})` }}
                     />
-                    <div className="adventure-icon-badge">
-                      {item.icon}
-                    </div>
                   </div>
                   <div className="adventure-body">
                     <h4 className="adventure-title">{item.title}</h4>
