@@ -40,8 +40,6 @@ export default function Navbar() {
         </button>
         <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
           <li><a href={isHome ? '#about' : '/#about'} onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a></li>
-          <li><a href={isHome ? '#tours' : '/#tours'} onClick={(e) => { e.preventDefault(); scrollTo('tours'); }}>Packages</a></li>
-          <li><a href={isHome ? '#explore-munnar' : '/#explore-munnar'} onClick={(e) => { e.preventDefault(); scrollTo('explore-munnar'); }}>Explore Munnar</a></li>
           <li><a href={isHome ? '#planner' : '/#planner'} onClick={(e) => { e.preventDefault(); scrollTo('planner'); }}>Planner</a></li>
           <li><a href={isHome ? '#testimonials' : '/#testimonials'} onClick={(e) => { e.preventDefault(); scrollTo('testimonials'); }}>Reviews</a></li>
           <li><Link to="/#booking" className="nav-cta" onClick={() => setMenuOpen(false)}>Book Now</Link></li>

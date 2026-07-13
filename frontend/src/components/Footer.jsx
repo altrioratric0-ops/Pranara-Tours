@@ -35,8 +35,6 @@ export default function Footer() {
             <h4>Quick Links</h4>
             <ul>
               <li><a href="#about">About</a></li>
-              <li><a href="#tours">Tours</a></li>
-              <li><a href="#experiences">Experiences</a></li>
               <li><a href="#planner">Planner</a></li>
               <li><a href="#booking">Book Now</a></li>
             </ul>
@@ -44,11 +42,11 @@ export default function Footer() {
           <div className="footer-col">
             <h4>Explore</h4>
             <ul>
-              <li><a href="#tours">Trekking</a></li>
-              <li><a href="#tours">Tea Plantations</a></li>
-              <li><a href="#tours">Waterfall Trails</a></li>
-              <li><a href="#tours">Houseboat Stay</a></li>
-              <li><a href="#tours">Wildlife Safari</a></li>
+              <li><a href="#planner">Trekking</a></li>
+              <li><a href="#planner">Tea Plantations</a></li>
+              <li><a href="#planner">Waterfall Trails</a></li>
+              <li><a href="#planner">Houseboat Stay</a></li>
+              <li><a href="#planner">Wildlife Safari</a></li>
             </ul>
           </div>
         </div>

@@ -591,50 +591,232 @@
       font-size: 0.85rem;
     }
 
-    /* ───── Testimonials ───── */
+    /* ───── Testimonials (Explorers Say) ───── */
     .testimonials {
       padding: 100px 0;
-      background: #f8fafc;
+      background: var(--cream);
+      overflow: hidden;
     }
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+    .testimonial-header-showcase {
+      text-align: center;
+      margin-bottom: 48px;
     }
-    .testimonial-card {
-      background: #fff;
-      padding: 28px;
-      border-radius: 16px;
-      border: 1px solid #e2e8f0;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    .testimonial-card .stars {
-      color: #f59e0b;
-      margin-bottom: 12px;
-    }
-    .testimonial-card blockquote {
-      color: #475569;
-      font-size: 0.95rem;
+    .testimonial-subtitle-top {
+      font-family: var(--font-body);
       font-style: italic;
-      margin-bottom: 16px;
-      flex-grow: 1;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      display: block;
     }
-    .testimonial-author {
+    .testimonial-main-heading {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .testimonial-tagline-bottom {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .testimonial-showcase-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 50px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-quote-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+      border-top-left-radius: 0;
+    }
+    .quote-mark {
+      position: absolute;
+      top: -45px;
+      left: 20px;
+      font-size: 8rem;
+      color: rgba(46, 125, 50, 0.12);
+      font-family: Georgia, serif;
+      pointer-events: none;
+    }
+    .quote-body {
+      margin-bottom: 24px;
+    }
+    .quote-text {
+      font-size: 1.05rem;
+      color: var(--text-dark);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .quote-note {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    .quote-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0;
+    }
+    .quote-recommendation {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      font-style: italic;
+      margin: 0;
+    }
+    .quote-stars-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .quote-stars-row .star {
+      color: #e2e8f0;
+    }
+    .quote-stars-row .star.filled {
+      color: #f59e0b;
+    }
+    .thankyou-signature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-light);
+      font-style: italic;
+      margin-bottom: 28px;
+    }
+    .heart-signature-icon {
+      color: var(--primary);
+    }
+    .testimonial-card-author {
       display: flex;
       align-items: center;
       gap: 12px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
     }
-    .testimonial-author .avatar {
-      width: 40px; height: 40px;
+    .testimonial-author-avatar {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #059669, #10b981);
+      background: var(--primary-light);
+      color: var(--primary-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
       font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .testimonial-author-details {
+      display: flex;
+      flex-direction: column;
+    }
+    .author-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+    .author-location {
+      font-size: 0.8rem;
+      color: var(--text-light);
+    }
+    .polaroid-wrapper {
+      position: relative;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .polaroid-card {
+      background: #ffffff;
+      padding: 12px 12px 36px 12px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid var(--border);
+      width: 250px;
+      height: 250px;
+      position: absolute;
+      transition: transform 0.5s ease;
+    }
+    .polaroid-card::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 64px;
+      height: 20px;
+      background: rgba(46, 125, 50, 0.18);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      z-index: 10;
+    }
+    .polaroid-card.card-1 {
+      transform: rotate(-6deg) translate(-20px, -20px);
+      z-index: 1;
+    }
+    .polaroid-card.card-2 {
+      transform: rotate(5deg) translate(20px, 30px);
+      z-index: 2;
+    }
+    .polaroid-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+    }
+    .testimonial-carousel-controls {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .carousel-control-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .carousel-control-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+    @media (max-width: 768px) {
+      .testimonial-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .polaroid-wrapper {
+        height: 320px;
+      }
+      .polaroid-card {
+        width: 200px;
+        height: 200px;
+      }
+      .testimonial-quote-card {
+        padding: 24px;
+      }
+    } font-weight: 700;
       font-size: 0.9rem;
     }
     .testimonial-author .name {
@@ -702,7 +884,642 @@
       transform: translateY(0);
       opacity: 1;
     }
-  </style>
+
+    /* ───── Escape Section Styles ───── */
+    .escape-section {
+      padding: 80px 0;
+      background-color: var(--cream);
+    }
+    .escape-packages-container {
+      margin-bottom: 80px;
+    }
+    .escape-title-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .escape-section-heading {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      text-align: center;
+      margin: 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .leaf-decor {
+      display: flex;
+      align-items: center;
+    }
+    .escape-packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .escape-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .escape-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    .escape-card-image-wrapper {
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+    }
+    .escape-card-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease;
+    }
+    .escape-card:hover .escape-card-image {
+      transform: scale(1.06);
+    }
+    .escape-card-body {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .escape-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .escape-card-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+    .escape-card-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px 0;
+    }
+    .escape-checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+    .check-icon {
+      flex-shrink: 0;
+    }
+    .escape-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .escape-card-price {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .btn-escape-explore {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      padding: 8px 20px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      letter-spacing: 0.05em;
+    }
+    .btn-escape-explore:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* Adventures Carousel */
+    .adventure-carousel-container {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      padding: 20px 0;
+      mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    }
+    .adventure-carousel-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: scrollContinuous 30s linear infinite;
+    }
+    .adventure-carousel-container:hover .adventure-carousel-track {
+      animation-play-state: paused;
+    }
+    @keyframes scrollContinuous {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-50% - 10px));
+      }
+    }
+    .adventure-card {
+      width: 220px;
+      flex-shrink: 0;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .adventure-card:hover {
+      transform: translateY(-4px);
+    }
+    .adventure-image-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .adventure-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+    }
+    .adventure-card:hover .adventure-image {
+      transform: scale(1.08);
+    }
+    .adventure-icon-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary-dark);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .adventure-icon-badge svg {
+      width: 20px;
+      height: 20px;
+    }
+    .adventure-body {
+      width: 100%;
+    }
+    .adventure-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+    .adventure-desc {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* Trust Banner */
+    .trust-features-banner {
+      margin-top: 60px;
+      background: var(--primary-dark);
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+    }
+    .trust-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .trust-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .trust-feature-icon {
+      color: var(--golden);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .trust-feature-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+    .trust-feature-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .trust-feature-info h5 {
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin: 0 0 2px 0;
+      letter-spacing: 0.03em;
+    }
+    .trust-feature-info p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.75rem;
+      margin: 0;
+    }
+
+    /* ───── Local Heritage & Map Section ───── */
+    .heritage-section {
+      padding: 100px 0;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .heritage-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .heritage-story-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 48px 48px 0 48px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 580px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .heritage-story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .story-content {
+      position: relative;
+      z-index: 5;
+    }
+    .story-tagline {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--primary);
+      font-size: 1.25rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .story-heading {
+      font-family: var(--font-heading);
+      color: var(--primary-dark);
+      font-size: 2rem;
+      line-height: 1.35;
+      margin: 0 0 16px 0;
+      font-weight: 700;
+    }
+    .story-paragraph {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+      max-width: 82%;
+    }
+    .btn-read-story {
+      display: inline-block;
+      background: var(--primary-dark);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-size: 0.75rem;
+      transition: all 0.3s ease;
+      position: absolute;
+      bottom: 24px;
+      right: 48px;
+      z-index: 10;
+    }
+    .btn-read-story:hover {
+      background: var(--primary);
+      transform: translateY(-1px);
+    }
+    .stamp-badge-container {
+      position: absolute;
+      top: 30px;
+      right: 35px;
+      z-index: 6;
+      color: rgba(43, 58, 47, 0.45);
+    }
+    .story-bg-image {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background-size: cover;
+      background-position: center;
+      z-index: 1;
+    }
+    .heritage-map-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      height: 580px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .heritage-map-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .map-header {
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 5;
+    }
+    .map-heading {
+      font-family: var(--font-heading);
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      margin: 0 0 6px 0;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .map-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .map-visual-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+      gap: 20px;
+      align-items: center;
+    }
+    .interactive-map-wrapper {
+      flex: 1.25;
+      position: relative;
+    }
+    .heritage-svg-map {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+    }
+    .map-marker-label {
+      font-size: 11px;
+      transition: fill 0.2s, font-weight 0.2s, font-size 0.2s;
+      pointer-events: none;
+    }
+    .map-marker-group.active .map-marker-label {
+      fill: var(--primary);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .marker-pulse-ring {
+      animation: markerPulse 2s infinite ease-out;
+      transform-origin: center;
+    }
+    @keyframes markerPulse {
+      0% {
+        r: 6px;
+        opacity: 0.8;
+      }
+      100% {
+        r: 16px;
+        opacity: 0;
+      }
+    }
+    .map-polaroid-preview-container {
+      flex: 0.95;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .polaroid-preview-card {
+      background: #ffffff;
+      padding: 10px 10px 20px 10px;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      border: 1px solid var(--border);
+      width: 190px;
+      position: relative;
+      transform: rotate(2deg);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .polaroid-preview-card:hover {
+      transform: scale(1.03) rotate(0deg);
+    }
+    .polaroid-preview-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 50px;
+      height: 16px;
+      background: rgba(46, 125, 50, 0.15);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      z-index: 5;
+    }
+    .polaroid-preview-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      background-size: cover;
+      background-position: center;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+    .polaroid-preview-body {
+      text-align: center;
+    }
+    .polaroid-preview-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin: 0 0 4px 0;
+    }
+    .polaroid-preview-desc {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      line-height: 1.35;
+      margin: 0 0 10px 0;
+      height: 38px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .polaroid-explore-link {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .polaroid-explore-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ───── Heritage Story Modal ───── */
+    .heritage-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(43, 58, 47, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .heritage-modal-content {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+    }
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: none;
+      background: none;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-close-btn:hover {
+      color: var(--primary-dark);
+    }
+    .modal-tagline {
+      font-family: var(--font-body);
+      font-style: italic;
+      color: var(--primary);
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .modal-heading {
+      font-family: var(--font-heading);
+      color: var(--primary-dark);
+      font-size: 1.8rem;
+      margin: 0 0 20px 0;
+      font-weight: 700;
+    }
+    .modal-body p {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+    }
+    .modal-img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0;
+    }
+    .modal-img {
+      height: 120px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--border);
+    }
+    .btn-modal-close {
+      display: block;
+      width: 100%;
+      background: var(--primary-dark);
+      color: #ffffff;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 10px;
+    }
+    .btn-modal-close:hover {
+      background: var(--primary);
+    }
+
+    @media (max-width: 992px) {
+      .heritage-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .heritage-story-card, .heritage-map-card {
+        height: auto;
+        padding-bottom: 40px;
+      }
+      .story-bg-image {
+        position: relative;
+        height: 200px;
+        margin-top: 30px;
+        border-radius: 12px;
+      }
+      .map-visual-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+   </style>
 </head>
 <body>
 
@@ -715,8 +1532,6 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#tours">Tours</a></li>
-      <li><a href="#gallery">Gallery</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#booking" class="nav-cta">Book Now</a></li>
     </ul>
@@ -812,97 +1627,605 @@
   </div>
 </section>
 
-<!-- ───── Tours ───── -->
-<section class="tours" id="tours">
+</section>
+
+<!-- ───── Escape Section ───── -->
+<section class="escape-section" id="escapes">
   <div class="container">
-    <h2 class="section-title">Popular <span class="accent">Tour Packages</span></h2>
-    <p class="section-subtitle">Handpicked experiences across Munnar's finest landscapes</p>
-    <div class="tour-grid">
-
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#065f46);">
-          <span class="tag">Popular</span>
-          &#127748;
+    <!-- Subsection 1: Packages -->
+    <div class="escape-packages-container">
+      <div class="escape-title-wrapper">
+        <div class="leaf-decor left-decor">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
+            <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
+            <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+          </svg>
         </div>
-        <div class="tour-card-body">
-          <h3>Misty Hills Trek</h3>
-          <p>A guided trek through Munnar&rsquo;s rolling tea plantations and mist-covered hills. Perfect for nature lovers and photography enthusiasts.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;1,499 <small>/ person</small></span>
-            <span class="tour-duration">4-5 hrs</span>
+        <h2 class="escape-section-heading">PACKAGES FOR EVERY KIND OF ESCAPE</h2>
+        <div class="leaf-decor right-decor">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+            <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
+            <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
+            <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="escape-packages-grid">
+        <!-- Card 1 -->
+        <div class="escape-card">
+          <div class="escape-card-image-wrapper">
+            <div class="escape-card-image" style="background-image: url('frontend/public/assets/tour_munnar.png');"></div>
+          </div>
+          <div class="escape-card-body">
+            <h3 class="escape-card-title">ESCAPE PACKAGES</h3>
+            <p class="escape-card-subtitle">Disconnect to reconnect.</p>
+            <ul class="escape-card-checklist">
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Scenic Stays</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Tea Garden Retreats</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Peaceful Hideouts</span>
+              </li>
+            </ul>
+            <div class="escape-card-footer">
+              <span class="escape-card-price">From ₹6,999 / night</span>
+              <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="escape-card">
+          <div class="escape-card-image-wrapper">
+            <div class="escape-card-image" style="background-image: url('frontend/public/assets/tour_thekkady.png');"></div>
+          </div>
+          <div class="escape-card-body">
+            <h3 class="escape-card-title">TOUR & TRAVEL PACKAGES</h3>
+            <p class="escape-card-subtitle">Curated journeys. Local stories.</p>
+            <ul class="escape-card-checklist">
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Sightseeing</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Local Experiences</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Comfortable Travel</span>
+              </li>
+            </ul>
+            <div class="escape-card-footer">
+              <span class="escape-card-price">From ₹9,999 / person</span>
+              <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="escape-card">
+          <div class="escape-card-image-wrapper">
+            <div class="escape-card-image" style="background-image: url('frontend/public/assets/tour_offroad.png');"></div>
+          </div>
+          <div class="escape-card-body">
+            <h3 class="escape-card-title">OFFROAD ADVENTURE PACKAGES</h3>
+            <p class="escape-card-subtitle">For the thrill seekers.</p>
+            <ul class="escape-card-checklist">
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Thar Offroad Drive</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Hidden Trails</span>
+              </li>
+              <li class="escape-checklist-item">
+                <svg class="check-icon" width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" stroke-width="1.5"/>
+                  <path d="M6 10L9 13L14 7" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Adrenaline Rush</span>
+              </li>
+            </ul>
+            <div class="escape-card-footer">
+              <span class="escape-card-price">From ₹12,999 / person</span>
+              <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#1e40af);">
-          <span class="tag">Trending</span>
-          &#128507;
+    <!-- Subsection 2: Adventures -->
+    <div class="escape-adventures-container">
+      <div class="escape-title-wrapper">
+        <div class="leaf-decor left-decor">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
+            <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
+            <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+          </svg>
         </div>
-        <div class="tour-card-body">
-          <h3>Sunrise Valley Expedition</h3>
-          <p>An early morning expedition to catch the golden sunrise over the valleys of Munnar. Includes tea estate visit and breakfast.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;2,499 <small>/ person</small></span>
-            <span class="tour-duration">6-7 hrs</span>
+        <h2 class="escape-section-heading">ADVENTURES THAT STAY WITH YOU</h2>
+        <div class="leaf-decor right-decor">
+          <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: scaleX(-1);">
+            <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
+            <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
+            <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+          </svg>
+        </div>
+      </div>
+      
+      <div class="adventure-carousel-container">
+        <div class="adventure-carousel-track">
+          <!-- Original set -->
+          <!-- Item 1 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/tour_offroad.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="10" rx="2" />
+                  <path d="M12 2v9M8 5h8M6 11V7a3 3 0 0 1 6 0v4M18 11V7a3 3 0 0 0-3-3h-3" />
+                  <circle cx="7.5" cy="16.5" r="2.5" />
+                  <circle cx="16.5" cy="16.5" r="2.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">OFFROAD DRIVES</h4>
+              <p class="adventure-desc">Conquer rugged terrains.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_top_station.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M19 15l3-3-3-3" />
+                  <path d="M22 12H13" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">TREKKING</h4>
+              <p class="adventure-desc">Trails that test, views that heal.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_kolukkumalai.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 20L17 11L14 14L11 8L3 20H20Z" />
+                  <circle cx="12" cy="5" r="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">HIKING</h4>
+              <p class="adventure-desc">One step closer to nature.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_zipline.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3L21 21M10 10l2 2-2 4 4-2 2 2" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">ZIPLINE</h4>
+              <p class="adventure-desc">Fly high. Feel alive.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 22l8-8M16 22L8 14" stroke-width="2" />
+                  <path d="M12 2C10 5 9 8 10 11C11.5 12 12.5 12.5 13.5 11C15 9 14 5 12 2Z" fill="currentColor" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">CAMP FIRE</h4>
+              <p class="adventure-desc">Stories. Stars. Unforgettable nights.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_eravikulam.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22C12 22 20 18 20 12C20 6.5 15.5 2 12 2C8.5 2 4 6.5 4 12C4 18 12 22 12 22Z" />
+                  <path d="M12 2V22M12 12c2-2 4-2 5 0M12 15c-2-2-4-2-5 0" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">NATURAL ESCAPES</h4>
+              <p class="adventure-desc">Pure air. Green everywhere.</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_attukad.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v12M8 5v10M16 5v10M4 18c3-1 5-1 8 0s5 1 8 0" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">WATERFALLS</h4>
+              <p class="adventure-desc">Raw. Powerful. Magical.</p>
+            </div>
+          </div>
+
+          <!-- Duplicate set for infinite loop scroll -->
+          <!-- Item 1 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/tour_offroad.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="10" rx="2" />
+                  <path d="M12 2v9M8 5h8M6 11V7a3 3 0 0 1 6 0v4M18 11V7a3 3 0 0 0-3-3h-3" />
+                  <circle cx="7.5" cy="16.5" r="2.5" />
+                  <circle cx="16.5" cy="16.5" r="2.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">OFFROAD DRIVES</h4>
+              <p class="adventure-desc">Conquer rugged terrains.</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_top_station.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M19 15l3-3-3-3" />
+                  <path d="M22 12H13" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">TREKKING</h4>
+              <p class="adventure-desc">Trails that test, views that heal.</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_kolukkumalai.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 20L17 11L14 14L11 8L3 20H20Z" />
+                  <circle cx="12" cy="5" r="1.5" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">HIKING</h4>
+              <p class="adventure-desc">One step closer to nature.</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_zipline.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3L21 21M10 10l2 2-2 4 4-2 2 2" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">ZIPLINE</h4>
+              <p class="adventure-desc">Fly high. Feel alive.</p>
+            </div>
+          </div>
+
+          <!-- Item 5 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=500&q=80');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M8 22l8-8M16 22L8 14" stroke-width="2" />
+                  <path d="M12 2C10 5 9 8 10 11C11.5 12 12.5 12.5 13.5 11C15 9 14 5 12 2Z" fill="currentColor" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">CAMP FIRE</h4>
+              <p class="adventure-desc">Stories. Stars. Unforgettable nights.</p>
+            </div>
+          </div>
+
+          <!-- Item 6 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_eravikulam.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22C12 22 20 18 20 12C20 6.5 15.5 2 12 2C8.5 2 4 6.5 4 12C4 18 12 22 12 22Z" />
+                  <path d="M12 2V22M12 12c2-2 4-2 5 0M12 15c-2-2-4-2-5 0" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">NATURAL ESCAPES</h4>
+              <p class="adventure-desc">Pure air. Green everywhere.</p>
+            </div>
+          </div>
+
+          <!-- Item 7 -->
+          <div class="adventure-card">
+            <div class="adventure-image-wrapper">
+              <div class="adventure-image" style="background-image: url('frontend/public/assets/munnar_attukad.png');"></div>
+              <div class="adventure-icon-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v12M8 5v10M16 5v10M4 18c3-1 5-1 8 0s5 1 8 0" />
+                </svg>
+              </div>
+            </div>
+            <div class="adventure-body">
+              <h4 class="adventure-title">WATERFALLS</h4>
+              <p class="adventure-desc">Raw. Powerful. Magical.</p>
+            </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#78350f);">
-          &#127797;
+    <!-- Subsection 3: Trust Features Banner -->
+    <div class="trust-features-banner">
+      <div class="trust-features-grid">
+        <div class="trust-feature-item">
+          <div class="trust-feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 8l4 4-4 4M8 12h8" />
+            </svg>
+          </div>
+          <div class="trust-feature-info">
+            <h5>HANDPICKED EXPERIENCES</h5>
+            <p>Curated with love & local insight</p>
+          </div>
         </div>
-        <div class="tour-card-body">
-          <h3>Waterfall &amp; Wildlife Trail</h3>
-          <p>Discover hidden waterfalls and spot exotic birds and wildlife in the lush forests surrounding Munnar.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;1,999 <small>/ person</small></span>
-            <span class="tour-duration">Full Day</span>
+
+        <div class="trust-feature-item">
+          <div class="trust-feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            </svg>
+          </div>
+          <div class="trust-feature-info">
+            <h5>BEST PRICE GUARANTEE</h5>
+            <p>Honest prices. No hidden fees.</p>
+          </div>
+        </div>
+
+        <div class="trust-feature-item">
+          <div class="trust-feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="trust-feature-info">
+            <h5>SAFE & RELIABLE</h5>
+            <p>Your safety is our priority</p>
+          </div>
+        </div>
+
+        <div class="trust-feature-item">
+          <div class="trust-feature-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="trust-feature-info">
+            <h5>LOCAL EXPERTS</h5>
+            <p>Guides who know the land</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#4c1d95);">
-          &#127959;&#65039;
+<!-- ───── Local Heritage & Map ───── -->
+<section class="heritage-section" id="heritage">
+  <div class="container">
+    <div class="heritage-grid">
+      
+      <!-- Column 1: Our Story Card -->
+      <div class="heritage-story-card">
+        <div class="story-content">
+          <span class="story-tagline">Our Story</span>
+          <h2 class="story-heading">We know Munnar because we grew up here.</h2>
+          <p class="story-paragraph">
+            For over 10 years, we've been exploring these roads, guiding travellers and collecting stories. 
+            Pranara is our way of sharing the Munnar that maps don't show.
+          </p>
+          <a href="#story" id="static-read-story-btn" class="btn-read-story">
+            READ OUR STORY &rarr;
+          </a>
         </div>
-        <div class="tour-card-body">
-          <h3>Munnar City &amp; Culture Walk</h3>
-          <p>Explore Munnar town, spice plantations, local markets, and learn about the rich history and culture of the region.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;1,299 <small>/ person</small></span>
-            <span class="tour-duration">3-4 hrs</span>
-          </div>
+
+        <!-- Stamp Badge -->
+        <div class="stamp-badge-container">
+          <svg width="110" height="110" viewBox="0 0 120 120" class="stamp-badge">
+            <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3,3" />
+            <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width="0.6" />
+            <path id="static-stamp-path" d="M 60,60 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
+            <text fill="currentColor" font-size="6.8" font-weight="600" letter-spacing="0.4">
+              <textPath href="#static-stamp-path" startOffset="0%">BORN IN MUNNAR • 10+ YEARS OF EXPERIENCE • THE LOCAL EXPERTS •</textPath>
+            </text>
+            <g transform="translate(43, 44)" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="17 8 25 21 9 21" />
+              <polygon points="21 12 27 21 15 21" />
+            </g>
+          </svg>
         </div>
+
+        <!-- Background Graphic Bottom -->
+        <div class="story-bg-image" style="background-image: url('frontend/public/assets/munnar_guides_jeep.png')"></div>
       </div>
 
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#166534);">
-          &#127796;
+      <!-- Column 2: Places We Call Home Map Card -->
+      <div class="heritage-map-card">
+        <div class="map-header">
+          <h2 class="map-heading">PLACES WE CALL HOME</h2>
+          <p class="map-subtitle">Click or hover on any place to explore stories, photos, local tips and the best time to visit.</p>
         </div>
-        <div class="tour-card-body">
-          <h3>Tea Estate &amp; Plantation Tour</h3>
-          <p>Walk through sprawling tea gardens, learn about tea processing, and enjoy freshly brewed tea with panoramic views.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;1,799 <small>/ person</small></span>
-            <span class="tour-duration">Half Day</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="tour-card">
-        <div class="tour-card-image" style="background: linear-gradient(135deg,#0f172a,#b45309);">
-          <span class="tag">Best Value</span>
-          &#128310;
-        </div>
-        <div class="tour-card-body">
-          <h3>Combo: Hills + Waterfalls</h3>
-          <p>The ultimate Munnar experience combining misty hill treks and waterfall discovery in one action-packed day.</p>
-          <div class="tour-meta">
-            <span class="tour-price">&#8377;2,999 <small>/ person</small></span>
-            <span class="tour-duration">Full Day</span>
+        <div class="map-visual-container">
+          <!-- Map Illustration (Interactive SVG) -->
+          <div class="interactive-map-wrapper">
+            <svg viewBox="0 0 500 400" class="heritage-svg-map">
+              <!-- Trail paths connecting elements -->
+              <path 
+                d="M 185 320 C 130 240 85 190 95 135 C 185 90 220 85 275 65 C 330 90 380 100 395 145 C 320 180 270 190 235 200 C 275 285 295 325 325 360 C 375 330 405 320 435 290" 
+                fill="none" 
+                stroke="rgba(43, 58, 47, 0.2)" 
+                stroke-width="2.5" 
+                stroke-dasharray="6,6" 
+              />
+              
+              <!-- Map Details -->
+              <g class="map-tree-decor" stroke="rgba(43, 58, 47, 0.25)" stroke-width="1" fill="none">
+                <path d="M 60 170 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
+                <path d="M 70 180 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
+                <path d="M 370 230 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
+                <path d="M 385 235 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
+              </g>
+
+              <!-- Compass Rose -->
+              <g class="map-compass" transform="translate(410, 60)" stroke="rgba(43, 58, 47, 0.4)" stroke-width="1" fill="none">
+                <circle cx="20" cy="20" r="16" stroke-dasharray="2,2" />
+                <line x1="20" y1="0" x2="20" y2="40" />
+                <line x1="0" y1="20" x2="40" y2="20" />
+                <polygon points="20 4 23 20 20 17" fill="rgba(43, 58, 47, 0.4)" />
+                <polygon points="20 36 23 20 20 23" fill="rgba(43, 58, 47, 0.4)" />
+                <polygon points="4 20 20 23 17 20" fill="rgba(43, 58, 47, 0.4)" />
+                <polygon points="36 20 20 23 23 20" fill="rgba(43, 58, 47, 0.4)" />
+                <text x="18" y="-4" font-size="7" font-weight="bold" fill="rgba(43, 58, 47, 0.6)">N</text>
+              </g>
+
+              <!-- Location Points Markers -->
+              <g class="map-marker-group active" data-id="waterfalls" style="cursor: pointer;">
+                <circle cx="185" cy="320" r="12" fill="var(--primary)" opacity="0.25" class="marker-pulse-ring" />
+                <circle cx="185" cy="320" r="6" fill="var(--primary-dark)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="185" y="308" text-anchor="middle" font-size="9.5" font-weight="700" fill="var(--primary-dark)" class="map-marker-label">Kolukad Waterfalls</text>
+              </g>
+              <g class="map-marker-group" data-id="top-station" style="cursor: pointer;">
+                <circle cx="95" cy="135" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="95" y="123" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Top Station</text>
+              </g>
+              <g class="map-marker-group" data-id="echo-point" style="cursor: pointer;">
+                <circle cx="275" cy="65" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="275" y="53" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Echo Point</text>
+              </g>
+              <g class="map-marker-group" data-id="tea-gardens" style="cursor: pointer;">
+                <circle cx="395" cy="145" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="395" y="133" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Tea Gardens</text>
+              </g>
+              <g class="map-marker-group" data-id="mattupetty" style="cursor: pointer;">
+                <circle cx="235" cy="200" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="235" y="188" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Mattupetty</text>
+              </g>
+              <g class="map-marker-group" data-id="marayoor" style="cursor: pointer;">
+                <circle cx="325" cy="360" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="325" y="348" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Marayoor</text>
+              </g>
+              <g class="map-marker-group" data-id="chinnar" style="cursor: pointer;">
+                <circle cx="435" cy="290" r="4.5" fill="var(--primary)" stroke="#ffffff" stroke-width="1.5" />
+                <text x="435" y="278" text-anchor="middle" font-size="9.5" font-weight="500" fill="var(--primary-dark)" class="map-marker-label">Chinnar Wildlife Sanctuary</text>
+              </g>
+            </svg>
           </div>
+
+          <!-- Overlapping Polaroid Preview Card -->
+          <div class="map-polaroid-preview-container">
+            <div class="polaroid-preview-card" id="static-map-polaroid">
+              <div class="polaroid-preview-img" id="static-map-polaroid-img" style="background-image: url('frontend/public/assets/munnar_attukad.png')"></div>
+              <div class="polaroid-preview-body">
+                <h4 class="polaroid-preview-title" id="static-map-polaroid-title">Hidden Waterfalls</h4>
+                <p class="polaroid-preview-desc" id="static-map-polaroid-desc">Trek through high-altitude tea trails to discover these pristine streams.</p>
+                <a href="#booking" class="polaroid-explore-link">Explore Now &rarr;</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -910,94 +2233,106 @@
   </div>
 </section>
 
-<!-- ───── Gallery ───── -->
-<section class="gallery" id="gallery">
-  <div class="container">
-    <h2 class="section-title">Explore <span class="accent">Munnar</span></h2>
-    <p class="section-subtitle">A glimpse into the beauty that awaits you</p>
-    <div class="gallery-grid">
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_top_station.png') center/cover no-repeat;"><span class="label">Top Station Valley</span></div>
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_tea_museum.png') center/cover no-repeat;"><span class="label">Tea Museum & Estates</span></div>
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_attukad.png') center/cover no-repeat;"><span class="label">Attukad Waterfalls</span></div>
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_kolukkumalai.png') center/cover no-repeat;"><span class="label">Kolukkumalai Sunrise</span></div>
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_eravikulam.png') center/cover no-repeat;"><span class="label">Eravikulam National Park</span></div>
-      <div class="gallery-item" style="background: url('frontend/public/assets/munnar_mattupetty.png') center/cover no-repeat;"><span class="label">Mattupetty Dam & Lake</span></div>
+<!-- Heritage Story Modal -->
+<div class="heritage-modal-overlay" id="static-heritage-modal" style="display: none;">
+  <div class="heritage-modal-content">
+    <button class="modal-close-btn" id="static-modal-close-x">&times;</button>
+    <span class="modal-tagline">Since 2016</span>
+    <h3 class="modal-heading">The Spirit of Pranara</h3>
+    
+    <div class="modal-body">
+      <p>
+        Pranara Tours was founded by a small group of childhood friends who spent their youth exploring the forest trails, tea corridors, and secret cascades of Munnar. 
+        We observed that standard travel packages often bypassed the real beauty of our homeland—the stories of tea harvesters, prehistoric dolmens, and pathless forest ridges.
+      </p>
+      <p>
+        We decided to share our passion and build a tour service built on <strong>conservation, local community integration, and authentic storytelling</strong>. 
+        Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
+      </p>
+      <div class="modal-img-row">
+        <div class="modal-img" style="background-image: url('frontend/public/assets/munnar_top_station.png')"></div>
+        <div class="modal-img" style="background-image: url('frontend/public/assets/munnar_guides_jeep.png')"></div>
+      </div>
     </div>
+    
+    <button class="btn-modal-close" id="static-modal-close-btn">
+      Back to Exploration
+    </button>
   </div>
-</section>
+</div>
 
 <!-- ───── Testimonials ───── -->
 <section class="testimonials" id="testimonials">
   <div class="container">
-    <h2 class="section-title">What <span class="accent">Explorers Say</span></h2>
-    <p class="section-subtitle">Real experiences from fellow travelers</p>
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"An absolutely magical experience! The sunrise trek was breathtaking. Our guide knew all the best spots away from the crowds. Highly recommend Pranara Munnar!"</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">AR</div>
-          <div>
-            <div class="name">Arjun R.</div>
-            <div class="location">Bangalore</div>
+    <h2 class="section-title"><span class="accent">Explorers Say</span></h2>
+    
+    <!-- Header Block -->
+    <div class="testimonial-header-showcase">
+      <span class="testimonial-subtitle-top" id="static-testimonial-title">Voices from the Summit</span>
+      <h3 class="testimonial-main-heading" id="static-testimonial-subtitle">TREKKING TO CHOKKARMUDI PEAK</h3>
+      <p class="testimonial-tagline-bottom" id="static-testimonial-tagline">THROUGH THEIR EYES, FOREVER IN THEIR HEARTS.</p>
+    </div>
+
+    <div class="testimonial-showcase-grid">
+      <!-- Quote Card -->
+      <div class="testimonial-quote-card">
+        <div class="quote-mark">“</div>
+        <div class="quote-body">
+          <p class="quote-text" id="static-quote-text">The trek to Chokramudi Peak was absolutely unforgettable! Every step was a new experience — the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful.</p>
+          <p class="quote-note" id="static-quote-note">It was more than just a trek, it was an emotion!</p>
+          <div class="quote-divider"></div>
+          <p class="quote-recommendation">Highly recommended for anyone who loves nature and adventure.</p>
+        </div>
+        
+        <div class="quote-stars-row" id="static-quote-stars">
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+        </div>
+
+        <div class="thankyou-signature">
+          <svg class="heart-signature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+          </svg>
+          <span>Thank you Pranara for this amazing experience!</span>
+        </div>
+
+        <div class="testimonial-card-author">
+          <div class="testimonial-author-avatar" id="static-author-avatar">AS</div>
+          <div class="testimonial-author-details">
+            <div class="author-name" id="static-author-name">Arjun & Sneha</div>
+            <div class="author-location" id="static-author-location">Bangalore</div>
           </div>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"The tea plantation walk was the highlight of our Kerala trip. So much history and beauty in every direction. The guide was knowledgeable and friendly."</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">PM</div>
-          <div>
-            <div class="name">Priya M.</div>
-            <div class="location">Chennai</div>
-          </div>
+
+      <!-- Polaroid Wrapper -->
+      <div class="polaroid-wrapper" id="static-polaroid-wrapper">
+        <div class="polaroid-card card-1">
+          <div class="polaroid-image" id="static-polaroid-1" style="background-image: url('frontend/public/assets/munnar_top_station.png');"></div>
+        </div>
+        <div class="polaroid-card card-2">
+          <div class="polaroid-image" id="static-polaroid-2" style="background-image: url('frontend/public/assets/munnar_kolukkumalai.png');"></div>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
-        <blockquote>"Great value for money. The combo tour covered everything we wanted to see. The waterfalls were stunning! Would definitely book again."</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">VS</div>
-          <div>
-            <div class="name">Vikram S.</div>
-            <div class="location">Mumbai</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Absolutely top-notch service! Booking the Complete Kerala Tour was the best decision we made. The houseboat experience in Alleppey was dreamlike, and our driver was exceptionally professional."</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">ST</div>
-          <div>
-            <div class="name">Sarah &amp; Thomas</div>
-            <div class="location">London, UK</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Wayanad was beautiful! Edakkal Caves and Muthanga safari were perfectly organized. The local guides provided by Pranara really know their way around."</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">RV</div>
-          <div>
-            <div class="name">Rahul Verma</div>
-            <div class="location">Delhi, India</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Vagamon was a peaceful paradise. The pine forest walk was incredibly soothing, and the booking process was seamless. Excellent customer support!"</blockquote>
-        <div class="testimonial-author">
-          <div class="avatar">EG</div>
-          <div>
-            <div class="name">Elena G.</div>
-            <div class="location">Munich, Germany</div>
-          </div>
-        </div>
-      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="testimonial-carousel-controls">
+      <button class="carousel-control-btn prev-btn" id="static-prev-btn" aria-label="Previous Review">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </button>
+      <button class="carousel-control-btn next-btn" id="static-next-btn" aria-label="Next Review">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1105,8 +2440,6 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#about">About</a></li>
-          <li><a href="#tours">Tours</a></li>
-          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#testimonials">Reviews</a></li>
           <li><a href="#booking">Book Now</a></li>
         </ul>
@@ -1114,11 +2447,11 @@
       <div class="footer-col">
         <h4>Explore</h4>
         <ul>
-          <li><a href="#tours">Trekking</a></li>
-          <li><a href="#tours">Tea Plantations</a></li>
-          <li><a href="#tours">Waterfall Trails</a></li>
-          <li><a href="#tours">Sunrise Tours</a></li>
-          <li><a href="#tours">Wildlife Safari</a></li>
+          <li><a href="#booking">Trekking</a></li>
+          <li><a href="#booking">Tea Plantations</a></li>
+          <li><a href="#booking">Waterfall Trails</a></li>
+          <li><a href="#booking">Sunrise Tours</a></li>
+          <li><a href="#booking">Wildlife Safari</a></li>
         </ul>
       </div>
     </div>
@@ -1137,6 +2470,215 @@
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
+
+  // ─── Testimonials Carousel (Explorers Say) ───
+  const testimonialsData = [
+    {
+      title: 'Voices from the Summit',
+      subtitle: 'TREKKING TO CHOKKARMUDI PEAK',
+      tagline: 'THROUGH THEIR EYES, FOREVER IN THEIR HEARTS.',
+      quote: 'The trek to Chokramudi Peak was absolutely unforgettable! Every step was a new experience — the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful.',
+      note: 'It was more than just a trek, it was an emotion!',
+      avatar: 'AS',
+      name: 'Arjun & Sneha',
+      location: 'Bangalore',
+      rating: 5,
+      images: ['frontend/public/assets/munnar_top_station.png', 'frontend/public/assets/munnar_kolukkumalai.png']
+    },
+    {
+      title: 'Drifting Through Paradise',
+      subtitle: 'ALLEPPEY HOUSEBOAT STAY',
+      tagline: 'SCENIC BACKWATERS, UNFORGETTABLE SUNSETS.',
+      quote: 'Unwinding in a traditional houseboat in Alleppey was the highlight of our Kerala trip. Drifting along the palm-fringed backwaters while tasting freshly cooked local fish was a dreamlike experience. Pranara organized everything perfectly, from check-in to checkout.',
+      note: 'A magical floating paradise!',
+      avatar: 'PF',
+      name: 'Priya & Family',
+      location: 'Chennai',
+      rating: 5,
+      images: ['frontend/public/assets/insta_houseboat.png', 'frontend/public/assets/tour_alleppey.png']
+    },
+    {
+      title: 'Into the Wild',
+      subtitle: 'THEKKADY WILDLIFE SAFARI',
+      tagline: 'SPOTTING MAJESTIC SPECIES IN THEIR NATURAL HABITAT.',
+      quote: 'We booked the Complete Kerala Tour. The bamboo rafting and spice plantation walks in Thekkady were outstanding. Our guide was incredibly knowledgeable about local flora and fauna. We even spotted wild elephants crossing the lake!',
+      note: 'The raw beauty of nature, organized adventure.',
+      avatar: 'ST',
+      name: 'Sarah & Thomas',
+      location: 'London, UK',
+      rating: 5,
+      images: ['frontend/public/assets/tour_thekkady.png', 'frontend/public/assets/insta_waterfall.png']
+    }
+  ];
+
+  let currentIdx = 0;
+  const titleEl = document.getElementById('static-testimonial-title');
+  const subtitleEl = document.getElementById('static-testimonial-subtitle');
+  const taglineEl = document.getElementById('static-testimonial-tagline');
+  const quoteTextEl = document.getElementById('static-quote-text');
+  const quoteNoteEl = document.getElementById('static-quote-note');
+  const avatarEl = document.getElementById('static-author-avatar');
+  const nameEl = document.getElementById('static-author-name');
+  const locationEl = document.getElementById('static-author-location');
+  const polaroid1El = document.getElementById('static-polaroid-1');
+  const polaroid2El = document.getElementById('static-polaroid-2');
+  const starsEl = document.getElementById('static-quote-stars');
+
+  function updateTestimonial(idx) {
+    const data = testimonialsData[idx];
+    titleEl.textContent = data.title;
+    subtitleEl.textContent = data.subtitle;
+    taglineEl.textContent = data.tagline;
+    quoteTextEl.textContent = data.quote;
+    quoteNoteEl.textContent = data.note || '';
+    avatarEl.textContent = data.avatar;
+    nameEl.textContent = data.name;
+    locationEl.textContent = data.location;
+    polaroid1El.style.backgroundImage = `url('${data.images[0]}')`;
+    polaroid2El.style.backgroundImage = `url('${data.images[1]}')`;
+    
+    // stars
+    starsEl.innerHTML = '';
+    for (let i = 0; i < 5; i++) {
+      starsEl.innerHTML += `<span class="star ${i < data.rating ? 'filled' : ''}">&#9733;</span>`;
+    }
+  }
+
+  document.getElementById('static-prev-btn').addEventListener('click', () => {
+    currentIdx = (currentIdx === 0) ? testimonialsData.length - 1 : currentIdx - 1;
+    updateTestimonial(currentIdx);
+  });
+
+  document.getElementById('static-next-btn').addEventListener('click', () => {
+    currentIdx = (currentIdx === testimonialsData.length - 1) ? 0 : currentIdx + 1;
+    updateTestimonial(currentIdx);
+  });
+
+  // ─── Local Heritage Map Interactions ───
+  const mapLocationsData = {
+    'waterfalls': {
+      title: 'Hidden Waterfalls',
+      desc: 'Trek through high-altitude tea trails to discover these pristine streams.',
+      imageUrl: 'frontend/public/assets/munnar_attukad.png'
+    },
+    'top-station': {
+      title: 'Top Station Sunrise',
+      desc: 'Misty hills and a mesmerizing panoramic view of neighboring valleys.',
+      imageUrl: 'frontend/public/assets/munnar_top_station.png'
+    },
+    'echo-point': {
+      title: 'Echo Point Lake',
+      desc: 'Listen to your voice echo back across the serene, forested lake waters.',
+      imageUrl: 'frontend/public/assets/munnar_echo_point.png'
+    },
+    'tea-gardens': {
+      title: 'Lush Tea Gardens',
+      desc: 'Stroll among the carpet of tea shrubs and discover how tea is prepared.',
+      imageUrl: 'frontend/public/assets/munnar_tea_museum.png'
+    },
+    'mattupetty': {
+      title: 'Mattupetty Dam',
+      desc: 'A gorgeous reservoir famous for boating, speedboats, and elephant sightings.',
+      imageUrl: 'frontend/public/assets/munnar_mattupetty.png'
+    },
+    'marayoor': {
+      title: 'Marayoor Sandalwood',
+      desc: 'Natural sandalwood forests and stone caves dating back to prehistoric times.',
+      imageUrl: 'frontend/public/assets/munnar_anamudi.png'
+    },
+    'chinnar': {
+      title: 'Chinnar Safari',
+      desc: 'Spot leopards, elephants, and rare grizzled giant squirrels in dry forests.',
+      imageUrl: 'frontend/public/assets/insta_jeep.png'
+    }
+  };
+
+  const polaroidCard = document.getElementById('static-map-polaroid');
+  const polaroidImg = document.getElementById('static-map-polaroid-img');
+  const polaroidTitle = document.getElementById('static-map-polaroid-title');
+  const polaroidDesc = document.getElementById('static-map-polaroid-desc');
+
+  document.querySelectorAll('.map-marker-group').forEach(marker => {
+    marker.addEventListener('mouseenter', () => {
+      // remove active from all
+      document.querySelectorAll('.map-marker-group').forEach(m => {
+        m.classList.remove('active');
+        const circle = m.querySelector('circle:nth-child(2)') || m.querySelector('circle:first-child');
+        const pulse = m.querySelector('.marker-pulse-ring');
+        const text = m.querySelector('text');
+        
+        if (pulse) pulse.remove();
+        if (circle) {
+          circle.setAttribute('r', '4.5');
+          circle.setAttribute('fill', 'var(--primary)');
+        }
+        if (text) text.setAttribute('font-weight', '500');
+      });
+
+      // add active to hovered
+      marker.classList.add('active');
+      const innerCircle = marker.querySelector('circle:last-of-type');
+      const markerText = marker.querySelector('text');
+      if (innerCircle) {
+        innerCircle.setAttribute('r', '6');
+        innerCircle.setAttribute('fill', 'var(--primary-dark)');
+      }
+      if (markerText) markerText.setAttribute('font-weight', '700');
+
+      // Add pulse element
+      const pulseRing = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      const cx = innerCircle.getAttribute('cx');
+      const cy = innerCircle.getAttribute('cy');
+      pulseRing.setAttribute('cx', cx);
+      pulseRing.setAttribute('cy', cy);
+      pulseRing.setAttribute('r', '12');
+      pulseRing.setAttribute('fill', 'var(--primary)');
+      pulseRing.setAttribute('opacity', '0.25');
+      pulseRing.setAttribute('class', 'marker-pulse-ring');
+      marker.insertBefore(pulseRing, marker.firstChild);
+
+      // Update polaroid preview
+      const locId = marker.getAttribute('data-id');
+      const data = mapLocationsData[locId];
+      if (data) {
+        // fade out card
+        polaroidCard.style.opacity = '0.3';
+        polaroidCard.style.transform = 'scale(0.95) rotate(0deg)';
+        setTimeout(() => {
+          polaroidImg.style.backgroundImage = `url('${data.imageUrl}')`;
+          polaroidTitle.textContent = data.title;
+          polaroidDesc.textContent = data.desc;
+          polaroidCard.style.opacity = '1';
+          polaroidCard.style.transform = 'rotate(2deg)';
+        }, 150);
+      }
+    });
+  });
+
+  // Modal toggle logic
+  const modal = document.getElementById('static-heritage-modal');
+  const readStoryBtn = document.getElementById('static-read-story-btn');
+  const modalCloseX = document.getElementById('static-modal-close-x');
+  const modalCloseBtn = document.getElementById('static-modal-close-btn');
+
+  if (readStoryBtn) {
+    readStoryBtn.addEventListener('click', e => {
+      e.preventDefault();
+      modal.style.display = 'flex';
+    });
+  }
+
+  const closeModal = () => {
+    modal.style.display = 'none';
+  };
+
+  if (modalCloseX) modalCloseX.addEventListener('click', closeModal);
+  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+  if (modal) {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) closeModal();
+    });
+  }
 
   // ─── Hamburger ───
   const hamburger = document.getElementById('hamburger');
