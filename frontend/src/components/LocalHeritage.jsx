@@ -102,10 +102,10 @@ export default function LocalHeritage() {
                 For over 10 years, we've been exploring these roads, guiding travellers and collecting stories. 
                 Pranara is our way of sharing the Munnar that maps don't show.
               </p>
-              <a href="#story" onClick={handleReadStory} className="btn-read-story">
-                READ OUR STORY &rarr;
-              </a>
             </div>
+            <a href="#story" onClick={handleReadStory} className="btn-read-story">
+              READ OUR STORY &rarr;
+            </a>
 
             {/* Stamp Badge */}
             <div className="stamp-badge-container">
@@ -206,10 +206,10 @@ export default function LocalHeritage() {
                         {/* Point text label */}
                         <text 
                           x={loc.x} 
-                          y={loc.y - 12} 
+                          y={loc.y - 14} 
                           textAnchor="middle" 
-                          fontSize="9.5" 
-                          fontWeight={isActive ? "700" : "500"} 
+                          fontSize="15" 
+                          fontWeight={isActive ? "700" : "600"} 
                           fill="var(--primary-dark)" 
                           className="map-marker-label"
                         >
