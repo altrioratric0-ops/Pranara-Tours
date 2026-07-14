@@ -11,7 +11,8 @@
     body {
       font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
       color: #1e293b;
-      background: #f8fafc;
+      background: linear-gradient(135deg, #eaf2ee 0%, #f6f3eb 50%, #e6f0f3 100%);
+      background-attachment: fixed;
       line-height: 1.6;
     }
     a { text-decoration: none; color: inherit; }
@@ -189,6 +190,16 @@
       font-weight: 800;
       color: #fff;
     }
+    .logo.flex-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
     .logo span { color: #34d399; }
     .nav-links {
       display: flex;
@@ -264,7 +275,10 @@
     .stat-item {
       text-align: center;
       padding: 20px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 12px;
       box-shadow: 0 1px 3px rgba(0,0,0,.06);
     }
@@ -290,8 +304,10 @@
       gap: 28px;
     }
     .tour-card {
-      background: #fff;
-      border: 1px solid #e2e8f0;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 16px;
       overflow: hidden;
       transition: all .3s ease;
@@ -372,10 +388,12 @@
     .feature-card {
       text-align: center;
       padding: 40px 20px;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 16px;
       box-shadow: 0 1px 3px rgba(0,0,0,.04);
-      border: 1px solid #f1f5f9;
       transition: all .3s;
     }
     .feature-card:hover {
@@ -633,8 +651,10 @@
       margin: 0 auto;
     }
     .testimonial-quote-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
       padding: 40px;
       border-radius: 24px;
       box-shadow: var(--shadow);
@@ -740,11 +760,13 @@
       align-items: center;
     }
     .polaroid-card {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
       padding: 12px 12px 36px 12px;
       border-radius: 8px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      border: 1px solid var(--border);
       width: 250px;
       height: 250px;
       position: absolute;
@@ -920,8 +942,10 @@
       gap: 30px;
     }
     .escape-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 20px;
       overflow: hidden;
       box-shadow: var(--shadow);
@@ -1171,8 +1195,10 @@
       margin: 0 auto;
     }
     .heritage-story-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 24px;
       padding: 48px 48px 0 48px;
       position: relative;
@@ -1252,8 +1278,10 @@
       z-index: 1;
     }
     .heritage-map-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 24px;
       padding: 40px;
       box-shadow: var(--shadow);
@@ -1524,7 +1552,10 @@
 <!-- ───── Navigation ───── -->
 <nav id="navbar">
   <div class="container nav-inner">
-    <a href="#" class="logo">Pranara <span>Munnar</span></a>
+    <a href="#" class="logo flex-logo">
+      <img src="/assets/logo.png" alt="Pranara Logo" class="logo-img" />
+      <span>Pranara</span>
+    </a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -2266,11 +2297,11 @@
         </div>
         <div class="contact-detail">
           <div class="icon">&#128222;</div>
-          <span>Call / WhatsApp: <strong>+91 [Contact on Instagram]</strong></span>
+          <span>Call / WhatsApp: <strong>+91 63745 02007</strong></span>
         </div>
         <div class="contact-detail">
           <div class="icon">&#128205;</div>
-          <span>Location: <strong>Munnar, Idukki, Kerala</strong></span>
+          <span>Location: <strong>Munnar</strong></span>
         </div>
         <div class="contact-detail">
           <div class="icon">&#128337;</div>
@@ -2338,7 +2369,10 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">Pranara <span>Munnar</span></a>
+        <a href="#" class="logo flex-logo">
+          <img src="/assets/logo.png" alt="Pranara Logo" class="logo-img" />
+          <span>Pranara</span>
+        </a>
         <p>Your gateway to Munnar&rsquo;s misty hills &amp; scenic trails. Adventure, nature, and guided tourism crafted for unforgettable memories.</p>
         <div class="social-links">
           <a href="https://www.instagram.com/pranara_co" target="_blank" title="Instagram">&#128247;</a>

@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <a href="#home" className="logo flex-logo">
-              <img src="/assets/logo.jpg" alt="Pranara Logo" className="logo-img" />
+              <img src="/assets/logo.png" alt="Pranara Logo" className="logo-img" />
               <span>Pranara</span>
             </a>
             <p>Your gateway to Kerala's misty hills, backwaters & scenic beaches. Adventure, nature, and guided tourism crafted for unforgettable memories.</p>

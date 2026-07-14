@@ -28,7 +28,7 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? ' scrolled' : ''}`}>
       <div className="container nav-inner">
         <Link to="/" className="logo flex-logo">
-          <img src="/assets/logo.jpg" alt="Pranara Logo" className="logo-img" />
+          <img src="/assets/logo.png" alt="Pranara Logo" className="logo-img" />
           <span>Pranara</span>
         </Link>
         <button
