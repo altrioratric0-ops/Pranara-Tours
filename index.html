@@ -175,10 +175,33 @@
       transition: all .3s ease;
     }
     nav.scrolled {
-      background: rgba(15,23,42,.85);
+      background: rgba(255, 255, 255, 0.75);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
       padding: 10px 0;
+    }
+    nav.scrolled .logo {
+      color: #1A2E1C;
+    }
+    nav.scrolled .logo span {
+      color: #059669;
+    }
+    nav.scrolled .nav-links a {
+      color: #475569;
+    }
+    nav.scrolled .nav-links a:hover {
+      color: #059669;
+    }
+    nav.scrolled .nav-cta {
+      color: #047857 !important;
+      border-color: rgba(5, 150, 105, 0.4);
+      background: rgba(5, 150, 105, 0.1);
+    }
+    nav.scrolled .nav-cta:hover {
+      background: rgba(5, 150, 105, 0.25) !important;
+    }
+    nav.scrolled .hamburger span {
+      background: #1e293b;
     }
     .nav-inner {
       display: flex;
@@ -451,23 +474,29 @@
 
     /* ───── Booking ───── */
     .booking {
-      padding: 100px 0;
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a2f 100%);
-      color: #fff;
+      padding: 50px 0;
+      background: transparent;
+      color: #1e293b;
     }
-    .booking .section-subtitle { color: #94a3b8; }
+    .booking .section-title {
+      color: #1e293b;
+    }
+    .booking .section-subtitle {
+      color: #64748b;
+    }
     .booking-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
-      align-items: start;
+      align-items: center;
     }
     .booking-info h3 {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       margin-bottom: 16px;
+      color: #1e293b;
     }
     .booking-info p {
-      color: #94a3b8;
+      color: #64748b;
       margin-bottom: 24px;
     }
     .contact-detail {
@@ -475,16 +504,17 @@
       align-items: center;
       gap: 12px;
       margin-bottom: 12px;
-      color: #cbd5e1;
+      color: #1e293b;
     }
     .contact-detail .icon {
       width: 40px; height: 40px;
       border-radius: 10px;
-      background: rgba(5,150,105,.15);
+      background: rgba(5,150,105,.1);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
+      color: #059669;
     }
     .booking-form {
       background: rgba(255,255,255,.04);
@@ -492,6 +522,21 @@
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 16px;
       padding: 36px;
+    }
+    .booking-banner-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .booking-banner-img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
     }
     .form-row {
       display: grid;
@@ -548,8 +593,8 @@
 
     /* ───── Footer ───── */
     footer {
-      background: #0f172a;
-      border-top: 1px solid rgba(255,255,255,.05);
+      background: transparent;
+      border-top: 1px solid var(--border);
       padding: 48px 0 24px;
     }
     .footer-grid {
@@ -558,16 +603,27 @@
       gap: 48px;
       margin-bottom: 32px;
     }
-    .footer-brand .logo { margin-bottom: 12px; display: block; }
+    .footer-brand .logo {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+      color: #1e293b;
+    }
+    .footer-brand .logo span {
+      color: #059669;
+    }
     .footer-brand p {
       color: #64748b;
       font-size: 0.9rem;
       max-width: 320px;
     }
     .footer-col h4 {
-      color: #fff;
+      color: #1e293b;
       font-size: 0.9rem;
       margin-bottom: 16px;
+      font-weight: 700;
     }
     .footer-col ul {
       list-style: none;
@@ -580,7 +636,7 @@
       font-size: 0.9rem;
       transition: color .2s;
     }
-    .footer-col ul li a:hover { color: #34d399; }
+    .footer-col ul li a:hover { color: #059669; }
     .social-links {
       display: flex;
       gap: 12px;
@@ -589,8 +645,9 @@
     .social-links a {
       width: 40px; height: 40px;
       border-radius: 10px;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(5, 150, 105, 0.05);
+      border: 1px solid rgba(5, 150, 105, 0.15);
+      color: #059669;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -598,14 +655,15 @@
       transition: all .2s;
     }
     .social-links a:hover {
-      background: rgba(5,150,105,.15);
-      border-color: rgba(5,150,105,.3);
+      background: rgba(5, 150, 105, 0.15);
+      border-color: rgba(5, 150, 105, 0.3);
+      color: #047857;
     }
     .footer-bottom {
       padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,.05);
+      border-top: 1px solid var(--border);
       text-align: center;
-      color: #475569;
+      color: #64748b;
       font-size: 0.85rem;
     }
 
@@ -2281,15 +2339,12 @@
 <!-- ───── Booking ───── -->
 <section class="booking" id="booking">
   <div class="container">
-    <h2 class="section-title">Book Your <span class="accent">Munnar Adventure</span></h2>
-    <p class="section-subtitle">Reserve your spot and we&rsquo;ll take care of the rest</p>
+
     <div class="booking-grid">
       <div class="booking-info">
         <h3>Get in Touch</h3>
         <p>
-          Ready to explore the misty hills of Munnar? Fill out the form
-          and we&rsquo;ll get back to you within 24 hours with availability,
-          pricing, and personalized recommendations.
+          Ready to explore the misty hills of Munnar? Contact us directly or connect with us on social media and we&rsquo;ll get back to you within 24 hours with availability, pricing, and personalized recommendations.
         </p>
         <div class="contact-detail">
           <div class="icon">&#128231;</div>
@@ -2307,59 +2362,14 @@
           <div class="icon">&#128337;</div>
           <span>Response time: <strong>Within 24 hours</strong></span>
         </div>
-        <div style="margin-top:24px;">
+        <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
           <a href="https://www.instagram.com/pranara_co" target="_blank" class="btn btn-primary" style="display:inline-flex;">&#128247; Follow @pranara_co</a>
+          <a href="https://wa.me/916374502007?text=Hi%20Pranara,%20I'm%20interested%20in%20booking%20a%20Kerala%20trip!" target="_blank" class="btn btn-outline" style="display:inline-flex; border-color:#25D366; color:#25D366;">&#128140; Chat on WhatsApp</a>
         </div>
       </div>
-      <form class="booking-form" id="bookingForm">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="+91 9X XXX XXXX" required>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" placeholder="you@example.com" required>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="tour">Preferred Tour</label>
-            <select id="tour">
-              <option value="">Select a tour...</option>
-              <option>Misty Hills Trek</option>
-              <option>Sunrise Valley Expedition</option>
-              <option>Waterfall &amp; Wildlife Trail</option>
-              <option>Munnar City &amp; Culture Walk</option>
-              <option>Tea Estate &amp; Plantation Tour</option>
-              <option>Combo: Hills + Waterfalls</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="people">Number of People</label>
-            <select id="people">
-              <option>1</option>
-              <option selected>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5+</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="date">Preferred Date</label>
-          <input type="date" id="date">
-        </div>
-        <div class="form-group">
-          <label for="message">Special Requests</label>
-          <textarea id="message" placeholder="Any special requirements, dietary needs, or questions..."></textarea>
-        </div>
-        <button type="submit" class="btn-submit">&#128228; Send Booking Request</button>
-      </form>
+      <div class="booking-banner-container">
+        <img src="/assets/booking_banner.png" alt="Discover Pranara Munnar" class="booking-banner-img" />
+      </div>
     </div>
   </div>
 </section>
