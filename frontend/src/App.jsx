@@ -8,7 +8,7 @@ import EscapeSection from './components/EscapeSection';
 import LocalHeritage from './components/LocalHeritage';
 import TripPlanner from './components/TripPlanner';
 import Testimonials from './components/Testimonials';
-import TravelTips from './components/TravelTips';
+
 import FAQ from './components/FAQ';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
@@ -23,7 +23,6 @@ function HomePage() {
       <EscapeSection />
       <LocalHeritage />
       <TripPlanner />
-      <TravelTips />
       <Testimonials />
       <FAQ />
       <Booking />
