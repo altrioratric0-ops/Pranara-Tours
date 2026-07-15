@@ -5,8 +5,11 @@ const MAP_LOCATIONS = [
     id: 'waterfalls',
     name: 'Kolukkumalai Waterfalls',
     label: 'Kolukad Waterfalls',
-    x: 185,
-    y: 320,
+    x: 285,
+    y: 310,
+    dx: -12,
+    dy: 4,
+    textAnchor: 'end',
     imageUrl: '/assets/munnar_attukad.png',
     caption: 'Hidden Waterfalls',
     desc: 'Trek through high-altitude tea trails to discover these pristine streams.'
@@ -15,8 +18,11 @@ const MAP_LOCATIONS = [
     id: 'top-station',
     name: 'Top Station',
     label: 'Top Station',
-    x: 95,
-    y: 135,
+    x: 215,
+    y: 150,
+    dx: -12,
+    dy: 4,
+    textAnchor: 'end',
     imageUrl: '/assets/munnar_top_station.png',
     caption: 'Top Station Sunrise',
     desc: 'Misty hills and a mesmerizing panoramic view of neighboring valleys.'
@@ -25,8 +31,11 @@ const MAP_LOCATIONS = [
     id: 'echo-point',
     name: 'Echo Point',
     label: 'Echo Point',
-    x: 275,
-    y: 65,
+    x: 235,
+    y: 190,
+    dx: 12,
+    dy: 4,
+    textAnchor: 'start',
     imageUrl: '/assets/munnar_echo_point.png',
     caption: 'Echo Point Lake',
     desc: 'Listen to your voice echo back across the serene, forested lake waters.'
@@ -35,8 +44,11 @@ const MAP_LOCATIONS = [
     id: 'tea-gardens',
     name: 'Tea Gardens',
     label: 'Tea Gardens',
-    x: 395,
-    y: 145,
+    x: 265,
+    y: 270,
+    dx: 12,
+    dy: 4,
+    textAnchor: 'start',
     imageUrl: '/assets/munnar_tea_museum.png',
     caption: 'Lush Tea Gardens',
     desc: 'Stroll among the carpet of tea shrubs and discover how tea is prepared.'
@@ -45,8 +57,11 @@ const MAP_LOCATIONS = [
     id: 'mattupetty',
     name: 'Mattupetty Dam',
     label: 'Mattupetty',
-    x: 235,
-    y: 200,
+    x: 250,
+    y: 230,
+    dx: -12,
+    dy: 4,
+    textAnchor: 'end',
     imageUrl: '/assets/munnar_mattupetty.png',
     caption: 'Mattupetty Dam',
     desc: 'A gorgeous reservoir famous for boating, speedboats, and elephant sightings.'
@@ -55,8 +70,11 @@ const MAP_LOCATIONS = [
     id: 'marayoor',
     name: 'Marayoor Sandalwood',
     label: 'Marayoor',
-    x: 325,
-    y: 360,
+    x: 195,
+    y: 110,
+    dx: 12,
+    dy: 4,
+    textAnchor: 'start',
     imageUrl: '/assets/munnar_anamudi.png',
     caption: 'Marayoor Sandalwood',
     desc: 'Natural sandalwood forests and stone caves dating back to prehistoric times.'
@@ -65,8 +83,11 @@ const MAP_LOCATIONS = [
     id: 'chinnar',
     name: 'Chinnar Wildlife Sanctuary',
     label: 'Chinnar Wildlife Sanctuary',
-    x: 435,
-    y: 290,
+    x: 175,
+    y: 70,
+    dx: 12,
+    dy: 4,
+    textAnchor: 'start',
     imageUrl: '/assets/insta_jeep.png',
     caption: 'Chinnar Safari',
     desc: 'Spot leopards, elephants, and rare grizzled giant squirrels in dry forests.'
@@ -141,24 +162,14 @@ export default function LocalHeritage() {
               {/* Map Illustration (Interactive SVG) */}
               <div className="interactive-map-wrapper">
                 <svg viewBox="0 0 500 400" className="heritage-svg-map">
-                  {/* Trail paths connecting elements */}
+                  {/* Kerala Map Outline */}
                   <path 
-                    d="M 185 320 C 130 240 85 190 95 135 C 185 90 220 85 275 65 C 330 90 380 100 395 145 C 320 180 270 190 235 200 C 275 285 295 325 325 360 C 375 330 405 320 435 290" 
-                    fill="none" 
-                    stroke="rgba(43, 58, 47, 0.2)" 
-                    strokeWidth="2.5" 
-                    strokeDasharray="6,6" 
+                    d="M325.8 877.2l-0.1 0.6-0.7 0 0-0.4 0.8-0.2zm0 0l0.8 0.2 0 0.4-0.8 0 0-0.6zm-0.6-0.4l0.3 0.4-1.1 0.4-0.1-0.2 0.9-0.6zm-1.8-8.6l0.5 0.5 0.1 0.6-0.6-0.1 0-1zm-2.4-2.7l0.4 0.2 0.4 0.8-0.6-0.1-0.2-0.9zm-0.5-1.2l0.3 0.2 0.2 0.7-0.4 0.2-0.1-1.1zm-37.7-76.5l0.5 0.1 0.3-0.2 1.6-0.6 0.5 0.2 0.9-0.4 0.1 0.7-0.4 0.6 0.3 0.7 0.9-0.1 0.3 0.1 0.2 0.8-0.3 0 0.1 0.7 0.6 0.1 0.4-0.2 0-0.7 0.5-0.1 0.3 0.5 0.8 0.1 0.5 0.2-0.3 0.6 0.1 0.7 0.4 0.1 0.4-0.4 0.5 0.1-0.1 0.5 0.3 0.3 0.1 0.7 0.7 0.2 1.1-1.3 0.6 0.3 0.4 0.9-0.6-0.2-0.6 0.6 0.3 1 0.6 0 0 0.6 0.5 0.2 0.4 0.1 0.1 0.6 0 0.3 0.4-0.1 0.5-0.5 0.1-0.3 0.1-0.1 0.2-0.1 0.3-0.1 0.1 0.2 0.3-0.2 0.3 0.9-0.3 0.3-0.3 0.2-0.3 0.1-0.7-0.2 0.1 0.1-0.1 1.1 0.3 0.6 0.5 0.2 0.2 0.1 0 0.1 0.4 0.1 0.1 0.2-0.2 0.5-0.1 0.2 0.4 0.8 0.2 0.2-0.3 0.4 0.3-0.1 0.3 0 0.7-0.1 0.4 0.2 0.3 0.6 0.3 0.1 0.2 0.2 0 0.1 0.2 0.4 0 0.1 0.1 0.1 0.1 0.3 0.3 0.3-0.1 0.3 0.2 0.1 0.1 0.1 0.2 0.2 0.3 0.5 0.5 0.4 0.3 0.2 0.1 0 0.3-0.1 0.5 0.1 0.1 0.1 0.2 0 0.2 0.3 0 0.3 0.5 0.8 0.3 0 0.5-0.3 0.3 0.4 0.1 0.1 0.2 0.4 0.1 0.2 1.3-0.5 0.9 0.2 0.1 1.2 0.7 0.7 0 0.6 0.5 0.4 0.2 0.3 0.7 0.5 1.5 0.3 0.4-0.1 0.8 0.2 0.6 0.1 0.2-0.3 0.7 0 1.2-0.8 0.5 0 0.4-0.2 0 3.3 0.5 0.2 0.4-0.4 1.2-0.2 0.5 0.5 0.1 0.8 0.3 0.5 0.8 0.2 0.8-0.2 0.2 0.4 0.5 0.3 0.3 0.9 0.6 0.4 0.6-0.3 0.5 0.1 0.8-0.4 0.4 0.8-0.4 0.4 0 0.7 0.2 0.5 0.4 0.2 0.2 0.7-0.3 0.2-1.1 0.1-0.3 0.8-1 0.4-0.1-0.3-0.9 0.7-0.2-0.4-0.5-0.4-1.3 0.8 0.5 1.1-0.3 0.2 0.4 0.7-0.2 0.9 0.5-0.3 0.6-0.1 1.1 0.9 0.4-0.4 0.8 0.3 0.8 0.5 0.5-0.1-0.1 0.5 1.1 0.9 1.7 0.6 0 0.4 0.8-0.1 0 0.8-0.7 1.7-1.8 0.8-0.1 0.9 0.3 0.5 0.3-0.5 1.1-0.1 0.4 0.4 1.6-0.2 0.6 0 0.6 0.3 2-1.3 0.9 0.7-0.2 0.6-0.4 0.2-0.6 0.6 0.3 0.7 1.2 0.6-0.1 0.5 0.3 0.2-0.3 0.6 0 0.4 0.4 0.1 0.2 0.6-1.2-0.2-0.6 0.4-0.3 0.5-0.1 0.5-0.5 0.6-0.2 1.1 0.9 0.5 0.4 0 0.9 0.6 1.1 0 0.4 0.3 0.8 0.2 0.8 1-0.2 0.3 0.6 0.5 0.8-0.1 0.2 0.9-0.1 0.5-0.5 1.2-0.5 1 0.4 0.2 0 1-1.8 0.1 0 0.3 0.3 0.7 0.4 0.1-0.2 1.4 0.2 0.2-0.3 1.1-0.1 1.4-0.2 0.7 0.4 0.6-0.2 0.2 0.6 0.7-0.3 0.6-0.2 1.2 0.3 0.3 0.9 0.1 0 0.4 0.6 0.3 0.2 0.6 0.5 0.3 0.5-0.2 0.8 0.3 0.6 0 1-0.6 0.6-0.2 0.2-0.7 0.7-0.6 1.2-0.4 1.3-1 1.6 0.1-0.2 1 1 1.5 0 0.8 0.5 0 0.3 0.4-0.4 0.8-0.2 0.7 0.1 0.7-0.2 0.5-0.7-0.2-1.1 0.7 0.2 0.6 0.2 0.1 1.3 1.5-0.3 0.3 0.3 0.9 0.3 0.2-0.3 0.6-0.3 0-0.5 0.6-0.5 0.8-0.1 0.7 0.7 0.7-0.2 0.8 0.4 0.7-0.6 0.2 0.1 0.7-0.2 0.9-0.5 0.2 0.1 0.8-0.3 0.7-0.4 0.4-0.3 0.9 0 0.4 0.5 0.1 0.3-0.2 1 0.9 1.1 0.2 0.7-0.6 0.5-0.2 0.4 0.7 0.8 0.8 0 0.4 0.6 0.5 0.7 0.3-0.4 0.5 0.1 0.3-0.4 0.6-0.5-0.1-0.5 0.5-0.4 0.7 0.2 0.3-0.2 0.5 0 0.7-0.9 1.2-0.6 0.5 0.1 0.8-0.3 1 0.2 0.5-0.4 0.5 0 1.3-0.5 0.7-0.6 0.3-0.4 0.5-0.1 0.7-0.3 0.5-0.8 0.3-0.5 0.6 0 0.4 0.7 0.6 0.1 0.4 0.5 0.4 0 0.9 0.3-0.2 0.4 0.8 0.5 0.3 0.4 0.4 0.2 1-0.8 1-0.1 0.6-1 1.1-0.6-0.1 0.3 0.9 0.3 0.2 0.6 1.6 0.8 0.8 0 0.4 0.6 0.8 0.4 0.9-0.5 1-0.7 0.3-0.4-0.4-0.4 0.4 0.5 1.4-0.6 0.1-0.2 0.7-0.8 0.9-0.5 0 0.6 0.9-0.2 0.6-0.7 0-0.5 0.6-0.4 0.1-2-1.6-0.4-0.4-0.6-0.3-0.5-1-2-2.4-0.7-0.9-2.1-2.6-0.5-0.7-1.8-2.2-0.6-1-1.7-2.2-0.7-0.6-0.7-0.2-0.4-0.4-0.3-0.6-0.4-1.4-0.2-1.4-0.3-0.3-0.7-1.8-0.6-1.3-1.4-3.1-1.6-3.5-0.6-2-0.5-2-0.3-1.8-0.5-4.5-0.6-3.6-0.7-2.4l0.7 0.1c0.2 0.8 0.7 0.3-0.2 0.5-0.8 0.1 0.3 0.9 0.4-0.1 0.2-0.6 1.1 0.6 0.3 0.4 0 0.6 0.8 0.5-0.3 0.6 0.2 0.5 0.1 1-0.1 0.4 0 0.9 0.2 0.3 0.5 0.1 0 0.6-0.7 1.3 0 0.8-0.2 0.2-0.2 1 0.1 0.4 4-0.1-2.3-0.9 0-0.3 0.3-1.1-0.3-0.7-0.4-0.3 0-0.7 0.3-0.7-0.8-0.2 0.2-1-0.2-0.5-0.3-0.4-0.1-0.6 0.4-0.4 0-0.9-0.6-1.4-0.2-0.5-0.6-0.1 0.3 0.8-0.7-0.1-0.1-0.7-0.4-0.6-0.2-0.2-0.6-1.3 0-0.7-0.5-0.7-0.1-0.4 0.3-0.5 0-0.4-1.1-1.1-0.5-0.2 1 2.9-0.1 0.6 0.2 0.6-0.5 0.3-0.2-0.9-0.4-1.3-0.6-2.1-0.6-1.6-0.6-2-0.6-2.3-1-2.4-2.2-4.5-0.1-0.3-1.7-3.8-0.6-1.5-0.9-4.3-0.6-2.3-0.3-1.1-0.3-1.1-0.7-1.6-0.2 0-0.8-2.2-0.7-2.1-0.3-0.5 0.1-0.4-1-1.9-0.6-0.9-0.9-0.5-0.4 0.2-0.4-0.4 0-0.4-0.9-2.5-0.8-2.1-0.7-1.4-0.6-0.8-1-0.8-0.5-0.2-0.3-0.8-1-1.1-0.8-0.6-0.3l0.2-1.1-1.5-0.7-1 0.1-0.6-0.4-0.7-0.7-0.6 0.4-0.4 0.6 0.2 0.3-1-0.2-0.1-0.1-0.1-0.1-0.2 0.5-0.6-0.2-0.4 0.3-0.2 0.3 0.2 0.2 0.1 0.4-0.3 0.5-0.4 0.3 0 0-0.2 0.3 0.1 0.3-0.2-0.1-0.2-0.3-0.2-0.3 0-0.1 0-0.2 0.3-0.5-0.1-0.6-0.1-0.1 0-0.3 0.2 0 0.1-0.7 0.5-0.2 0.4-0.3-0.1-0.3-0.1-0.2 0.1-0.2-0.1-0.1-0.1-0.4 0.2-0.1 0.1 0.1 0.4 0 0.2 0 0.1 0 0.6 0.1 0.3 0.1 0.6-0.7 0.5-0.5-0.9-0.3-1.3-0.1-0.9-0.5-0.9-0.1-0.6-0.4-0.5-0.2-0.7-0.3l0.2-1.2-3.2-0.8-1.7-0.8-1-0.6-1.5-0.5-0.8-0.4-1-1.4-3.5-0.7-1.5-0.5-1.2z"
+                    fill="rgba(46, 125, 50, 0.1)"
+                    stroke="none"
+                    transform="translate(150, 20) scale(2.6) translate(-282.8, -786.9)"
+                    className="kerala-outline-path"
                   />
-                  
-                  {/* Map Details - Small hand-drawn pine tree shapes */}
-                  <g className="map-tree-decor" stroke="rgba(43, 58, 47, 0.25)" strokeWidth="1" fill="none">
-                    {/* Left Trees */}
-                    <path d="M 60 170 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
-                    <path d="M 70 180 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
-                    {/* Right Trees */}
-                    <path d="M 370 230 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
-                    <path d="M 385 235 l 4 10 m -8 0 l 8 0 m -4 -10 l -4 6 m 4 -6 l 4 6 m -4 -2 l -3 4 m 3 -4 l 3 4" />
-                  </g>
 
                   {/* Compass Rose top right */}
                   <g className="map-compass" transform="translate(410, 60)" stroke="rgba(43, 58, 47, 0.4)" strokeWidth="1" fill="none">
@@ -198,20 +209,36 @@ export default function LocalHeritage() {
                         <circle 
                           cx={loc.x} 
                           cy={loc.y} 
-                          r={isActive ? "6" : "4.5"} 
-                          fill={isActive ? "var(--primary-dark)" : "var(--primary)"} 
+                          r={isActive ? "6.5" : "5"} 
+                          fill={isActive ? "#1B5E20" : "var(--primary)"} 
                           stroke="#ffffff" 
-                          strokeWidth="1.5" 
+                          strokeWidth="1.8" 
+                          style={{ transition: 'all 0.2s ease' }}
                         />
-                        {/* Point text label */}
+                        {/* Text Label Backdrop Shadow Stroke for legibility */}
                         <text 
-                          x={loc.x} 
-                          y={loc.y - 14} 
-                          textAnchor="middle" 
-                          fontSize="15" 
-                          fontWeight={isActive ? "700" : "600"} 
-                          fill="var(--primary-dark)" 
-                          className="map-marker-label"
+                          x={loc.x + loc.dx} 
+                          y={loc.y + loc.dy} 
+                          textAnchor={loc.textAnchor} 
+                          fontSize="13" 
+                          fontWeight="700" 
+                          stroke="#ffffff"
+                          strokeWidth="4.5"
+                          strokeLinejoin="round"
+                          opacity="0.95"
+                          style={{ pointerEvents: 'none', transition: 'all 0.2s ease' }}
+                        >
+                          {loc.label}
+                        </text>
+                        {/* Actual Text Label */}
+                        <text 
+                          x={loc.x + loc.dx} 
+                          y={loc.y + loc.dy} 
+                          textAnchor={loc.textAnchor} 
+                          fontSize="13" 
+                          fontWeight={isActive ? "800" : "700"} 
+                          fill={isActive ? "#1B5E20" : "#2E7D32"} 
+                          style={{ pointerEvents: 'none', transition: 'all 0.2s ease' }}
                         >
                           {loc.label}
                         </text>

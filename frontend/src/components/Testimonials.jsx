@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fetchTestimonials } from '../api/client';
 
 const TESTIMONIAL_IMAGES = [
@@ -53,6 +54,8 @@ export default function Testimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isFlipping, setIsFlipping] = useState(false);
+  const [flipDirection, setFlipDirection] = useState('next');
 
   useEffect(() => {
     fetchTestimonials()
@@ -75,23 +78,49 @@ export default function Testimonials() {
       .finally(() => setLoading(false));
   }, []);
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setActiveIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  const handleFlip = (dir) => {
+    if (isFlipping || testimonials.length < 2) return;
+    setFlipDirection(dir);
+    setIsFlipping(true);
   };
 
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
-      <span key={i} className={i < rating ? 'star filled' : 'star'}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill={i < rating ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-        </svg>
-      </span>
+      <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < rating ? '#10b981' : 'none'} stroke={i < rating ? '#10b981' : '#cbd5e1'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
     ));
   };
+
+  const LeftContent = ({ data }) => (
+    <div className="book-left-content">
+      <div className="book-left-visuals">
+        {data.images && data.images.map((imgUrl, i) => (
+          <div key={i} className="book-polaroid" style={{ backgroundImage: `url(${imgUrl})` }}></div>
+        ))}
+      </div>
+      <div className="book-rating-box">
+        <div className="book-rating">{renderStars(data.rating)}</div>
+        <p className="book-left-note">{data.note}</p>
+      </div>
+    </div>
+  );
+
+  const RightContent = ({ data }) => (
+    <div className="book-right-content">
+      <span className="book-right-tagline">{data.tagline}</span>
+      <h3 className="book-right-title">{data.subtitle}</h3>
+      <p className="book-right-quote">{data.quote}</p>
+      <div className="book-right-author">
+        <div className="book-author-avatar">{data.avatar_initials || data.name.charAt(0)}</div>
+        <div className="book-author-info">
+          <h5>{data.name}</h5>
+          <p>{data.location}</p>
+        </div>
+        <div className="book-signature">Thank you Pranara</div>
+      </div>
+    </div>
+  );
 
   if (loading) {
     return (
@@ -104,80 +133,93 @@ export default function Testimonials() {
     );
   }
 
-  if (testimonials.length === 0) {
-    return null;
-  }
+  if (testimonials.length === 0) return null;
 
-  const current = testimonials[activeIndex];
+  const nextIndex = (activeIndex + 1) % testimonials.length;
+  const prevIndex = (activeIndex - 1 + testimonials.length) % testimonials.length;
 
   return (
-    <section className="testimonials" id="testimonials">
+    <section className="testimonials book-testimonials-section" id="testimonials">
       <div className="container">
-        <h2 className="section-title"><span className="accent">Explorers Say</span></h2>
-        
-        {/* Header Block with current testimonial title/subtitle/tagline */}
-        <div className="testimonial-header-showcase">
-          <span className="testimonial-subtitle-top">{current.title}</span>
-          <h3 className="testimonial-main-heading">{current.subtitle}</h3>
-          <p className="testimonial-tagline-bottom">{current.tagline}</p>
-        </div>
-
-        {/* Carousel Showcase Row */}
-        <div className="testimonial-showcase-grid">
-          {/* Left testimonial card */}
-          <div className="testimonial-quote-card">
-            <div className="quote-mark">“</div>
-            <div className="quote-body">
-              <p className="quote-text">{current.quote}</p>
-              {current.note && <p className="quote-note">{current.note}</p>}
-              <div className="quote-divider"></div>
-              <p className="quote-recommendation">Highly recommended for anyone who loves nature and adventure.</p>
-            </div>
-            
-            <div className="quote-stars-row">
-              {renderStars(current.rating)}
-            </div>
-
-            <div className="thankyou-signature">
-              <svg className="heart-signature-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+        <div className="book-header-row">
+          <div>
+            <h2 className="section-title"><span className="accent">Explorers Say</span></h2>
+            <p className="section-subtitle">Read the stories of our travelers in our virtual journal.</p>
+          </div>
+          <div className="book-navigation">
+            <button className="book-nav-btn prev" onClick={() => handleFlip('prev')} aria-label="Previous Page">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
               </svg>
-              <span>Thank you Pranara for this amazing experience!</span>
-            </div>
-
-            <div className="testimonial-card-author">
-              <div className="testimonial-author-avatar">{current.avatar_initials}</div>
-              <div className="testimonial-author-details">
-                <div className="author-name">{current.name}</div>
-                <div className="author-location">{current.location}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right polaroid photos block */}
-          <div className="polaroid-wrapper">
-            {current.images && current.images.map((imgUrl, i) => (
-              <div key={i} className={`polaroid-card card-${i + 1}`}>
-                <div className="polaroid-image" style={{ backgroundImage: `url(${imgUrl})` }}></div>
-              </div>
-            ))}
+            </button>
+            <button className="book-nav-btn next" onClick={() => handleFlip('next')} aria-label="Next Page">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
           </div>
         </div>
 
-        {/* Carousel Controls */}
-        <div className="testimonial-carousel-controls">
-          <button className="carousel-control-btn prev-btn" onClick={handlePrev} aria-label="Previous Review">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="19" y1="12" x2="5" y2="12"></line>
-              <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-          </button>
-          <button className="carousel-control-btn next-btn" onClick={handleNext} aria-label="Next Review">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
+        <div className="book-3d-wrapper">
+          <div className="book-hardcover">
+            {/* Left Static Page */}
+            <div className="book-page book-page-left">
+              {isFlipping && flipDirection === 'next' ? (
+                <LeftContent data={testimonials[activeIndex]} />
+              ) : isFlipping && flipDirection === 'prev' ? (
+                <LeftContent data={testimonials[prevIndex]} />
+              ) : (
+                <LeftContent data={testimonials[activeIndex]} />
+              )}
+            </div>
+
+            {/* Right Static Page */}
+            <div className="book-page book-page-right">
+              {isFlipping && flipDirection === 'next' ? (
+                <RightContent data={testimonials[nextIndex]} />
+              ) : isFlipping && flipDirection === 'prev' ? (
+                <RightContent data={testimonials[activeIndex]} />
+              ) : (
+                <RightContent data={testimonials[activeIndex]} />
+              )}
+            </div>
+
+            {/* The Flipping Page layer */}
+            {isFlipping && (
+              <motion.div
+                className={`book-page-flipper ${flipDirection}`}
+                initial={{ rotateY: 0 }}
+                animate={{ rotateY: flipDirection === 'next' ? -180 : 180 }}
+                transition={{ type: 'spring', stiffness: 45, damping: 14 }}
+                onAnimationComplete={() => {
+                  setIsFlipping(false);
+                  setActiveIndex(flipDirection === 'next' ? nextIndex : prevIndex);
+                }}
+                style={{
+                  transformOrigin: flipDirection === 'next' ? 'left center' : 'right center',
+                  left: flipDirection === 'next' ? '50%' : '12px',
+                  right: flipDirection === 'next' ? '12px' : '50%'
+                }}
+              >
+                <div className="flipper-face flipper-front">
+                  {flipDirection === 'next' ? (
+                    <RightContent data={testimonials[activeIndex]} />
+                  ) : (
+                    <LeftContent data={testimonials[activeIndex]} />
+                  )}
+                </div>
+                <div className="flipper-face flipper-back">
+                  {flipDirection === 'next' ? (
+                    <LeftContent data={testimonials[nextIndex]} />
+                  ) : (
+                    <RightContent data={testimonials[prevIndex]} />
+                  )}
+                </div>
+              </motion.div>
+            )}
+          </div>
         </div>
       </div>
     </section>
