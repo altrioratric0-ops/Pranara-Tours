@@ -14,25 +14,28 @@
   --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
 
   /* Theme-aware Transparent Navbar Variables */
-  --nav-text: #ffffff;
-  --nav-link: #cbd5e1;
-  --nav-link-hover: var(--sky);
-  --nav-scrolled-text: var(--primary-dark);
-  --nav-scrolled-link: var(--text-light);
+  --nav-text: #000000;
+  --nav-link: #000000;
+  --nav-link-hover: var(--primary);
+  --nav-scrolled-text: #000000;
+  --nav-scrolled-link: #000000;
   --nav-scrolled-link-hover: var(--primary);
-  --nav-scrolled-bg: rgba(255, 255, 255, 0.45);
-  --nav-scrolled-border: rgba(46, 125, 50, 0.15);
-  --nav-scrolled-hamburger: var(--primary-dark);
+  --nav-scrolled-bg: transparent;
+  --nav-scrolled-border: transparent;
+  --nav-scrolled-hamburger: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --nav-scrolled-text: #ffffff;
-    --nav-scrolled-link: #cbd5e1;
-    --nav-scrolled-link-hover: var(--sky);
-    --nav-scrolled-bg: rgba(15, 23, 42, 0.45);
-    --nav-scrolled-border: rgba(255, 255, 255, 0.15);
-    --nav-scrolled-hamburger: #ffffff;
+    --nav-text: #000000;
+    --nav-link: #000000;
+    --nav-link-hover: var(--primary);
+    --nav-scrolled-text: #000000;
+    --nav-scrolled-link: #000000;
+    --nav-scrolled-link-hover: var(--primary);
+    --nav-scrolled-bg: transparent;
+    --nav-scrolled-border: transparent;
+    --nav-scrolled-hamburger: #000000;
   }
 }
 
@@ -83,7 +86,6 @@ h1, h2, h3, h4 {
   z-index: 1000;
   background: transparent;
   border: none;
-  border-radius: 0;
   padding: 12px 24px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -94,6 +96,8 @@ h1, h2, h3, h4 {
   box-shadow: none;
   padding: 10px 24px;
 }
+
+
 .nav-inner {
   display: flex;
   justify-content: space-between;
@@ -121,9 +125,10 @@ h1, h2, h3, h4 {
   object-fit: contain;
 }
 .brand-text {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-family: 'Cinzel', 'Playfair Display', 'Didot', 'Georgia', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--nav-text);
   text-transform: uppercase;
   transition: color 0.3s ease;
@@ -202,7 +207,7 @@ h1, h2, h3, h4 {
 }
 .hamburger span {
   width: 24px; height: 2px;
-  background: #fff;
+  background: var(--nav-text);
   border-radius: 2px;
   transition: all .3s;
 }
