@@ -12,6 +12,28 @@
   --shadow-lg: 0 10px 30px rgba(27, 94, 32, 0.15);
   --font-heading: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Theme-aware Transparent Navbar Variables */
+  --nav-text: #ffffff;
+  --nav-link: #cbd5e1;
+  --nav-link-hover: var(--sky);
+  --nav-scrolled-text: var(--primary-dark);
+  --nav-scrolled-link: var(--text-light);
+  --nav-scrolled-link-hover: var(--primary);
+  --nav-scrolled-bg: rgba(255, 255, 255, 0.45);
+  --nav-scrolled-border: rgba(46, 125, 50, 0.15);
+  --nav-scrolled-hamburger: var(--primary-dark);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nav-scrolled-text: #ffffff;
+    --nav-scrolled-link: #cbd5e1;
+    --nav-scrolled-link-hover: var(--sky);
+    --nav-scrolled-bg: rgba(15, 23, 42, 0.45);
+    --nav-scrolled-border: rgba(255, 255, 255, 0.15);
+    --nav-scrolled-hamburger: #ffffff;
+  }
 }
 
 /* ───── Reset & Base ───── */
@@ -59,21 +81,17 @@ h1, h2, h3, h4 {
   width: 90%;
   max-width: 1200px;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 100px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
   padding: 12px 24px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navbar.scrolled {
   top: 12px;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: transparent;
+  border: none;
+  box-shadow: none;
   padding: 10px 24px;
 }
 .nav-inner {
@@ -85,8 +103,12 @@ h1, h2, h3, h4 {
 .logo {
   font-size: 1.35rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--nav-text);
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+.navbar.scrolled .logo {
+  color: var(--nav-scrolled-text);
 }
 .logo.flex-logo {
   display: flex;
@@ -102,8 +124,12 @@ h1, h2, h3, h4 {
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: #ffffff;
+  color: var(--nav-text);
   text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+.navbar.scrolled .brand-text {
+  color: var(--nav-scrolled-text);
 }
 .nav-links {
   display: flex;
@@ -114,13 +140,21 @@ h1, h2, h3, h4 {
   padding: 0;
 }
 .nav-links a {
-  color: #cbd5e1;
+  color: var(--nav-link);
   font-size: 0.9rem;
   font-weight: 500;
   transition: color .2s;
   text-decoration: none;
 }
-.nav-links a:hover { color: var(--sky); }
+.nav-links a:hover {
+  color: var(--nav-link-hover);
+}
+.navbar.scrolled .nav-links a {
+  color: var(--nav-scrolled-link);
+}
+.navbar.scrolled .nav-links a:hover {
+  color: var(--nav-scrolled-link-hover);
+}
 
 .mobile-cta-li {
   display: none;
@@ -171,6 +205,9 @@ h1, h2, h3, h4 {
   background: #fff;
   border-radius: 2px;
   transition: all .3s;
+}
+.navbar.scrolled .hamburger span {
+  background: var(--nav-scrolled-hamburger);
 }
 .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
