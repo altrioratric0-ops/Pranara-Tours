@@ -1231,7 +1231,7 @@ h1, h2, h3, h4 {
 }
 .contact-detail .icon {
   width: 40px; height: 40px;
-  border-radius: 10px;
+  border-radius: 0;
   background: var(--primary-light);
   display: flex;
   align-items: center;
@@ -1246,7 +1246,7 @@ h1, h2, h3, h4 {
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
+  border-radius: 0;
   padding: 36px;
 }
 .booking-banner-container {
@@ -1254,7 +1254,7 @@ h1, h2, h3, h4 {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 0;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -1263,6 +1263,9 @@ h1, h2, h3, h4 {
   height: auto;
   object-fit: cover;
   display: block;
+}
+.booking .btn {
+  border-radius: 0;
 }
 .form-row {
   display: grid;
