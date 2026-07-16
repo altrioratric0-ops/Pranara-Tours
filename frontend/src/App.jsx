@@ -6,6 +6,7 @@ import About from './components/About';
 import Features from './components/Features';
 import EscapeSection from './components/EscapeSection';
 import LocalHeritage from './components/LocalHeritage';
+import CreativeGallery from './components/CreativeGallery';
 import TripPlanner from './components/TripPlanner';
 import Testimonials from './components/Testimonials';
 
@@ -22,6 +23,7 @@ function HomePage() {
       <Features />
       <EscapeSection />
       <LocalHeritage />
+      <CreativeGallery />
       <TripPlanner />
       <Testimonials />
       <FAQ />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function TripPlanner() {
   const [formData, setFormData] = useState({
@@ -12,6 +12,21 @@ export default function TripPlanner() {
 
   const [loading, setLoading] = useState(false);
   const [itinerary, setItinerary] = useState(null);
+
+  useEffect(() => {
+    const handleSelectDestination = (e) => {
+      const selectedDest = e.detail;
+      setFormData((prev) => ({
+        ...prev,
+        destination: selectedDest,
+      }));
+    };
+
+    window.addEventListener('pranaraSelectDestination', handleSelectDestination);
+    return () => {
+      window.removeEventListener('pranaraSelectDestination', handleSelectDestination);
+    };
+  }, []);
 
   const handleActivityChange = (activity) => {
     const active = formData.activities.includes(activity);
