@@ -316,7 +316,7 @@ export default function KeralaMap() {
   };
 
   return (
-    <section className="kerala-map-section" id="kerala-map" style={{ padding: '100px 0', background: '#fff' }}>
+    <section className="kerala-map-section" id="kerala-map" style={{ padding: '90px 0', background: '#fff' }}>
       <div className="container">
         <h2 className="section-title">Interactive <span className="accent">Kerala Map</span></h2>
         <p className="section-subtitle">Click markers on the map or tap a destination below to explore weather, highlights, and travel details</p>

@@ -36,9 +36,11 @@ SEED_TOURS = [
 ]
 
 SEED_TESTIMONIALS = [
-    {"name": "Arjun & Sneha", "location": "Bangalore", "avatar_initials": "AS", "rating": 5, "quote": "Our Munnar honeymoon was perfectly organized. Every detail from the luxury resort stay to the private guides was handled flawlessly. Highly recommend Pranara!"},
-    {"name": "Priya & Family", "location": "Chennai", "avatar_initials": "PF", "rating": 5, "quote": "The itinerary covered every beautiful place without feeling rushed. The houseboat in Alleppey and the tea estate walks in Munnar were outstanding highlights!"},
-    {"name": "Vikram S.", "location": "Mumbai", "avatar_initials": "VS", "rating": 5, "quote": "Excellent hotels, smooth transport, and amazing support. The 24/7 travel coordination was incredibly comforting during our Poovar and Kovalam trip."},
+    {"name": "The Thompson Family", "location": "London, United Kingdom", "avatar_initials": "TF", "rating": 5, "quote": "From the UK to the heart of Munnar. Thank you for letting us be part of your family's story. See you again, The Pranara Way."},
+    {"name": "The Adhikari Family", "location": "Mumbai, India", "avatar_initials": "AF", "rating": 5, "quote": "Every journey becomes special because of the people in it. The pristine river streams, the lush green forests, and the memories we shared in Munnar. Thank you for letting Pranara be a part of yours. Until Next Time..."},
+    {"name": "Mr. & Mrs. Sharma", "location": "Delhi, India", "avatar_initials": "MS", "rating": 5, "quote": "We are extremely satisfied with the excellent service provided by Mr. Pradeep. He was very patient and answered all our questions. His impressive knowledge of Munnar - history, culture, attractions & local insights - was outstanding. Professional, friendly, and dedicated throughout the trip, he made our visit to Munnar truly enjoyable and memorable. Highly recommend his services to all visitors!"},
+    {"name": "Sarah, Marc & Amit", "location": "Berlin, Germany", "avatar_initials": "SMA", "rating": 5, "quote": "The trek to Chokkarmudi Peak was absolutely unforgettable! Every step was a new experience — the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful. It was more than just a trek, it was an emotion! Highly recommended for anyone who loves nature and adventure."},
+    {"name": "Amal & Friends", "location": "Chennai, India", "avatar_initials": "AF", "rating": 5, "quote": "Our group trip to Munnar with Pranara was an absolute blast! From the high-altitude viewpoints to walking through the green tea gardens, the entire experience was perfectly planned and executed. The team made sure we captured the best memories."},
 ]
 
 SEED_GALLERY = [

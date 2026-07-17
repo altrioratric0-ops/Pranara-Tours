@@ -106,7 +106,7 @@ export default function ExploreMunnar() {
   }, []);
 
   return (
-    <section className="explore-munnar" id="explore-munnar" style={{ padding: '100px 0', background: '#fff' }}>
+    <section className="explore-munnar" id="explore-munnar" style={{ padding: '90px 0', background: '#fff' }}>
       <style dangerouslySetInnerHTML={{ __html: styles }} />
       <div className="container">
         <h2 className="section-title">Explore <span className="accent">Munnar</span></h2>

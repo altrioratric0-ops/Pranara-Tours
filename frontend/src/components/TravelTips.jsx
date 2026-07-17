@@ -57,7 +57,7 @@ export default function TravelTips() {
   const activeTip = TIPS.find(t => t.key === activeTab);
 
   return (
-    <section className="travel-tips-section" id="tips" style={{ padding: '100px 0', background: '#fff' }}>
+    <section className="travel-tips-section" id="tips" style={{ padding: '90px 0', background: '#fff' }}>
       <div className="container">
         <h2 className="section-title">Kerala <span className="accent">Travel Tips</span></h2>
         <p className="section-subtitle">Practical advice from our local experts to ensure a smooth, unforgettable journey</p>

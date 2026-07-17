@@ -6,87 +6,78 @@ import { fetchTestimonials } from '../api/client';
 const STATIC_TESTIMONIALS = [
   {
     id: 1,
-    name: 'Priya Nair',
-    location: 'Bangalore, India',
-    avatar_initials: 'PN',
+    name: 'The Thompson Family',
+    location: 'London, United Kingdom',
+    avatar_initials: 'TF',
     rating: 5,
-    quote: 'The trek to Chokkarmudi was beyond anything I had imagined. Our guide Rajan knew every hidden trail and shared stories that made the mountain feel alive. Pranara didn\'t just plan a trip — they crafted an emotion.',
-    heroImg: '/assets/munnar_top_station.png',
-    thumbImg: '/assets/munnar_kolukkumalai.png',
-    tagline: 'TREKKING • CHOKKARMUDI PEAK',
-    subtitle: 'Voices from the Summit',
-    note: '"More than a trek — an emotion!"',
+    quote: 'From the UK to the heart of Munnar. Thank you for letting us be part of your family\'s story. See you again, The Pranara Way.',
+    heroImg: '/assets/munnar_uk_family.jpg',
+    thumbImg: '/assets/munnar_uk_family.jpg',
+    tagline: 'FAMILY JOURNEY • MUNNAR SAFARI',
+    subtitle: 'From the UK to the Heart of Munnar',
+    note: 'See you again, The Pranara Way!',
     pageNum: '01',
+    hideLeftFooter: true,
   },
   {
     id: 2,
-    name: 'Rahul & Deepa Menon',
-    location: 'Chennai, India',
-    avatar_initials: 'RM',
+    name: 'The Adhikari Family',
+    location: 'Mumbai, India',
+    avatar_initials: 'AF',
     rating: 5,
-    quote: 'Floating through the Alleppey backwaters at golden hour, watching the sun dip behind coconut palms from our private houseboat deck — this is the Kerala that no brochure can fully capture. Absolutely magical.',
-    heroImg: '/assets/insta_houseboat.png',
-    thumbImg: '/assets/tour_alleppey.png',
-    tagline: 'BACKWATERS • ALLEPPEY STAY',
-    subtitle: 'Drifting Through Paradise',
-    note: '"A magical floating paradise!"',
+    quote: 'Every journey becomes special because of the people in it. The pristine river streams, the lush green forests, and the memories we shared in Munnar. Thank you for letting Pranara be a part of yours. Until Next Time...',
+    heroImg: '/assets/munnar_river_family.jpg',
+    thumbImg: '/assets/munnar_river_family.jpg',
+    tagline: 'PRANARA STORIES • RIVER GETAWAY',
+    subtitle: 'Every Journey Becomes Special',
+    note: 'Until Next Time... Pranara 🍃',
     pageNum: '02',
+    hideLeftFooter: true,
   },
   {
     id: 3,
-    name: 'Arjun Sharma',
-    location: 'Mumbai, India',
-    avatar_initials: 'AS',
+    name: 'Mr. & Mrs. Sharma',
+    location: 'Delhi, India',
+    avatar_initials: 'MS',
     rating: 5,
-    quote: 'Spotting a family of wild elephants at Thekkady, completely unscripted and raw — that moment will stay with me forever. Pranara\'s naturalist guides made sure we understood the forest, not just saw it.',
-    heroImg: '/assets/tour_thekkady.png',
-    thumbImg: '/assets/insta_waterfall.png',
-    tagline: 'WILDLIFE • THEKKADY SAFARI',
-    subtitle: 'Into the Wild',
-    note: '"Raw beauty, superbly organised."',
+    quote: 'We are extremely satisfied with the excellent service provided by Mr. Pradeep. He was very patient and answered all our questions. His impressive knowledge of Munnar - history, culture, attractions & local insights - was outstanding. Professional, friendly, and dedicated throughout the trip, he made our visit to Munnar truly enjoyable and memorable. Highly recommend his services to all visitors!',
+    heroImg: '/assets/munnar_pradeep_review.jpg',
+    thumbImg: '/assets/munnar_pradeep_review.jpg',
+    tagline: 'TRUSTED GUIDANCE • MEMORABLE JOURNEYS',
+    subtitle: 'Trusted Guidance, Memorable Journeys',
+    note: 'Highly recommend Mr. Pradeep!',
     pageNum: '03',
+    hideLeftFooter: true,
   },
   {
     id: 4,
-    name: 'Sneha & Kiran Pillai',
-    location: 'Hyderabad, India',
-    avatar_initials: 'SK',
+    name: 'Sarah, Marc & Amit',
+    location: 'Berlin, Germany',
+    avatar_initials: 'SMA',
     rating: 5,
-    quote: 'Walking hand-in-hand through the endless green carpet of Munnar\'s tea estates, breathing in the crisp mountain air with a freshly brewed cup — our honeymoon was everything and more thanks to Pranara.',
-    heroImg: '/assets/munnar_attukad.png',
-    thumbImg: '/assets/munnar_mattupetty.png',
-    tagline: 'PLANTATION • TEA ESTATE WALK',
-    subtitle: 'Misty Trails of Munnar',
-    note: '"Walking through a canvas of green!"',
+    quote: 'The trek to Chokkarmudi Peak was absolutely unforgettable! Every step was a new experience — the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful. It was more than just a trek, it was an emotion! Highly recommended for anyone who loves nature and adventure.',
+    heroImg: '/assets/munnar_chokkarmudi_trek.jpg',
+    thumbImg: '/assets/munnar_chokkarmudi_trek.jpg',
+    tagline: 'TREKKING • CHOKKARMUDI PEAK',
+    subtitle: 'Voices from the Summit',
+    note: 'It was more than just a trek, it was an emotion!',
     pageNum: '04',
+    hideLeftFooter: true,
   },
   {
     id: 5,
-    name: 'Vijay Kumar',
-    location: 'Delhi, India',
-    avatar_initials: 'VK',
+    name: 'Amal & Friends',
+    location: 'Chennai, India',
+    avatar_initials: 'AF',
     rating: 5,
-    quote: 'The Edakkal Caves in Wayanad were unlike anything I\'d seen — prehistoric rock carvings in a forest that felt untouched by time. Our guide brought history to life in a way no museum ever could.',
-    heroImg: '/assets/tour_wayanad.png',
-    thumbImg: '/assets/munnar_eravikulam.png',
-    tagline: 'HERITAGE • EDAKKAL CAVES',
-    subtitle: 'Wayanad Wilderness',
-    note: '"History carved in stone!"',
+    quote: 'Our group trip to Munnar with Pranara was an absolute blast! From the high-altitude viewpoints to walking through the green tea gardens, the entire experience was perfectly planned and executed. The team made sure we captured the best memories.',
+    videoSrc: '/assets/munnar_video_testimonial.mp4',
+    isVideo: true,
+    tagline: 'TRAVEL DIARIES • FRIENDSHIP GETAWAY',
+    subtitle: 'Experience the Magic of Munnar',
+    note: 'Watch the journey unfold!',
     pageNum: '05',
-  },
-  {
-    id: 6,
-    name: 'Anjali & Suresh Reddy',
-    location: 'Pune, India',
-    avatar_initials: 'AR',
-    rating: 5,
-    quote: 'The pine forests of Vagamon at dawn — silent, tall, and draped in mist — felt like stepping into another world. Pranara found us a little cottage with a fireplace and a view that made time stand still.',
-    heroImg: '/assets/munnar_echo_point.png',
-    thumbImg: '/assets/munnar_kundala.png',
-    tagline: 'RETREAT • PINE FOREST VAGAMON',
-    subtitle: 'Echoes of Vagamon',
-    note: '"Tranquility at its absolute finest!"',
-    pageNum: '06',
+    hideLeftFooter: true,
   },
 ];
 
@@ -108,6 +99,66 @@ function Stars({ rating }) {
 
 /* ─── Left page: full-bleed hero photo + footer strip ─── */
 function LeftPage({ data }) {
+  if (data.hideLeftFooter) {
+    return (
+      <div 
+        className="book-left-content" 
+        style={{ 
+          height: '100%', 
+          padding: '24px', 
+          boxSizing: 'border-box', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center' 
+        }}
+      >
+        <div 
+          className="testimonial-card-frame"
+          style={{
+            width: '100%',
+            height: '100%',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
+            background: '#fffef9',
+            display: 'flex',
+            position: 'relative'
+          }}
+        >
+          {data.isVideo ? (
+            <video 
+              className="book-hero-video"
+              src={data.videoSrc}
+              controls
+              muted
+              autoPlay
+              loop
+              playsInline
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+            />
+          ) : (
+            <div 
+              className="book-hero-photo" 
+              style={{ 
+                width: '100%',
+                height: '100%',
+                backgroundImage: `url(${data.heroImg})`,
+                backgroundSize: '100% 100%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                boxShadow: 'none'
+              }} 
+            />
+          )}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="book-left-content">
       <div className="book-hero-photo" style={{ backgroundImage: `url(${data.heroImg})` }} />

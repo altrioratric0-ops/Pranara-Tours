@@ -39,7 +39,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className="faq-section" id="faq" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+    <section className="faq-section" id="faq" style={{ padding: '90px 0', background: 'var(--cream)' }}>
       <div className="container" style={{ maxWidth: '800px' }}>
         <h2 className="section-title">Frequently Asked <span className="accent">Questions</span></h2>
         <p className="section-subtitle">Got questions? We have compiled answers to help you plan your journey</p>

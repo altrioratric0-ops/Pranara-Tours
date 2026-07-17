@@ -135,7 +135,7 @@ export default function TripPlanner() {
   };
 
   return (
-    <section className="trip-planner-section" id="planner" style={{ padding: '100px 0', background: 'var(--cream)' }}>
+    <section className="trip-planner-section" id="planner" style={{ padding: '90px 0', background: 'var(--cream)' }}>
       <div className="container">
         <h2 className="section-title">AI <span className="accent">Trip Planner</span></h2>
         <p className="section-subtitle">Craft your personalized dream itinerary instantly with our automated planner</p>
