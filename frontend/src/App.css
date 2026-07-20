@@ -345,10 +345,9 @@ h1, h2, h3, h4 {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-  color: #ffffff;
-  border: 2px solid transparent;
-  box-shadow: 0 4px 18px rgba(46, 125, 50, 0.3);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(46, 125, 50,.35);
 }
 .btn-primary:hover {
   transform: translateY(-2px);

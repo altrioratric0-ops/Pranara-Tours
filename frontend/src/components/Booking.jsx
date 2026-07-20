@@ -66,33 +66,21 @@ export default function Booking() {
                 href="https://wa.me/916374502007?text=Hi%20Pranara,%20I'm%20interested%20in%20booking%20a%20Kerala%20trip!"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-circle-btn btn-circle-whatsapp"
-                title="Chat on WhatsApp"
+                className="btn btn-primary"
+                style={{ display: 'inline-flex' }}
               >
-                <div className="btn-circle-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                </div>
-                <span className="btn-circle-label">Chat on WhatsApp</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Follow @pranara_co
               </a>
               <a
-                href="mailto:hellopranara@gmail.com"
-                className="btn-circle-btn btn-circle-email"
-                title="Email Us"
+                href="https://wa.me/916374502007?text=Hi%20Pranara,%20I'm%20interested%20in%20booking%20a%20Kerala%20trip!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-outline"
+                style={{ display: 'inline-flex', borderColor: '#25D366', color: '#25D366' }}
               >
-                <div className="btn-circle-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
-                </div>
-                <span className="btn-circle-label">Email Us</span>
-              </a>
-              <a
-                href="tel:+919497869454"
-                className="btn-circle-btn btn-circle-phone"
-                title="Call Us"
-              >
-                <div className="btn-circle-icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-                </div>
-                <span className="btn-circle-label">Call Us</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                Chat on WhatsApp
               </a>
             </div>
           </div>

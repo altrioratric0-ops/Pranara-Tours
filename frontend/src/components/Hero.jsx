@@ -32,8 +32,7 @@ export default function Hero() {
       <div className="hero-mist"></div>
       <div className="hero-content">
         <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-          <img src="/assets/logo.png" alt="Pranara Symbol" style={{ width: '18px', height: '18px', objectFit: 'contain' }} />
-          Explore Kerala
+          
         </div>
         <h1>
           Explore the Magic of<br />
