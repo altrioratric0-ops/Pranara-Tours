@@ -1386,6 +1386,9 @@ h1, h2, h3, h4 {
   border-radius: 0;
   box-shadow: var(--shadow-lg);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 80%;
+  justify-self: center;
+  margin: 0 auto;
 }
 .booking-banner-img {
   width: 100%;
