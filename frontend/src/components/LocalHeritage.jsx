@@ -180,7 +180,7 @@ export default function LocalHeritage() {
                     <polygon points="20 36 23 20 20 23" fill="rgba(43, 58, 47, 0.4)" />
                     <polygon points="4 20 20 23 17 20" fill="rgba(43, 58, 47, 0.4)" />
                     <polygon points="36 20 20 23 23 20" fill="rgba(43, 58, 47, 0.4)" />
-                    <text x="18" y="-4" fontSize="7" fontWeight="bold" fill="rgba(43, 58, 47, 0.6)">N</text>
+                    <text x="18" y="49" fontSize="8" fontWeight="bold" fill="rgba(43, 58, 47, 0.7)">S</text>
                   </g>
 
                   {/* Location Points Markers */}
@@ -220,7 +220,7 @@ export default function LocalHeritage() {
                           x={loc.x + loc.dx} 
                           y={loc.y + loc.dy} 
                           textAnchor={loc.textAnchor} 
-                          fontSize="13" 
+                          fontSize="15.5" 
                           fontWeight="700" 
                           stroke="#ffffff"
                           strokeWidth="4.5"
@@ -235,7 +235,7 @@ export default function LocalHeritage() {
                           x={loc.x + loc.dx} 
                           y={loc.y + loc.dy} 
                           textAnchor={loc.textAnchor} 
-                          fontSize="13" 
+                          fontSize="15.5" 
                           fontWeight={isActive ? "800" : "700"} 
                           fill={isActive ? "#1B5E20" : "#2E7D32"} 
                           style={{ pointerEvents: 'none', transition: 'all 0.2s ease' }}
