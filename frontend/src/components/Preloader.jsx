@@ -6,7 +6,7 @@ export default function Preloader() {
 
   useEffect(() => {
     const startTime = Date.now();
-    const minTime = 250; // 0.25 seconds minimum load timer
+    const minTime = 300; // 0.3 seconds minimum load timer (+20%)
 
     const handleLoadComplete = () => {
       const elapsed = Date.now() - startTime;
@@ -21,7 +21,7 @@ export default function Preloader() {
           if (staticOverlay) {
             staticOverlay.style.display = 'none';
           }
-        }, 400);
+        }, 480);
       }, delay);
     };
 
@@ -29,7 +29,7 @@ export default function Preloader() {
       handleLoadComplete();
     } else {
       window.addEventListener('load', handleLoadComplete);
-      const fallbackTimer = setTimeout(handleLoadComplete, 1000);
+      const fallbackTimer = setTimeout(handleLoadComplete, 1200);
       return () => {
         window.removeEventListener('load', handleLoadComplete);
         clearTimeout(fallbackTimer);

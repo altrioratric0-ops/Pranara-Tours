@@ -143,7 +143,7 @@
     <script>
       (function() {
         var startTime = Date.now();
-        var minTime = 300;
+        var minTime = 360;
         function dismissPreloader() {
           var elapsed = Date.now() - startTime;
           var delay = Math.max(0, minTime - elapsed);
@@ -155,7 +155,7 @@
                 if (loader && loader.parentNode) {
                   loader.parentNode.removeChild(loader);
                 }
-              }, 500);
+              }, 600);
             }
           }, delay);
         }
@@ -163,7 +163,7 @@
           dismissPreloader();
         } else {
           window.addEventListener('load', dismissPreloader);
-          setTimeout(dismissPreloader, 1000);
+          setTimeout(dismissPreloader, 1200);
         }
       })();
     </script>
