@@ -827,23 +827,18 @@
     }
 
     .social-links a {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(5, 150, 105, 0.05);
-      border: 1px solid rgba(5, 150, 105, 0.15);
-      color: #059669;
+      width: 28px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      transition: all .2s;
+      transition: transform 0.2s ease;
+      background: transparent;
+      border: none;
     }
 
     .social-links a:hover {
-      background: rgba(5, 150, 105, 0.15);
-      border-color: rgba(5, 150, 105, 0.3);
-      color: #047857;
+      transform: scale(1.12);
     }
 
     .footer-bottom {
@@ -1120,8 +1115,10 @@
       }
     }
 
-    font-weight: 700;
-    font-size: 0.9rem;
+    .testimonial-author {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
 
     .testimonial-author .name {
       font-weight: 600;
@@ -1793,6 +1790,7 @@
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
+      line-clamp: 2;
       -webkit-box-orient: vertical;
     }
 
@@ -2848,9 +2846,23 @@
           <p>Your gateway to Munnar&rsquo;s misty hills &amp; scenic trails. Adventure, nature, and guided tourism
             crafted for unforgettable memories.</p>
           <div class="social-links">
-            <a href="https://www.instagram.com/pranara_co" target="_blank" title="Instagram">&#128247;</a>
-            <a href="#" title="YouTube">&#9654;&#65039;</a>
-            <a href="#" title="Facebook">&#120156;</a>
+            <a href="https://www.instagram.com/pranara_co" target="_blank" title="Instagram">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius: 7px;">
+                <defs>
+                  <radialGradient id="instaGradIndex" cx="30%" cy="107%" r="150%">
+                    <stop offset="0%" stop-color="#fdf497" />
+                    <stop offset="5%" stop-color="#fdf497" />
+                    <stop offset="45%" stop-color="#fd5949" />
+                    <stop offset="60%" stop-color="#d6249f" />
+                    <stop offset="90%" stop-color="#285AEB" />
+                  </radialGradient>
+                </defs>
+                <rect width="24" height="24" rx="6" fill="url(#instaGradIndex)" />
+                <rect x="5" y="5" width="14" height="14" rx="4" fill="none" stroke="#ffffff" stroke-width="1.6" />
+                <circle cx="12" cy="12" r="3.2" fill="none" stroke="#ffffff" stroke-width="1.6" />
+                <circle cx="16.2" cy="7.8" r="0.9" fill="#ffffff" />
+              </svg>
+            </a>
           </div>
         </div>
         <div class="footer-col">
