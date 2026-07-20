@@ -35,11 +35,10 @@ export default function Navbar() {
         </Link>
         
         <ul className={`nav-links${menuOpen ? ' open' : ''}`}>
-          <li><a href={isHome ? '#kerala-map' : '/#kerala-map'} onClick={(e) => { e.preventDefault(); scrollTo('kerala-map'); }}>Destinations</a></li>
+          <li><a href={isHome ? '#about' : '/#about'} onClick={(e) => { e.preventDefault(); scrollTo('about'); }}>About</a></li>
           <li><a href={isHome ? '#escapes' : '/#escapes'} onClick={(e) => { e.preventDefault(); scrollTo('escapes'); }}>Packages</a></li>
           <li><a href={isHome ? '#heritage' : '/#heritage'} onClick={(e) => { e.preventDefault(); scrollTo('heritage'); }}>Experiences</a></li>
-          <li><a href={isHome ? '#instagram' : '/#instagram'} onClick={(e) => { e.preventDefault(); scrollTo('instagram'); }}>Gallery</a></li>
-          <li><a href={isHome ? '#tips' : '/#tips'} onClick={(e) => { e.preventDefault(); scrollTo('tips'); }}>Blog</a></li>
+          <li><a href={isHome ? '#gallery' : '/#gallery'} onClick={(e) => { e.preventDefault(); scrollTo('gallery'); }}>Gallery</a></li>
           <li><a href={isHome ? '#booking' : '/#booking'} onClick={(e) => { e.preventDefault(); scrollTo('booking'); }}>Contact</a></li>
           <li className="mobile-cta-li">
             <a href="#booking" className="nav-btn-cta mobile-cta" onClick={(e) => { e.preventDefault(); scrollTo('booking'); }}>

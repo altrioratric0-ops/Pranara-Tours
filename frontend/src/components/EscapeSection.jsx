@@ -2,25 +2,85 @@ import React, { useRef, useEffect, useState } from 'react';
 
 const escapePackages = [
   {
+    id: 'escape-stays',
     title: 'ESCAPE PACKAGES',
     subtitle: 'Disconnect to reconnect.',
     checklist: ['Scenic Stays', 'Tea Garden Retreats', 'Peaceful Hideouts'],
-    price: 'From ₹6,999 / night',
     imageUrl: '/assets/tour_munnar.png',
+    tagline: 'Peaceful Hideouts & Tea Garden Retreats in Pristine Munnar',
+    overview: 'Immerse yourself in total serenity with our exclusive escape packages. Wake up to mist-shrouded mountain views, stroll through private tea plantations, and unwind in handpicked luxury eco-resorts & boutique retreats designed for deep relaxation.',
+    highlights: [
+      '🏡 Luxury Eco-Resorts & Private Plantation Cottages',
+      '🍵 Private Tea Tasting & Guided Estate Walks',
+      '🌅 Sunrise Viewpoint & Chilly Mountain Breakfast',
+      '🧘 Outdoor Yoga & Evening Campfire Under Stars'
+    ],
+    sites: [
+      { name: 'Tea Garden Estate Villa', image: '/assets/tour_munnar.png', desc: 'Lush greenery right outside your window.' },
+      { name: 'Kolukkumalai Cloud Sunrise', image: '/assets/munnar_kolukkumalai.png', desc: 'Breathtaking high-altitude valley views.' },
+      { name: 'Eravikulam Misty Trails', image: '/assets/munnar_eravikulam.png', desc: 'Tranquil walking trails surrounded by nature.' },
+      { name: 'Attukad Waterfall Hideout', image: '/assets/munnar_attukad.png', desc: 'Cascading waters in a serene forest valley.' }
+    ],
+    itinerary: [
+      { day: 'Day 1', title: 'Arrival & Plantation Warm Welcome', desc: 'Check into your scenic tea estate resort, enjoy refreshing local cardamom tea, and relax by the evening campfire.' },
+      { day: 'Day 2', title: 'Misty Tea Trail & Waterfall Escape', desc: 'Guided morning walk through private tea gardens followed by a private picnic near Attukad waterfall.' },
+      { day: 'Day 3', title: 'Sunrise Cloud View & Departure', desc: 'Catch the magical sunrise over misty hills before enjoying a leisurely breakfast and relaxed departure.' }
+    ],
+    included: ['Luxury Accommodation', 'Daily Breakfast & Dinner', 'Guided Estate Tour', 'Private Transport', 'Campfire Evening']
   },
   {
+    id: 'tour-travel',
     title: 'TOUR & TRAVEL PACKAGES',
     subtitle: 'Curated journeys. Local stories.',
     checklist: ['Sightseeing', 'Local Experiences', 'Comfortable Travel'],
-    price: 'From ₹9,999 / person',
     imageUrl: '/assets/tour_thekkady.png',
+    tagline: 'Comprehensive Sightseeing & Cultural Discovery of Munnar',
+    overview: 'Experience the finest sights, sounds, and stories of Munnar and surrounding hotspots. From misty peak viewpoints and historical tea museums to wildlife sanctuaries and spice gardens, our expert local guides ensure a rich, hassle-free journey.',
+    highlights: [
+      '🚘 Private Chauffeur-Driven AC Vehicle Throughout',
+      '🎟 Skip-the-Line Entry Tickets to All Top Attractions',
+      '🦣 Eravikulam National Park & Rare Nilgiri Tahr Spotting',
+      '🍃 Spice Plantation Guided Sensory Walk & Tea Tasting'
+    ],
+    sites: [
+      { name: 'Thekkady Wildlife Reserve', image: '/assets/tour_thekkady.png', desc: 'Dense spice forests & wildlife boating.' },
+      { name: 'Top Station Ridge', image: '/assets/munnar_top_station.png', desc: 'Panoramic 360° border view of Western Ghats.' },
+      { name: 'KDHP Tea Museum', image: '/assets/munnar_tea_museum.png', desc: 'Discover 100+ years of tea processing history.' },
+      { name: 'Mattupetty Lake & Dam', image: '/assets/munnar_mattupetty.png', desc: 'Speed boating surrounded by rolling hills.' }
+    ],
+    itinerary: [
+      { day: 'Day 1', title: 'Munnar Heritage & Tea Museum', desc: 'Explore Munnar town, visit the historic Tea Museum, and taste freshly processed Orthodox teas.' },
+      { day: 'Day 2', title: 'Top Station, Mattupetty & Eco Point', desc: 'Full day sightseeing covering Mattupetty Dam, Echo Point, Kundala Lake, and Top Station views.' },
+      { day: 'Day 3', title: 'Eravikulam National Park & Spice Gardens', desc: 'Morning safari inside Eravikulam Park to spot Nilgiri Tahr, followed by an organic spice garden tour.' }
+    ],
+    included: ['Dedicated Local Guide/Driver', 'Sightseeing Entry Passes', 'Comfortable AC Vehicle', 'Hotel Pickups & Drops', 'Mineral Water & Snacks']
   },
   {
+    id: 'offroad-adventure',
     title: 'OFFROAD ADVENTURE PACKAGES',
     subtitle: 'For the thrill seekers.',
     checklist: ['Thar Offroad Drive', 'Hidden Trails', 'Adrenaline Rush'],
-    price: 'From ₹12,999 / person',
     imageUrl: '/assets/tour_offroad.png',
+    tagline: '4x4 Thar Mountain Expeditions & High-Altitude Trekking Trails',
+    overview: 'Supercharge your adrenaline with high-octane 4x4 Jeep safaris into rugged terrains unreachable by standard cars. Navigate steep mountain tracks, trek to untouched summit points, and fly high on Munnar’s longest zip line.',
+    highlights: [
+      '🚙 Open 4x4 Thar Jeep Mountain Safari',
+      '⛰ Visit Kolukkumalai - World’s Highest Tea Estate',
+      '🧗 Extreme High-Altitude Ridge Trekking',
+      '🦅 Zipline Canopy Aerial Glide over Valleys'
+    ],
+    sites: [
+      { name: 'Offroad Thar Safari', image: '/assets/tour_offroad.png', desc: 'Conquer rocky mountain trails in a 4x4 Thar.' },
+      { name: 'Zipline Canopy Flight', image: '/assets/munnar_zipline.png', desc: 'High-speed thrill over green tea valleys.' },
+      { name: 'Rugged Jeep Trail', image: '/assets/insta_jeep.png', desc: 'Rugged offroad tracks deep into forest hills.' },
+      { name: 'Anamudi Peak Trails', image: '/assets/munnar_anamudi.png', desc: 'Majestic views from South India’s highest peak region.' }
+    ],
+    itinerary: [
+      { day: 'Day 1', title: '4x4 Thar Pick-Up & Mountain Expedition', desc: 'Board your custom offroad 4x4 and head into the rugged wilderness for high-altitude trail driving.' },
+      { day: 'Day 2', title: 'Kolukkumalai Sunrise & Zipline Adventure', desc: 'Early 4:00 AM Jeep drive to Kolukkumalai peak for clouds sunrise, followed by afternoon zipline aerial thrills.' },
+      { day: 'Day 3', title: 'Forest Stream Crossing & Summit Trek', desc: 'Trek along hidden ridge trails and relax near pristine mountain streams before heading back.' }
+    ],
+    included: ['4x4 Thar Jeep & Expert Offroad Driver', 'Safety Helmets & Gear', 'Zipline Activity Pass', 'High-Altitude Guide', 'First Aid & Safety Support']
   }
 ];
 
@@ -158,6 +218,7 @@ export default function EscapeSection() {
   const [imageIndices, setImageIndices] = useState([0, 0, 0, 0, 0, 0, 0]);
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const [lightboxImageIdx, setLightboxImageIdx] = useState(0);
+  const [selectedPackage, setSelectedPackage] = useState(null);
 
   const requestRef = useRef(null);
   const isScrollingRef = useRef(false);
@@ -292,8 +353,19 @@ export default function EscapeSection() {
                   </ul>
                   
                   <div className="escape-card-footer">
-                    <span className="escape-card-price">{pkg.price}</span>
-                    <a href="#booking" className="btn-escape-explore">EXPLORE</a>
+                    <button 
+                      type="button" 
+                      className="btn-escape-explore" 
+                      onClick={() => setSelectedPackage(pkg)}
+                      title="Explore Package Details"
+                      aria-label={`Explore ${pkg.title}`}
+                    >
+                      <span className="btn-explore-text">Explore Details</span>
+                      <svg className="btn-explore-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -451,6 +523,116 @@ export default function EscapeSection() {
             </div>
             
             <button className="lightbox-btn next-btn" onClick={nextLightboxImage} aria-label="Next image">&#10095;</button>
+          </div>
+        </div>
+      )}
+      {/* Package Detail Modal */}
+      {selectedPackage && (
+        <div className="package-modal-overlay" onClick={() => setSelectedPackage(null)}>
+          <div className="package-modal-content" onClick={(e) => e.stopPropagation()}>
+            <button 
+              className="package-modal-close" 
+              onClick={() => setSelectedPackage(null)} 
+              aria-label="Close modal"
+            >
+              &times;
+            </button>
+
+            {/* Modal Header */}
+            <div className="package-modal-header">
+              <span className="package-modal-tagline">{selectedPackage.tagline}</span>
+              <h2 className="package-modal-title">{selectedPackage.title}</h2>
+              <p className="package-modal-subtitle">{selectedPackage.subtitle}</p>
+            </div>
+
+            {/* Overview */}
+            <div className="package-modal-section">
+              <h3 className="package-section-heading">Overview</h3>
+              <p className="package-modal-desc">{selectedPackage.overview}</p>
+            </div>
+
+            {/* Highlights */}
+            <div className="package-modal-section">
+              <h3 className="package-section-heading">Key Highlights</h3>
+              <div className="package-highlights-grid">
+                {selectedPackage.highlights.map((h, i) => (
+                  <div className="package-highlight-chip" key={i}>
+                    <span>{h}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Included Sites & Photos */}
+            <div className="package-modal-section">
+              <h3 className="package-section-heading">Sites & Attractions Photos</h3>
+              <div className="package-sites-grid">
+                {selectedPackage.sites.map((site, i) => (
+                  <div className="package-site-card" key={i}>
+                    <div 
+                      className="package-site-img" 
+                      style={{ backgroundImage: `url(${site.image})` }} 
+                    />
+                    <div className="package-site-info">
+                      <h4>{site.name}</h4>
+                      <p>{site.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Itinerary Breakdown */}
+            <div className="package-modal-section">
+              <h3 className="package-section-heading">Trip Itinerary Breakdown</h3>
+              <div className="package-itinerary-list">
+                {selectedPackage.itinerary.map((item, i) => (
+                  <div className="package-itinerary-item" key={i}>
+                    <span className="itinerary-day-badge">{item.day}</span>
+                    <div className="itinerary-item-body">
+                      <h4>{item.title}</h4>
+                      <p>{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Included Facilities */}
+            <div className="package-modal-section">
+              <h3 className="package-section-heading">What's Included</h3>
+              <ul className="package-inclusions-list">
+                {selectedPackage.included.map((inc, i) => (
+                  <li key={i}>
+                    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="10" cy="10" r="9" fill="var(--primary-light)" stroke="var(--primary)" strokeWidth="1.5" />
+                      <path d="M6 10L9 13L14 7" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    <span>{inc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Modal Actions */}
+            <div className="package-modal-actions">
+              <button 
+                className="btn-modal-book"
+                onClick={() => {
+                  setSelectedPackage(null);
+                  const bookingEl = document.getElementById('booking');
+                  if (bookingEl) bookingEl.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Book This Package
+              </button>
+              <button 
+                className="btn-modal-secondary"
+                onClick={() => setSelectedPackage(null)}
+              >
+                Close &amp; Return
+              </button>
+            </div>
           </div>
         </div>
       )}

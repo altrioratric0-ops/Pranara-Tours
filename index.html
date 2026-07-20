@@ -312,6 +312,8 @@
       display: flex;
       gap: 28px;
       list-style: none;
+      align-items: center;
+      margin-left: auto;
     }
 
     .nav-links a {
@@ -1332,35 +1334,65 @@
 
     .escape-card-footer {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       margin-top: auto;
       padding-top: 20px;
       border-top: 1px solid var(--border);
+      width: 100%;
     }
 
     .escape-card-price {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--text-dark);
+    }
+
+    .escape-card-explore-label {
+      display: none;
     }
 
     .btn-escape-explore {
+      width: 100%;
+      max-width: 240px;
+      height: 46px;
+      border-radius: 12px;
       border: 2px solid var(--primary);
-      color: var(--primary);
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 0.85rem;
-      border-radius: 8px;
-      padding: 8px 20px;
+      background: var(--primary);
+      color: #ffffff;
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
-      letter-spacing: 0.05em;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.2);
+    }
+
+    .btn-explore-text {
+      font-family: var(--font-heading, inherit);
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .btn-explore-arrow {
+      transition: transform 0.3s ease;
     }
 
     .btn-escape-explore:hover {
-      background: var(--primary);
+      background: var(--primary-dark, #047857);
+      border-color: var(--primary-dark, #047857);
       color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35);
+    }
+
+    .btn-escape-explore:hover .btn-explore-arrow {
+      transform: translateX(4px);
     }
 
     /* Adventures Carousel */
@@ -1960,6 +1992,9 @@
       </button>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
+        <li><a href="#escapes">Packages</a></li>
+        <li><a href="#heritage">Experiences</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#testimonials">Reviews</a></li>
         <li><a href="#booking" class="nav-cta">Book Now</a></li>
       </ul>
@@ -2129,8 +2164,13 @@
                 </li>
               </ul>
               <div class="escape-card-footer">
-                <span class="escape-card-price">From ₹6,999 / night</span>
-                <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+                <button type="button" class="btn-escape-explore" onclick="openPackageModal('escape-stays')" title="Explore Package Details">
+                  <span class="btn-explore-text">Explore Details</span>
+                  <svg class="btn-explore-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -2177,8 +2217,13 @@
                 </li>
               </ul>
               <div class="escape-card-footer">
-                <span class="escape-card-price">From ₹9,999 / person</span>
-                <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+                <button type="button" class="btn-escape-explore" onclick="openPackageModal('tour-travel')" title="Explore Package Details">
+                  <span class="btn-explore-text">Explore Details</span>
+                  <svg class="btn-explore-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -2225,8 +2270,13 @@
                 </li>
               </ul>
               <div class="escape-card-footer">
-                <span class="escape-card-price">From ₹12,999 / person</span>
-                <a href="#booking" class="btn-escape-explore">EXPLORE</a>
+                <button type="button" class="btn-escape-explore" onclick="openPackageModal('offroad-adventure')" title="Explore Package Details">
+                  <span class="btn-explore-text">Explore Details</span>
+                  <svg class="btn-explore-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
               </div>
             </div>
           </div>
@@ -2234,7 +2284,7 @@
       </div>
 
       <!-- Subsection 2: Adventures -->
-      <div class="escape-adventures-container">
+      <div class="escape-adventures-container" id="gallery">
         <div class="escape-title-wrapper">
           <div class="leaf-decor left-decor">
             <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -3170,6 +3220,15 @@
 
     // ─── Set min date to today ───
     document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+    // ─── Package Details Handler ───
+    window.openPackageModal = function(pkgId) {
+      const booking = document.getElementById('booking');
+      if (booking) {
+        booking.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
   </script>
 </body>
+
 </html>
