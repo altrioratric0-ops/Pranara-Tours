@@ -17,9 +17,156 @@
     <!-- Leaflet Map CSS & JS CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+    <style>
+      /* Minimalist Loading Theme */
+      #app-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        background: #FAF9F5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: all;
+      }
+
+      #app-preloader.preloader-fade-out {
+        opacity: 0 !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+      }
+
+      .minimal-logo-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 10px 30px rgba(46, 125, 50, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+        animation: minimalFloat 2.4s ease-in-out infinite;
+      }
+
+      .minimal-logo-container::before {
+        content: '';
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        border-top-color: #D97706;
+        border-right-color: #2E7D32;
+        animation: minimalSpin 1.4s cubic-bezier(0.5, 0.1, 0.5, 0.9) infinite;
+      }
+
+      @keyframes minimalSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      @keyframes minimalFloat {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+
+      .minimal-logo-img {
+        width: 68px;
+        height: 68px;
+        object-fit: contain;
+      }
+
+      .minimal-brand {
+        font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: #1A2E1C;
+        margin-top: 22px;
+        text-transform: uppercase;
+      }
+
+      .minimal-subtext {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.25em;
+        color: #2E7D32;
+        margin-top: 4px;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+
+      .minimal-progress-bar {
+        width: 120px;
+        height: 2.5px;
+        background: rgba(46, 125, 50, 0.12);
+        border-radius: 4px;
+        margin-top: 22px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .minimal-progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #2E7D32, #D97706);
+        border-radius: 4px;
+        animation: minimalProgress 0.3s ease-out forwards;
+      }
+
+      @keyframes minimalProgress {
+        0% { width: 0%; }
+        100% { width: 100%; }
+      }
+    </style>
   </head>
   <body>
+    <div id="app-preloader">
+      <div class="minimal-logo-container">
+        <img src="/assets/logo.png" alt="Pranara Logo" class="minimal-logo-img" />
+      </div>
+      <div class="minimal-brand">PRANARA</div>
+      <div class="minimal-subtext">EXPERIENCE KERALA</div>
+      <div class="minimal-progress-bar">
+        <div class="minimal-progress-fill"></div>
+      </div>
+    </div>
     <div id="root"></div>
+
+    <script>
+      (function() {
+        var startTime = Date.now();
+        var minTime = 300;
+        function dismissPreloader() {
+          var elapsed = Date.now() - startTime;
+          var delay = Math.max(0, minTime - elapsed);
+          setTimeout(function() {
+            var loader = document.getElementById('app-preloader');
+            if (loader) {
+              loader.classList.add('preloader-fade-out');
+              setTimeout(function() {
+                if (loader && loader.parentNode) {
+                  loader.parentNode.removeChild(loader);
+                }
+              }, 500);
+            }
+          }, delay);
+        }
+        if (document.readyState === 'complete') {
+          dismissPreloader();
+        } else {
+          window.addEventListener('load', dismissPreloader);
+          setTimeout(dismissPreloader, 1000);
+        }
+      })();
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

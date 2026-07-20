@@ -40,13 +40,11 @@ export default function Footer() {
             </ul>
           </div>
           <div className="footer-col">
-            <h4>Explore</h4>
+            <h4>Contact Us</h4>
             <ul>
-              <li><a href="#planner">Trekking</a></li>
-              <li><a href="#planner">Tea Plantations</a></li>
-              <li><a href="#planner">Waterfall Trails</a></li>
-              <li><a href="#planner">Houseboat Stay</a></li>
-              <li><a href="#planner">Wildlife Safari</a></li>
+              <li>📞 <a href="tel:+919497869454">+91 94978 69454</a></li>
+              <li>💬 <a href="https://wa.me/916374502007" target="_blank" rel="noopener noreferrer">+91 63745 02007</a></li>
+              <li>📨 <a href="mailto:hellopranara@gmail.com">hellopranara@gmail.com</a></li>
             </ul>
           </div>
         </div>
