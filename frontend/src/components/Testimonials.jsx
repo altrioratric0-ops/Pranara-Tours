@@ -71,7 +71,7 @@ const STATIC_TESTIMONIALS = [
     avatar_initials: 'AF',
     rating: 5,
     quote: 'Our group trip to Munnar with Pranara was an absolute blast! From the high-altitude viewpoints to walking through the green tea gardens, the entire experience was perfectly planned and executed. The team made sure we captured the best memories.',
-    videoSrc: '/assets/munnar_video_testimonial.mp4',
+    videoSrc: '/assets/munnar_video_testimonial_5.mp4',
     isVideo: true,
     tagline: 'TRAVEL DIARIES • FRIENDSHIP GETAWAY',
     subtitle: 'Experience the Magic of Munnar',
