@@ -144,11 +144,14 @@ export default function LocalHeritage() {
               </svg>
             </div>
 
-            {/* Background Graphic Bottom */}
-            <div 
-              className="story-bg-image" 
-              style={{ backgroundImage: "url('/assets/munnar_guides_jeep.png')" }}
-            ></div>
+            {/* Framed Picture in Story Card */}
+            <div className="story-frame-container">
+              <img 
+                src="/assets/munnar_guides_jeep.png" 
+                alt="Pranara Local Guides Jeep" 
+                className="story-framed-img" 
+              />
+            </div>
           </div>
 
           {/* Column 2: Places We Call Home Map Card */}
@@ -172,7 +175,7 @@ export default function LocalHeritage() {
                   />
 
                   {/* Compass Rose top right */}
-                  <g className="map-compass" transform="translate(410, 60)" stroke="rgba(43, 58, 47, 0.4)" strokeWidth="1" fill="none">
+                  <g className="map-compass" transform="translate(320, 2)" stroke="rgba(43, 58, 47, 0.4)" strokeWidth="1" fill="none">
                     <circle cx="20" cy="20" r="16" strokeDasharray="2,2" />
                     <line x1="20" y1="0" x2="20" y2="40" />
                     <line x1="0" y1="20" x2="40" y2="20" />
@@ -180,7 +183,8 @@ export default function LocalHeritage() {
                     <polygon points="20 36 23 20 20 23" fill="rgba(43, 58, 47, 0.4)" />
                     <polygon points="4 20 20 23 17 20" fill="rgba(43, 58, 47, 0.4)" />
                     <polygon points="36 20 20 23 23 20" fill="rgba(43, 58, 47, 0.4)" />
-                    <text x="18" y="49" fontSize="8" fontWeight="bold" fill="rgba(43, 58, 47, 0.7)">S</text>
+                    <text x="20" y="-3" textAnchor="middle" fontSize="9" fontWeight="bold" fill="rgba(43, 58, 47, 0.85)" stroke="none">N</text>
+                    <text x="20" y="50" textAnchor="middle" fontSize="10" fontWeight="bold" fill="rgba(43, 58, 47, 0.85)" stroke="none">S</text>
                   </g>
 
                   {/* Location Points Markers */}
@@ -220,7 +224,7 @@ export default function LocalHeritage() {
                           x={loc.x + loc.dx} 
                           y={loc.y + loc.dy} 
                           textAnchor={loc.textAnchor} 
-                          fontSize="15.5" 
+                          fontSize="12.5" 
                           fontWeight="700" 
                           stroke="#ffffff"
                           strokeWidth="4.5"
@@ -235,7 +239,7 @@ export default function LocalHeritage() {
                           x={loc.x + loc.dx} 
                           y={loc.y + loc.dy} 
                           textAnchor={loc.textAnchor} 
-                          fontSize="15.5" 
+                          fontSize="12.5" 
                           fontWeight={isActive ? "800" : "700"} 
                           fill={isActive ? "#1B5E20" : "#2E7D32"} 
                           style={{ pointerEvents: 'none', transition: 'all 0.2s ease' }}
