@@ -9,6 +9,18 @@ const DESTINATIONS = [
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
     thumb: '/assets/munnar_kolukkumalaigallery.jpeg'
   },
+  
+
+  {
+    id: 'Attukad Waterfalls',
+    name: 'Attukad Waterfalls',
+    tagline: 'Breathtaking Waterfall Views',
+    desc: 'Experience the stunning beauty of Attukad Waterfalls, surrounded by lush greenery and the soothing sounds of nature. A perfect destination for photography and nature lovers.',
+    bg: '/assets/tour_attukad_waterfalls.jpeg',
+    thumb: '/assets/tour_attukad_waterfalls.jpeg'
+  },
+
+
   {
     id: 'Tea Estate',
     name: 'Tea Estate',
@@ -26,12 +38,12 @@ const DESTINATIONS = [
     thumb: '/assets/tour_pothamedu.jpeg'
   },
   {
-    id: 'Jeep Safari ',
-    name: 'Jeep Safari ',
-    tagline: 'Adventure Beyond The Clouds',
-    desc: 'Embark on an exhilarating off road jeep safari to the legendary Kolukkumalai. Travel through rugged mountain trails, witness spectacular sunrise views, and explore the worlds highest tea plantations above the clouds.',
-    bg: '/assets/tour_jeep_safari.jpeg',
-    thumb: '/assets/tour_jeep_safari.jpeg'
+    id: 'Kolukkumalai ',
+    name: 'Kolukkumalai ',
+    tagline: 'Misty Valleys & Tea Gardens',
+    desc: 'Witness a golden sunrise above the clouds at Kolukkumalai, trek through high cliff waterfall paths, and explore historic tea plantations wrapped in refreshing mountain fog.',
+    bg: '/assets/tour_Kolukkumalai.jpg',
+    thumb: '/assets/tour_Kolukkumalai.jpg'
   },
   {
     id: 'Rustic Bamboo Hut',
@@ -48,7 +60,37 @@ const DESTINATIONS = [
     desc: 'Experience the stunning beauty of Munnar from one of the most popular viewpoints. Enjoy panoramic vistas of tea plantations, rolling hills, and mist-covered mountains.',
     bg: '/assets/tour_echo_ponit.jpeg',
     thumb: '/assets/tour_echo_ponit.jpeg'
+  },
+
+
+    {
+    id: 'Flower Garden',
+    name: 'Flower Garden',
+    tagline: 'A World of Colorful Blooms',
+    desc: 'Stroll through the vibrant colors of the flower garden, where exotic blooms create a mesmerizing spectacle. A perfect spot for nature enthusiasts and photographers.',
+    bg: '/assets/tour_flower_garden.jpeg',
+    thumb: '/assets/tour_flower_garden.jpeg'
+  },
+
+
+    {
+    id: 'Mattupetty Dam',
+    name: 'Mattupetty Dam',
+    tagline: 'Scenic Dam Views',
+    desc: 'Enjoy the breathtaking views of Mattupetty Dam, surrounded by lush greenery and the soothing sounds of nature. A perfect destination for photography and nature lovers.',
+    bg: '/assets/tour_mattupetty_dam.jpeg',
+    thumb: '/assets/tour_mattupetty_dam.jpeg'
+  },
+
+  {
+    id: 'Eravikulam National Park',
+    name: 'Eravikulam National Park',
+    tagline: 'Breathtaking Scenic Views',
+    desc: 'Explore the diverse wildlife and stunning landscapes of Eravikulam National Park, home to the endangered Nilgiri Tahr and numerous endemic species.',
+    bg: '/assets/tour_eravikulam_national_park.jpeg',
+    thumb: '/assets/tour_eravikulam_national_park.jpeg'
   }
+
 ];
 
 export default function CreativeGallery() {
@@ -197,10 +239,10 @@ export default function CreativeGallery() {
 
       <div className="gallery-nav-controls" aria-label="Gallery navigation">
         <button type="button" className="gallery-nav-btn" onClick={handlePrev} aria-label="Previous destination">
-          <span>←</span>
+          <span>↑</span>
         </button>
         <button type="button" className="gallery-nav-btn" onClick={handleNext} aria-label="Next destination">
-          <span>→</span>
+          <span>↓</span>
         </button>
       </div>
 
