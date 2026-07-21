@@ -101,6 +101,7 @@ export default function CreativeGallery() {
   const [direction, setDirection] = useState('next');
   const [contentKey, setContentKey] = useState(0);
   const sectionRef = useRef(null);
+  const cardRefs = useRef([]);
 
   const activeDest = DESTINATIONS[activeIdx];
 
@@ -144,12 +145,28 @@ export default function CreativeGallery() {
     return () => window.clearTimeout(timer);
   }, [isAnimating]);
 
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const interval = window.setInterval(() => {
+      const nextIdx = (activeIdx + 1) % DESTINATIONS.length;
+      handleSelect(nextIdx, 'next');
+    }, 5000);
+
+    return () => window.clearInterval(interval);
+  }, [activeIdx, isVisible]);
+
   const handleSelect = (nextIdx, navDirection = 'next') => {
     if (nextIdx === activeIdx) return;
     setDirection(navDirection);
     setIsAnimating(true);
     setActiveIdx(nextIdx);
     setContentKey((prev) => prev + 1);
+    cardRefs.current[nextIdx]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'nearest'
+    });
   };
 
   const handleNext = () => {
@@ -225,6 +242,9 @@ export default function CreativeGallery() {
           {DESTINATIONS.map((dest, idx) => (
             <button
               key={dest.id}
+              ref={(element) => {
+                cardRefs.current[idx] = element;
+              }}
               type="button"
               className={`gallery-card-item ${idx === activeIdx ? 'active' : ''}`}
               onClick={() => handleSelect(idx, idx > activeIdx ? 'next' : 'prev')}

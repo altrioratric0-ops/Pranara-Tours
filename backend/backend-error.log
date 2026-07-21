@@ -162,3 +162,15 @@ C:\pranara\Pranara-Tours\backend\app.py:523: DeprecationWarning: datetime.dateti
 2026-07-21 14:37:29,604 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:37:29] "GET /api/testimonials HTTP/1.1" 200 -
 2026-07-21 14:37:31,670 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
 2026-07-21 14:37:31,678 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:37:31] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 14:39:32,242 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 14:39:32,244 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:39:32] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 14:39:34,319 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 14:39:34,326 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:39:34] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 14:40:25,505 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 14:40:25,507 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:40:25] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 14:40:27,567 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 14:40:27,571 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 14:40:27] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 15:10:37,346 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 15:10:37,384 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 15:10:37] "GET /api/testimonials HTTP/1.1" 200 -
+2026-07-21 15:10:39,476 [ERROR] pranara-api: Supabase testimonials query error: [WinError 10061] No connection could be made because the target machine actively refused it
+2026-07-21 15:10:39,478 [INFO] werkzeug: 127.0.0.1 - - [21/Jul/2026 15:10:39] "GET /api/testimonials HTTP/1.1" 200 -
