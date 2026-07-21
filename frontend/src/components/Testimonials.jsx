@@ -1,323 +1,295 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { fetchTestimonials } from '../api/client';
 
-/* ─── Static fallback testimonials (always shown if API is down) ─── */
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+/* ─── Static fallback testimonials ─── */
 const STATIC_TESTIMONIALS = [
   {
     id: 1,
     name: 'The Thompson Family',
     location: 'London, United Kingdom',
-    avatar_initials: 'TF',
+    destination: 'Munnar Tea Safari, Kerala',
+    avatar: '/assets/munnar_uk_family.jpg',
     rating: 5,
-    quote: 'From the UK to the heart of Munnar. Thank you for letting us be part of your family\'s story. See you again, The Pranara Way.',
-    heroImg: '/assets/munnar_uk_family.jpg',
-    thumbImg: '/assets/munnar_uk_family.jpg',
-    tagline: 'FAMILY JOURNEY • MUNNAR SAFARI',
-    subtitle: 'From the UK to the Heart of Munnar',
-    note: 'See you again, The Pranara Way!',
-    pageNum: '01',
-    hideLeftFooter: true,
+    quote: 'From the UK to the heart of Munnar! Every detail was handled with utmost elegance. The private tea estate tour and misty mountain views were breathtaking.',
+    tagline: 'LUXURY FAMILY SAFARI',
   },
   {
     id: 2,
     name: 'The Adhikari Family',
     location: 'Mumbai, India',
-    avatar_initials: 'AF',
+    destination: 'River Streams & Valley, Munnar',
+    avatar: '/assets/munnar_river_family.jpg',
     rating: 5,
-    quote: 'Every journey becomes special because of the people in it. The pristine river streams, the lush green forests, and the memories we shared in Munnar. Thank you for letting Pranara be a part of yours. Until Next Time...',
-    heroImg: '/assets/munnar_river_family.jpg',
-    thumbImg: '/assets/munnar_river_family.jpg',
-    tagline: 'PRANARA STORIES • RIVER GETAWAY',
-    subtitle: 'Every Journey Becomes Special',
-    note: 'Until Next Time... Pranara 🍃',
-    pageNum: '02',
-    hideLeftFooter: true,
+    quote: 'Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.',
+    tagline: 'RIVER & NATURE RETREAT',
   },
   {
     id: 3,
     name: 'Mr. & Mrs. Sharma',
     location: 'Delhi, India',
-    avatar_initials: 'MS',
+    destination: 'Chokkarmudi & Private Estates',
+    avatar: '/assets/munnar_pradeep_review.jpg',
     rating: 5,
-    quote: 'A perfect blend of comfort, adventure, and authentic local experiences. Every detail was handled with care, making this one of our most memorable trips. Highly recommend Pranara for anyone looking to explore Munnar in style and comfort.',
-    heroImg: '/assets/munnar_pradeep_review.jpg',
-    thumbImg: '/assets/munnar_pradeep_review.jpg',
-    tagline: 'TRUSTED GUIDANCE • MEMORABLE JOURNEYS',
-    subtitle: 'Trusted Guidance, Memorable Journeys',
-    note: 'Highly recommend Mr. Pradeep!',
-    pageNum: '03',
-    hideLeftFooter: true,
+    quote: 'A perfect blend of luxury, adventure, and authentic Kerala heritage. Every detail was handled with care, making this our most memorable trip ever.',
+    tagline: 'HERITAGE & COMFORT',
   },
   {
     id: 4,
     name: 'Sarah, Marc & Amit',
     location: 'Berlin, Germany',
-    avatar_initials: 'SMA',
+    destination: 'Chokkarmudi Summit Trek',
+    avatar: '/assets/munnar_chokkarmudi_trek.jpg',
     rating: 5,
-    quote: 'From scenic tea plantations to breathtaking viewpoints, every experience exceeded our expectations. A premium travel experience we would gladly recommend.',
-    heroImg: '/assets/munnar_chokkarmudi_trek.jpg',
-    thumbImg: '/assets/munnar_chokkarmudi_trek.jpg',
-    tagline: 'TREKKING • CHOKKARMUDI PEAK',
-    subtitle: 'Voices from the Summit',
-    note: 'It was more than just a trek, it was an emotion!',
-    pageNum: '04',
-    hideLeftFooter: true,
+    quote: 'Standing above the clouds at Chokkarmudi Peak was surreal! It was more than just a trek—it was a soulful journey through untouched wilderness.',
+    tagline: 'SUMMIT TREK EXPEDITION',
   },
   {
     id: 5,
     name: 'Amal & Friends',
     location: 'Chennai, India',
-    avatar_initials: 'AF',
+    destination: 'High-Altitude Munnar Viewpoints',
+    avatar: '/assets/tour_munnar.png',
     rating: 5,
-    quote: 'Our group trip to Munnar with Pranara was an absolute blast! From the high-altitude viewpoints to walking through the green tea gardens, the entire experience was perfectly planned and executed. The team made sure we captured the best memories.',
-    videoSrc: '/assets/munnar_video_testimonial_5.mp4',
-    isVideo: true,
-    tagline: 'TRAVEL DIARIES • FRIENDSHIP GETAWAY',
-    subtitle: 'Experience the Magic of Munnar',
-    note: 'Watch the journey unfold!',
-    pageNum: '05',
-    hideLeftFooter: true,
+    quote: 'Our group trip to Munnar was an absolute blast! High-altitude viewpoints, walking through emerald tea gardens, and flawless private planning.',
+    tagline: 'FRIENDSHIP ESCAPE',
+  },
+  {
+    id: 6,
+    name: 'Ananya & Vikram',
+    location: 'Bengaluru, India',
+    destination: 'Alleppey Backwaters Cruise',
+    avatar: '/assets/tour_alleppey.png',
+    rating: 5,
+    quote: 'Gliding silently through the backwaters on a luxury private houseboat at sunset was pure bliss. Pranara exceeded every expectation.',
+    tagline: 'BACKWATER SANCTUARY',
+  },
+  {
+    id: 7,
+    name: 'Claire & Jean-Pierre',
+    location: 'Paris, France',
+    destination: 'Wayanad Rainforest & Wildlife',
+    avatar: '/assets/tour_wayanad.png',
+    rating: 5,
+    quote: 'A magical immersion into Kerala’s rich wildlife and treehouse resorts. Warm hospitality, exquisite cuisine, and flawless curation.',
+    tagline: 'LUXURY ECO RETREAT',
   },
 ];
 
-/* ─── Star renderer ─── */
-function Stars({ rating }) {
+/* ─── Star rating component ─── */
+function StarRating({ rating = 5 }) {
   return (
-    <div className="book-stars">
+    <div className="coverflow-stars-row" aria-label={`Rating: ${rating} out of 5 stars`}>
       {Array.from({ length: 5 }, (_, i) => (
-        <svg key={i} width="15" height="15" viewBox="0 0 24 24"
-          fill={i < rating ? '#facc15' : 'none'}
-          stroke={i < rating ? '#facc15' : 'rgba(255,255,255,0.35)'}
-          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        <svg
+          key={i}
+          className="coverflow-star-icon"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill={i < rating ? '#D4AF37' : 'none'}
+          stroke={i < rating ? '#D4AF37' : 'rgba(212, 175, 55, 0.4)'}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
         </svg>
       ))}
     </div>
   );
 }
 
-/* ─── Left page: full-bleed hero photo + footer strip ─── */
-function LeftPage({ data }) {
-  if (data.hideLeftFooter) {
-    return (
-      <div 
-        className="book-left-content" 
-        style={{ 
-          height: '100%', 
-          padding: '24px', 
-          boxSizing: 'border-box', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center' 
-        }}
-      >
-        <div 
-          className="testimonial-card-frame"
-          style={{
-            width: '100%',
-            height: '100%',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.3)',
-            background: '#fffef9',
-            display: 'flex',
-            position: 'relative'
-          }}
-        >
-          {data.isVideo ? (
-            <video 
-              className="book-hero-video"
-              src={data.videoSrc}
-              controls
-              muted
-              autoPlay
-              loop
-              playsInline
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover'
-              }}
-            />
-          ) : (
-            <div 
-              className="book-hero-photo" 
-              style={{ 
-                width: '100%',
-                height: '100%',
-                backgroundImage: `url(${data.heroImg})`,
-                backgroundSize: '100% 100%',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                boxShadow: 'none'
-              }} 
-            />
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="book-left-content">
-      <div className="book-hero-photo" style={{ backgroundImage: `url(${data.heroImg})` }} />
-      <div className="book-left-footer">
-        <div className="book-thumb-photo" style={{ backgroundImage: `url(${data.thumbImg})` }} />
-        <div className="book-left-meta">
-          <Stars rating={data.rating} />
-          <p className="book-left-note">{data.note}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ─── Right page: journal narrative ─── */
-function RightPage({ data }) {
-  return (
-    <div className="book-right-content">
-      <span className="book-page-number">— {data.pageNum} —</span>
-      <span className="book-right-tagline">{data.tagline}</span>
-      <h3 className="book-right-title">{data.subtitle}</h3>
-      <blockquote className="book-right-quote">{data.quote}</blockquote>
-      <div className="book-right-divider" />
-      <div className="book-right-author">
-        <div className="book-author-avatar">
-          {data.avatar_initials || (data.name ? data.name.charAt(0) : 'P')}
-        </div>
-        <div className="book-author-info">
-          <h5>{data.name}</h5>
-          <p>{data.location}</p>
-        </div>
-        <svg className="book-heart-icon" width="18" height="18" viewBox="0 0 24 24" fill="var(--primary)" stroke="none">
-          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
-      </div>
-    </div>
-  );
-}
-
-/* ════════════════════════════════════════════
-   MAIN COMPONENT
-════════════════════════════════════════════ */
 export default function Testimonials() {
   const [testimonials, setTestimonials] = useState(STATIC_TESTIMONIALS);
-  const [activeIndex, setActiveIndex]   = useState(0);
-  const [isFlipping, setIsFlipping]     = useState(false);
-  const [flipDir, setFlipDir]           = useState('next');
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
 
-  /* Try to enrich with API data; fall back to static if it fails */
   useEffect(() => {
     fetchTestimonials()
       .then((data) => {
-        if (!data || data.length === 0) return; // keep static
+        if (!data || data.length === 0) return;
         const merged = data.map((t, idx) => {
           const s = STATIC_TESTIMONIALS[idx % STATIC_TESTIMONIALS.length];
           return {
             ...s,
             ...t,
-            heroImg:  s.heroImg,
-            thumbImg: s.thumbImg,
-            tagline:  s.tagline,
-            subtitle: s.subtitle,
-            note:     s.note,
-            pageNum:  String(idx + 1).padStart(2, '0'),
+            avatar: t.avatar || s.avatar,
+            destination: t.destination || s.destination || 'Kerala, India',
           };
         });
         setTestimonials(merged);
       })
-      .catch(() => { /* keep static fallback */ });
+      .catch(() => {
+        /* Keep static fallback */
+      });
   }, []);
 
-  const flip = (dir) => {
-    if (isFlipping || testimonials.length < 2) return;
-    setFlipDir(dir);
-    setIsFlipping(true);
-  };
-
-  const total   = testimonials.length;
-  const nextIdx = (activeIndex + 1) % total;
-  const prevIdx = (activeIndex - 1 + total) % total;
-  const cur = testimonials[activeIndex];
-  const nxt = testimonials[nextIdx];
-  const prv = testimonials[prevIdx];
-
   return (
-    <section className="book-testimonials-section" id="testimonials">
-      <div className="container">
+    <section className="testimonials-coverflow-section" id="testimonials">
+      {/* Background ambient glow shapes */}
+      <div className="coverflow-bg-ambient" aria-hidden="true">
+        <div className="ambient-blob blob-1" />
+        <div className="ambient-blob blob-2" />
+      </div>
 
-        {/* ── Header ── */}
-        <div className="book-header-row">
-          <div>
-            <h2 className="section-title"><span className="accent">Explorers Say</span></h2>
-            <p className="section-subtitle">
-              Leaf through our journal of real travel stories.
+      <div className="testimonials-container">
+        {/* Section Header */}
+        <div className="coverflow-header-wrapper">
+          <div className="coverflow-header-text">
+            <div className="coverflow-badge">
+              <span className="badge-dot" />
+              <span>GUEST EXPERIENCES & STORIES</span>
+            </div>
+            <h2 className="coverflow-section-title">
+              Voices of <span className="text-gold-gradient">Luxury Travel</span>
+            </h2>
+            <p className="coverflow-section-subtitle">
+              Discover how explorers from around the globe experienced Kerala’s breathtaking beauty with Pranara’s bespoke journeys.
             </p>
           </div>
-          <div className="book-navigation">
-            <button className="book-nav-btn" onClick={() => flip('prev')} aria-label="Previous page">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+
+          {/* Navigation Controls */}
+          <div className="coverflow-nav-controls">
+            <button
+              ref={prevRef}
+              className="coverflow-nav-btn prev-btn"
+              aria-label="Previous Testimonial"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
               </svg>
             </button>
-            <span className="book-page-counter">{activeIndex + 1} / {total}</span>
-            <button className="book-nav-btn" onClick={() => flip('next')} aria-label="Next page">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            <button
+              ref={nextRef}
+              className="coverflow-nav-btn next-btn"
+              aria-label="Next Testimonial"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
               </svg>
             </button>
           </div>
         </div>
 
-        {/* ── 3D Book ── */}
-        <div className="book-3d-wrapper">
-          <div className="book-hardcover">
+        {/* 3D Coverflow Swiper Carousel */}
+        <div className="coverflow-carousel-wrapper">
+          <Swiper
+            modules={[EffectCoverflow, Navigation, Pagination, Autoplay]}
+            effect="coverflow"
+            grabCursor={true}
+            centeredSlides={true}
+            loop={true}
+            speed={750}
+            autoplay={{
+              delay: 4500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            coverflowEffect={{
+              rotate: 12,
+              stretch: 0,
+              depth: 220,
+              modifier: 1.25,
+              slideShadows: false,
+            }}
+            pagination={{
+              el: '.coverflow-swiper-pagination',
+              clickable: true,
+            }}
+            navigation={{
+              prevEl: prevRef.current,
+              nextEl: nextRef.current,
+            }}
+            onBeforeInit={(swiper) => {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 1.15,
+                spaceBetween: 16,
+              },
+              640: {
+                slidesPerView: 1.6,
+                spaceBetween: 24,
+              },
+              1024: {
+                slidesPerView: 2.3,
+                spaceBetween: 32,
+              },
+              1280: {
+                slidesPerView: 2.7,
+                spaceBetween: 40,
+              },
+            }}
+            className="testimonial-coverflow-swiper"
+          >
+            {testimonials.map((item) => (
+              <SwiperSlide key={item.id} className="testimonial-coverflow-slide">
+                <div className="testimonial-card-luxury">
+                  {/* Decorative background quote element */}
+                  <div className="card-quote-watermark" aria-hidden="true">“</div>
 
-            {/* Static Left Page */}
-            <div className="book-page book-page-left">
-              <LeftPage data={isFlipping ? (flipDir === 'next' ? nxt : prv) : cur} />
-            </div>
+                  {/* Destination Pill Badge */}
+                  <div className="card-destination-tag">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                    </svg>
+                    <span>{item.destination}</span>
+                  </div>
 
-            {/* Static Right Page */}
-            <div className="book-page book-page-right">
-              <RightPage data={isFlipping ? (flipDir === 'next' ? nxt : prv) : cur} />
-            </div>
+                  {/* Circular Traveler Photo */}
+                  <div className="traveler-photo-wrapper">
+                    <img
+                      src={item.avatar}
+                      alt={item.name}
+                      className="traveler-photo-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/assets/logo.png';
+                      }}
+                    />
+                    <div className="traveler-photo-ring" />
+                    <div className="verified-badge" title="Verified Explorer">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
+                  </div>
 
-            {/* ── Animated flipper ── */}
-            {isFlipping && (
-              <motion.div
-                key={`flip-${activeIndex}-${flipDir}`}
-                className={`book-page-flipper ${flipDir}`}
-                initial={{ rotateY: 0 }}
-                animate={{ rotateY: flipDir === 'next' ? -180 : 180 }}
-                transition={{ type: 'spring', stiffness: 42, damping: 13 }}
-                onAnimationComplete={() => {
-                  setActiveIndex(flipDir === 'next' ? nextIdx : prevIdx);
-                  setIsFlipping(false);
-                }}
-                style={{
-                  transformOrigin: flipDir === 'next' ? 'left center' : 'right center',
-                  left:  flipDir === 'next' ? '50%' : '0',
-                  right: flipDir === 'next' ? '0'   : '50%',
-                  width: '50%',
-                }}
-              >
-                {/* Front: the page being turned away */}
-                <div className={`flipper-face flipper-front ${flipDir === 'next' ? 'is-right-page' : 'is-left-page'}`}>
-                  {flipDir === 'next' ? <RightPage data={cur} /> : <LeftPage data={cur} />}
+                  {/* 5-Star Rating */}
+                  <StarRating rating={item.rating || 5} />
+
+                  {/* Review Text Quote */}
+                  <blockquote className="traveler-review-text">
+                    "{item.quote}"
+                  </blockquote>
+
+                  {/* Card Footer: Traveler Details */}
+                  <div className="traveler-meta-block">
+                    <h4 className="traveler-name">{item.name}</h4>
+                    <p className="traveler-location">{item.location}</p>
+                  </div>
                 </div>
-                {/* Back: the destination content */}
-                <div className={`flipper-face flipper-back ${flipDir === 'next' ? 'is-left-page' : 'is-right-page'}`}>
-                  {flipDir === 'next' ? <LeftPage data={nxt} /> : <RightPage data={prv} />}
-                </div>
-              </motion.div>
-            )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          </div>
+          {/* Pagination Dots */}
+          <div className="coverflow-swiper-pagination" />
         </div>
-
       </div>
     </section>
   );
 }
+
