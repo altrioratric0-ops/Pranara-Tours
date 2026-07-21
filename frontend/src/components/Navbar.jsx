@@ -19,7 +19,14 @@ export default function Navbar() {
     if (isHome) {
       const el = document.getElementById(id);
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const navOffset = 90;
+        const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     } else {
       navigate('/#' + id);

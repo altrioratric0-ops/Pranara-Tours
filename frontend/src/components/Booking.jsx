@@ -5,7 +5,17 @@ export default function Booking() {
     // Scroll to booking section if ?book is in URL
     if (window.location.search.includes('book=')) {
       setTimeout(() => {
-        document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' });
+        const el = document.getElementById('booking');
+        if (el) {
+          const navOffset = 90;
+          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
       }, 300);
     }
   }, []);

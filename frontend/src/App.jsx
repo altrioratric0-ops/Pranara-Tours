@@ -40,7 +40,16 @@ function App() {
       const id = location.hash.replace('#', '');
       const el = document.getElementById(id);
       if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        setTimeout(() => {
+          const navOffset = 90;
+          const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - navOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }, 150);
       }
     }
   }, [location]);
