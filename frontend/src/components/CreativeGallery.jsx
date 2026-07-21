@@ -9,8 +9,6 @@ const DESTINATIONS = [
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
     thumb: '/assets/munnar_kolukkumalaigallery.jpeg'
   },
-  
-
   {
     id: 'Attukad Waterfalls',
     name: 'Attukad Waterfalls',
@@ -19,13 +17,11 @@ const DESTINATIONS = [
     bg: '/assets/tour_attukad_waterfalls.jpeg',
     thumb: '/assets/tour_attukad_waterfalls.jpeg'
   },
-
-
   {
     id: 'Tea Estate',
     name: 'Tea Estate',
     tagline: 'A Journey Through Emerald Hills',
-    desc: ' Walk through endless green hills, breathe the fresh mountain air, and experience the timeless beauty of Munnars tea gardens. Savor every moment where nature, peace, and unforgettable memories come together.',
+    desc: 'Walk through endless green hills, breathe the fresh mountain air, and experience the timeless beauty of Munnar’s tea gardens. Savor every moment where nature, peace, and unforgettable memories come together.',
     bg: '/assets/tour_tea_estate.jpeg',
     thumb: '/assets/tour_tea_estate.jpeg'
   },
@@ -38,8 +34,8 @@ const DESTINATIONS = [
     thumb: '/assets/tour_pothamedu.jpeg'
   },
   {
-    id: 'Kolukkumalai ',
-    name: 'Kolukkumalai ',
+    id: 'Kolukkumalai',
+    name: 'Kolukkumalai',
     tagline: 'Misty Valleys & Tea Gardens',
     desc: 'Witness a golden sunrise above the clouds at Kolukkumalai, trek through high cliff waterfall paths, and explore historic tea plantations wrapped in refreshing mountain fog.',
     bg: '/assets/tour_Kolukkumalai.jpg',
@@ -61,9 +57,7 @@ const DESTINATIONS = [
     bg: '/assets/tour_echo_ponit.jpeg',
     thumb: '/assets/tour_echo_ponit.jpeg'
   },
-
-
-    {
+  {
     id: 'Flower Garden',
     name: 'Flower Garden',
     tagline: 'A World of Colorful Blooms',
@@ -71,9 +65,7 @@ const DESTINATIONS = [
     bg: '/assets/tour_flower_garden.jpeg',
     thumb: '/assets/tour_flower_garden.jpeg'
   },
-
-
-    {
+  {
     id: 'Mattupetty Dam',
     name: 'Mattupetty Dam',
     tagline: 'Scenic Dam Views',
@@ -81,7 +73,6 @@ const DESTINATIONS = [
     bg: '/assets/tour_mattupetty_dam.jpeg',
     thumb: '/assets/tour_mattupetty_dam.jpeg'
   },
-
   {
     id: 'Eravikulam National Park',
     name: 'Eravikulam National Park',
@@ -90,32 +81,20 @@ const DESTINATIONS = [
     bg: '/assets/tour_eravikulam_national_park.jpeg',
     thumb: '/assets/tour_eravikulam_national_park.jpeg'
   }
-
 ];
 
 export default function CreativeGallery() {
-  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(DESTINATIONS.length);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [direction, setDirection] = useState('next');
-  const [contentKey, setContentKey] = useState(0);
+  const [scrollMode, setScrollMode] = useState('smooth');
   const sectionRef = useRef(null);
+  const cardRowRef = useRef(null);
   const cardRefs = useRef([]);
 
-  const activeDest = DESTINATIONS[activeIdx];
-
-  const handleMouseMove = (e) => {
-    if (!sectionRef.current) return;
-    const rect = sectionRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    setParallax({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setParallax({ x: 0, y: 0 });
-  };
+  const loopedDestinations = [...DESTINATIONS, ...DESTINATIONS];
+  const activeBaseIdx = activeIdx % DESTINATIONS.length;
+  const activeDest = DESTINATIONS[activeBaseIdx];
 
   useEffect(() => {
     const element = sectionRef.current;
@@ -140,43 +119,52 @@ export default function CreativeGallery() {
   }, []);
 
   useEffect(() => {
-    if (!isAnimating) return;
-    const timer = window.setTimeout(() => setIsAnimating(false), 650);
-    return () => window.clearTimeout(timer);
-  }, [isAnimating]);
-
-  useEffect(() => {
     if (!isVisible) return;
 
     const interval = window.setInterval(() => {
-      const nextIdx = (activeIdx + 1) % DESTINATIONS.length;
-      handleSelect(nextIdx, 'next');
-    }, 5000);
+      setActiveIdx((current) => {
+        const next = current + 1;
+
+        if (next >= DESTINATIONS.length * 2) {
+          setScrollMode('auto');
+          return DESTINATIONS.length;
+        }
+
+        setScrollMode('smooth');
+        return next;
+      });
+    }, 1200);
 
     return () => window.clearInterval(interval);
-  }, [activeIdx, isVisible]);
+  }, [isVisible]);
 
-  const handleSelect = (nextIdx, navDirection = 'next') => {
-    if (nextIdx === activeIdx) return;
-    setDirection(navDirection);
-    setIsAnimating(true);
-    setActiveIdx(nextIdx);
-    setContentKey((prev) => prev + 1);
-    cardRefs.current[nextIdx]?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'nearest'
-    });
+  useEffect(() => {
+    const row = cardRowRef.current;
+    const activeCard = cardRefs.current[activeIdx];
+
+    if (!row || !activeCard) return;
+
+    const topOffset = activeCard.offsetTop - row.offsetTop;
+    const targetTop = Math.max(0, Math.min(topOffset - 18, row.scrollHeight - row.clientHeight));
+
+    row.scrollTo({ top: targetTop, behavior: scrollMode });
+  }, [activeIdx, scrollMode]);
+
+  const handleMouseMove = (event) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    setParallax({ x, y });
   };
 
-  const handleNext = () => {
-    const nextIdx = (activeIdx + 1) % DESTINATIONS.length;
-    handleSelect(nextIdx, 'next');
+  const handleMouseLeave = () => {
+    setParallax({ x: 0, y: 0 });
   };
 
-  const handlePrev = () => {
-    const prevIdx = (activeIdx - 1 + DESTINATIONS.length) % DESTINATIONS.length;
-    handleSelect(prevIdx, 'prev');
+  const handleSelect = (idx) => {
+    setScrollMode('smooth');
+    setActiveIdx(idx);
   };
 
   const handlePlanTrip = (destinationId) => {
@@ -198,26 +186,22 @@ export default function CreativeGallery() {
       onMouseLeave={handleMouseLeave}
     >
       <div className="gallery-bg-wrapper">
-        {DESTINATIONS.map((dest, idx) => (
-          <div
-            key={dest.id}
-            className={`gallery-bg-slide ${idx === activeIdx ? 'active' : ''}`}
-            style={{
-              backgroundImage: `url(${dest.bg})`,
-              transform: `scale(1.1) translate(${idx === activeIdx ? parallax.x * -18 : 0}px, ${idx === activeIdx ? parallax.y * -18 : 0}px)`
-            }}
-          />
-        ))}
+        <div
+          className="gallery-bg-slide active"
+          style={{
+            backgroundImage: `url(${activeDest.bg})`,
+            transform: `scale(1.08) translate(${parallax.x * -12}px, ${parallax.y * -12}px)`
+          }}
+        />
       </div>
 
       <div className="gallery-overlay"></div>
 
       <div className="gallery-shell">
         <div
-          key={contentKey}
-          className={`gallery-copy ${isAnimating ? 'is-animating' : ''} ${direction === 'next' ? 'slide-next' : 'slide-prev'}`}
+          className="gallery-copy"
           style={{
-            transform: `translate(${parallax.x * 18}px, ${parallax.y * 18}px)`
+            transform: `translate(${parallax.x * 16}px, ${parallax.y * 16}px)`
           }}
         >
           <span className="gallery-badge">Luxury Escape</span>
@@ -225,48 +209,39 @@ export default function CreativeGallery() {
           <h2>{activeDest.tagline}</h2>
           <p>{activeDest.desc}</p>
 
-          <button
-            onClick={() => handlePlanTrip(activeDest.id)}
-            className="gallery-cta"
-          >
+          <button onClick={() => handlePlanTrip(activeDest.id)} className="gallery-cta">
             <span>Explore {activeDest.name}</span>
           </button>
         </div>
 
-        <div
-          className="gallery-card-row"
-          style={{
-            transform: `translate(${parallax.x * 14}px, ${parallax.y * 14}px)`
-          }}
-        >
-          {DESTINATIONS.map((dest, idx) => (
-            <button
-              key={dest.id}
-              ref={(element) => {
-                cardRefs.current[idx] = element;
-              }}
-              type="button"
-              className={`gallery-card-item ${idx === activeIdx ? 'active' : ''}`}
-              onClick={() => handleSelect(idx, idx > activeIdx ? 'next' : 'prev')}
-            >
-              <img src={dest.thumb} alt={dest.name} />
-              <div className="gallery-card-gradient" />
-              <span className="gallery-card-title">{dest.name}</span>
-            </button>
-          ))}
+        <div className="gallery-card-stack" aria-label="Gallery previews">
+          <div className="gallery-card-row" ref={cardRowRef}>
+            {loopedDestinations.map((destination, idx) => {
+              const isActive = idx === activeIdx;
+              const isPrev = idx < activeIdx;
+              const isNext = idx > activeIdx;
+
+              return (
+                <button
+                  key={`${destination.id}-${idx}`}
+                  ref={(element) => {
+                    cardRefs.current[idx] = element;
+                  }}
+                  type="button"
+                  className={`gallery-card-item ${isActive ? 'active' : ''} ${isPrev ? 'prev' : isNext ? 'next' : ''}`}
+                  onClick={() => handleSelect(idx)}
+                >
+                  <img src={destination.thumb} alt={destination.name} />
+                  <div className="gallery-card-gradient" />
+                  <span className="gallery-card-title">{destination.name}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="gallery-nav-controls" aria-label="Gallery navigation">
-        <button type="button" className="gallery-nav-btn" onClick={handlePrev} aria-label="Previous destination">
-          <span>↑</span>
-        </button>
-        <button type="button" className="gallery-nav-btn" onClick={handleNext} aria-label="Next destination">
-          <span>↓</span>
-        </button>
-      </div>
-
-      <div className="gallery-slide-number">{String(activeIdx + 1).padStart(2, '0')}</div>
+      
     </section>
   );
 }
