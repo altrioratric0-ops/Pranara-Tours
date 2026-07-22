@@ -198,7 +198,7 @@ export default function Testimonials() {
             coverflowEffect={{
               rotate: 12,
               stretch: 0,
-              depth: 220,
+              depth: 176,
               modifier: 1.25,
               slideShadows: false,
             }}
@@ -217,19 +217,19 @@ export default function Testimonials() {
             breakpoints={{
               320: {
                 slidesPerView: 1.15,
-                spaceBetween: 16,
+                spaceBetween: 12,
               },
               640: {
                 slidesPerView: 1.6,
-                spaceBetween: 24,
+                spaceBetween: 18,
               },
               1024: {
                 slidesPerView: 2.3,
-                spaceBetween: 32,
+                spaceBetween: 24,
               },
               1280: {
                 slidesPerView: 2.7,
-                spaceBetween: 40,
+                spaceBetween: 32,
               },
             }}
             className="testimonial-coverflow-swiper"
