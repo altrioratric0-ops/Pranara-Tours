@@ -15,6 +15,8 @@ import Booking from './components/Booking';
 import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
 
+import KeralamTrad from './components/keralamtrad';
+
 function HomePage() {
   return (
     <>
@@ -23,6 +25,7 @@ function HomePage() {
       <Features />
       <EscapeSection />
       <LocalHeritage />
+      <KeralamTrad />
       <CreativeGallery />
       <TripPlanner />
       <Testimonials />
