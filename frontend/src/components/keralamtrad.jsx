@@ -14,18 +14,18 @@ import './keralamtrad.css';
 // SVG Decorative Elements
 const BananaLeafSVG = ({ className }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10 90C30 70 40 40 90 10C70 40 60 70 10 90Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M30 65C45 55 60 40 75 25" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2"/>
-    <path d="M42 53L55 45" stroke="currentColor" strokeWidth="1"/>
-    <path d="M32 62L43 56" stroke="currentColor" strokeWidth="1"/>
-    <path d="M52 44L67 35" stroke="currentColor" strokeWidth="1"/>
+    <path d="M10 90C30 70 40 40 90 10C70 40 60 70 10 90Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M30 65C45 55 60 40 75 25" stroke="currentColor" strokeWidth="1" strokeDasharray="2 2" />
+    <path d="M42 53L55 45" stroke="currentColor" strokeWidth="1" />
+    <path d="M32 62L43 56" stroke="currentColor" strokeWidth="1" />
+    <path d="M52 44L67 35" stroke="currentColor" strokeWidth="1" />
   </svg>
 );
 
 const LotusOutlineSVG = ({ className }) => (
   <svg className={className} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M50 15C55 35 70 45 85 45C70 55 60 75 50 85C40 75 30 55 15 45C30 45 45 35 50 15Z" stroke="currentColor" strokeWidth="1.2"/>
-    <path d="M50 30C53 42 63 50 75 50C63 58 55 70 50 78C45 70 37 58 25 50C37 50 47 42 50 30Z" stroke="currentColor" strokeWidth="0.8" opacity="0.6"/>
+    <path d="M50 15C55 35 70 45 85 45C70 55 60 75 50 85C40 75 30 55 15 45C30 45 45 35 50 15Z" stroke="currentColor" strokeWidth="1.2" />
+    <path d="M50 30C53 42 63 50 75 50C63 58 55 70 50 78C45 70 37 58 25 50C37 50 47 42 50 30Z" stroke="currentColor" strokeWidth="0.8" opacity="0.6" />
   </svg>
 );
 
@@ -33,7 +33,7 @@ const TraditionalMotifSVG = () => (
   <svg className="kt-traditional-pattern" width="120" height="20" viewBox="0 0 120 20" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="10" cy="10" r="3" fill="#D4AF37" />
     <circle cx="30" cy="10" r="2" fill="#2F5D50" />
-    <line x1="40" y1="10" x2="80" y2="10" stroke="#D4AF37" strokeWidth="1" strokeDasharray="3 3"/>
+    <line x1="40" y1="10" x2="80" y2="10" stroke="#D4AF37" strokeWidth="1" strokeDasharray="3 3" />
     <circle cx="90" cy="10" r="2" fill="#2F5D50" />
     <circle cx="110" cy="10" r="3" fill="#D4AF37" />
   </svg>
@@ -181,7 +181,7 @@ export default function KeralamTrad({
         <BananaLeafSVG className="kt-leaf-svg kt-leaf-top-left" />
         <BananaLeafSVG className="kt-leaf-svg kt-leaf-bottom-right" />
         <LotusOutlineSVG className="kt-leaf-svg" style={{ top: '35%', right: '4%', width: '220px', height: '220px', opacity: 0.04 }} />
-        
+
         {/* Subtle Golden Floating Ambient Dots */}
         <div className="kt-golden-dot" style={{ top: '15%', left: '8%', width: '6px', height: '6px', opacity: 0.6 }} />
         <div className="kt-golden-dot" style={{ top: '48%', left: '92%', width: '8px', height: '8px', opacity: 0.5 }} />
@@ -191,7 +191,7 @@ export default function KeralamTrad({
 
       <div className="kt-container">
         {/* Section Main Header */}
-        <motion.header 
+        <motion.header
           className="kt-header-block"
           initial="hidden"
           whileInView="visible"
@@ -219,14 +219,14 @@ export default function KeralamTrad({
 
         {/* Editorial Alternating Blocks Container */}
         <div className="kt-blocks-wrapper">
-          
+
           {/* ==========================================
               BLOCK 1: Classical Arts & Sacred Rituals
               Layout: Text Left, Image Right
              ========================================== */}
           <article className="kt-editorial-block">
             {/* Text Side (Left) */}
-            <motion.div 
+            <motion.div
               className="kt-text-content"
               initial="hidden"
               whileInView="visible"
@@ -235,7 +235,7 @@ export default function KeralamTrad({
             >
               <span className="kt-block-tag">Sacred Traditions • Classical Performing Arts</span>
               <h3 className="kt-block-title">Sacred Rhythms, Classical Grace & Ancient Valor</h3>
-              
+
               <p className="kt-paragraph">
                 Kerala’s soul resonates in its sacred performing arts, where myth, devotion, and theatrical splendor converge. Under the canopy of rustling <strong>coconut groves</strong>, the hypnotic beat of traditional drums signals the start of <strong>Kathakali</strong>—where grand face-painted masters bring ancient epics to life purely through expressive eyes and intricate mudras.
               </p>
@@ -254,7 +254,7 @@ export default function KeralamTrad({
             </motion.div>
 
             {/* Image Side (Right) */}
-            <motion.div 
+            <motion.div
               className="kt-image-wrapper"
               initial="hidden"
               whileInView="visible"
@@ -265,11 +265,11 @@ export default function KeralamTrad({
               <motion.div className="kt-image-card" animate={floatingAnimation}>
                 <div className="kt-image-inner">
                   {block1Image ? (
-                    <img 
-                      src={block1Image} 
-                      alt="Kerala Kathakali and Classical Heritage Art" 
-                      className="kt-img" 
-                      loading="lazy" 
+                    <img
+                      src={block1Image}
+                      alt="Kerala Kathakali and Classical Heritage Art"
+                      className="kt-img"
+                      loading="lazy"
                     />
                   ) : (
                     <DefaultKathakaliArt />
@@ -290,7 +290,7 @@ export default function KeralamTrad({
              ========================================== */}
           <article className="kt-editorial-block kt-reverse">
             {/* Image Side (Left on Desktop) */}
-            <motion.div 
+            <motion.div
               className="kt-image-wrapper"
               initial="hidden"
               whileInView="visible"
@@ -301,11 +301,11 @@ export default function KeralamTrad({
               <motion.div className="kt-image-card" animate={floatingAnimation}>
                 <div className="kt-image-inner">
                   {block2Image ? (
-                    <img 
-                      src={block2Image} 
-                      alt="Traditional Houseboats and Kerala Backwaters" 
-                      className="kt-img" 
-                      loading="lazy" 
+                    <img
+                      src={block2Image}
+                      alt="Traditional Houseboats and Kerala Backwaters"
+                      className="kt-img"
+                      loading="lazy"
                     />
                   ) : (
                     <DefaultHouseboatArt />
@@ -320,7 +320,7 @@ export default function KeralamTrad({
             </motion.div>
 
             {/* Text Side (Right on Desktop) */}
-            <motion.div 
+            <motion.div
               className="kt-text-content"
               initial="hidden"
               whileInView="visible"
@@ -354,7 +354,7 @@ export default function KeralamTrad({
              ========================================== */}
           <article className="kt-editorial-block">
             {/* Text Side (Left) */}
-            <motion.div 
+            <motion.div
               className="kt-text-content"
               initial="hidden"
               whileInView="visible"
@@ -380,7 +380,7 @@ export default function KeralamTrad({
             </motion.div>
 
             {/* Image Side (Right) */}
-            <motion.div 
+            <motion.div
               className="kt-image-wrapper"
               initial="hidden"
               whileInView="visible"
@@ -391,11 +391,11 @@ export default function KeralamTrad({
               <motion.div className="kt-image-card" animate={floatingAnimation}>
                 <div className="kt-image-inner">
                   {block3Image ? (
-                    <img 
-                      src={block3Image} 
-                      alt="Kerala Tea Plantations and Culinary Heritage" 
-                      className="kt-img" 
-                      loading="lazy" 
+                    <img
+                      src={block3Image}
+                      alt="Kerala Tea Plantations and Culinary Heritage"
+                      className="kt-img"
+                      loading="lazy"
                     />
                   ) : (
                     <DefaultTeaPlantationArt />
@@ -413,7 +413,7 @@ export default function KeralamTrad({
         </div>
 
         {/* Editorial Quote Strip */}
-        <motion.div 
+        <motion.div
           className="kt-quote-banner"
           initial="hidden"
           whileInView="visible"
@@ -429,15 +429,15 @@ export default function KeralamTrad({
         </motion.div>
 
         {/* Call to Action Button Block */}
-        <motion.div 
+        <motion.div
           className="kt-cta-block"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={fadeUpVariant}
         >
-          <a 
-            href="#booking" 
+          <a
+            href="#booking"
             onClick={onExploreClick}
             className="kt-cta-button"
             aria-label="Explore Kerala Heritage Tours"

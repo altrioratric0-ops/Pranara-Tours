@@ -11,14 +11,14 @@
 
 :root {
   --kt-primary-green: #2F5D50;
-  --kt-forest-green:  #234032;
-  --kt-gold-accent:   #D4AF37;
-  --kt-gold-glow:     rgba(212, 175, 55, 0.25);
-  --kt-ivory-bg:      #FAF8F2;
+  --kt-forest-green: #234032;
+  --kt-gold-accent: #D4AF37;
+  --kt-gold-glow: rgba(212, 175, 55, 0.25);
+  --kt-ivory-bg: #FAF8F2;
   --kt-ivory-gradient: linear-gradient(180deg, #FAF8F2 0%, #F5F0E4 50%, #FAF8F2 100%);
-  --kt-dark-text:     #222222;
-  --kt-muted-text:    #666666;
-  --kt-card-shadow:   0 20px 45px rgba(35, 64, 50, 0.08);
+  --kt-dark-text: #222222;
+  --kt-muted-text: #666666;
+  --kt-card-shadow: 0 20px 45px rgba(35, 64, 50, 0.08);
   --kt-card-shadow-hover: 0 30px 65px rgba(35, 64, 50, 0.16);
 }
 
@@ -331,7 +331,7 @@
   font-weight: 600;
   letter-spacing: 0.3px;
   margin-bottom: 4px;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .kt-caption-sub {
@@ -490,6 +490,7 @@
 }
 
 @media (max-width: 860px) {
+
   .kt-editorial-block,
   .kt-editorial-block.kt-reverse {
     grid-template-columns: 1fr;
