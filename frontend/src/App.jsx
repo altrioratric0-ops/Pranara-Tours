@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -18,6 +18,10 @@ import TourDetail from './components/TourDetail';
 function HomePage() {
   return (
     <>
+      <div className="home-auth-actions">
+        <Link to="/signin" className="home-auth-btn home-auth-btn-outline">Sign In</Link>
+        <Link to="/login" className="home-auth-btn">Login</Link>
+      </div>
       <Hero />
       <About />
       <Features />
@@ -28,6 +32,44 @@ function HomePage() {
       <FAQ />
       <Booking />
     </>
+  );
+}
+
+function AuthPage({ mode }) {
+  return (
+    <div className="auth-page-shell">
+      <div className="auth-card">
+        <Link to="/" className="auth-back-link">← Back Home</Link>
+        {mode === 'signin' ? (
+          <>
+            <h2>Create Account</h2>
+            <p>Start your Kerala journey with us.</p>
+            <form className="auth-form">
+              <input type="text" placeholder="Full Name" />
+              <input type="email" placeholder="Email" />
+              <input type="tel" placeholder="Phone Number" />
+              <input type="password" placeholder="Password" />
+              <input type="password" placeholder="Confirm Password" />
+              <button type="submit">Create Account</button>
+            </form>
+          </>
+        ) : (
+          <>
+            <h2>Welcome Back</h2>
+            <p>Log in to continue your travel plans.</p>
+            <form className="auth-form">
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <div className="auth-extra-row">
+                <label><input type="checkbox" /> Remember Me</label>
+                <a href="#">Forgot Password?</a>
+              </div>
+              <button type="submit">Login</button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 
@@ -58,6 +100,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/signin" element={<AuthPage mode="signin" />} />
+        <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/gallery/:categoryId" element={<SubGallery />} />
         <Route path="/tour/:id" element={<TourDetail />} />
       </Routes>
