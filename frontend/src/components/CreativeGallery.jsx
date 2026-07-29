@@ -1,85 +1,106 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const DESTINATIONS = [
+export const DESTINATIONS = [
   {
     id: 'Munnar',
+    slug: 'munnar',
     name: 'Munnar',
     tagline: 'Misty Valleys & Tea Gardens',
     desc: 'Witness a golden sunrise above the clouds at Kolukkumalai, trek through high cliff waterfall paths, and explore historic tea plantations wrapped in refreshing mountain fog.',
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
-    thumb: '/assets/munnar_kolukkumalaigallery.jpeg'
+    thumb: '/assets/munnar_kolukkumalaigallery.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/tour_echo_ponit.jpeg']
   },
   {
     id: 'Attukad Waterfalls',
+    slug: 'attukad-waterfalls',
     name: 'Attukad Waterfalls',
     tagline: 'Breathtaking Waterfall Views',
     desc: 'Experience the stunning beauty of Attukad Waterfalls, surrounded by lush greenery and the soothing sounds of nature. A perfect destination for photography and nature lovers.',
     bg: '/assets/tour_attukad_waterfalls.jpeg',
-    thumb: '/assets/tour_attukad_waterfalls.jpeg'
+    thumb: '/assets/tour_attukad_waterfalls.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_echo_ponit.jpeg']
   },
   {
     id: 'Tea Estate',
+    slug: 'tea-estate',
     name: 'Tea Estate',
     tagline: 'A Journey Through Emerald Hills',
     desc: 'Walk through endless green hills, breathe the fresh mountain air, and experience the timeless beauty of Munnar’s tea gardens. Savor every moment where nature, peace, and unforgettable memories come together.',
     bg: '/assets/tour_tea_estate.jpeg',
-    thumb: '/assets/tour_tea_estate.jpeg'
+    thumb: '/assets/tour_tea_estate.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_tea_estate.jpeg', '/assets/tour_mattupetty_dam.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_flower_garden.jpeg']
   },
   {
     id: 'Pothamedu View Point',
+    slug: 'pothamedu-view-point',
     name: 'Pothamedu View Point',
     tagline: 'Panoramic Tea Valley Views',
     desc: 'Witness endless tea plantations, rolling hills, and mist covered mountains from one of the most scenic viewpoints in Munnar. A perfect destination for sunrise, sunset, and unforgettable photography.',
     bg: '/assets/tour_pothamedu.jpeg',
-    thumb: '/assets/tour_pothamedu.jpeg'
+    thumb: '/assets/tour_pothamedu.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_pothamedu.jpeg', '/assets/tour_echo_ponit.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_attukad_waterfalls.jpeg']
   },
   {
     id: 'Kolukkumalai',
+    slug: 'kolukkumalai',
     name: 'Kolukkumalai',
     tagline: 'Misty Valleys & Tea Gardens',
     desc: 'Witness a golden sunrise above the clouds at Kolukkumalai, trek through high cliff waterfall paths, and explore historic tea plantations wrapped in refreshing mountain fog.',
     bg: '/assets/tour_Kolukkumalai.jpg',
-    thumb: '/assets/tour_Kolukkumalai.jpg'
+    thumb: '/assets/tour_Kolukkumalai.jpg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_Kolukkumalai.jpg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_echo_ponit.jpeg']
   },
   {
     id: 'Rustic Bamboo Hut',
+    slug: 'rustic-bamboo-hut',
     name: 'Rustic Bamboo Hut',
     tagline: 'Tranquil Retreat in the Hills',
     desc: 'Immerse yourself in the charm of a traditional bamboo hut, surrounded by lush greenery and the soothing sounds of nature. A perfect escape from the hustle and bustle of city life.',
     bg: '/assets/tour_rustic_bamboo_hut.jpeg',
-    thumb: '/assets/tour_rustic_bamboo_hut.jpeg'
+    thumb: '/assets/tour_rustic_bamboo_hut.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_rustic_bamboo_hut.jpeg', '/assets/tour_flower_garden.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg']
   },
   {
     id: 'Echo Point',
+    slug: 'echo-point',
     name: 'Echo Point',
     tagline: 'Breathtaking Scenic Views',
     desc: 'Experience the stunning beauty of Munnar from one of the most popular viewpoints. Enjoy panoramic vistas of tea plantations, rolling hills, and mist-covered mountains.',
     bg: '/assets/tour_echo_ponit.jpeg',
-    thumb: '/assets/tour_echo_ponit.jpeg'
+    thumb: '/assets/tour_echo_ponit.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_echo_ponit.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_mattupetty_dam.jpeg']
   },
   {
     id: 'Flower Garden',
+    slug: 'flower-garden',
     name: 'Flower Garden',
     tagline: 'A World of Colorful Blooms',
     desc: 'Stroll through the vibrant colors of the flower garden, where exotic blooms create a mesmerizing spectacle. A perfect spot for nature enthusiasts and photographers.',
     bg: '/assets/tour_flower_garden.jpeg',
-    thumb: '/assets/tour_flower_garden.jpeg'
+    thumb: '/assets/tour_flower_garden.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_flower_garden.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_rustic_bamboo_hut.jpeg', '/assets/tour_echo_ponit.jpeg', '/assets/tour_attukad_waterfalls.jpeg']
   },
   {
     id: 'Mattupetty Dam',
+    slug: 'mattupetty-dam',
     name: 'Mattupetty Dam',
     tagline: 'Scenic Dam Views',
     desc: 'Enjoy the breathtaking views of Mattupetty Dam, surrounded by lush greenery and the soothing sounds of nature. A perfect destination for photography and nature lovers.',
     bg: '/assets/tour_mattupetty_dam.jpeg',
-    thumb: '/assets/tour_mattupetty_dam.jpeg'
+    thumb: '/assets/tour_mattupetty_dam.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_mattupetty_dam.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_flower_garden.jpeg']
   },
   {
     id: 'Eravikulam National Park',
+    slug: 'eravikulam-national-park',
     name: 'Eravikulam National Park',
     tagline: 'Breathtaking Scenic Views',
     desc: 'Explore the diverse wildlife and stunning landscapes of Eravikulam National Park, home to the endangered Nilgiri Tahr and numerous endemic species.',
     bg: '/assets/tour_eravikulam_national_park.jpeg',
-    thumb: '/assets/tour_eravikulam_national_park.jpeg'
+    thumb: '/assets/tour_eravikulam_national_park.jpeg',
+    images: ['/assets/sub-gallery-sample.svg', '/assets/tour_eravikulam_national_park.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/tour_mattupetty_dam.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_pothamedu.jpeg']
   }
 ];
 
@@ -91,6 +112,7 @@ export default function CreativeGallery() {
   const sectionRef = useRef(null);
   const cardRowRef = useRef(null);
   const cardRefs = useRef([]);
+  const navigate = useNavigate();
 
   const loopedDestinations = [...DESTINATIONS, ...DESTINATIONS];
   const activeBaseIdx = activeIdx % DESTINATIONS.length;
@@ -162,9 +184,10 @@ export default function CreativeGallery() {
     setParallax({ x: 0, y: 0 });
   };
 
-  const handleSelect = (idx) => {
+  const handleSelect = (destination, idx) => {
     setScrollMode('smooth');
     setActiveIdx(idx);
+    navigate(`/gallery/${destination.slug}`);
   };
 
   const handlePlanTrip = (destinationId) => {
@@ -229,7 +252,7 @@ export default function CreativeGallery() {
                   }}
                   type="button"
                   className={`gallery-card-item ${isActive ? 'active' : ''} ${isPrev ? 'prev' : isNext ? 'next' : ''}`}
-                  onClick={() => handleSelect(idx)}
+                  onClick={() => handleSelect(destination, idx)}
                 >
                   <img src={destination.thumb} alt={destination.name} />
                   <div className="gallery-card-gradient" />

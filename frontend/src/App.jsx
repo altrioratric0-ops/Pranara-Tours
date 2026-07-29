@@ -7,15 +7,13 @@ import Features from './components/Features';
 import EscapeSection from './components/EscapeSection';
 import LocalHeritage from './components/LocalHeritage';
 import CreativeGallery from './components/CreativeGallery';
-import TripPlanner from './components/TripPlanner';
+import SubGallery from './components/SubGallery';
 import Testimonials from './components/Testimonials';
 
 import FAQ from './components/FAQ';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
-
-import KeralamTrad from './components/keralamtrad';
 
 function HomePage() {
   return (
@@ -25,9 +23,7 @@ function HomePage() {
       <Features />
       <EscapeSection />
       <LocalHeritage />
-      <KeralamTrad />
       <CreativeGallery />
-      <TripPlanner />
       <Testimonials />
       <FAQ />
       <Booking />
@@ -62,6 +58,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/gallery/:categoryId" element={<SubGallery />} />
         <Route path="/tour/:id" element={<TourDetail />} />
       </Routes>
       <Footer />
