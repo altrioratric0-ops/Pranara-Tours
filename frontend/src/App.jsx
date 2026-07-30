@@ -18,10 +18,6 @@ import TourDetail from './components/TourDetail';
 function HomePage() {
   return (
     <>
-      <div className="home-auth-actions">
-        <Link to="/signin" className="home-auth-btn home-auth-btn-outline">Sign In</Link>
-        <Link to="/login" className="home-auth-btn">Login</Link>
-      </div>
       <Hero />
       <About />
       <Features />
