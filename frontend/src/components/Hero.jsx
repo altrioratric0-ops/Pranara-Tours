@@ -1,32 +1,13 @@
-import { useState, useEffect } from 'react';
-
-const BACKGROUND_IMAGES = [
-  '/assets/insta_resort.png',
-  '/assets/insta_houseboat.png',
-  '/assets/insta_waterfall.png',
-  '/assets/insta_balloon.png',
-];
+const HERO_VIDEO = '/assets/Background.mp4';
 
 export default function Hero() {
-  const [bgIndex, setBgIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setBgIndex((prev) => (prev + 1) % BACKGROUND_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <section className="hero" id="home">
-      <div className="hero-slides">
-        {BACKGROUND_IMAGES.map((img, idx) => (
-          <div
-            key={idx}
-            className={`hero-slide ${idx === bgIndex ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
-        ))}
+      <div className="hero-video-wrap">
+        <video className="hero-video" autoPlay muted loop playsInline>
+          <source src={HERO_VIDEO} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div className="hero-overlay"></div>
       <div className="hero-mist"></div>
