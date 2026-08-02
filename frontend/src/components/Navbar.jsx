@@ -21,6 +21,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (menuOpen) {
+      root.classList.add('navbar-opened');
+    } else {
+      root.classList.remove('navbar-opened');
+    }
+  }, [menuOpen]);
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -35,30 +44,32 @@ export default function Navbar() {
   const handleSectionClick = (id) => {
     setMenuOpen(false);
     setDestinationsOpen(false);
+
     if (isHome) {
+      navigate(`#${id}`, { replace: true });
       scrollToSection(id);
       return;
     }
 
-    navigate('/');
+    navigate(`/#${id}`);
     setTimeout(() => scrollToSection(id), 250);
   };
 
   const activeMenu = location.pathname.startsWith('/gallery')
     ? 'Gallery'
-    : location.hash === '#about'
+    : location.pathname === '/' && location.hash === '#about'
       ? 'About'
-      : location.hash === '#escapes'
+      : location.pathname === '/' && location.hash === '#escapes'
         ? 'Packages'
-        : location.hash === '#heritage'
+        : location.pathname === '/' && location.hash === '#heritage'
           ? 'Experiences'
-          : location.hash === '#gallery'
+          : location.pathname === '/' && location.hash === '#gallery'
             ? 'Gallery'
-            : location.hash === '#booking'
+            : location.pathname === '/' && location.hash === '#booking'
               ? 'Contact'
-              : isHome
+              : location.pathname === '/' && !location.hash
                 ? 'Home'
-                : 'Home';
+                : '';
 
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}${menuOpen ? ' menu-opened' : ''}`}>

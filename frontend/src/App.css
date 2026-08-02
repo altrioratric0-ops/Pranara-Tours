@@ -103,12 +103,16 @@ h1, h2, h3, h4 {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 260px;
+  width: 80px;
   height: 100vh;
   z-index: 1000;
   background: var(--cream);
   border-right: 1px solid rgba(46, 125, 50, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease;
+  overflow: hidden;
+}
+.navbar.menu-opened {
+  width: 260px;
 }
 .navbar-shell {
   display: flex;
@@ -116,7 +120,7 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   height: 100%;
   width: 100%;
-  padding: 40px 24px;
+  padding: 40px 16px;
 }
 .navbar-header {
   display: flex;
@@ -147,7 +151,7 @@ h1, h2, h3, h4 {
 .nav-hamburger {
   border: none;
   background: transparent;
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 22px;
@@ -155,6 +159,34 @@ h1, h2, h3, h4 {
   cursor: pointer;
   padding: 0;
   z-index: 1010;
+}
+.navbar:not(.menu-opened) .navbar-header {
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-top: 20px;
+  position: relative;
+}
+.navbar:not(.menu-opened) .navbar-brand,
+.navbar:not(.menu-opened) .navbar-brand-text {
+  display: none;
+}
+.navbar:not(.menu-opened) .navbar-menu-container {
+  display: none;
+}
+.navbar.menu-opened .navbar-header {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar.menu-opened .navbar-menu-container {
+  display: flex;
+}
+.nav-hamburger {
+  margin: 0 auto;
+  position: relative;
+  top: 0;
 }
 .nav-hamburger span {
   width: 100%;
@@ -347,8 +379,11 @@ h1, h2, h3, h4 {
   color: var(--text-light);
 }
 .app {
-  padding-left: 260px;
+  padding-left: 80px;
   transition: padding-left 0.3s ease;
+}
+.navbar-opened .app {
+  padding-left: 260px;
 }
 
 /* ───── Hero ───── */
@@ -1703,6 +1738,9 @@ footer {
     background: rgba(26, 46, 28, 0.18);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+  }
+  .app {
+    padding-left: 0;
   }
   .navbar.scrolled,
   .navbar.menu-opened {
