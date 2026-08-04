@@ -17,7 +17,13 @@ export default function TermsConditions() {
       return;
     }
     setError('');
-    alert('Thank you for accepting the Booking Terms & Conditions!');
+    
+    // Direct notification message to WhatsApp number 7397532574
+    const message = "Hi Pranara, I have read, understood, and agree to the Booking Terms & Conditions. Please proceed with my booking.";
+    const waUrl = `https://wa.me/917397532574?text=${encodeURIComponent(message)}`;
+    
+    alert('Thank you for accepting the Booking Terms & Conditions! Opening WhatsApp to send your confirmation...');
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
     navigate('/');
   };
 

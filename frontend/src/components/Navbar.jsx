@@ -220,7 +220,7 @@ export default function Navbar() {
 
             <div className="navbar-bottom">
               <div className="navbar-socials">
-                <a href="https://wa.me/917397532574" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+                <a href="https://wa.me/916374502007" target="_blank" rel="noreferrer" aria-label="WhatsApp">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.75 13.96c.25-.12 1.4-.56 1.58-.62.18-.06.35-.12.43-.24.07-.12.07-.23.07-.35s-.08-.27-.24-.4c-.16-.13-.39-.16-.57-.16-.18 0-.38.04-.56.12-.18.08-.95.37-1.63.68-.68.31-1.26.51-1.66.52-.39.01-.72.02-.98-.17-.26-.19-.45-.63-.74-1.06-.29-.43-.51-.76-.93-.74-.42.02-.8.26-1.2.47-.4.21-.88.47-1.26.7-.38.24-.64.39-.7.63-.06.24.03.46.13.62.1.16.25.31.42.46.17.15.34.29.48.42.14.06.27.1.37.16.1.06.42.18.4.24.18-.06.56-.2.76-.26.2-.06.38-.1.49-.1.11 0 .23.03.31.08.08.05.14.13.2.27.06.14.15.24.2.46.05.22.09.47.1.71.01.24 0 .57-.11.94z" /></svg>
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
@@ -231,7 +231,7 @@ export default function Navbar() {
                 </a>
               </div>
               <div className="navbar-contact">
-                <span>+91 73975 32574</span>
+                <span>+91 63745 02007</span>
                 <span>pranara@travel.com</span>
               </div>
             </div>

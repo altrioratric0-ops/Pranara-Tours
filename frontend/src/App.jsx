@@ -108,7 +108,7 @@ function App() {
       {/* Floating WhatsApp Logo */}
 
       <a 
-        href="https://wa.me/917397532574" 
+        href="https://wa.me/916374502007" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="whatsapp-float"
