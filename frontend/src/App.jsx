@@ -14,6 +14,7 @@ import FAQ from './components/FAQ';
 import Booking from './components/Booking';
 import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
+import TermsConditions from './components/TermsConditions';
 
 function HomePage() {
   return (
@@ -100,13 +101,14 @@ function App() {
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/gallery/:categoryId" element={<SubGallery />} />
         <Route path="/tour/:id" element={<TourDetail />} />
+        <Route path="/terms" element={<TermsConditions />} />
       </Routes>
       <Footer />
 
       {/* Floating WhatsApp Logo */}
 
       <a 
-        href="https://wa.me/916374502007" 
+        href="https://wa.me/917397532574" 
         target="_blank" 
         rel="noopener noreferrer" 
         className="whatsapp-float"

@@ -128,6 +128,13 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   width: 100%;
 }
+@media (min-width: 1025px) {
+  .navbar:not(.menu-opened) .navbar-header {
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+  }
+}
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -139,6 +146,7 @@ h1, h2, h3, h4 {
   height: 38px;
   width: auto;
   object-fit: contain;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .navbar-brand-text {
   font-size: 1.25rem;
@@ -206,6 +214,10 @@ h1, h2, h3, h4 {
   align-items: flex-start;
   width: 100%;
 }
+.nav-icon {
+  display: none;
+  flex-shrink: 0;
+}
 .nav-link {
   position: relative;
   display: block;
@@ -254,6 +266,52 @@ h1, h2, h3, h4 {
 }
 .nav-group:hover .nav-submenu {
   display: flex;
+}
+@media (min-width: 1025px) {
+  /* Show menu container when closed on desktop */
+  .navbar:not(.menu-opened) .navbar-menu-container {
+    display: flex;
+  }
+  
+  /* Hide the footer/auth and submenu when closed */
+  .navbar:not(.menu-opened) .navbar-footer,
+  .navbar:not(.menu-opened) .nav-submenu {
+    display: none !important;
+  }
+  
+  /* Hide text label and show icon when closed */
+  .navbar:not(.menu-opened) .nav-link .nav-label {
+    display: none;
+  }
+  .navbar:not(.menu-opened) .nav-link .nav-icon {
+    display: inline-flex;
+  }
+  
+  /* Make nav-link circular/square icon button when closed */
+  .navbar:not(.menu-opened) .nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+  }
+  
+  /* Align active indicator correctly for closed navbar icons */
+  .navbar:not(.menu-opened) .nav-link::before {
+    left: 4px;
+  }
+
+  /* Hide the hamburger button when closed */
+  .navbar:not(.menu-opened) .nav-hamburger {
+    display: none;
+  }
+  
+  /* Subtle hover zoom on the logo only when closed to indicate clickability */
+  .navbar:not(.menu-opened) .navbar-brand:hover .navbar-logo {
+    transform: scale(1.08);
+  }
 }
 .nav-submenu-link {
   color: var(--text-light);
@@ -370,6 +428,7 @@ h1, h2, h3, h4 {
 /* ───── Hero ───── */
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -381,15 +440,17 @@ h1, h2, h3, h4 {
   inset: 0;
   overflow: hidden;
   z-index: 0;
+  background-color: var(--primary-dark);
+  background-image: url('/assets/munnar_kolukkumalai.png');
+  background-position: center;
+  background-size: cover;
 }
 .hero-video {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: auto;
-  height: 120%;
-  min-width: 100%;
-  min-height: 100%;
+  width: 100%;
+  height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
   filter: brightness(1.15) contrast(1.05);
@@ -490,14 +551,24 @@ h1, h2, h3, h4 {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(46, 125, 50,.35);
+  box-shadow: 0 4px 20px rgba(46, 125, 50, 0.25);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.45);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.35);
   background: linear-gradient(135deg, var(--primary-dark) 0%, #0d3811 100%);
+}
+.hero-actions .btn-primary {
+  background: linear-gradient(135deg, var(--golden) 0%, #f57c00 100%);
+  color: #1a2e1c;
+  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.35);
+}
+.hero-actions .btn-primary:hover {
+  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(249, 168, 37, 0.45);
 }
 .btn-outline {
   background: rgba(46, 125, 50, 0.05);
@@ -526,15 +597,14 @@ h1, h2, h3, h4 {
   transform: translateY(-2px);
 }
 
-/* ───── Circular Outline Action Buttons (Contact / Booking) ───── */
 .btn-circle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  justify-content: center;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: 5px 16px 5px 5px;
-  border-radius: 100px;
+  padding: 5px;
+  border-radius: 50%;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -4902,7 +4972,225 @@ footer {
   .story-frame-container {
     height: 145px;
   }
-  .heritage-svg-map {
-    transform: scale(1.0);
+}
+
+/* ───── Terms & Conditions Page ───── */
+.terms-page-section {
+  padding: 120px 0 100px;
+  background: var(--cream);
+  min-height: 100vh;
+}
+.terms-container-box {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.terms-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.terms-badge {
+  display: inline-block;
+  background: rgba(46, 125, 50, 0.1);
+  border: 1px solid rgba(46, 125, 50, 0.25);
+  color: var(--primary);
+  padding: 5px 16px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.terms-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--primary-dark);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.terms-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+.terms-intro {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.terms-content-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(46, 125, 50, 0.08);
+  box-shadow: 0 10px 40px rgba(27, 94, 32, 0.06);
+  padding: 48px;
+}
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  margin-bottom: 48px;
+}
+.terms-item h3 {
+  font-size: 1.25rem;
+  color: var(--primary-dark);
+  margin-bottom: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.terms-item p {
+  font-size: 0.98rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.terms-item ul {
+  padding-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.terms-item li {
+  font-size: 0.98rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  list-style-type: disc;
+}
+.terms-item li strong {
+  color: var(--primary-dark);
+}
+.terms-clause-emphasis {
+  background: rgba(46, 125, 50, 0.04);
+  border-left: 4px solid var(--primary);
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 18px !important;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-dark) !important;
+}
+.terms-agreement-form {
+  border-top: 1.5px solid rgba(46, 125, 50, 0.08);
+  padding-top: 36px;
+}
+.terms-acknowledgement-text {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.02);
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px dashed rgba(0, 0, 0, 0.08);
+}
+.terms-checkbox-container {
+  margin-bottom: 28px;
+}
+.checkbox-label-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+}
+.terms-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.checkbox-custom-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  line-height: 1.4;
+  user-select: none;
+}
+.terms-error-message {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1.5px solid #fee2e2;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+.terms-submit-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.terms-submit-btn {
+  padding: 14px 44px;
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 220px;
+}
+
+@media (max-width: 768px) {
+  .terms-page-section {
+    padding: 100px 0 80px;
+  }
+  .terms-content-card {
+    padding: 28px;
+    border-radius: 18px;
+  }
+  .terms-list {
+    gap: 28px;
+  }
+  .terms-item h3 {
+    font-size: 1.15rem;
+  }
+  .terms-item p,
+  .terms-item li,
+  .terms-clause-emphasis {
+    font-size: 0.92rem;
+  }
+  .checkbox-custom-text {
+    font-size: 0.92rem;
+  }
+}
+
+/* ───── Footer Visitor Count ───── */
+.footer-visitor-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: #dcfce7;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 500;
+}
+.visitor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  display: inline-block;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
   }
 }
