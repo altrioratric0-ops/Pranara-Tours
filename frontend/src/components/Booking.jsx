@@ -1,6 +1,12 @@
 import { useEffect } from 'react';
 
 export default function Booking() {
+  const whatsappCommunityLink = 'https://chat.whatsapp.com/';
+
+  const handleJoinCommunity = () => {
+    window.open(whatsappCommunityLink, '_blank', 'noopener,noreferrer');
+  };
+
   useEffect(() => {
     // Scroll to booking section if ?book is in URL
     if (window.location.search.includes('book=')) {
@@ -78,6 +84,15 @@ export default function Booking() {
                 </svg>
               </div>
               <span>Location: <strong>Munnar</strong></span>
+            </div>
+
+            <div className="booking-community-form">
+              <h4>Join Our Community</h4>
+              <p>Join Our Community to get the latest updates</p>
+              <div className="booking-form-row">
+                <input type="tel" placeholder="Phone number" />
+                <button type="button" onClick={handleJoinCommunity}>Join Now</button>
+              </div>
             </div>
           </div>
 

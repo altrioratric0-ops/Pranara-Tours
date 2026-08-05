@@ -1,16 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const DESTINATION_LINKS = [
-  { label: 'Munnar', path: '/gallery/munnar' },
-  { label: 'Tea Estate', path: '/gallery/tea-estate' },
-  { label: 'Kolukkumalai', path: '/gallery/kolukkumalai' }
-];
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [destinationsOpen, setDestinationsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
@@ -43,7 +36,6 @@ export default function Navbar() {
 
   const handleSectionClick = (id) => {
     setMenuOpen(false);
-    setDestinationsOpen(false);
 
     if (isHome) {
       navigate(`#${id}`, { replace: true });
@@ -118,7 +110,6 @@ export default function Navbar() {
                 setMenuOpen(true);
               } else {
                 setMenuOpen(false);
-                setDestinationsOpen(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }
             }}
@@ -131,7 +122,6 @@ export default function Navbar() {
             className={`nav-hamburger${menuOpen ? ' open' : ''}`}
             onClick={() => {
               setMenuOpen(!menuOpen);
-              if (menuOpen) setDestinationsOpen(false);
             }}
             aria-label="Toggle menu"
           >
@@ -143,7 +133,7 @@ export default function Navbar() {
 
         <div className={`navbar-menu-container${menuOpen ? ' open' : ''}`}>
           <div className="navbar-menu">
-            <Link to="/" className={`nav-link${activeMenu === 'Home' ? ' active' : ''}`} onClick={() => { setMenuOpen(false); setDestinationsOpen(false); }}>
+            <Link to="/" className={`nav-link${activeMenu === 'Home' ? ' active' : ''}`} onClick={() => { setMenuOpen(false); }}>
               <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><polyline points="9 22 9 12 15 12 15 22" /></svg>
               <span className="nav-label">Home</span>
             </Link>
@@ -163,42 +153,7 @@ export default function Navbar() {
               <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" /><circle cx="12" cy="13" r="4" /></svg>
               <span className="nav-label">Gallery</span>
             </button>
-            <div className="nav-group">
-              <button
-                type="button"
-                className={`nav-link${activeMenu === 'Destinations' ? ' active' : ''}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (!menuOpen) {
-                    setMenuOpen(true);
-                    setDestinationsOpen(true);
-                  } else {
-                    setDestinationsOpen(!destinationsOpen);
-                  }
-                }}
-              >
-                <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
-                <span className="nav-label">
-                  Destinations <span className="submenu-arrow">{destinationsOpen ? '▴' : '▾'}</span>
-                </span>
-              </button>
-              <div className={`nav-submenu${destinationsOpen ? ' open-mobile' : ''}`}>
-                {DESTINATION_LINKS.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className="nav-submenu-link"
-                    onClick={() => {
-                      setMenuOpen(false);
-                      setDestinationsOpen(false);
-                    }}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <button type="button" className={`nav-link${activeMenu === 'Blog' ? ' active' : ''}`} onClick={() => { setMenuOpen(false); setDestinationsOpen(false); navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+            <button type="button" className={`nav-link${activeMenu === 'Blog' ? ' active' : ''}`} onClick={() => { setMenuOpen(false); navigate('/'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
               <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
               <span className="nav-label">Blog</span>
             </button>
@@ -210,10 +165,10 @@ export default function Navbar() {
 
           <div className="navbar-footer">
             <div className="navbar-auth">
-              <Link to="/signin" className="nav-auth-btn nav-auth-btn-outline" onClick={() => { setMenuOpen(false); setDestinationsOpen(false); }}>
+              <Link to="/signin" className="nav-auth-btn nav-auth-btn-outline" onClick={() => { setMenuOpen(false); }}>
                 Sign In
               </Link>
-              <Link to="/login" className="nav-auth-btn" onClick={() => { setMenuOpen(false); setDestinationsOpen(false); }}>
+              <Link to="/login" className="nav-auth-btn" onClick={() => { setMenuOpen(false); }}>
                 Login
               </Link>
             </div>
@@ -241,5 +196,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import SeasonalOffer from './components/SeasonalOffer';
 import Features from './components/Features';
 import EscapeSection from './components/EscapeSection';
 import LocalHeritage from './components/LocalHeritage';
@@ -21,6 +22,7 @@ function HomePage() {
     <>
       <Hero />
       <About />
+      <SeasonalOffer />
       <Features />
       <EscapeSection />
       <LocalHeritage />
