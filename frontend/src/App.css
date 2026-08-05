@@ -1449,9 +1449,23 @@ h1, h2, h3, h4 {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: all 0.25s ease;
 }
 .contact-detail .icon svg {
   color: var(--primary);
+  transition: all 0.25s ease;
+}
+.contact-detail .icon-link:hover .icon {
+  background: var(--primary);
+  transform: scale(1.08);
+}
+.contact-detail .icon-link:hover .icon svg {
+  color: #ffffff;
+}
+.contact-detail .icon-link {
+  display: inline-flex;
+  text-decoration: none;
+  border-radius: 0;
 }
 .booking-form {
   background: rgba(255,255,255,.04);
