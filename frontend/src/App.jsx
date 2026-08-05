@@ -74,6 +74,32 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    const sessionCounted = sessionStorage.getItem('pranara_session_counted');
+    if (!sessionCounted) {
+      sessionStorage.setItem('pranara_session_counted', 'true');
+      fetch('/api/visits', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            localStorage.setItem('pranara_visitor_count', data.count.toString());
+            window.dispatchEvent(new CustomEvent('pranaraVisitorCountUpdated', { detail: data.count }));
+          }
+        })
+        .catch(err => console.error('Failed to log visit:', err));
+    } else {
+      fetch('/api/visits')
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            localStorage.setItem('pranara_visitor_count', data.count.toString());
+            window.dispatchEvent(new CustomEvent('pranaraVisitorCountUpdated', { detail: data.count }));
+          }
+        })
+        .catch(err => console.error('Failed to fetch visit count:', err));
+    }
+  }, []);
+
+  useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
       const el = document.getElementById(id);

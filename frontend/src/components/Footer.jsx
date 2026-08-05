@@ -7,16 +7,19 @@ export default function Footer() {
   const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
-    let count = localStorage.getItem('pranara_visitor_count');
-    if (!count) {
-      const baseCount = 1542;
-      localStorage.setItem('pranara_visitor_count', baseCount.toString());
-      setVisitorCount(baseCount);
-    } else {
-      const nextCount = parseInt(count, 10) + 1;
-      localStorage.setItem('pranara_visitor_count', nextCount.toString());
-      setVisitorCount(nextCount);
+    const storedCount = localStorage.getItem('pranara_visitor_count');
+    if (storedCount) {
+      setVisitorCount(parseInt(storedCount, 10));
     }
+
+    const handleCountUpdate = (e) => {
+      setVisitorCount(e.detail);
+    };
+
+    window.addEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
+    return () => {
+      window.removeEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
+    };
   }, []);
 
   const handleJoinCommunity = () => {

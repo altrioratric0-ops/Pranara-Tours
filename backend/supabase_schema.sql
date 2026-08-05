@@ -67,6 +67,13 @@ CREATE TABLE IF NOT EXISTS contact_messages (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- 5a. VISITOR STATS TABLE
+CREATE TABLE IF NOT EXISTS visitor_stats (
+  id BIGINT PRIMARY KEY DEFAULT 1,
+  count INTEGER DEFAULT 1542,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- 6. DESTINATIONS TABLE
 CREATE TABLE IF NOT EXISTS destinations (
   id BIGSERIAL PRIMARY KEY,
@@ -105,6 +112,7 @@ ALTER TABLE contact_messages ENABLE ROW LEVEL SECURITY;
 ALTER TABLE destinations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE experiences ENABLE ROW LEVEL SECURITY;
 ALTER TABLE attractions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE visitor_stats ENABLE ROW LEVEL SECURITY;
 
 -- Public read access policies
 CREATE POLICY "Public read tours" ON tours FOR SELECT USING (true);
@@ -117,6 +125,7 @@ CREATE POLICY "Public read attractions" ON attractions FOR SELECT USING (true);
 -- Public insert policies
 CREATE POLICY "Public insert bookings" ON bookings FOR INSERT WITH CHECK (true);
 CREATE POLICY "Public insert contact" ON contact_messages FOR INSERT WITH CHECK (true);
+CREATE POLICY "Public read/write visitor_stats" ON visitor_stats FOR ALL USING (true);
 
 -- ============================================================
 -- SEED DATA

@@ -868,6 +868,77 @@ def handle_bookings():
 
 
 # ---------------------------------------------------------------------------
+# API Routes - Visits Tracker
+# ---------------------------------------------------------------------------
+@app.route("/api/visits", methods=["GET", "POST"])
+def handle_visits():
+    # Retrieve Supabase connection
+    table = db_table("visitor_stats")
+    count = 1542  # default baseline
+    
+    if table:
+        try:
+            resp = table.select("count").eq("id", 1).execute()
+            if resp.data:
+                count = resp.data[0]["count"]
+            else:
+                table.insert({"id": 1, "count": count}).execute()
+        except Exception as e:
+            logger.error(f"Supabase visitor query error: {e}")
+    else:
+        # Fallback to local persistent JSON file database
+        try:
+            if os.path.exists("visitor_count.json"):
+                with open("visitor_count.json", "r") as f:
+                    data = json.load(f)
+                    count = data.get("visits", 1542)
+            else:
+                with open("visitor_count.json", "w") as f:
+                    json.dump({"visits": count}, f)
+        except Exception as e:
+            logger.error(f"Failed to read/write local visitor stats: {e}")
+
+    if request.method == "POST":
+        count += 1
+        if table:
+            try:
+                table.update({"count": count}).eq("id", 1).execute()
+            except Exception as e:
+                logger.error(f"Supabase visitor update error: {e}")
+        else:
+            try:
+                with open("visitor_count.json", "w") as f:
+                    json.dump({"visits": count}, f)
+            except Exception as e:
+                logger.error(f"Failed to write local visitor stats: {e}")
+        
+        # ──────────────────────────────────────────────────────────
+        # TRIGGER VISIT NOTIFICATION TO +91 7397532574
+        # ──────────────────────────────────────────────────────────
+        logger.info(f"👉 [NOTIFICATION TO +91 7397532574]: A new user has visited the Pranara Tours website! Current total visitor count: {count}")
+        
+        # Optional Twilio SMS trigger if credentials exist in .env
+        twilio_sid = os.getenv("TWILIO_ACCOUNT_SID")
+        twilio_token = os.getenv("TWILIO_AUTH_TOKEN")
+        twilio_number = os.getenv("TWILIO_PHONE_NUMBER")
+        
+        if twilio_sid and twilio_token and twilio_number:
+            try:
+                sms_url = f"https://api.twilio.com/2010-04-01/Accounts/{twilio_sid}/Messages.json"
+                sms_data = {
+                    "To": "+917397532574",
+                    "From": twilio_number,
+                    "Body": f"Pranara Tours: New visitor on site. Total count: {count}"
+                }
+                requests.post(sms_url, auth=(twilio_sid, twilio_token), data=sms_data, timeout=5)
+                logger.info("Real Twilio SMS notification sent successfully.")
+            except Exception as e:
+                logger.error(f"Failed to send Twilio SMS: {e}")
+
+    return jsonify({"count": count})
+
+
+# ---------------------------------------------------------------------------
 # API Routes - Contact
 # ---------------------------------------------------------------------------
 @app.route("/api/contact", methods=["POST"])

@@ -561,14 +561,14 @@ h1, h2, h3, h4 {
   background: linear-gradient(135deg, var(--primary-dark) 0%, #0d3811 100%);
 }
 .hero-actions .btn-primary {
-  background: linear-gradient(135deg, var(--golden) 0%, #f57c00 100%);
-  color: #1a2e1c;
-  box-shadow: 0 4px 20px rgba(249, 168, 37, 0.35);
+  background: var(--cream);
+  color: var(--text-dark);
+  box-shadow: 0 4px 20px rgba(250, 250, 248, 0.2);
 }
 .hero-actions .btn-primary:hover {
-  background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
-  color: #fff;
-  box-shadow: 0 8px 25px rgba(249, 168, 37, 0.45);
+  background: #ffffff;
+  color: var(--primary-dark);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.35);
 }
 .btn-outline {
   background: rgba(46, 125, 50, 0.05);
