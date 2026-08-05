@@ -27,6 +27,9 @@ class Config:
     # CORS
     CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
     
+    # Notifications
+    NOTIFICATION_PHONES = [p.strip() for p in os.getenv("NOTIFICATION_PHONES", "+917397532574").split(",") if p.strip()]
+    
     @classmethod
     def has_supabase(cls):
         return bool(cls.SUPABASE_URL and cls.SUPABASE_ANON_KEY)

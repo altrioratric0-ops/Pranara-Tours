@@ -874,7 +874,7 @@ def handle_bookings():
 def handle_visits():
     # Retrieve Supabase connection
     table = db_table("visitor_stats")
-    count = 1542  # default baseline
+    count = 0  # default baseline
     
     if table:
         try:
@@ -891,7 +891,7 @@ def handle_visits():
             if os.path.exists("visitor_count.json"):
                 with open("visitor_count.json", "r") as f:
                     data = json.load(f)
-                    count = data.get("visits", 1542)
+                    count = data.get("visits", 0)
             else:
                 with open("visitor_count.json", "w") as f:
                     json.dump({"visits": count}, f)
@@ -913,9 +913,10 @@ def handle_visits():
                 logger.error(f"Failed to write local visitor stats: {e}")
         
         # ──────────────────────────────────────────────────────────
-        # TRIGGER VISIT NOTIFICATION TO +91 7397532574
+        # TRIGGER VISIT NOTIFICATIONS
         # ──────────────────────────────────────────────────────────
-        logger.info(f"👉 [NOTIFICATION TO +91 7397532574]: A new user has visited the Pranara Tours website! Current total visitor count: {count}")
+        for phone in Config.NOTIFICATION_PHONES:
+            logger.info(f"👉 [NOTIFICATION TO {phone}]: A new user has visited the Pranara Tours website! Current total visitor count: {count}")
         
         # Optional Twilio SMS trigger if credentials exist in .env
         twilio_sid = os.getenv("TWILIO_ACCOUNT_SID")
@@ -923,17 +924,21 @@ def handle_visits():
         twilio_number = os.getenv("TWILIO_PHONE_NUMBER")
         
         if twilio_sid and twilio_token and twilio_number:
-            try:
-                sms_url = f"https://api.twilio.com/2010-04-01/Accounts/{twilio_sid}/Messages.json"
-                sms_data = {
-                    "To": "+917397532574",
-                    "From": twilio_number,
-                    "Body": f"Pranara Tours: New visitor on site. Total count: {count}"
-                }
-                requests.post(sms_url, auth=(twilio_sid, twilio_token), data=sms_data, timeout=5)
-                logger.info("Real Twilio SMS notification sent successfully.")
-            except Exception as e:
-                logger.error(f"Failed to send Twilio SMS: {e}")
+            sms_url = f"https://api.twilio.com/2010-04-01/Accounts/{twilio_sid}/Messages.json"
+            for phone in Config.NOTIFICATION_PHONES:
+                try:
+                    sms_data = {
+                        "To": phone,
+                        "From": twilio_number,
+                        "Body": f"Pranara Tours: New visitor on site. Total count: {count}"
+                    }
+                    resp = requests.post(sms_url, auth=(twilio_sid, twilio_token), data=sms_data, timeout=5)
+                    if resp.status_code == 201 or resp.status_code == 200:
+                        logger.info(f"Real Twilio SMS notification sent successfully to {phone}.")
+                    else:
+                        logger.error(f"Failed to send Twilio SMS to {phone}: {resp.text}")
+                except Exception as e:
+                    logger.error(f"Failed to send Twilio SMS to {phone}: {e}")
 
     return jsonify({"count": count})
 

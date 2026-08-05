@@ -1,26 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const year = new Date().getFullYear();
   const whatsappCommunityLink = 'https://chat.whatsapp.com/';
-  const [visitorCount, setVisitorCount] = useState(0);
 
-  useEffect(() => {
-    const storedCount = localStorage.getItem('pranara_visitor_count');
-    if (storedCount) {
-      setVisitorCount(parseInt(storedCount, 10));
-    }
-
-    const handleCountUpdate = (e) => {
-      setVisitorCount(e.detail);
-    };
-
-    window.addEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
-    return () => {
-      window.removeEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
-    };
-  }, []);
 
   const handleJoinCommunity = () => {
     window.open(whatsappCommunityLink, '_blank', 'noopener,noreferrer');
@@ -90,10 +73,6 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <div>&copy; {year} Pranara. All rights reserved.</div>
-          <div className="footer-visitor-count">
-            <span className="visitor-dot" />
-            No. of Visitors: <strong>{visitorCount.toLocaleString()}</strong>
-          </div>
           <div className="footer-legal-links">
             <Link to="/terms">Terms &amp; Conditions</Link>
             <a href="#">Privacy Policy</a>
