@@ -52,24 +52,23 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: QR Code */}
+          {/* Column 2: Location QR Code */}
           <div className="footer-col-qr">
-            <div className="footer-qr-card">
-              <svg viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                <rect width="120" height="120" fill="#ffffff" rx="8" />
-                <path fill="#0a2a19" d="
-                  M10 10h30v30H10z m5 5v20h20V15z m5 5h10v10H20z
-                  M80 10h30v30H80z m5 5v20h20V15z m5 5h10v10H90z
-                  M10 80h30v30H10z m5 5v20h20V85z m5 5h10v10H20z
-                  M48 12h8v8h-8z M60 12h8v8h-8z M48 24h8v8h-8z M60 28h8v8h-8z M48 36h8v8h-8z
-                  M12 48h8v8h-8z M24 48h8v8h-8z M36 48h8v8h-8z M48 48h8v8h-8z M60 48h8v8h-8z M72 48h8v8h-8z M84 48h8v8h-8z M96 48h8v8h-8z
-                  M12 60h8v8h-8z M28 60h8v8h-8z M44 60h8v8h-8z M60 60h8v8h-8z M76 60h8v8h-8z M92 60h8v8h-8z
-                  M48 72h8v8h-8z M64 72h8v8h-8z M80 72h8v8h-8z M96 72h8v8h-8z
-                  M48 84h8v8h-8z M60 84h8v8h-8z M72 84h8v8h-8z M88 84h8v8h-8z M100 84h8v8h-8z
-                  M48 96h8v8h-8z M64 96h8v8h-8z M76 96h8v8h-8z M92 96h8v8h-8z
-                " />
-              </svg>
-            </div>
+            <a
+              href="https://www.google.com/maps/place/Pranara+Munnar/@10.0616148,77.0025719,15z/data=!4m6!3m5!1s0x3b07998bc4d950a7:0xcba33f03627c5605!8m2!3d10.0616615!4d77.0129831!16s%2Fg%2F11zh69596t?entry=ttu&g_ep=EgoyMDI2MDgwMy4wIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-qr-link"
+              title="Open Pranara Munnar on Google Maps"
+            >
+              <div className="footer-qr-card">
+                <img
+                  src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0a2a19&data=${encodeURIComponent("https://www.google.com/maps/place/Pranara+Munnar/@10.0616148,77.0025719,15z/data=!4m6!3m5!1s0x3b07998bc4d950a7:0xcba33f03627c5605!8m2!3d10.0616615!4d77.0129831!16s%2Fg%2F11zh69596t?entry=ttu&g_ep=EgoyMDI2MDgwMy4wIKXMDSoASAFQAw%3D%3D")}`}
+                  alt="Pranara Munnar Google Maps Location QR Code"
+                  className="footer-qr-img"
+                />
+              </div>
+            </a>
           </div>
 
           {/* Column 3: Explore */}

@@ -6269,6 +6269,7 @@ h4 {
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
+  text-align: justify;
 }
 
 .terms-content-card {
@@ -6294,12 +6295,14 @@ h4 {
   display: flex;
   align-items: center;
   gap: 8px;
+  text-align: left;
 }
 
 .terms-item p {
   font-size: 0.98rem;
   color: var(--text-light);
   line-height: 1.7;
+  text-align: justify;
 }
 
 .terms-item ul {
@@ -6315,6 +6318,7 @@ h4 {
   color: var(--text-light);
   line-height: 1.6;
   list-style-type: disc;
+  text-align: justify;
 }
 
 .terms-item li strong {
@@ -6330,6 +6334,7 @@ h4 {
   font-size: 0.98rem;
   line-height: 1.7;
   color: var(--text-dark) !important;
+  text-align: justify;
 }
 
 .terms-agreement-form {
@@ -6472,106 +6477,200 @@ h4 {
 
 /* ───── Seasonal Offer Section ───── */
 .seasonal-offer-section {
-  padding: 60px 0 20px 0;
+  padding: 80px 24px;
+  background: #f9fbf9;
 }
 
-.seasonal-offer-card {
-  background: #589473;
-  border-radius: 24px;
-  padding: 48px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 10px 30px rgba(88, 148, 115, 0.15);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  max-width: 1100px;
+.seasonal-container {
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Subtle background glow */
-.seasonal-offer-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
-  pointer-events: none;
+.seasonal-header-text {
+  text-align: center;
+  margin-bottom: 36px;
 }
 
-.seasonal-offer-badge {
-  display: inline-flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.18);
-  color: #ffffff;
-  border-radius: 999px;
-  padding: 8px 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
+.seasonal-tag {
+  color: #15803d;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 24px;
+  display: inline-block;
+  margin-bottom: 8px;
 }
 
-.seasonal-offer-title {
-  font-size: 2.2rem;
-  font-weight: 700;
+.seasonal-heading {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #0f2e1b;
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.seasonal-subheading {
+  font-size: 1rem;
+  color: #4b5563;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.seasonal-offer-banner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #092e1a;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.seasonal-banner-content {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  background: linear-gradient(90deg, #092e1a 0%, #092e1a 80%, rgba(9, 46, 26, 0.85) 100%);
+}
+
+.monsoon-badge {
+  background: #d97706;
   color: #ffffff;
-  margin: 0 0 16px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+}
+
+.monsoon-title {
+  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 14px;
   line-height: 1.2;
 }
 
-.seasonal-offer-text {
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  margin: 0 auto 32px;
-  line-height: 1.5;
+.monsoon-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  margin: 0 0 28px;
+  max-width: 480px;
 }
 
-.seasonal-offer-btn {
-  display: inline-flex;
+.countdown-timer-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.countdown-box {
+  width: 64px;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  color: #1b5e20;
-  border-radius: 999px;
-  padding: 12px 36px;
+  backdrop-filter: blur(8px);
+}
+
+.countdown-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.countdown-label {
+  font-size: 0.68rem;
+  color: #fde047;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.countdown-colon {
+  font-size: 1.5rem;
   font-weight: 700;
-  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 12px;
+}
+
+.grab-deal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  color: #092e1a;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
 }
 
-.seasonal-offer-btn:hover {
+.grab-deal-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  background-color: #f7fdf9;
+  background: #f0fdf4;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
-.seasonal-offer-btn:active {
-  transform: translateY(0);
+.seasonal-banner-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  overflow: hidden;
 }
 
-@media (max-width: 768px) {
-  .seasonal-offer-card {
-    padding: 36px 20px;
-    border-radius: 20px;
-  }
+.seasonal-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
 
-  .seasonal-offer-title {
-    font-size: 1.8rem;
-  }
+.footer-qr-link {
+  display: inline-block;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
 
-  .seasonal-offer-badge {
-    font-size: 0.75rem;
-    padding: 6px 16px;
-  }
+.footer-qr-link:hover {
+  transform: scale(1.04);
+}
 
-  .seasonal-offer-text {
-    font-size: 1rem;
-    margin-bottom: 24px;
+.footer-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+@media (max-width: 992px) {
+  .seasonal-offer-banner {
+    grid-template-columns: 1fr;
+  }
+  .seasonal-banner-content {
+    background: #092e1a;
+    padding: 36px 24px;
+  }
+  .seasonal-banner-image-wrap {
+    min-height: 240px;
+    height: 240px;
   }
 }
