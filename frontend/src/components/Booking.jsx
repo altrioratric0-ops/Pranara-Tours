@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Booking() {
   const whatsappCommunityLink = 'https://chat.whatsapp.com/';
+  const [mobileNumber, setMobileNumber] = useState('');
 
-  const handleJoinCommunity = () => {
+  const handleJoinCommunity = (e) => {
+    if (e) e.preventDefault();
     window.open(whatsappCommunityLink, '_blank', 'noopener,noreferrer');
   };
 
@@ -27,80 +29,39 @@ export default function Booking() {
   }, []);
 
   return (
-    <section className="booking" id="booking">
-      <div className="container">
+    <section className="booking-community-section" id="booking">
+      <div className="booking-community-container">
+        <div className="community-banner-card">
+          <div className="community-content-left">
+            <h2 className="community-title">Begin Your Kerala Story</h2>
+            <p className="community-subtitle">JOIN OUR COMMUNITY TO KNOW US</p>
 
-
-        <div className="booking-grid">
-          <div className="booking-info">
-            <h3>Get in Touch</h3>
-            <p>
-              Ready to explore the hills, backwaters, and pristine beaches of Kerala? Contact us directly or connect with us on social media and we'll get back to you within 24 hours with availability, pricing, and personalized recommendations.
-            </p>
-            <div className="contact-detail">
-              <a href="tel:+919497869454" className="icon-link">
-                <div className="icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-                  </svg>
-                </div>
-              </a>
-              <span>Contact: <a href="tel:+919497869454" style={{ color: 'inherit', fontWeight: 'bold' }}>+91 94978 69454</a></span>
-            </div>
-            <div className="contact-detail">
-              <a href="https://wa.me/916374502007" target="_blank" rel="noopener noreferrer" className="icon-link">
-                <div className="icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                  </svg>
-                </div>
-              </a>
-              <span>WhatsApp: <a href="https://wa.me/916374502007" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', fontWeight: 'bold' }}>+91 63745 02007</a></span>
-            </div>
-            <div className="contact-detail">
-              <a href="mailto:hellopranara@gmail.com" className="icon-link">
-                <div className="icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/>
-                  </svg>
-                </div>
-              </a>
-              <span>Email: <a href="mailto:hellopranara@gmail.com" style={{ color: 'inherit', fontWeight: 'bold' }}>hellopranara@gmail.com</a></span>
-            </div>
-            <div className="contact-detail">
-              <a href="https://www.instagram.com/pranara_co" target="_blank" rel="noopener noreferrer" className="icon-link">
-                <div className="icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                  </svg>
-                </div>
-              </a>
-              <span>Instagram: <a href="https://www.instagram.com/pranara_co" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', fontWeight: 'bold' }}>@pranara_co</a></span>
-            </div>
-            <div className="contact-detail">
-              <div className="icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <span>Location: <strong>Munnar</strong></span>
-            </div>
-
-            <div className="booking-community-form">
-              <h4>Join Our Community</h4>
-              <p>Join Our Community to get the latest updates</p>
-              <div className="booking-form-row">
-                <input type="tel" placeholder="Phone number" />
-                <button type="button" onClick={handleJoinCommunity}>Join Now</button>
-              </div>
-            </div>
+            <form className="community-input-box" onSubmit={handleJoinCommunity}>
+              <input
+                type="tel"
+                placeholder="Enter your mobile to join community"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+                className="community-input"
+              />
+              <button type="submit" className="community-btn">
+                JOIN COMMUNITY
+              </button>
+            </form>
           </div>
 
-          <div className="booking-banner-container">
-            <img src="/assets/booking_banner.png" alt="Discover Pranara Munnar" className="booking-banner-img" />
+          <div className="community-banner-right">
+            <div className="community-image-frame">
+              <img
+                src="/assets/booking_banner.png"
+                alt="Autumnvale Experience Munnar"
+                className="community-banner-img"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
