@@ -19,9 +19,9 @@ export default function SubGallery() {
         <h1 style={{ fontSize: '1.8rem', margin: '0 0 20px' }}>{destination.name}</h1>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-          {destination.images.map((image, index) => (
-            <div key={`${destination.slug}-${index}`} style={{ borderRadius: '16px', overflow: 'hidden', background: '#1e293b' }}>
-              <img src={image} alt={`${destination.name} ${index + 1}`} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
+          {destination.images.slice(1).map((image, index) => (
+            <div key={`${destination.slug}-${index + 1}`} style={{ borderRadius: '16px', overflow: 'hidden', background: '#1e293b' }}>
+              <img src={image} alt={`${destination.name} ${index + 2}`} style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />
             </div>
           ))}
         </div>

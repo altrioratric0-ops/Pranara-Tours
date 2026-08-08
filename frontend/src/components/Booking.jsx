@@ -53,7 +53,7 @@ export default function Booking() {
           <div className="community-banner-right">
             <div className="community-image-frame">
               <img
-                src="/assets/booking_banner.png"
+                src="/assets/Travel_poster.png"
                 alt="Autumnvale Experience Munnar"
                 className="community-banner-img"
               />
