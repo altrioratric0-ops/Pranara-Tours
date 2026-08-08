@@ -2796,7 +2796,12 @@ h4 {
   }
 
   .footer-col-qr {
-    justify-content: flex-start;
+    justify-content: center;
+  }
+
+  .footer-qr-card {
+    max-width: 220px;
+    width: 100%;
   }
 
   .footer-bottom-bar {
