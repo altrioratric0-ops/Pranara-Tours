@@ -2796,12 +2796,15 @@ h4 {
   }
 
   .footer-col-qr {
+    display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   .footer-qr-card {
-    max-width: 220px;
+    max-width: 240px;
     width: 100%;
+    margin: 0 auto;
   }
 
   .footer-bottom-bar {
