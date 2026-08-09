@@ -109,7 +109,8 @@ export default function FAQ() {
                     fontSize: '0.95rem',
                     color: 'var(--text-light)',
                     lineHeight: '1.6',
-                    margin: 0
+                    margin: 0,
+                    textAlign: 'justify'
                   }}>
                     {faq.answer}
                   </p>
