@@ -167,187 +167,149 @@ export default function Testimonials() {
       <div className="testimonials-editorial-container">
         {/* Section Header */}
         <div className="editorial-header">
-          <div className="editorial-badge">
-            <span className="badge-dot" />
-            <span>GUEST EXPERIENCES & STORIES</span>
+          <div className="editorial-header-text">
+            <div className="editorial-badge">
+              <span className="badge-dot" />
+              <span>GUEST EXPERIENCES & STORIES</span>
+            </div>
+            <h2 className="editorial-title">
+              Voices of <span className="text-gold-gradient">Luxury Travel</span>
+            </h2>
+            <p className="editorial-subtitle">
+              Discover how explorers from around the globe experienced Kerala’s breathtaking beauty with Pranara’s bespoke journeys.
+            </p>
           </div>
-          <h2 className="editorial-title">
-            Voices of <span className="text-gold-gradient">Luxury Travel</span>
-          </h2>
-          <p className="editorial-subtitle">
-            Discover how explorers from around the globe experienced Kerala’s breathtaking beauty with Pranara’s bespoke journeys.
-          </p>
+          <div className="header-nav-arrows">
+            <button onClick={handlePrev} className="nav-arrow-btn" aria-label="Previous review">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="19" y1="12" x2="5" y2="12" />
+                <polyline points="12 19 5 12 12 5" />
+              </svg>
+            </button>
+            <button onClick={handleNext} className="nav-arrow-btn" aria-label="Next review">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Split Spotlight Layout */}
-        <div className="testimonial-split-layout">
-          
-          {/* Left Column: Visual Showcase */}
-          <div className="testimonial-visual-card">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeItem.id}
-                initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: -10 }}
-                transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
-                className="visual-card-inner"
-              >
-                <div className="visual-image-wrapper">
-                  <img
-                    src={activeItem.avatar}
-                    alt={activeItem.name}
-                    className="visual-main-image"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/assets/logo.png';
-                    }}
-                  />
-                  <div className="visual-overlay" />
-                </div>
-                
-                {/* Tagline & Destination Badges */}
-                <div className="visual-badge-overlay">
-                  <span className="visual-tagline">{activeItem.tagline || 'BESPOKE EXPERIENCE'}</span>
-                  <h3 className="visual-destination">{activeItem.destination}</h3>
-                </div>
+        {/* 3D Testimonial Card Carousel */}
+        <div className="testimonial-carousel-wrapper">
+          <div className="testimonial-cards-container">
+            {testimonials.map((item, idx) => {
+              // Calculate relative position
+              let diff = idx - activeIndex;
+              const len = testimonials.length;
+              if (diff < -len / 2) diff += len;
+              if (diff > len / 2) diff -= len;
 
-                {/* Video Play Trigger if video exists */}
-                {activeItem.videoUrl && (
-                  <button 
-                    onClick={() => setVideoPlayingUrl(activeItem.videoUrl)}
-                    className="video-play-trigger"
-                    aria-label="Play video testimonial"
-                  >
-                    <div className="play-button-pulse" />
-                    <svg className="play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                    <span>Watch Journey</span>
-                  </button>
-                )}
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              // Determine card positioning classes
+              let positionClass = '';
+              if (diff === 0) positionClass = 'active';
+              else if (diff === -1) positionClass = 'prev-1';
+              else if (diff === 1) positionClass = 'next-1';
+              else if (diff === -2) positionClass = 'prev-2';
+              else if (diff === 2) positionClass = 'next-2';
+              else positionClass = 'hidden';
 
-          {/* Right Column: Review Details */}
-          <div className="testimonial-content-card">
-            {/* Navigation & Fraction indicator */}
-            <div className="testimonial-navigation-bar">
-              <div className="testimonial-fraction-indicator">
-                <span className="current-index">{String(activeIndex + 1).padStart(2, '0')}</span>
-                <span className="divider">/</span>
-                <span className="total-count">{String(testimonials.length).padStart(2, '0')}</span>
-              </div>
-              
-              <div className="nav-arrows">
-                <button onClick={handlePrev} className="nav-arrow-btn" aria-label="Previous review">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="19" y1="12" x2="5" y2="12" />
-                    <polyline points="12 19 5 12 12 5" />
-                  </svg>
-                </button>
-                <button onClick={handleNext} className="nav-arrow-btn" aria-label="Next review">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="quote-content-wrapper">
-              <div className="editorial-quote-mark" aria-hidden="true">“</div>
-              
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeItem.id}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -15 }}
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="quote-inner"
+              return (
+                <div
+                  key={item.id}
+                  className={`testimonial-card ${positionClass}`}
+                  onClick={() => {
+                    if (diff !== 0) setActiveIndex(idx);
+                  }}
                 >
-                  {/* Rating Stars */}
-                  <div className="editorial-stars">
+                  {/* Top destination badge/pill */}
+                  <div className="card-dest-badge">
+                    <span className="pin-icon">📍</span>
+                    <span className="dest-text">{item.destination}</span>
+                  </div>
+
+                  {/* Avatar wrapper with check badge */}
+                  <div className="card-avatar-container">
+                    <div className="card-avatar-wrapper">
+                      <img
+                        src={item.avatar}
+                        alt={item.name}
+                        className="card-avatar-img"
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/assets/logo.png';
+                        }}
+                      />
+                      <div className="verified-badge" title="Verified Guest">
+                        <svg viewBox="0 0 24 24" width="10" height="10" fill="white">
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Stars */}
+                  <div className="card-stars">
                     {Array.from({ length: 5 }, (_, i) => (
                       <svg
                         key={i}
-                        className="editorial-star-icon"
-                        width="18"
-                        height="18"
+                        className="card-star-icon"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
-                        fill={i < activeItem.rating ? '#D4AF37' : 'none'}
-                        stroke="#D4AF37"
-                        strokeWidth="2"
+                        fill="#D4AF37"
                       >
                         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                       </svg>
                     ))}
                   </div>
 
-                  {/* Testimonial Quote Text */}
-                  <blockquote className="editorial-quote-text">
-                    "{activeItem.quote}"
-                  </blockquote>
-
-                  {/* Guest Meta info */}
-                  <div className="editorial-author-meta">
-                    <h4 className="author-name">{activeItem.name}</h4>
-                    <p className="author-location">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ marginRight: '6px', verticalAlign: 'middle', display: 'inline-block' }}>
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      {activeItem.location}
-                    </p>
+                  {/* Quote content */}
+                  <div className="card-quote-wrapper">
+                    <span className="card-quote-mark">“</span>
+                    <p className="card-quote-text">"{item.quote}"</p>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
 
-        </div>
+                  {/* Divider */}
+                  <div className="card-divider" />
 
-        {/* Bottom Interactive Navigation Grid */}
-        <div className="traveler-navigator">
-          <p className="navigator-label">DISCOVER STORIES BY TRAVELER</p>
-          <div className="navigator-grid">
-            {testimonials.map((item, idx) => {
-              // Extract short name and destination for clean preview tiles
-              const shortName = item.name.split(' & ')[0].split(' Family')[0].split(', ')[0];
-              const shortDest = item.destination.split(', ')[0];
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => setActiveIndex(idx)}
-                  className={`navigator-tile ${activeIndex === idx ? 'active' : ''}`}
-                >
-                  <div className="navigator-avatar-wrapper">
-                    <img 
-                      src={item.avatar} 
-                      alt={item.name} 
-                      className="navigator-avatar-img"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/assets/logo.png';
+                  {/* Author meta */}
+                  <div className="card-author-info">
+                    <h4 className="card-author-name">{item.name}</h4>
+                    <p className="card-author-location">{item.location}</p>
+                  </div>
+
+                  {/* Play video trigger if available */}
+                  {item.videoUrl && diff === 0 && (
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setVideoPlayingUrl(item.videoUrl);
                       }}
-                    />
-                    {activeIndex === idx && (
-                      <motion.div 
-                        layoutId="active-avatar-ring" 
-                        className="active-avatar-ring"
-                        transition={{ type: 'spring', stiffness: 260, damping: 26 }}
-                      />
-                    )}
-                  </div>
-                  <div className="navigator-info">
-                    <span className="navigator-name">{shortName}</span>
-                    <span className="navigator-dest">{shortDest}</span>
-                  </div>
-                </button>
+                      className="video-play-trigger-card"
+                      aria-label="Play video testimonial"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                      <span>Watch Journey</span>
+                    </button>
+                  )}
+                </div>
               );
             })}
+          </div>
+
+          {/* Dots Navigation */}
+          <div className="testimonial-dots">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                className={`testimonial-dot ${activeIndex === idx ? 'active' : ''}`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>
