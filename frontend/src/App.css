@@ -1339,11 +1339,53 @@ h4 {
   max-width: 620px;
 }
 
+/* Header Nav Controls & Write Review Button */
+.header-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.write-review-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #1E3E35 0%, #2F5D50 100%);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 30px;
+  color: #F8F5F0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(47, 93, 80, 0.18);
+  transition: all 0.3s ease;
+}
+
+.write-review-btn:hover {
+  background: linear-gradient(135deg, #2F5D50 0%, #3D7565 100%);
+  border-color: #D4AF37;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+}
+
+.write-review-btn svg {
+  color: #D4AF37;
+  transition: transform 0.25s ease;
+}
+
+.write-review-btn:hover svg {
+  transform: scale(1.15);
+}
+
 /* Header Nav Arrows */
 .header-nav-arrows {
   display: flex;
   gap: 12px;
-  margin-bottom: 8px;
 }
 
 .nav-arrow-btn {
@@ -1767,6 +1809,283 @@ h4 {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+/* ───── Write Review Modal ───── */
+.review-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(14, 30, 26, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.review-modal-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(47, 93, 80, 0.18);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 580px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px 28px 28px;
+  position: relative;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+}
+
+.review-modal-header {
+  margin-bottom: 20px;
+}
+
+.review-modal-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1E3E35;
+  margin: 6px 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.review-modal-sub {
+  font-size: 0.88rem;
+  color: #5A6E65;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.review-form-error {
+  background: #FFF5F5;
+  border: 1px solid #FEB2B2;
+  color: #C53030;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.review-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+@media (max-width: 540px) {
+  .review-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.review-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.review-form-group label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #2F5D50;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.review-form-group input,
+.review-form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: #F8F5F0;
+  border: 1.5px solid rgba(47, 93, 80, 0.18);
+  border-radius: 12px;
+  font-size: 0.88rem;
+  color: #1E3E35;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.review-form-group input:focus,
+.review-form-group textarea:focus {
+  outline: none;
+  border-color: #2F5D50;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(47, 93, 80, 0.12);
+}
+
+/* Rating Star Picker */
+.rating-form-group {
+  margin-bottom: 16px;
+}
+
+.star-picker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.star-pick-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 2px;
+  transition: transform 0.18s ease;
+}
+
+.star-pick-btn:hover {
+  transform: scale(1.2);
+}
+
+.rating-num-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #B8860B;
+  margin-left: 8px;
+}
+
+/* Photo Upload Box */
+.photo-upload-container {
+  margin-top: 4px;
+}
+
+.photo-file-input {
+  display: none;
+}
+
+.photo-upload-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border: 2px dashed rgba(47, 93, 80, 0.25);
+  border-radius: 14px;
+  background: #F8F5F0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.photo-upload-box:hover {
+  border-color: #2F5D50;
+  background: #F2ECE4;
+}
+
+.photo-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+  color: #2F5D50;
+  font-weight: 600;
+}
+
+.photo-preview-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.photo-preview-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #D4AF37;
+}
+
+.photo-change-txt {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #2F5D50;
+  text-decoration: underline;
+}
+
+/* Action Buttons */
+.review-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.review-cancel-btn {
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1.5px solid rgba(47, 93, 80, 0.2);
+  background: transparent;
+  color: #5A6E65;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.review-cancel-btn:hover {
+  background: rgba(47, 93, 80, 0.06);
+  color: #1E3E35;
+}
+
+.review-submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #1E3E35 0%, #2F5D50 100%);
+  color: #FFFFFF;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(47, 93, 80, 0.25);
+  transition: all 0.25s ease;
+}
+
+.review-submit-btn:hover {
+  background: linear-gradient(135deg, #2F5D50 0%, #3D7565 100%);
+  box-shadow: 0 6px 20px rgba(47, 93, 80, 0.35);
+  transform: translateY(-2px);
+}
+
+.review-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Success State */
+.review-success-state {
+  text-align: center;
+  padding: 36px 16px;
+}
+
+.success-icon-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(47, 93, 80, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  border: 2px solid #2F5D50;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1E3E35;
+  margin: 0 0 6px;
+}
+
+.success-sub {
+  font-size: 0.9rem;
+  color: #5A6E65;
+  margin: 0;
 }
 
 
