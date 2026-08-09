@@ -10,7 +10,7 @@ export default function SubGallery() {
     return DESTINATIONS.find((item) => item.slug === categoryId) || DESTINATIONS[0];
   }, [categoryId]);
 
-  const images = destination.images.slice(1);
+const images = destination.images;
 
   return (
     <section style={{ padding: '100px 20px 40px', minHeight: '100vh', background: '#07111d', color: '#f8fafc' }}>

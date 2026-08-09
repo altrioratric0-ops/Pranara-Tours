@@ -5414,7 +5414,9 @@ h4 {
   border-radius: 24px;
   padding: 40px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   position: relative;
   animation: modalFadeIn 0.3s ease;
@@ -5475,14 +5477,14 @@ h4 {
 
 .modal-img-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin: 20px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 24px 0;
 }
 
 .modal-img {
-  height: 120px;
-  border-radius: 12px;
+  min-height: 260px;
+  border-radius: 16px;
   background-size: cover;
   background-position: center;
   border: 1px solid var(--border);
