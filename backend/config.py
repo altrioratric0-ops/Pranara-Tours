@@ -25,7 +25,7 @@ class Config:
     DEBUG = os.getenv("FLASK_ENV", "development") == "development"
     
     # CORS
-    CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
+    CORS_ORIGINS = os.getenv("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000,https://pranara13.vercel.app")
     
     # Notifications
     NOTIFICATION_PHONES = [p.strip() for p in os.getenv("NOTIFICATION_PHONES", "+917397532574").split(",") if p.strip()]

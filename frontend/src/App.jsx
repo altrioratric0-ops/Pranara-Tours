@@ -17,6 +17,10 @@ import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
 import TermsConditions from './components/TermsConditions';
 
+const API_BASE = import.meta.env.PROD
+  ? (import.meta.env.VITE_API_URL || 'http://localhost:5000')
+  : '';
+
 function HomePage() {
   return (
     <>
@@ -79,25 +83,35 @@ function App() {
     const sessionCounted = sessionStorage.getItem('pranara_session_counted');
     if (!sessionCounted) {
       sessionStorage.setItem('pranara_session_counted', 'true');
-      fetch('/api/visits', { method: 'POST' })
-        .then(res => res.json())
+      fetch(`${API_BASE}/api/visits`, { method: 'POST' })
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
         .then(data => {
           if (data && typeof data.count === 'number') {
             localStorage.setItem('pranara_visitor_count', data.count.toString());
             window.dispatchEvent(new CustomEvent('pranaraVisitorCountUpdated', { detail: data.count }));
           }
         })
-        .catch(err => console.error('Failed to log visit:', err));
+        .catch(err => {
+          console.warn('Visitor counter offline:', err.message);
+        });
     } else {
-      fetch('/api/visits')
-        .then(res => res.json())
+      fetch(`${API_BASE}/api/visits`)
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
         .then(data => {
           if (data && typeof data.count === 'number') {
             localStorage.setItem('pranara_visitor_count', data.count.toString());
             window.dispatchEvent(new CustomEvent('pranaraVisitorCountUpdated', { detail: data.count }));
           }
         })
-        .catch(err => console.error('Failed to fetch visit count:', err));
+        .catch(err => {
+          console.warn('Visitor counter offline:', err.message);
+        });
     }
   }, []);
 
