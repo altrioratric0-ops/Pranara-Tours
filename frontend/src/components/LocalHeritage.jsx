@@ -147,7 +147,7 @@ export default function LocalHeritage() {
             {/* Framed Picture in Story Card */}
             <div className="story-frame-container">
               <img 
-                src="/assets/munnar_guides_jeep.png" 
+                src="/assets/story_preview.png" 
                 alt="Pranara Local Guides Jeep" 
                 className="story-framed-img" 
               />
@@ -293,8 +293,9 @@ export default function LocalHeritage() {
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: "url('/assets/munnar_top_station.png')" }}></div>
-                <div className="modal-img" style={{ backgroundImage: "url('/assets/munnar_guides_jeep.png')" }}></div>
+                <div className="modal-img" style={{ backgroundImage: "url('/assets/Founder.jpeg')",width: "300px", height: "400px", backgroundSize: "cover",backgroundPosition: "center" }}></div>
+
+                <div className="modal-img" style={{ backgroundImage: "url('/assets/Co founder.jpeg')",width: "300px", height: "400px", backgroundSize: "cover",backgroundPosition: "center" }}></div>
               </div>
             </div>
             

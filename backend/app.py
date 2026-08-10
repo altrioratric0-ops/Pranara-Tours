@@ -636,17 +636,84 @@ def get_tour(tour_id):
 # ---------------------------------------------------------------------------
 # API Routes - Testimonials
 # ---------------------------------------------------------------------------
-@app.route("/api/testimonials", methods=["GET"])
-def get_testimonials():
+@app.route("/api/testimonials", methods=["GET", "POST"])
+def handle_testimonials():
+    if request.method == "GET":
+        table = db_table("testimonials")
+        if table:
+            try:
+                resp = table.select("*").eq("active", True).order("id", desc=True).execute()
+                return json_response(resp.data)
+            except Exception as e:
+                logger.error(f"Supabase testimonials query error: {e}")
+        return json_response(_fallback_db["testimonials"])
+    
+    # POST - Create new user testimonial / review
+    data = request.get_json(silent=True) or {}
+    name = (data.get("name") or "").strip()
+    quote = (data.get("quote") or data.get("review") or "").strip()
+    
+    if not name or not quote:
+        return error_response("Guest name and review quote are required", 400)
+    
+    try:
+        rating = int(data.get("rating", 5))
+    except (ValueError, TypeError):
+        rating = 5
+    if rating < 1 or rating > 5:
+        rating = 5
+    
+    name_parts = name.split()
+    initials = "".join([p[0].upper() for p in name_parts[:3]]) if name_parts else "G"
+    
+    testimonial = {
+        "name": name,
+        "location": (data.get("location") or "").strip() or "Verified Guest",
+        "destination": (data.get("destination") or "").strip() or "Kerala Experience",
+        "tagline": (data.get("tagline") or "").strip().upper() or "GUEST REVIEW",
+        "avatar": data.get("avatar") or "/assets/logo.png",
+        "avatar_initials": initials,
+        "rating": rating,
+        "quote": quote,
+        "videoUrl": data.get("videoUrl") or data.get("video_url") or "",
+        "active": True,
+        "created_at": datetime.utcnow().isoformat()
+    }
+    
     table = db_table("testimonials")
     if table:
         try:
-            resp = table.select("*").eq("active", True).order("id").execute()
-            return json_response(resp.data)
+            resp = table.insert(testimonial).execute()
+            if resp.data:
+                res_data = resp.data[0]
+                if "video_url" in res_data and "videoUrl" not in res_data:
+                    res_data["videoUrl"] = res_data["video_url"]
+                return json_response(res_data, 201)
         except Exception as e:
-            logger.error(f"Supabase testimonials query error: {e}")
+            logger.error(f"Supabase testimonial insert error: {e}")
+            try:
+                minimal = {
+                    "name": testimonial["name"],
+                    "location": testimonial["location"],
+                    "avatar_initials": initials,
+                    "rating": rating,
+                    "quote": quote,
+                    "active": True
+                }
+                resp = table.insert(minimal).execute()
+                if resp.data:
+                    res_data = {**testimonial, **resp.data[0]}
+                    return json_response(res_data, 201)
+            except Exception as e2:
+                logger.error(f"Supabase minimal testimonial insert error: {e2}")
     
-    return json_response(_fallback_db["testimonials"])
+    # Fallback in-memory DB
+    tid = _fallback_db["_next_id"].get("testimonials", len(_fallback_db["testimonials"]) + 100)
+    _fallback_db["_next_id"]["testimonials"] = tid + 1
+    testimonial["id"] = tid
+    _fallback_db["testimonials"].insert(0, testimonial)
+    
+    return json_response(testimonial, 201)
 
 
 # ---------------------------------------------------------------------------

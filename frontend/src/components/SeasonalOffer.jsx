@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import keralaMonsoon from '../assets/kerala_monsoon.png';
 
 export default function SeasonalOffer() {
-  // Target date: August 8, 2026 11:10:52
-  const targetDate = new Date(2026, 7, 8, 11, 10, 52).getTime();
+  // Target date: August 12, 2026 11:10:52
+  //YEAR, MONTH, DAY, HOUR, MINUTE, SECOND
+  const targetDate = new Date(2026, 7, 12, 11, 10, 52).getTime();
 
   const [timeLeft, setTimeLeft] = useState({
     days: '02',

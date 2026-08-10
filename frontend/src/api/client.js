@@ -27,6 +27,7 @@ export const fetchTour = (id) => api.get(`/api/tours/${id}`).then(r => r.data.da
 
 /* ---------- Testimonials ---------- */
 export const fetchTestimonials = () => api.get('/api/testimonials').then(r => r.data.data);
+export const submitTestimonial = (data) => api.post('/api/testimonials', data).then(r => r.data);
 
 /* ---------- Gallery ---------- */
 export const fetchGallery = () => api.get('/api/gallery').then(r => r.data.data);
