@@ -2796,9 +2796,9 @@ h4 {
   }
 
   .nav-hamburger {
-    position: absolute;
-    right: 20px;
-    top: 18px;
+    position: relative;
+    right: auto;
+    top: auto;
     transform: none;
   }
 
