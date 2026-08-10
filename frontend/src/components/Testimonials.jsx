@@ -120,7 +120,7 @@ export default function Testimonials() {
         });
 
         const formattedBackend = uniqueBackend.map((t) => ({
-          id: t.id || Math.random(),
+          id: t.id ? `api-${t.id}` : `api-rand-${Math.random()}`,
           name: t.name,
           location: t.location || 'Verified Guest',
           destination: t.destination || 'Kerala Journey',

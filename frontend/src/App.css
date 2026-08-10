@@ -2685,6 +2685,13 @@ h4 {
   justify-content: center;
 }
 
+.footer-qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
 .footer-col-nav h4 {
   font-size: 1.1rem;
   font-weight: 700;
@@ -2759,11 +2766,11 @@ h4 {
   }
 
   .navbar.menu-opened {
-    height: 100vh;
-    height: 100svh;
+    height: 64px;
     background: rgba(250, 250, 248, 0.98);
     border-bottom: 1px solid rgba(46, 125, 50, 0.08);
     box-shadow: 0 4px 20px rgba(27, 94, 32, 0.08);
+    overflow: visible;
   }
 
   .navbar-shell {
@@ -3047,8 +3054,10 @@ h4 {
   }
 
   .footer-qr-card {
-    max-width: 240px;
+    max-width: 160px;
     width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
     margin: 0 auto;
   }
 
@@ -3066,6 +3075,10 @@ h4 {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 32px;
+  }
+
+  .about-image {
+    min-height: 200px !important;
   }
 
   .about-stats {
