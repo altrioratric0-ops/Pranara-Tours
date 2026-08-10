@@ -2495,9 +2495,16 @@ h4 {
     padding-left: 0;
   }
 
-  .navbar.scrolled,
-  .navbar.menu-opened {
+  .navbar.scrolled {
     height: 64px;
+    background: rgba(250, 250, 248, 0.98);
+    border-bottom: 1px solid rgba(46, 125, 50, 0.08);
+    box-shadow: 0 4px 20px rgba(27, 94, 32, 0.08);
+  }
+
+  .navbar.menu-opened {
+    height: 100vh;
+    height: 100svh;
     background: rgba(250, 250, 248, 0.98);
     border-bottom: 1px solid rgba(46, 125, 50, 0.08);
     box-shadow: 0 4px 20px rgba(27, 94, 32, 0.08);
@@ -2784,6 +2791,11 @@ h4 {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .about-stats {
@@ -7094,5 +7106,139 @@ h4 {
     padding: 14px 28px;
     width: 100%;
     justify-content: center;
+  }
+}
+
+/* ───── Mobile S (320px) Viewport Adjustments ───── */
+@media (max-width: 350px) {
+  /* Container Padding */
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Hero Section */
+  .hero h1 {
+    font-size: 1.75rem !important;
+  }
+  .hero p {
+    font-size: 0.9rem !important;
+    margin: 12px auto 24px;
+  }
+  .hero-content {
+    padding: 30px 16px;
+  }
+  .hero-actions .btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+
+  /* About Section Stats */
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stat-item {
+    padding: 14px;
+  }
+
+  /* Seasonal Offers Countdown */
+  .offers-countdown {
+    gap: 4px;
+  }
+  .countdown-box {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
+  .countdown-num {
+    font-size: 18px;
+  }
+  .countdown-label {
+    font-size: 8px;
+  }
+  .countdown-separator {
+    font-size: 16px;
+  }
+  .offers-cta-btn {
+    padding: 12px 24px;
+  }
+
+  /* Escape Section Cards & Grid */
+  .escape-packages-grid {
+    grid-template-columns: 1fr;
+  }
+  .escape-card-body {
+    padding: 20px 16px;
+  }
+
+  /* Adventures Carousel Header Controls */
+  .adventure-header-row {
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .adventure-header-row .adventure-carousel-controls {
+    position: static;
+    transform: none;
+  }
+
+  /* Creative Gallery Headings */
+  .creative-gallery-section .gallery-copy h1 {
+    font-size: 2.2rem !important;
+  }
+  .creative-gallery-section .gallery-copy p {
+    font-size: 0.85rem !important;
+  }
+
+  /* Testimonials Traveler Selector */
+  .navigator-grid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 4px 12px 4px;
+    width: 100%;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .navigator-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .navigator-tile {
+    flex-shrink: 0;
+    min-width: 110px;
+    padding: 6px 10px;
+  }
+
+  /* FAQ Accordion Padding */
+  .faq-section button {
+    padding: 14px 16px !important;
+  }
+  .faq-section button span:first-child {
+    font-size: 0.95rem !important;
+  }
+  .faq-section div[style*="maxHeight"] p {
+    padding: 14px 16px !important;
+    font-size: 0.82rem !important;
+  }
+
+  /* Booking/Community Section */
+  .booking-community-section {
+    padding: 32px 16px;
+  }
+  .community-title {
+    font-size: 1.75rem !important;
+  }
+  .community-input-box {
+    padding: 6px;
+  }
+  .community-input,
+  .community-btn {
+    padding: 12px 16px;
+    font-size: 0.8rem;
+  }
+
+  /* Footer Section */
+  .footer-dark-section {
+    padding: 40px 16px 20px;
   }
 }

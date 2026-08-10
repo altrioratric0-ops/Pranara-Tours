@@ -98,7 +98,7 @@ export default function FAQ() {
                 </button>
 
                 <div style={{
-                  maxHeight: isOpen ? '200px' : '0px',
+                  maxHeight: isOpen ? '500px' : '0px',
                   overflow: 'hidden',
                   transition: 'max-height 0.3s ease-out-in, padding 0.3s',
                   background: '#fafafa',
