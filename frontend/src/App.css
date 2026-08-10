@@ -2766,6 +2766,7 @@ h4 {
   }
 
   .navbar.menu-opened {
+    width: 100%;
     height: 64px;
     background: rgba(250, 250, 248, 0.98);
     border-bottom: 1px solid rgba(46, 125, 50, 0.08);
