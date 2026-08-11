@@ -35,9 +35,14 @@ logger = logging.getLogger("pranara-api")
 app = Flask(__name__, static_folder=None)
 app.config.from_object(Config)
 
-# CORS - allow frontend dev server
-cors_origins = Config.CORS_ORIGINS.split(",")
-CORS(app, origins=cors_origins, supports_credentials=True)
+# CORS - allow frontend dev server and production origins
+cors_origins = [origin.strip() for origin in Config.CORS_ORIGINS.split(",") if origin.strip()]
+CORS(
+    app,
+    resources={r"/api/*": {"origins": cors_origins}},
+    supports_credentials=True,
+    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+)
 
 # ---------------------------------------------------------------------------
 # Supabase client (lazy init)
