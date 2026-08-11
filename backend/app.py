@@ -547,6 +547,10 @@ def save_local_testimonials(testimonials):
 _fallback_db["testimonials"] = load_local_testimonials()
 
 
+@app.route("/", methods=["GET", "HEAD"])
+def home():
+    return {"status": "ok", "message": "Pranara Tours API is running"}
+
 # ---------------------------------------------------------------------------
 # API Routes - Health
 # ---------------------------------------------------------------------------
