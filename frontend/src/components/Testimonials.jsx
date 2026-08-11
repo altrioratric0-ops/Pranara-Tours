@@ -135,8 +135,8 @@ export default function Testimonials() {
         const remainingStatic = STATIC_TESTIMONIALS.filter(s => !backendKeys.has(`${s.name}-${s.quote}`.toLowerCase()));
         setTestimonials([...formattedBackend, ...remainingStatic]);
       })
-      .catch(() => {
-        /* Keep static fallback */
+      .catch((err) => {
+        console.warn("Testimonials API offline, using static fallback:", err.message);
       });
   }, []);
 
