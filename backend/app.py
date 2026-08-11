@@ -598,9 +598,9 @@ def check_gallery_db_status():
 
 # ---------------------------------------------------------------------------
 # API Routes - Tours
-# ---------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 @app.route("/api/tours", methods=["GET"])
-def get_tours():
+def get_all_tours():
     if not check_tours_db_status():
         table = db_table("tours")
         if table:
@@ -612,7 +612,6 @@ def get_tours():
     
     # Fallback
     return json_response(_fallback_db["tours"])
-
 
 @app.route("/api/tours/<int:tour_id>", methods=["GET"])
 def get_tour(tour_id):
@@ -1086,5 +1085,4 @@ if __name__ == "__main__":
     logger.info(f"Starting Pranara Tours API on port {port} (debug={debug})")
     logger.info(f"Supabase: {'configured' if Config.has_supabase() else 'NOT configured (using fallback)'}")
     logger.info(f"Instagram profile: @{Config.INSTAGRAM_PROFILE}")
-    
     app.run(host="0.0.0.0", port=port, debug=debug)

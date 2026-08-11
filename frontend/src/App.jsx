@@ -18,7 +18,7 @@ import TourDetail from './components/TourDetail';
 import TermsConditions from './components/TermsConditions';
 
 const API_BASE = import.meta.env.PROD
-  ? (import.meta.env.VITE_API_URL || 'http://localhost:5000')
+  ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
   : '';
 
 function HomePage() {

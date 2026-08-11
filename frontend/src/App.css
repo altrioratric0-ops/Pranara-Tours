@@ -7540,3 +7540,148 @@ h4 {
     padding: 40px 16px 20px;
   }
 }
+
+/* ───── Mobile S (320px) Compact Font & Section Size Optimizations ───── */
+@media (max-width: 320px) {
+  :root, html {
+    font-size: 11px !important; /* ~30% reduction from 16px to make text fit tiny screens */
+  }
+
+  .container {
+    padding: 0 10px !important;
+  }
+
+  /* Compact Section Paddings for 320px screens */
+  .about {
+    padding: 32px 0 !important;
+  }
+
+  .features {
+    padding: 32px 0 !important;
+  }
+
+  .escape-section {
+    padding: 28px 0 !important;
+  }
+
+  .heritage-section {
+    padding: 24px 0 !important;
+  }
+
+  .creative-gallery-section {
+    padding: 24px 10px 20px !important;
+  }
+
+  .testimonials-editorial-section {
+    padding: 24px 0 !important;
+  }
+
+  .faq-section {
+    padding: 32px 0 !important;
+  }
+
+  .booking-community-section {
+    padding: 20px 10px !important;
+  }
+
+  .offers-page-section {
+    padding: 24px 0 !important;
+  }
+
+  .footer-dark-section {
+    padding: 24px 10px 15px !important;
+  }
+
+  .hero-content {
+    padding: 20px 10px !important;
+  }
+
+  /* Hero adjustments for tiny screen width */
+  .hero h1 {
+    font-size: 1.45rem !important;
+  }
+  .hero p {
+    font-size: 0.78rem !important;
+    margin: 10px auto 18px !important;
+  }
+  .hero-actions .btn {
+    padding: 8px 16px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* About section stats spacing */
+  .about-stats {
+    gap: 8px !important;
+  }
+  .stat-item {
+    padding: 10px !important;
+  }
+
+  /* Seasonal Offers Countdown & Banner adjustments */
+  .offers-countdown {
+    gap: 3px !important;
+  }
+  .countdown-box {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 8px !important;
+  }
+  .countdown-num {
+    font-size: 12px !important;
+  }
+  .countdown-label {
+    font-size: 5px !important;
+  }
+  .countdown-separator {
+    font-size: 11px !important;
+  }
+  .offers-cta-btn {
+    padding: 10px 20px !important;
+  }
+
+  /* Escape packages card bodies */
+  .escape-card-body {
+    padding: 12px 10px !important;
+  }
+
+  /* Creative Gallery font size & button tweaks */
+  .creative-gallery-section .gallery-copy h1 {
+    font-size: 1.8rem !important;
+  }
+  .creative-gallery-section .gallery-copy p {
+    font-size: 0.78rem !important;
+  }
+  .gallery-badge {
+    padding: 4px 8px !important;
+    font-size: 0.7rem !important;
+  }
+  .gallery-cta {
+    padding: 10px 16px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* Testimonials slider control */
+  .navigator-tile {
+    padding: 4px 6px !important;
+  }
+
+  /* FAQ items */
+  .faq-section button {
+    padding: 10px 12px !important;
+  }
+  .faq-section button span:first-child {
+    font-size: 0.82rem !important;
+  }
+  .faq-section div[style*="maxHeight"] p {
+    padding: 10px 12px !important;
+  }
+
+  /* Booking & community inputs */
+  .community-title {
+    font-size: 1.45rem !important;
+  }
+  .community-input,
+  .community-btn {
+    padding: 8px 12px !important;
+  }
+}

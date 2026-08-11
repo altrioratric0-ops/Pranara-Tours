@@ -8,7 +8,7 @@ import axios from 'axios';
 // In dev, Vite proxy handles /api -> backend
 // In prod, use the env variable or a configurable base URL
 const API_BASE = import.meta.env.PROD
-  ? (import.meta.env.VITE_API_URL || 'http://localhost:5000')
+  ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
   : '';
 
 const api = axios.create({
