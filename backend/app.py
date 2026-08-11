@@ -513,6 +513,35 @@ def error_response(message, status=400):
     return jsonify({"success": False, "error": message}), status
 
 
+TESTIMONIALS_FILE = "local_testimonials.json"
+
+def load_local_testimonials():
+    if os.path.exists(TESTIMONIALS_FILE):
+        try:
+            with open(TESTIMONIALS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            logger.error(f"Error loading local testimonials: {e}")
+    
+    # Save default list if file doesn't exist
+    default_list = _fallback_db.get("testimonials", [])
+    try:
+        with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
+            json.dump(default_list, f, indent=4)
+    except Exception as e:
+        logger.error(f"Error saving default testimonials to local file: {e}")
+    return default_list
+
+def save_local_testimonials(testimonials):
+    try:
+        with open(TESTIMONIALS_FILE, "w", encoding="utf-8") as f:
+            json.dump(testimonials, f, indent=4)
+    except Exception as e:
+        logger.error(f"Error saving local testimonials: {e}")
+
+_fallback_db["testimonials"] = load_local_testimonials()
+
+
 # ---------------------------------------------------------------------------
 # API Routes - Health
 # ---------------------------------------------------------------------------
@@ -645,7 +674,7 @@ def handle_testimonials():
                 return json_response(resp.data)
             except Exception as e:
                 logger.error(f"Supabase testimonials query error: {e}")
-        return json_response(_fallback_db["testimonials"])
+        return json_response(load_local_testimonials())
     
     # POST - Create new user testimonial / review
     data = request.get_json(silent=True) or {}
@@ -706,11 +735,14 @@ def handle_testimonials():
             except Exception as e2:
                 logger.error(f"Supabase minimal testimonial insert error: {e2}")
     
-    # Fallback in-memory DB
-    tid = _fallback_db["_next_id"].get("testimonials", len(_fallback_db["testimonials"]) + 100)
+    # Fallback local JSON DB & in-memory
+    local_list = load_local_testimonials()
+    tid = _fallback_db["_next_id"].get("testimonials", len(local_list) + 100)
     _fallback_db["_next_id"]["testimonials"] = tid + 1
     testimonial["id"] = tid
-    _fallback_db["testimonials"].insert(0, testimonial)
+    local_list.insert(0, testimonial)
+    save_local_testimonials(local_list)
+    _fallback_db["testimonials"] = local_list
     
     return json_response(testimonial, 201)
 
