@@ -680,7 +680,9 @@ def handle_testimonials():
         if table:
             try:
                 resp = table.select("*").eq("active", True).order("id", desc=True).execute()
-                return json_response(resp.data)
+                # Exclude the first 5 test reviews currently displayed (IDs 10 to 15)
+                filtered_data = [r for r in resp.data if r.get("id") not in (10, 11, 12, 13, 14, 15)]
+                return json_response(filtered_data)
             except Exception as e:
                 logger.error(f"Supabase testimonials query error: {e}")
         return json_response(load_local_testimonials())

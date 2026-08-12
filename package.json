@@ -1,4 +1,11 @@
 {
+  "name": "pranara-tours",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "cd backend && .\\.venv\\Scripts\\python.exe app.py",
+    "dev": "npx concurrently \"npm --prefix frontend run dev\" \"cd backend && .\\.venv\\Scripts\\python.exe app.py\""
+  },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.3"
   }
