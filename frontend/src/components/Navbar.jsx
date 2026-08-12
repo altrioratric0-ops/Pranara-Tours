@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useAuth, useUser, useClerk } from '@clerk/react';
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -97,6 +99,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
+  const { signOut } = useClerk();
+
   return (
     <nav className={`navbar${scrolled ? ' scrolled' : ''}${menuOpen ? ' menu-opened' : ''}`}>
       <div className="navbar-shell">
@@ -138,15 +144,15 @@ export default function Navbar() {
               <span className="nav-label">Home</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'About' ? ' active' : ''}`} onClick={() => handleSectionClick('about')}>
-              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
+              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" /></svg>
               <span className="nav-label">About</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Packages' ? ' active' : ''}`} onClick={() => handleSectionClick('escapes')}>
-              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
+              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
               <span className="nav-label">Packages</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Experiences' ? ' active' : ''}`} onClick={() => handleSectionClick('heritage')}>
-              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21" /><line x1="9" y1="3" x2="9" y2="18" /><line x1="15" y1="6" x2="15" y2="21" /></svg>
+              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
               <span className="nav-label">Experiences</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Gallery' ? ' active' : ''}`} onClick={() => handleSectionClick('gallery')}>
@@ -164,14 +170,41 @@ export default function Navbar() {
           </div>
 
           <div className="navbar-footer">
-            <div className="navbar-auth">
-              <Link to="/signin" className="nav-auth-btn nav-auth-btn-outline" onClick={() => { setMenuOpen(false); }}>
-                Sign In
-              </Link>
-              <Link to="/login" className="nav-auth-btn" onClick={() => { setMenuOpen(false); }}>
-                Login
-              </Link>
-            </div>
+            {isSignedIn && user ? (
+              <div className="navbar-user-profile" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', padding: '0 8px 12px' }}>
+                <div className="user-info-row" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <img 
+                    src={user.imageUrl} 
+                    alt={user.fullName || 'User'} 
+                    style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #166534' }} 
+                  />
+                  <div className="user-meta" style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                    <span className="user-name" style={{ fontWeight: '600', color: '#166534', fontSize: '0.95rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.fullName || 'Traveler'}</span>
+                    <span className="user-email" style={{ fontSize: '0.8rem', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.primaryEmailAddress?.emailAddress}</span>
+                  </div>
+                </div>
+                <button 
+                  type="button" 
+                  className="nav-auth-btn nav-auth-btn-outline" 
+                  onClick={async () => { 
+                    setMenuOpen(false); 
+                    await signOut(); 
+                  }}
+                  style={{ width: '100%', textAlign: 'center' }}
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="navbar-auth">
+                <Link to="/signin" className="nav-auth-btn nav-auth-btn-outline" onClick={() => { setMenuOpen(false); }}>
+                  Sign In
+                </Link>
+                <Link to="/login" className="nav-auth-btn" onClick={() => { setMenuOpen(false); }}>
+                  Login
+                </Link>
+              </div>
+            )}
 
             <div className="navbar-bottom">
               <div className="navbar-socials">

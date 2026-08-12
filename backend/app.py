@@ -9,6 +9,8 @@ import json
 import logging
 from datetime import datetime, date
 from functools import wraps
+import jwt
+from jwt.algorithms import RSAAlgorithm
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -68,6 +70,94 @@ def db_table(table_name):
     if sb:
         return sb.table(table_name)
     return None
+
+
+# ---------------------------------------------------------------------------
+# Clerk Token Verification
+# ---------------------------------------------------------------------------
+_clerk_jwks = None
+
+
+def get_clerk_jwks():
+    global _clerk_jwks
+    if _clerk_jwks is None:
+        try:
+            url = "https://api.clerk.com/v1/jwks"
+            headers = {"Authorization": f"Bearer {Config.CLERK_SECRET_KEY}"}
+            resp = requests.get(url, headers=headers, timeout=5)
+            if resp.status_code == 200:
+                _clerk_jwks = resp.json()
+                logger.info("Clerk JWKS successfully cached")
+            else:
+                logger.error(f"Failed to fetch Clerk JWKS: {resp.status_code} {resp.text}")
+        except Exception as e:
+            logger.error(f"Error fetching Clerk JWKS: {e}")
+    return _clerk_jwks
+
+
+def verify_clerk_token(token):
+    if not token:
+        return None
+    
+    jwks = get_clerk_jwks()
+    if not jwks:
+        logger.error("No JWKS cached, token verification skipped")
+        return None
+        
+    try:
+        # Decode header to find key ID (kid)
+        unverified_header = jwt.get_unverified_header(token)
+        kid = unverified_header.get("kid")
+        if not kid:
+            logger.warning("Token header missing 'kid'")
+            return None
+            
+        # Find key in JWKS
+        public_key = None
+        for jwk in jwks.get("keys", []):
+            if jwk.get("kid") == kid:
+                public_key = RSAAlgorithm.from_jwk(jwk)
+                break
+                
+        if not public_key:
+            logger.warning(f"Key with ID {kid} not found in JWKS")
+            # Force refresh JWKS in case key rotated
+            global _clerk_jwks
+            _clerk_jwks = None
+            return None
+            
+        # Decode and verify token
+        payload = jwt.decode(
+            token,
+            public_key,
+            algorithms=["RS256"],
+            options={"verify_aud": False}
+        )
+        return payload
+    except jwt.ExpiredSignatureError:
+        logger.warning("Clerk token has expired")
+        return None
+    except Exception as e:
+        logger.error(f"Clerk token verification error: {e}")
+        return None
+
+
+def requires_clerk_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        auth_header = request.headers.get("Authorization", "")
+        token = None
+        if auth_header.startswith("Bearer "):
+            token = auth_header.split(" ")[1]
+            
+        payload = verify_clerk_token(token)
+        if not payload:
+            return error_response("Unauthorized: Invalid or expired Clerk session token", 401)
+            
+        # Add clerk_user_id to request context
+        request.clerk_user_id = payload.get("sub")
+        return f(*args, **kwargs)
+    return decorated
 
 
 # ---------------------------------------------------------------------------
@@ -926,16 +1016,27 @@ def sync_instagram_gallery():
 # API Routes - Bookings
 # ---------------------------------------------------------------------------
 @app.route("/api/bookings", methods=["GET", "POST"])
+@requires_clerk_auth
 def handle_bookings():
     if request.method == "GET":
+        local_bookings = [b for b in _fallback_db["bookings"] if b.get("clerk_user_id") == request.clerk_user_id]
+        
         table = db_table("bookings")
         if table:
             try:
-                resp = table.select("*").order("created_at", desc=True).execute()
+                # Attempt to query by clerk_user_id
+                resp = table.select("*").eq("clerk_user_id", request.clerk_user_id).order("created_at", desc=True).execute()
                 return json_response(resp.data)
             except Exception as e:
-                logger.error(f"Supabase bookings query error: {e}")
-        return json_response(_fallback_db["bookings"])
+                logger.error(f"Supabase bookings filter by clerk_user_id failed, falling back: {e}")
+                try:
+                    # Select all and see if clerk_user_id exists in returned rows
+                    resp = table.select("*").order("created_at", desc=True).execute()
+                    filtered = [b for b in resp.data if b.get("clerk_user_id") == request.clerk_user_id]
+                    return json_response(filtered or local_bookings)
+                except Exception as e2:
+                    logger.error(f"Supabase bookings fallback select all failed: {e2}")
+        return json_response(local_bookings)
     
     # POST - create booking
     data = request.get_json(silent=True) or {}
@@ -954,6 +1055,7 @@ def handle_bookings():
         "preferred_date": data.get("date") or data.get("preferred_date"),
         "message": data.get("message", ""),
         "status": "pending",
+        "clerk_user_id": request.clerk_user_id,
         "created_at": datetime.utcnow().isoformat(),
     }
     
@@ -964,8 +1066,16 @@ def handle_bookings():
             if resp.data:
                 return json_response({"message": "Booking created successfully", "booking": resp.data[0]}, 201)
         except Exception as e:
-            logger.error(f"Supabase booking insert error: {e}")
-            return error_response(f"Failed to save booking: {str(e)}", 500)
+            logger.error(f"Supabase booking insert with clerk_user_id failed: {e}")
+            try:
+                booking_without_clerk = {k: v for k, v in booking.items() if k != "clerk_user_id"}
+                resp = table.insert(booking_without_clerk).execute()
+                if resp.data:
+                    res_data = {**resp.data[0], "clerk_user_id": request.clerk_user_id}
+                    return json_response({"message": "Booking created successfully", "booking": res_data}, 201)
+            except Exception as e2:
+                logger.error(f"Supabase booking fallback insert failed: {e2}")
+                return error_response(f"Failed to save booking: {str(e2)}", 500)
     
     # Fallback
     bid = _fallback_db["_next_id"]["bookings"]

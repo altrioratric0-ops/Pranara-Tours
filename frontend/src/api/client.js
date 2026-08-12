@@ -19,6 +19,23 @@ const api = axios.create({
   },
 });
 
+// Automatically inject Clerk Session Token into headers if user is authenticated
+api.interceptors.request.use(async (config) => {
+  if (window.Clerk?.session) {
+    try {
+      const token = await window.Clerk.session.getToken();
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (e) {
+      console.warn("Could not retrieve Clerk session token:", e);
+    }
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
 export default api;
 
 /* ---------- Tours ---------- */

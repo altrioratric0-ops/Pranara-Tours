@@ -16,6 +16,9 @@ class Config:
     SUPABASE_URL = os.getenv("SUPABASE_URL")
     SUPABASE_ANON_KEY = os.getenv("SUPABASE_ANON_KEY")
 
+    # Clerk
+    CLERK_SECRET_KEY = os.getenv("CLERK_SECRET_KEY")
+
     # Instagram
     INSTAGRAM_PROFILE = os.getenv("INSTAGRAM_PROFILE", "pranara_co")
 
