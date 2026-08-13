@@ -4,6 +4,7 @@
  * Uses Vite proxy in development, direct URL in production.
  */
 import axios from 'axios';
+import { auth } from '../firebase';
 
 // In dev, Vite proxy handles /api -> backend
 // In prod, use the env variable or a configurable base URL
@@ -19,16 +20,17 @@ const api = axios.create({
   },
 });
 
-// Automatically inject Clerk Session Token into headers if user is authenticated
+// Automatically inject Firebase ID Token into headers if user is authenticated
 api.interceptors.request.use(async (config) => {
-  if (window.Clerk?.session) {
+  const user = auth.currentUser;
+  if (user) {
     try {
-      const token = await window.Clerk.session.getToken();
+      const token = await user.getIdToken();
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
     } catch (e) {
-      console.warn("Could not retrieve Clerk session token:", e);
+      console.warn("Could not retrieve Firebase ID token:", e);
     }
   }
   return config;

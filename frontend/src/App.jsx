@@ -1,6 +1,14 @@
 import { Routes, Route, useLocation, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSignIn, useSignUp, useAuth, useClerk, AuthenticateWithRedirectCallback } from '@clerk/react';
+import { 
+  signInWithEmailAndPassword, 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  GoogleAuthProvider, 
+  signInWithRedirect, 
+  getRedirectResult 
+} from 'firebase/auth';
+import { auth } from './firebase';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -39,11 +47,26 @@ function HomePage() {
   );
 }
 
+const getFirebaseErrorMessage = (error) => {
+  switch (error.code) {
+    case 'auth/invalid-email':
+      return 'Invalid email address format.';
+    case 'auth/user-disabled':
+      return 'This user account has been disabled.';
+    case 'auth/user-not-found':
+    case 'auth/wrong-password':
+    case 'auth/invalid-credential':
+      return 'Invalid email or password.';
+    case 'auth/email-already-in-use':
+      return 'An account with this email already exists.';
+    case 'auth/weak-password':
+      return 'Password should be at least 6 characters.';
+    default:
+      return error.message || 'An error occurred during authentication.';
+  }
+};
+
 function AuthPage({ mode }) {
-  const { isLoaded } = useAuth();
-  const clerk = useClerk();
-  const { signIn } = useSignIn();
-  const { signUp } = useSignUp();
   const navigate = useNavigate();
 
   // Common UI State
@@ -64,54 +87,30 @@ function AuthPage({ mode }) {
   const [verificationCode, setVerificationCode] = useState('');
 
   const handleGoogleSignIn = async () => {
-    console.log("clerk keys:", Object.keys(clerk || {}).join(", "));
-    console.log("signIn keys:", Object.keys(signIn || {}).join(", "));
-    console.log("signUp keys:", Object.keys(signUp || {}).join(", "));
-    console.log("handleGoogleSignIn triggered. mode:", mode, "isLoaded:", isLoaded);
-    
-    if (!isLoaded || !clerk) {
-      console.warn("Clerk SDK is not fully loaded yet for mode:", mode);
-      return;
-    }
     setLoading(true);
     setError('');
 
     try {
-      const redirectUrl = window.location.origin + '/sso-callback';
-      console.log("Calling authenticateWithRedirect using absolute redirectUrl:", redirectUrl);
-      await clerk.authenticateWithRedirect({
-        strategy: 'oauth_google',
-        redirectUrl: redirectUrl,
-        redirectUrlComplete: '/',
-      });
+      const provider = new GoogleAuthProvider();
+      await signInWithRedirect(auth, provider);
     } catch (err) {
-      console.error("Clerk redirect error:", err);
-      setError(err.errors ? err.errors[0].longMessage : err.message || 'Google authentication failed.');
+      console.error("Firebase Google redirect sign-in error:", err);
+      setError(getFirebaseErrorMessage(err));
       setLoading(false);
     }
   };
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    if (!isLoaded || !signIn) return;
     setLoading(true);
     setError('');
 
     try {
-      const result = await signIn.create({
-        strategy: 'password',
-        identifier: email,
-        password,
-      });
-
-      if (result.status === 'complete') {
-        await clerk.setActive({ session: result.createdSessionId });
-        navigate('/');
-      } else {
-        setError('Login failed: Authentication requirements not met.');
-      }
+      await signInWithEmailAndPassword(auth, email, password);
+      navigate('/');
     } catch (err) {
-      setError(err.errors ? err.errors[0].longMessage : err.message || 'An error occurred during login.');
+      console.error("Firebase login error:", err);
+      setError(getFirebaseErrorMessage(err));
     } finally {
       setLoading(false);
     }
@@ -119,7 +118,6 @@ function AuthPage({ mode }) {
 
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
-    if (!isLoaded || !signUp) return;
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
@@ -128,24 +126,14 @@ function AuthPage({ mode }) {
     setError('');
 
     try {
-      const parts = fullName.trim().split(' ');
-      const firstName = parts[0] || '';
-      const lastName = parts.slice(1).join(' ') || '';
-
-      await signUp.create({
-        emailAddress: email,
-        password,
-        firstName,
-        lastName,
-        unsafeMetadata: {
-          phone: phone
-        }
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      await updateProfile(userCredential.user, {
+        displayName: fullName
       });
-
-      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
-      setPendingVerification(true);
+      navigate('/');
     } catch (err) {
-      setError(err.errors ? err.errors[0].longMessage : err.message || 'An error occurred during signup.');
+      console.error("Firebase signup error:", err);
+      setError(getFirebaseErrorMessage(err));
     } finally {
       setLoading(false);
     }
@@ -153,26 +141,6 @@ function AuthPage({ mode }) {
 
   const handleVerifySubmit = async (e) => {
     e.preventDefault();
-    if (!isLoaded || !signUp) return;
-    setLoading(true);
-    setError('');
-
-    try {
-      const completeSignUp = await signUp.attemptEmailAddressVerification({
-        code: verificationCode,
-      });
-
-      if (completeSignUp.status === 'complete') {
-        await clerk.setActive({ session: completeSignUp.createdSessionId });
-        navigate('/');
-      } else {
-        setError('Verification failed. Please check the code.');
-      }
-    } catch (err) {
-      setError(err.errors ? err.errors[0].longMessage : err.message || 'Verification failed.');
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -348,6 +316,42 @@ function AuthPage({ mode }) {
           </>
         )
       }
+      </div>
+    </div>
+  );
+}
+
+function AuthenticateWithRedirectCallback() {
+  const navigate = useNavigate();
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    getRedirectResult(auth)
+      .then((result) => {
+        navigate('/');
+      })
+      .catch((err) => {
+        console.error("Firebase redirect result error:", err);
+        setError(getFirebaseErrorMessage(err));
+        setTimeout(() => navigate('/login'), 4000);
+      });
+  }, [navigate]);
+
+  return (
+    <div className="auth-page-shell" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column', gap: '16px' }}>
+      <div className="auth-card" style={{ textAlign: 'center' }}>
+        <h2>Completing Sign In...</h2>
+        <p>Please wait while we secure your connection.</p>
+        {error && <p style={{ color: '#ef4444', marginTop: '12px' }}>{error}</p>}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
+          <div className="spinner" style={{ width: '40px', height: '40px', border: '4px solid #f3f3f3', borderTop: '4px solid #166534', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+        </div>
+        <style>{`
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+          }
+        `}</style>
       </div>
     </div>
   );

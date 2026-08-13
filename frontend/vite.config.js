@@ -4,6 +4,29 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('firebase')) {
+              return 'firebase';
+            }
+            if (id.includes('leaflet') || id.includes('react-leaflet')) {
+              return 'leaflet';
+            }
+            if (id.includes('swiper')) {
+              return 'swiper';
+            }
+            if (id.includes('framer-motion')) {
+              return 'framer-motion';
+            }
+            return 'vendor';
+          }
+        }
+      }
+    }
+  },
   server: {
     port: 5173,
     proxy: {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth, useUser, useClerk } from '@clerk/react';
+import { useAuth, useUser, useClerk } from '../context/AuthContext';
 
 
 export default function Navbar() {

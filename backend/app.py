@@ -9,8 +9,7 @@ import json
 import logging
 from datetime import datetime, date
 from functools import wraps
-import jwt
-from jwt.algorithms import RSAAlgorithm
+from firebase_auth import firebase_required
 
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
@@ -72,92 +71,6 @@ def db_table(table_name):
     return None
 
 
-# ---------------------------------------------------------------------------
-# Clerk Token Verification
-# ---------------------------------------------------------------------------
-_clerk_jwks = None
-
-
-def get_clerk_jwks():
-    global _clerk_jwks
-    if _clerk_jwks is None:
-        try:
-            url = "https://api.clerk.com/v1/jwks"
-            headers = {"Authorization": f"Bearer {Config.CLERK_SECRET_KEY}"}
-            resp = requests.get(url, headers=headers, timeout=5)
-            if resp.status_code == 200:
-                _clerk_jwks = resp.json()
-                logger.info("Clerk JWKS successfully cached")
-            else:
-                logger.error(f"Failed to fetch Clerk JWKS: {resp.status_code} {resp.text}")
-        except Exception as e:
-            logger.error(f"Error fetching Clerk JWKS: {e}")
-    return _clerk_jwks
-
-
-def verify_clerk_token(token):
-    if not token:
-        return None
-    
-    jwks = get_clerk_jwks()
-    if not jwks:
-        logger.error("No JWKS cached, token verification skipped")
-        return None
-        
-    try:
-        # Decode header to find key ID (kid)
-        unverified_header = jwt.get_unverified_header(token)
-        kid = unverified_header.get("kid")
-        if not kid:
-            logger.warning("Token header missing 'kid'")
-            return None
-            
-        # Find key in JWKS
-        public_key = None
-        for jwk in jwks.get("keys", []):
-            if jwk.get("kid") == kid:
-                public_key = RSAAlgorithm.from_jwk(jwk)
-                break
-                
-        if not public_key:
-            logger.warning(f"Key with ID {kid} not found in JWKS")
-            # Force refresh JWKS in case key rotated
-            global _clerk_jwks
-            _clerk_jwks = None
-            return None
-            
-        # Decode and verify token
-        payload = jwt.decode(
-            token,
-            public_key,
-            algorithms=["RS256"],
-            options={"verify_aud": False}
-        )
-        return payload
-    except jwt.ExpiredSignatureError:
-        logger.warning("Clerk token has expired")
-        return None
-    except Exception as e:
-        logger.error(f"Clerk token verification error: {e}")
-        return None
-
-
-def requires_clerk_auth(f):
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        auth_header = request.headers.get("Authorization", "")
-        token = None
-        if auth_header.startswith("Bearer "):
-            token = auth_header.split(" ")[1]
-            
-        payload = verify_clerk_token(token)
-        if not payload:
-            return error_response("Unauthorized: Invalid or expired Clerk session token", 401)
-            
-        # Add clerk_user_id to request context
-        request.clerk_user_id = payload.get("sub")
-        return f(*args, **kwargs)
-    return decorated
 
 
 # ---------------------------------------------------------------------------
@@ -1016,7 +929,7 @@ def sync_instagram_gallery():
 # API Routes - Bookings
 # ---------------------------------------------------------------------------
 @app.route("/api/bookings", methods=["GET", "POST"])
-@requires_clerk_auth
+@firebase_required
 def handle_bookings():
     if request.method == "GET":
         local_bookings = [b for b in _fallback_db["bookings"] if b.get("clerk_user_id") == request.clerk_user_id]
