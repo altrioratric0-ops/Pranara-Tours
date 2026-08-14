@@ -69,7 +69,7 @@ export default function TravelTips() {
           marginTop: '40px',
           alignItems: 'start'
         }} className="tips-grid-container">
-          
+
           {/* Tabs Menu */}
           <div style={{
             display: 'flex',

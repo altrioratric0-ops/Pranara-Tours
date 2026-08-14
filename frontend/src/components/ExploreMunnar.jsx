@@ -81,11 +81,11 @@ export default function ExploreMunnar() {
     fetchGallery()
       .then((data) => {
         const munnarKeywords = ['munnar', 'kolukkumalai', 'top station', 'eravikulam', 'mattupetty', 'echo point', 'kundala', 'attukad', 'tea museum', 'misty hills', 'tea garden'];
-        const filtered = (data || []).filter(item => 
+        const filtered = (data || []).filter(item =>
           (item.image_url && item.image_url.toLowerCase().includes('munnar')) ||
           (item.caption && munnarKeywords.some(keyword => item.caption.toLowerCase().includes(keyword)))
         );
-        
+
         if (filtered.length === 0) {
           setSights(STATIC_SIGHTS);
         } else {

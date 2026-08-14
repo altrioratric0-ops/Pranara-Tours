@@ -20,7 +20,7 @@ export default function Hero() {
           <span>Kerala</span> with Pranara
         </h1>
         <p>
-          Discover handcrafted journeys through Munnar, Alleppey, Wayanad, Thekkady, Vagamon, and Kerala's hidden gems. We create personalized travel experiences that let you relax while we take care of every detail.
+          Discover handcrafted journeys through Munnar Kerala's hidden gem. We create personalized travel experiences that let you relax while we take care of every detail.
         </p>
         <div className="hero-actions">
           <a
