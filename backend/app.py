@@ -683,11 +683,11 @@ def handle_testimonials():
         if table:
             try:
                 resp = table.select("*").eq("active", True).order("id", desc=True).execute()
-                # Exclude test database records based on ID or if they contain "test" in name (prevents hiding user submissions)
+                # Specifically exclude the exact test cards, allowing all other user reviews to show
+                test_names = {"Test User", "Full Test User", "Integration Test Guest", "Insert Test Guest", "Test reviewer name", "Test", "raja", "Raja"}
                 filtered_data = [
                     r for r in resp.data 
-                    if r.get("id") not in (6, 7, 8, 9, 10, 11, 12, 13, 15)
-                    and "test" not in (r.get("name") or "").lower()
+                    if r.get("name") not in test_names
                 ]
                 return json_response(filtered_data)
             except Exception as e:
