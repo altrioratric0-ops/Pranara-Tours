@@ -131,8 +131,8 @@ export default function Testimonials() {
           videoUrl: t.videoUrl || t.video_url || ''
         }));
 
-        const backendKeys = new Set(formattedBackend.map(b => `${b.name}-${b.quote}`.toLowerCase()));
-        const remainingStatic = STATIC_TESTIMONIALS.filter(s => !backendKeys.has(`${s.name}-${s.quote}`.toLowerCase()));
+        const backendNames = new Set(formattedBackend.map(b => b.name.toLowerCase()));
+        const remainingStatic = STATIC_TESTIMONIALS.filter(s => !backendNames.has(s.name.toLowerCase()));
         setTestimonials([...formattedBackend, ...remainingStatic]);
       })
       .catch((err) => {
