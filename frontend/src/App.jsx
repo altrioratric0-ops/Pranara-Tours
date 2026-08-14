@@ -5,8 +5,7 @@ import {
   createUserWithEmailAndPassword, 
   updateProfile, 
   GoogleAuthProvider, 
-  signInWithRedirect, 
-  getRedirectResult 
+  signInWithPopup 
 } from 'firebase/auth';
 import { auth } from './firebase';
 import Navbar from './components/Navbar';
@@ -92,10 +91,12 @@ function AuthPage({ mode }) {
 
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
+      navigate('/');
     } catch (err) {
-      console.error("Firebase Google redirect sign-in error:", err);
+      console.error("Firebase Google sign-in error:", err);
       setError(getFirebaseErrorMessage(err));
+    } finally {
       setLoading(false);
     }
   };
@@ -321,41 +322,7 @@ function AuthPage({ mode }) {
   );
 }
 
-function AuthenticateWithRedirectCallback() {
-  const navigate = useNavigate();
-  const [error, setError] = useState('');
 
-  useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        navigate('/');
-      })
-      .catch((err) => {
-        console.error("Firebase redirect result error:", err);
-        setError(getFirebaseErrorMessage(err));
-        setTimeout(() => navigate('/login'), 4000);
-      });
-  }, [navigate]);
-
-  return (
-    <div className="auth-page-shell" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh', flexDirection: 'column', gap: '16px' }}>
-      <div className="auth-card" style={{ textAlign: 'center' }}>
-        <h2>Completing Sign In...</h2>
-        <p>Please wait while we secure your connection.</p>
-        {error && <p style={{ color: '#ef4444', marginTop: '12px' }}>{error}</p>}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
-          <div className="spinner" style={{ width: '40px', height: '40px', border: '4px solid #f3f3f3', borderTop: '4px solid #166534', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
-        </div>
-        <style>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
-      </div>
-    </div>
-  );
-}
 
 function App() {
   const location = useLocation();
@@ -422,7 +389,6 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/signin" element={<AuthPage mode="signin" />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
-        <Route path="/sso-callback" element={<AuthenticateWithRedirectCallback />} />
         <Route path="/gallery/:categoryId" element={<SubGallery />} />
         <Route path="/tour/:id" element={<TourDetail />} />
         <Route path="/terms" element={<TermsConditions />} />
