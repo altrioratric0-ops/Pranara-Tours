@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export default function Booking() {
-  const whatsappCommunityLink = 'https://chat.whatsapp.com/';
+  const whatsappCommunityLink = 'https://chat.whatsapp.com/Lx1kXtArr4N8TKtv9jLSMr';
   const [mobileNumber, setMobileNumber] = useState('');
 
   const handleJoinCommunity = (e) => {
@@ -34,7 +34,7 @@ export default function Booking() {
         <div className="community-banner-card">
           <div className="community-content-left">
             <h2 className="community-title">Begin Your Kerala Story</h2>
-            <p className="community-subtitle">JOIN OUR COMMUNITY TO KNOW US</p>
+            <p className="community-subtitle">JOIN OUR COMMUNITY </p>
 
             <form className="community-input-box" onSubmit={handleJoinCommunity}>
               <input

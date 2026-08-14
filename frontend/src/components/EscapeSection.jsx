@@ -26,7 +26,7 @@ const escapePackages = [
       { day: 'Day 2', title: 'Misty Tea Trail & Waterfall Escape', desc: 'Guided morning walk through private tea gardens followed by a private picnic near Attukad waterfall.' },
       { day: 'Day 3', title: 'Sunrise Cloud View & Departure', desc: 'Catch the magical sunrise over misty hills before enjoying a leisurely breakfast and relaxed departure.' }
     ],
-    included: ['Luxury Accommodation', 'Daily Breakfast & Dinner', 'Guided Estate Tour', 'Private Transport', 'Campfire Evening']
+    included: ['Accommodation', 'Daily Breakfast & Dinner', 'Guided Estate Tour', 'Private Transport', 'Campfire Evening']
   },
   {
     id: 'tour-travel',
@@ -37,7 +37,7 @@ const escapePackages = [
     tagline: 'Comprehensive Sightseeing & Cultural Discovery of Munnar',
     overview: 'Experience the finest sights, sounds, and stories of Munnar and surrounding hotspots. From misty peak viewpoints and historical tea museums to wildlife sanctuaries and spice gardens, our expert local guides ensure a rich, hassle-free journey.',
     highlights: [
-      '🚘 Private Chauffeur-Driven AC Vehicle Throughout',
+      '🚘 Private Chauffeur-Driven Vehicle Throughout',
       '🎟 Skip-the-Line Entry Tickets to All Top Attractions',
       '🦣 Eravikulam National Park & Rare Nilgiri Tahr Spotting',
       '🍃 Spice Plantation Guided Sensory Walk & Tea Tasting'
@@ -53,7 +53,7 @@ const escapePackages = [
       { day: 'Day 2', title: 'Top Station, Mattupetty & Eco Point', desc: 'Full day sightseeing covering Mattupetty Dam, Echo Point, Kundala Lake, and Top Station views.' },
       { day: 'Day 3', title: 'Eravikulam National Park & Spice Gardens', desc: 'Morning safari inside Eravikulam Park to spot Nilgiri Tahr, followed by an organic spice garden tour.' }
     ],
-    included: ['Dedicated Local Guide/Driver', 'Sightseeing Entry Passes', 'Comfortable AC Vehicle', 'Hotel Pickups & Drops', 'Mineral Water & Snacks']
+    included: ['Dedicated Local Guide/Driver', 'Sightseeing Entry Passes', 'Comfortable  Vehicle', 'Hotel Pickups & Drops', 'Mineral Water & Snacks']
   },
   {
     id: 'offroad-adventure',
@@ -194,19 +194,19 @@ const SectionTitle = ({ title }) => (
   <div className="escape-title-wrapper">
     <div className="leaf-decor left-decor">
       <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
-        <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
-        <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+        <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)" />
+        <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)" />
+        <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)" />
       </svg>
     </div>
     <h2 className="escape-section-heading">{title}</h2>
     <div className="leaf-decor right-decor">
       <svg width="32" height="16" viewBox="0 0 32 16" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ transform: 'scaleX(-1)' }}>
-        <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round"/>
-        <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)"/>
-        <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)"/>
-        <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)"/>
+        <path d="M2 14C10 14 18 10 26 5" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" />
+        <path d="M7 10C5 7 8 5 9 6C8 8 7 10 7 10Z" fill="var(--primary)" />
+        <path d="M15 8C13 5 16 3 17 4C16 6 15 8 15 8Z" fill="var(--primary)" />
+        <path d="M22 6C20 3 23 1 24 2C23 4 22 6 22 6Z" fill="var(--primary)" />
       </svg>
     </div>
   </div>
@@ -251,7 +251,7 @@ export default function EscapeSection() {
     const animateMarquee = () => {
       if (carouselRef.current) {
         const container = carouselRef.current;
-        
+
         // Only run marquee crawl when not manual scrolling
         if (!isScrollingRef.current) {
           container.scrollLeft += 0.8; // 0.8px per frame crawl
@@ -305,7 +305,7 @@ export default function EscapeSection() {
         const cardWidth = card.offsetWidth;
         const gap = 20;
         const scrollStep = cardWidth + gap;
-        
+
         isScrollingRef.current = true;
         container.scrollBy({
           left: direction === 'left' ? -scrollStep : scrollStep,
@@ -326,20 +326,20 @@ export default function EscapeSection() {
         {/* Subsection 1: Packages */}
         <div className="escape-packages-container">
           <SectionTitle title="PACKAGES FOR EVERY KIND OF ESCAPE" />
-          
+
           <div className="escape-packages-grid">
             {escapePackages.map((pkg, idx) => (
               <div className="escape-card" key={idx}>
                 <div className="escape-card-image-wrapper">
-                  <div 
-                    className="escape-card-image" 
+                  <div
+                    className="escape-card-image"
                     style={{ backgroundImage: `url(${pkg.imageUrl})` }}
                   />
                 </div>
                 <div className="escape-card-body">
                   <h3 className="escape-card-title">{pkg.title}</h3>
                   <p className="escape-card-subtitle">{pkg.subtitle}</p>
-                  
+
                   <ul className="escape-card-checklist">
                     {pkg.checklist.map((item, i) => (
                       <li key={i} className="escape-checklist-item">
@@ -351,11 +351,11 @@ export default function EscapeSection() {
                       </li>
                     ))}
                   </ul>
-                  
+
                   <div className="escape-card-footer">
-                    <button 
-                      type="button" 
-                      className="btn-escape-explore" 
+                    <button
+                      type="button"
+                      className="btn-escape-explore"
                       onClick={() => setSelectedPackage(pkg)}
                       title="Explore Package Details"
                       aria-label={`Explore ${pkg.title}`}
@@ -392,9 +392,9 @@ export default function EscapeSection() {
               </button>
             </div>
           </div>
-          
-          <div 
-            className="adventure-carousel-container" 
+
+          <div
+            className="adventure-carousel-container"
             ref={carouselRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -406,7 +406,7 @@ export default function EscapeSection() {
                   <div className="adventure-card" key={`item-${idx}`}>
                     <div className="adventure-image-wrapper" onClick={() => openLightbox(origIdx)}>
                       {item.images.map((imgUrl, imgIdx) => (
-                        <div 
+                        <div
                           key={imgIdx}
                           className={`adventure-image ${imgIdx === imageIndices[origIdx] ? 'active' : ''}`}
                           style={{ backgroundImage: `url(${imgUrl})` }}
@@ -494,23 +494,23 @@ export default function EscapeSection() {
       {lightboxIndex !== null && (
         <div className="lightbox-overlay" onClick={closeLightbox}>
           <button className="lightbox-close" onClick={closeLightbox} aria-label="Close Slideshow">&times;</button>
-          
+
           <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
             <button className="lightbox-btn prev-btn" onClick={prevLightboxImage} aria-label="Previous image">&#10094;</button>
-            
+
             <div className="lightbox-slide-wrapper">
-              <img 
-                src={adventureItems[lightboxIndex].images[lightboxImageIdx]} 
-                alt={adventureItems[lightboxIndex].title} 
-                className="lightbox-img" 
+              <img
+                src={adventureItems[lightboxIndex].images[lightboxImageIdx]}
+                alt={adventureItems[lightboxIndex].title}
+                className="lightbox-img"
               />
               <div className="lightbox-caption">
                 <h4>{adventureItems[lightboxIndex].title}</h4>
                 <p>{adventureItems[lightboxIndex].desc}</p>
                 <div className="lightbox-dots">
                   {adventureItems[lightboxIndex].images.map((_, i) => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className={`lightbox-dot ${i === lightboxImageIdx ? 'active' : ''}`}
                       onClick={() => setLightboxImageIdx(i)}
                     />
@@ -521,7 +521,7 @@ export default function EscapeSection() {
                 </span>
               </div>
             </div>
-            
+
             <button className="lightbox-btn next-btn" onClick={nextLightboxImage} aria-label="Next image">&#10095;</button>
           </div>
         </div>
@@ -530,9 +530,9 @@ export default function EscapeSection() {
       {selectedPackage && (
         <div className="package-modal-overlay" onClick={() => setSelectedPackage(null)}>
           <div className="package-modal-content" onClick={(e) => e.stopPropagation()}>
-            <button 
-              className="package-modal-close" 
-              onClick={() => setSelectedPackage(null)} 
+            <button
+              className="package-modal-close"
+              onClick={() => setSelectedPackage(null)}
               aria-label="Close modal"
             >
               &times;
@@ -569,9 +569,9 @@ export default function EscapeSection() {
               <div className="package-sites-grid">
                 {selectedPackage.sites.map((site, i) => (
                   <div className="package-site-card" key={i}>
-                    <div 
-                      className="package-site-img" 
-                      style={{ backgroundImage: `url(${site.image})` }} 
+                    <div
+                      className="package-site-img"
+                      style={{ backgroundImage: `url(${site.image})` }}
                     />
                     <div className="package-site-info">
                       <h4>{site.name}</h4>
@@ -616,7 +616,7 @@ export default function EscapeSection() {
 
             {/* Modal Actions */}
             <div className="package-modal-actions">
-              <button 
+              <button
                 className="btn-modal-book"
                 onClick={() => {
                   setSelectedPackage(null);
@@ -626,7 +626,7 @@ export default function EscapeSection() {
               >
                 Book This Package
               </button>
-              <button 
+              <button
                 className="btn-modal-secondary"
                 onClick={() => setSelectedPackage(null)}
               >

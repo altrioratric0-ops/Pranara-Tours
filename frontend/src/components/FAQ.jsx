@@ -14,10 +14,6 @@ const FAQS = [
     answer: 'Absolutely! All of our itineraries are 100% customizable. You can modify hotel categories, add activities, change the duration of stay, or combine multiple destinations by talking directly to our travel experts via WhatsApp or our booking form.'
   },
   {
-    question: 'Are flight tickets included in the packages?',
-    answer: 'No, flight tickets are not included in the standard package price. We handle all in-land transfers, AC private cabs, resort reservations, sightseeing entries, and local activity fees, but you will need to book your flights separately.'
-  },
-  {
     question: 'Do you arrange airport pickups and drop-offs?',
     answer: 'Yes, we arrange hassle-free, private AC taxi pickups and drop-offs directly from Kochi (COK) International Airport or nearby railway stations (Aluva, Ernakulam, Trivandrum) based on your package plan.'
   },
@@ -53,7 +49,7 @@ export default function FAQ() {
           {FAQS.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div 
+              <div
                 key={index}
                 style={{
                   background: '#fff',
