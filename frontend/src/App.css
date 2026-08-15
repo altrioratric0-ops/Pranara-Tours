@@ -7543,8 +7543,10 @@ h4 {
 
 /* ───── Mobile S (320px) Compact Font & Section Size Optimizations ───── */
 @media (max-width: 320px) {
-  :root, html {
-    font-size: 11px !important; /* ~30% reduction from 16px to make text fit tiny screens */
+  /* ── Root: scale rem-based sizes down by 25% (16px → 12px) ── */
+  :root,
+  html {
+    font-size: 12px !important; /* 25% reduction: 16px × 0.75 = 12px */
   }
 
   .container {
@@ -7598,15 +7600,15 @@ h4 {
 
   /* Hero adjustments for tiny screen width */
   .hero h1 {
-    font-size: 1.45rem !important;
+    font-size: 1.3rem !important;
   }
   .hero p {
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
     margin: 10px auto 18px !important;
   }
   .hero-actions .btn {
     padding: 8px 16px !important;
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
   }
 
   /* About section stats spacing */
@@ -7627,16 +7629,41 @@ h4 {
     border-radius: 8px !important;
   }
   .countdown-num {
-    font-size: 12px !important;
+    font-size: 10px !important;
   }
   .countdown-label {
     font-size: 5px !important;
   }
   .countdown-separator {
-    font-size: 11px !important;
+    font-size: 9px !important;
   }
   .offers-cta-btn {
     padding: 10px 20px !important;
+  }
+
+  /* Seasonal Offers section px-based fonts (25% reduction) */
+  .offers-eyebrow {
+    font-size: 10px !important;
+  }
+  .offers-heading {
+    font-size: 22px !important;
+  }
+  .offers-subheading {
+    font-size: 12px !important;
+    line-height: 18px !important;
+  }
+  .offers-banner-title {
+    font-size: 20px !important;
+    line-height: 26px !important;
+  }
+  .offers-banner-sub {
+    font-size: 11px !important;
+  }
+  .offers-badge-text {
+    font-size: 9px !important;
+  }
+  .offers-cta-text {
+    font-size: 11px !important;
   }
 
   /* Escape packages card bodies */
@@ -7646,18 +7673,18 @@ h4 {
 
   /* Creative Gallery font size & button tweaks */
   .creative-gallery-section .gallery-copy h1 {
-    font-size: 1.8rem !important;
+    font-size: 1.5rem !important;
   }
   .creative-gallery-section .gallery-copy p {
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
   }
   .gallery-badge {
     padding: 4px 8px !important;
-    font-size: 0.7rem !important;
+    font-size: 0.65rem !important;
   }
   .gallery-cta {
     padding: 10px 16px !important;
-    font-size: 0.78rem !important;
+    font-size: 0.72rem !important;
   }
 
   /* Testimonials slider control */
@@ -7670,7 +7697,7 @@ h4 {
     padding: 10px 12px !important;
   }
   .faq-section button span:first-child {
-    font-size: 0.82rem !important;
+    font-size: 0.75rem !important;
   }
   .faq-section div[style*="maxHeight"] p {
     padding: 10px 12px !important;
@@ -7678,10 +7705,46 @@ h4 {
 
   /* Booking & community inputs */
   .community-title {
-    font-size: 1.45rem !important;
+    font-size: 1.3rem !important;
   }
   .community-input,
   .community-btn {
     padding: 8px 12px !important;
+  }
+
+  /* Testimonials editorial section — card text (px-based) */
+  .editorial-title {
+    font-size: 1.5rem !important;
+  }
+  .editorial-subtitle {
+    font-size: 0.72rem !important;
+  }
+  .editorial-badge span {
+    font-size: 0.6rem !important;
+  }
+  .card-quote-text {
+    font-size: 0.72rem !important;
+  }
+  .card-author-name {
+    font-size: 0.82rem !important;
+  }
+  .card-author-location {
+    font-size: 0.65rem !important;
+  }
+  .dest-text {
+    font-size: 0.6rem !important;
+  }
+
+  /* Navbar brand & links on tiny screens */
+  .navbar-brand-text {
+    font-size: 0.85rem !important;
+  }
+
+  /* Section titles & subtitles (rem-based, but re-anchor at 12px root) */
+  .section-title {
+    font-size: 1.6rem !important;
+  }
+  .section-subtitle {
+    font-size: 0.82rem !important;
   }
 }

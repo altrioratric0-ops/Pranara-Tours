@@ -28,6 +28,10 @@
   @media (max-width: 1024px) {
     font-size: 16px;
   }
+
+  @media (max-width: 320px) {
+    font-size: 13.5px; /* 25% reduction for 320px mobile screens */
+  }
 }
 
 @media (prefers-color-scheme: dark) {
