@@ -1,5 +1,19 @@
 [
     {
+        "name": "raja",
+        "location": "Chennai",
+        "destination": "Munnar Tea Safari, Kerala",
+        "tagline": "MUNNAR \u2013 TEA GARDENS, ATTUKAD WATERFALLS & KOLUKKUMALAI",
+        "avatar": "/assets/logo.png",
+        "avatar_initials": "R",
+        "rating": 5,
+        "quote": "qwertuioplkjhgfdszxcvbnm",
+        "videoUrl": "",
+        "active": true,
+        "created_at": "2026-08-15T04:38:32.327219",
+        "id": 7
+    },
+    {
         "id": 1,
         "name": "The Thompson Family",
         "location": "London, United Kingdom",
