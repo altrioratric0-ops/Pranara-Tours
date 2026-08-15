@@ -12,13 +12,13 @@ export default function About() {
           </div>
           <div>
             <h2>Welcome to <span className="accent">Pranara</span></h2>
-            <p>
+            <div>
               Pranara is your trusted gateway to the breathtaking landscapes of
               God's Own Country. We specialize in crafting immersive travel experiences that blend adventure, nature, and cultural discovery across Munnar
               <p>
                 Whether you're trekking through mist-laden tea plantations, cruising on luxury houseboats in quiet lagoons, exploring spice gardens, or soaking in coastal cliff views, our guided tours ensure every moment is unforgettable.
               </p>
-            </p>
+            </div>
             <div className="about-stats">
               <div className="stat-item">
                 <div className="stat-num">25+</div>

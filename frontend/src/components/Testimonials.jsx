@@ -103,7 +103,53 @@ export default function Testimonials() {
 
   const autoplayTimer = useRef(null);
 
+  // ── localStorage helpers ──
+  const LS_KEY = 'pranara_user_reviews';
+
+  const loadLocalReviews = () => {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const saveLocalReview = (review) => {
+    try {
+      const existing = loadLocalReviews();
+      // Avoid duplicates by name+quote
+      const key = `${review.name}-${review.quote}`.toLowerCase();
+      const alreadySaved = existing.some(
+        (r) => `${r.name}-${r.quote}`.toLowerCase() === key
+      );
+      if (!alreadySaved) {
+        localStorage.setItem(LS_KEY, JSON.stringify([review, ...existing]));
+      }
+    } catch {
+      // localStorage not available — silently ignore
+    }
+  };
+
   useEffect(() => {
+    // Load localStorage reviews immediately (they show while API loads)
+    const localReviews = loadLocalReviews();
+    if (localReviews.length > 0) {
+      const localNames = new Set(STATIC_TESTIMONIALS.map(s => s.name.toLowerCase()));
+      const newLocal = localReviews.filter(
+        (r) => !localNames.has(r.name.toLowerCase())
+      );
+      if (newLocal.length > 0) {
+        setTestimonials((prev) => {
+          const prevNames = new Set(prev.map(p => `${p.name}-${p.quote}`.toLowerCase()));
+          const truly_new = newLocal.filter(
+            r => !prevNames.has(`${r.name}-${r.quote}`.toLowerCase())
+          );
+          return truly_new.length > 0 ? [...truly_new, ...prev] : prev;
+        });
+      }
+    }
+
     fetchTestimonials()
       .then((data) => {
         if (!data || data.length === 0) return;
@@ -131,9 +177,16 @@ export default function Testimonials() {
           videoUrl: t.videoUrl || t.video_url || ''
         }));
 
+        // Also merge localStorage reviews (user-submitted, survive even if backend doesn't have them)
+        const savedLocal = loadLocalReviews();
+        const allNames = new Set(formattedBackend.map(b => `${b.name}-${b.quote}`.toLowerCase()));
+        const extraLocal = savedLocal
+          .filter(r => !allNames.has(`${r.name}-${r.quote}`.toLowerCase()))
+          .map(r => ({ ...r, id: r.id || `local-${r.name}` }));
+
         const backendNames = new Set(formattedBackend.map(b => b.name.toLowerCase()));
         const remainingStatic = STATIC_TESTIMONIALS.filter(s => !backendNames.has(s.name.toLowerCase()));
-        setTestimonials([...formattedBackend, ...remainingStatic]);
+        setTestimonials([...extraLocal, ...formattedBackend, ...remainingStatic]);
       })
       .catch((err) => {
         console.warn("Testimonials API offline, using static fallback:", err.message);
@@ -221,6 +274,9 @@ export default function Testimonials() {
       setTestimonials((prev) => [newTestimonial, ...prev]);
       setActiveIndex(0); // Focus on the newly uploaded review card!
 
+      // Persist to localStorage so it survives page refreshes
+      saveLocalReview(newTestimonial);
+
       setSubmitSuccess(true);
       setTimeout(() => {
         setIsModalOpen(false);
@@ -253,6 +309,9 @@ export default function Testimonials() {
 
       setTestimonials((prev) => [fallbackItem, ...prev]);
       setActiveIndex(0);
+
+      // Persist to localStorage so it survives page refreshes
+      saveLocalReview(fallbackItem);
 
       setSubmitSuccess(true);
       setTimeout(() => {
