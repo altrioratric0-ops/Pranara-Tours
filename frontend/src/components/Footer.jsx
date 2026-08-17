@@ -1,7 +1,28 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    if (location.pathname === '/') {
+      const el = document.getElementById(targetId);
+      if (el) {
+        const navOffset = 90;
+        const elementPosition = el.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        window.history.pushState(null, '', `#${targetId}`);
+      }
+    } else {
+      navigate(`/#${targetId}`);
+    }
+  };
 
   return (
     <footer className="footer-dark-section">
@@ -75,10 +96,10 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Explore</h4>
             <ul>
-              <li><a href="#tours">Destinations</a></li>
-              <li><a href="#tours">Tour Packages</a></li>
-              <li><a href="#features">Experiences</a></li>
-              <li><a href="#gallery">Gallery</a></li>
+              <li><a href="/#adventures" onClick={(e) => handleNavClick(e, 'adventures')}>Destinations</a></li>
+              <li><a href="/#packages" onClick={(e) => handleNavClick(e, 'packages')}>Tour Packages</a></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>Experiences</a></li>
+              <li><a href="/#gallery" onClick={(e) => handleNavClick(e, 'gallery')}>Gallery</a></li>
             </ul>
           </div>
 
@@ -86,10 +107,10 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Company</h4>
             <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#about">Our Team</a></li>
-              <li><a href="#booking">Contact</a></li>
-              <li><a href="#testimonials">Reviews</a></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>About Us</a></li>
+              <li><a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>Our Team</a></li>
+              <li><a href="/#booking" onClick={(e) => handleNavClick(e, 'booking')}>Contact</a></li>
+              <li><a href="/#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')}>Reviews</a></li>
             </ul>
           </div>
 
@@ -97,10 +118,10 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Policies</h4>
             <ul>
-              <li><Link to="/terms">Privacy Policy</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/terms">Terms of Service</Link></li>
               <li><Link to="/terms">Refund Policy</Link></li>
-              <li><Link to="/terms">Cookie Policies</Link></li>
+              <li><Link to="/cookies">Cookie Policies</Link></li>
             </ul>
           </div>
         </div>

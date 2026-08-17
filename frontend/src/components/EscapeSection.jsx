@@ -324,7 +324,7 @@ export default function EscapeSection() {
     <section className="escape-section" id="escapes">
       <div className="container">
         {/* Subsection 1: Packages */}
-        <div className="escape-packages-container">
+        <div className="escape-packages-container" id="packages">
           <SectionTitle title="PACKAGES FOR EVERY KIND OF ESCAPE" />
 
           <div className="escape-packages-grid">
@@ -374,7 +374,7 @@ export default function EscapeSection() {
         </div>
 
         {/* Subsection 2: Adventures */}
-        <div className="escape-adventures-container">
+        <div className="escape-adventures-container" id="adventures">
           <div className="adventure-header-row">
             <SectionTitle title="ADVENTURES THAT STAY WITH YOU" />
             <div className="adventure-carousel-controls">

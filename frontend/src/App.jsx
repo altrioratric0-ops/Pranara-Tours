@@ -24,6 +24,8 @@ import Booking from './components/Booking';
 import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
 import TermsConditions from './components/TermsConditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import CookiePolicy from './components/CookiePolicy';
 
 const API_BASE = import.meta.env.PROD
   ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
@@ -392,6 +394,10 @@ function App() {
         <Route path="/gallery/:categoryId" element={<SubGallery />} />
         <Route path="/tour/:id" element={<TourDetail />} />
         <Route path="/terms" element={<TermsConditions />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/cookies" element={<CookiePolicy />} />
+        <Route path="/cookie-policy" element={<CookiePolicy />} />
       </Routes>
       <Footer />
 
