@@ -135,9 +135,9 @@ export default function Testimonials() {
     // Load localStorage reviews immediately (they show while API loads)
     const localReviews = loadLocalReviews();
     if (localReviews.length > 0) {
-      const localNames = new Set(STATIC_TESTIMONIALS.map(s => s.name.toLowerCase()));
+      const localKeys = new Set(STATIC_TESTIMONIALS.map(s => `${s.name}-${s.quote}`.toLowerCase()));
       const newLocal = localReviews.filter(
-        (r) => !localNames.has(r.name.toLowerCase())
+        (r) => !localKeys.has(`${r.name}-${r.quote}`.toLowerCase())
       );
       if (newLocal.length > 0) {
         setTestimonials((prev) => {
@@ -177,19 +177,20 @@ export default function Testimonials() {
           videoUrl: t.videoUrl || t.video_url || ''
         }));
 
-        // Also merge localStorage reviews (user-submitted, survive even if backend doesn't have them)
+        // Merge saved local reviews (always prepend) with backend and static testimonials
         const savedLocal = loadLocalReviews();
-        const allNames = new Set(formattedBackend.map(b => `${b.name}-${b.quote}`.toLowerCase()));
-        const extraLocal = savedLocal
-          .filter(r => !allNames.has(`${r.name}-${r.quote}`.toLowerCase()))
-          .map(r => ({ ...r, id: r.id || `local-${r.name}` }));
-
-        const backendNames = new Set(formattedBackend.map(b => b.name.toLowerCase()));
-        const remainingStatic = STATIC_TESTIMONIALS.filter(s => !backendNames.has(s.name.toLowerCase()));
-        setTestimonials([...extraLocal, ...formattedBackend, ...remainingStatic]);
+        // Ensure each local review has a unique id if missing
+        const normalizedLocal = savedLocal.map(r => ({ ...r, id: r.id || `local-${r.name}-${Date.now()}` }));
+        // Combine: local first, then backend, then static (excluding any backend duplicates)
+        const backendNames = new Set(formattedBackend.map(b => `${b.name}-${b.quote}`.toLowerCase()));
+        const filteredStatic = STATIC_TESTIMONIALS.filter(s => !backendNames.has(`${s.name}-${s.quote}`.toLowerCase()));
+        setTestimonials([...normalizedLocal, ...formattedBackend, ...filteredStatic]);
       })
       .catch((err) => {
-        console.warn("Testimonials API offline, using static fallback:", err.message);
+        console.warn('Testimonials API offline, using static fallback:', err.message);
+        // Preserve local reviews and fallback to static testimonials
+        const savedLocal = loadLocalReviews();
+        setTestimonials([...savedLocal, ...STATIC_TESTIMONIALS]);
       });
   }, []);
 
