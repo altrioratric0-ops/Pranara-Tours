@@ -31,19 +31,30 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(na
 logger = logging.getLogger("pranara-api")
 
 # ---------------------------------------------------------------------------
-# App factory
+# App factory & Universal CORS Configuration
 # ---------------------------------------------------------------------------
 app = Flask(__name__, static_folder=None)
 app.config.from_object(Config)
 
-# CORS - allow frontend dev server and production origins
-cors_origins = [origin.strip() for origin in Config.CORS_ORIGINS.split(",") if origin.strip()]
-CORS(
-    app,
-    resources={r"/api/*": {"origins": cors_origins}},
-    supports_credentials=True,
-    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-)
+# Enable CORS for all routes and origins
+CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.after_request
+def add_cors_headers(response):
+    origin = request.headers.get("Origin")
+    if origin:
+        response.headers["Access-Control-Allow-Origin"] = origin
+        response.headers["Vary"] = "Origin"
+    else:
+        response.headers["Access-Control-Allow-Origin"] = "*"
+    response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Requested-With, Accept, Origin"
+    response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
+    return response
+
+@app.route('/', defaults={'path': ''}, methods=['OPTIONS'])
+@app.route('/<path:path>', methods=['OPTIONS'])
+def options_handler(path):
+    return jsonify({"status": "ok"}), 200
 
 # ---------------------------------------------------------------------------
 # Supabase client (lazy init)
