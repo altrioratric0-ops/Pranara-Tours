@@ -11,7 +11,7 @@ export default function Footer() {
           <div className="footer-col-brand">
             <h3 className="footer-brand-title">PRANARA</h3>
             <p className="footer-brand-desc">
-              Luxury journeys through God's Own Country. Crafted with care since {year}.
+              Our journeys through God's Own Country. Crafted with care since {year}.
             </p>
             <div className="footer-helpline">
               <div className="footer-helpline-icon">
@@ -35,13 +35,6 @@ export default function Footer() {
               <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="social-btn">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                </svg>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="social-btn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                  <rect x="2" y="9" width="4" height="12" />
-                  <circle cx="4" cy="4" r="2" />
                 </svg>
               </a>
               <a href="https://wa.me/916374502007" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="social-btn">
@@ -87,7 +80,6 @@ export default function Footer() {
             <h4>Company</h4>
             <ul>
               <li><a href="#about">About Us</a></li>
-              <li><a href="#about">Our Team</a></li>
               <li><a href="#booking">Contact</a></li>
               <li><a href="#testimonials">Reviews</a></li>
             </ul>
@@ -97,9 +89,8 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Policies</h4>
             <ul>
-              <li><Link to="/terms">Privacy Policy</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/terms">Terms of Service</Link></li>
-              <li><Link to="/terms">Refund Policy</Link></li>
               <li><Link to="/terms">Cookie Policies</Link></li>
             </ul>
           </div>

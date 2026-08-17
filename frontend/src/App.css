@@ -536,13 +536,15 @@ h4 {
   height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  filter: brightness(1.15) contrast(1.05);
+  filter: brightness(1.05) contrast(1.08) saturate(1.1);
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.5) 0%, rgba(27, 94, 32, 0.45) 100%);
+  background: linear-gradient(180deg, rgba(10, 25, 18, 0.4) 0%, rgba(10, 25, 18, 0.2) 40%, rgba(10, 25, 18, 0.6) 100%);
   z-index: 1;
 }
 
@@ -7746,5 +7748,79 @@ h4 {
   }
   .section-subtitle {
     font-size: 0.82rem !important;
+  }
+}
+
+/* ───── Floating WhatsApp Button & Mobile Touch Optimizations ───── */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 60px;
+  background-color: #25D366;
+  color: #ffffff;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+  z-index: 99999;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: whatsappPulse 2.5s infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+  color: #ffffff;
+}
+
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 18px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+  }
+
+  /* Prevent Safari input auto-zoom on mobile focus */
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+
+  /* Package Modal Responsiveness */
+  .package-modal-card {
+    width: 94vw !important;
+    max-width: 100% !important;
+    padding: 24px 16px !important;
+    border-radius: 20px !important;
+    max-height: 90vh !important;
+  }
+
+  .package-modal-actions {
+    flex-direction: column !important;
+  }
+
+  .package-modal-actions a,
+  .package-modal-actions button {
+    width: 100% !important;
+    font-size: 0.95rem !important;
   }
 }
