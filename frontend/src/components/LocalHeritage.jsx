@@ -147,7 +147,7 @@ export default function LocalHeritage() {
             {/* Framed Picture in Story Card */}
             <div className="story-frame-container">
               <img 
-                src="/assets/preview.jpeg" 
+                src="/assets/Preview.jpeg" 
                 alt="Pranara Local Guides Jeep" 
                 className="story-framed-img" 
               />
