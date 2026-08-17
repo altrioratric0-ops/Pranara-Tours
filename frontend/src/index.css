@@ -111,3 +111,54 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* ---------- Mobile & WhatsApp Enhancements ---------- */
+/* Responsive Hero */
+@media (max-width: 640px) {
+  .hero {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+  }
+  .hero-video-wrap {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .hero-video {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+    margin: 1rem 0;
+  }
+  .hero-actions .btn-primary {
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+  }
+}
+/* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  background: #25d366;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  z-index: 1000;
+  text-decoration: none;
+}
+.whatsapp-float:hover {
+  background: #20b858;
+}
+.whatsapp-label {
+  font-size: 0.9rem;
+}
