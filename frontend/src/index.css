@@ -139,26 +139,4 @@ code {
     padding: 0.75rem 1rem;
   }
 }
-/* Floating WhatsApp Button */
-.whatsapp-float {
-  position: fixed;
-  right: 1.5rem;
-  bottom: 1.5rem;
-  background: #25d366;
-  color: #fff;
-  border-radius: 8px;
-  padding: 0.6rem 0.9rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 600;
-  box-shadow: var(--shadow);
-  z-index: 1000;
-  text-decoration: none;
-}
-.whatsapp-float:hover {
-  background: #20b858;
-}
-.whatsapp-label {
-  font-size: 0.9rem;
-}
+
