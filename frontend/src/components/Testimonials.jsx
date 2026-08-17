@@ -432,7 +432,7 @@ export default function Testimonials() {
                   <div className="card-avatar-container">
                     <div className="card-avatar-wrapper">
                       <img
-                        src={item.avatar}
+                        src={item.avatar || '/assets/logo.png'}
                         alt={item.name}
                         className="card-avatar-img"
                         onError={(e) => {

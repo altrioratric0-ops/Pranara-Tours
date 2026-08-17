@@ -88,6 +88,7 @@ export const DESTINATIONS = [
     name: 'Mattupetty Dam',
     tagline: 'Scenic Dam Views',
     desc: 'Enjoy the breathtaking views of Mattupetty Dam, surrounded by lush greenery and the soothing sounds of nature.',
+    bg: '/assets/tour_mattupetty_dam.jpeg',
     thumb: '/assets/tour_mattupetty_dam.jpeg',
     images: ['/assets/tour_mattupetty_dam.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_flower_garden.jpeg']
   },
@@ -115,7 +116,8 @@ export default function CreativeGallery() {
 
   const loopedDestinations = [...DESTINATIONS, ...DESTINATIONS];
   const activeBaseIdx = activeIdx % DESTINATIONS.length;
-  const activeDest = DESTINATIONS[activeBaseIdx];
+  const activeDest = DESTINATIONS[activeBaseIdx] || DESTINATIONS[0];
+  const bgImage = activeDest?.bg || activeDest?.thumb || '/assets/tour_munnar.png';
 
   useEffect(() => {
     const element = sectionRef.current;
@@ -211,7 +213,7 @@ export default function CreativeGallery() {
         <div
           className="gallery-bg-slide active"
           style={{
-            backgroundImage: `url(${activeDest.bg})`,
+            backgroundImage: `url(${bgImage})`,
             transform: `scale(1.08) translate(${parallax.x * -12}px, ${parallax.y * -12}px)`
           }}
         />

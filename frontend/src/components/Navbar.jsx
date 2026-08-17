@@ -174,7 +174,7 @@ export default function Navbar() {
               <div className="navbar-user-profile" style={{ display: 'flex', flexDirection: 'column', gap: '12px', width: '100%', padding: '0 8px 12px' }}>
                 <div className="user-info-row" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <img 
-                    src={user.imageUrl} 
+                    src={user.imageUrl || '/assets/logo.png'} 
                     alt={user.fullName || 'User'} 
                     style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '2px solid #166534' }} 
                   />

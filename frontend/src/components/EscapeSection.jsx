@@ -333,7 +333,7 @@ export default function EscapeSection() {
                 <div className="escape-card-image-wrapper">
                   <div
                     className="escape-card-image"
-                    style={{ backgroundImage: `url(${pkg.imageUrl})` }}
+                    style={{ backgroundImage: `url(${pkg.imageUrl || '/assets/tour_munnar.png'})` }}
                   />
                 </div>
                 <div className="escape-card-body">
@@ -409,7 +409,7 @@ export default function EscapeSection() {
                         <div
                           key={imgIdx}
                           className={`adventure-image ${imgIdx === imageIndices[origIdx] ? 'active' : ''}`}
-                          style={{ backgroundImage: `url(${imgUrl})` }}
+                          style={{ backgroundImage: `url(${imgUrl || '/assets/tour_munnar.png'})` }}
                         />
                       ))}
                       <div className="adventure-icon-badge">
@@ -500,15 +500,15 @@ export default function EscapeSection() {
 
             <div className="lightbox-slide-wrapper">
               <img
-                src={adventureItems[lightboxIndex].images[lightboxImageIdx]}
-                alt={adventureItems[lightboxIndex].title}
+                src={adventureItems[lightboxIndex]?.images?.[lightboxImageIdx] || '/assets/tour_munnar.png'}
+                alt={adventureItems[lightboxIndex]?.title || 'Adventure'}
                 className="lightbox-img"
               />
               <div className="lightbox-caption">
-                <h4>{adventureItems[lightboxIndex].title}</h4>
-                <p>{adventureItems[lightboxIndex].desc}</p>
+                <h4>{adventureItems[lightboxIndex]?.title}</h4>
+                <p>{adventureItems[lightboxIndex]?.desc}</p>
                 <div className="lightbox-dots">
-                  {adventureItems[lightboxIndex].images.map((_, i) => (
+                  {adventureItems[lightboxIndex]?.images?.map((_, i) => (
                     <span
                       key={i}
                       className={`lightbox-dot ${i === lightboxImageIdx ? 'active' : ''}`}
@@ -517,7 +517,7 @@ export default function EscapeSection() {
                   ))}
                 </div>
                 <span className="lightbox-counter">
-                  {lightboxImageIdx + 1} / {adventureItems[lightboxIndex].images.length}
+                  {lightboxImageIdx + 1} / {adventureItems[lightboxIndex]?.images?.length || 1}
                 </span>
               </div>
             </div>
@@ -571,7 +571,7 @@ export default function EscapeSection() {
                   <div className="package-site-card" key={i}>
                     <div
                       className="package-site-img"
-                      style={{ backgroundImage: `url(${site.image})` }}
+                      style={{ backgroundImage: `url(${site.image || '/assets/tour_munnar.png'})` }}
                     />
                     <div className="package-site-info">
                       <h4>{site.name}</h4>
