@@ -1,4 +1,44 @@
+import { useEffect, useState } from 'react';
+
+const API_BASE = import.meta.env.PROD
+  ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
+  : '';
+
 export default function About() {
+  const [visitorCount, setVisitorCount] = useState(() => {
+    const saved = localStorage.getItem('pranara_visitor_count');
+    return saved ? parseInt(saved, 10) : 500;
+  });
+
+  useEffect(() => {
+    const handleCountUpdate = (e) => {
+      if (e.detail && typeof e.detail === 'number') {
+        setVisitorCount(e.detail);
+      }
+    };
+
+    window.addEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
+
+    fetch(`${API_BASE}/api/visits`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (data && typeof data.count === 'number') {
+          setVisitorCount(data.count);
+          localStorage.setItem('pranara_visitor_count', data.count.toString());
+        }
+      })
+      .catch((err) => {
+        console.warn('Could not fetch visitor count:', err.message);
+      });
+
+    return () => {
+      window.removeEventListener('pranaraVisitorCountUpdated', handleCountUpdate);
+    };
+  }, []);
+
   return (
     <section className="about" id="about">
       <div className="container">
@@ -26,13 +66,16 @@ export default function About() {
               </div>
               <div className="stat-item">
                 <div className="stat-num">500+</div>
-                <div className="stat-label">Explorers</div>
+                <div className="stat-label">Happy Explorers</div>
               </div>
               <div className="stat-item">
                 <div className="stat-num">12+</div>
-                <div className="stat-label">Trails</div>
+                <div className="stat-label">Kerala Trails</div>
               </div>
-
+              <div className="stat-item">
+                <div className="stat-num">{(visitorCount !== null && visitorCount !== undefined) ? `${visitorCount} +` : '500 +'}</div>
+                <div className="stat-label">visitors</div>
+              </div>
             </div>
           </div>
         </div>
@@ -40,3 +83,4 @@ export default function About() {
     </section>
   );
 }
+
