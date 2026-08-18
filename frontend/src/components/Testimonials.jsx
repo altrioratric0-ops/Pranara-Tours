@@ -78,8 +78,31 @@ const STATIC_TESTIMONIALS = [
   },
 ];
 
+/* ─── Deduplication Helper ─── */
+const getTestimonialKey = (item) => {
+  if (!item) return '';
+  const name = (item.name || '').trim().toLowerCase();
+  const quote = (item.quote || item.review || '').trim().toLowerCase().replace(/^["'“]+|["'”]+$/g, '');
+  return `${name}:::${quote}`;
+};
+
+export const dedupeTestimonials = (list) => {
+  if (!Array.isArray(list)) return [];
+  const seen = new Set();
+  const result = [];
+  for (const item of list) {
+    if (!item) continue;
+    const key = getTestimonialKey(item);
+    if (key && key !== ':::' && !seen.has(key)) {
+      seen.add(key);
+      result.push(item);
+    }
+  }
+  return result;
+};
+
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState(STATIC_TESTIMONIALS);
+  const [testimonials, setTestimonials] = useState(() => dedupeTestimonials(STATIC_TESTIMONIALS));
   const [activeIndex, setActiveIndex] = useState(0);
   const [videoPlayingUrl, setVideoPlayingUrl] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -109,7 +132,8 @@ export default function Testimonials() {
   const loadLocalReviews = () => {
     try {
       const raw = localStorage.getItem(LS_KEY);
-      return raw ? JSON.parse(raw) : [];
+      const list = raw ? JSON.parse(raw) : [];
+      return dedupeTestimonials(list);
     } catch {
       return [];
     }
@@ -118,54 +142,23 @@ export default function Testimonials() {
   const saveLocalReview = (review) => {
     try {
       const existing = loadLocalReviews();
-      // Avoid duplicates by name+quote
-      const key = `${review.name}-${review.quote}`.toLowerCase();
-      const alreadySaved = existing.some(
-        (r) => `${r.name}-${r.quote}`.toLowerCase() === key
-      );
-      if (!alreadySaved) {
-        localStorage.setItem(LS_KEY, JSON.stringify([review, ...existing]));
-      }
+      const updated = dedupeTestimonials([review, ...existing]);
+      localStorage.setItem(LS_KEY, JSON.stringify(updated));
     } catch {
       // localStorage not available — silently ignore
     }
   };
 
   useEffect(() => {
-    // Load localStorage reviews immediately (they show while API loads)
+    // Load localStorage reviews immediately & merge with static without duplicates
     const localReviews = loadLocalReviews();
-    if (localReviews.length > 0) {
-      const localKeys = new Set(STATIC_TESTIMONIALS.map(s => `${s.name}-${s.quote}`.toLowerCase()));
-      const newLocal = localReviews.filter(
-        (r) => !localKeys.has(`${r.name}-${r.quote}`.toLowerCase())
-      );
-      if (newLocal.length > 0) {
-        setTestimonials((prev) => {
-          const prevNames = new Set(prev.map(p => `${p.name}-${p.quote}`.toLowerCase()));
-          const truly_new = newLocal.filter(
-            r => !prevNames.has(`${r.name}-${r.quote}`.toLowerCase())
-          );
-          return truly_new.length > 0 ? [...truly_new, ...prev] : prev;
-        });
-      }
-    }
+    setTestimonials(dedupeTestimonials([...localReviews, ...STATIC_TESTIMONIALS]));
 
     fetchTestimonials()
       .then((data) => {
-        if (!data || data.length === 0) return;
+        if (!data || !Array.isArray(data) || data.length === 0) return;
 
-        // Deduplicate API response
-        const uniqueBackend = [];
-        const seen = new Set();
-        data.forEach((t) => {
-          const key = `${t.name}-${t.quote}`.toLowerCase();
-          if (!seen.has(key)) {
-            seen.add(key);
-            uniqueBackend.push(t);
-          }
-        });
-
-        const formattedBackend = uniqueBackend.map((t) => ({
+        const formattedBackend = data.map((t) => ({
           id: t.id ? `api-${t.id}` : `api-rand-${Math.random()}`,
           name: t.name,
           location: t.location || 'Verified Guest',
@@ -177,20 +170,13 @@ export default function Testimonials() {
           videoUrl: t.videoUrl || t.video_url || ''
         }));
 
-        // Merge saved local reviews (always prepend) with backend and static testimonials
         const savedLocal = loadLocalReviews();
-        // Ensure each local review has a unique id if missing
-        const normalizedLocal = savedLocal.map(r => ({ ...r, id: r.id || `local-${r.name}-${Date.now()}` }));
-        // Combine: local first, then backend, then static (excluding any backend duplicates)
-        const backendNames = new Set(formattedBackend.map(b => `${b.name}-${b.quote}`.toLowerCase()));
-        const filteredStatic = STATIC_TESTIMONIALS.filter(s => !backendNames.has(`${s.name}-${s.quote}`.toLowerCase()));
-        setTestimonials([...normalizedLocal, ...formattedBackend, ...filteredStatic]);
+        setTestimonials(dedupeTestimonials([...savedLocal, ...formattedBackend, ...STATIC_TESTIMONIALS]));
       })
       .catch((err) => {
         console.warn('Testimonials API offline, using static fallback:', err.message);
-        // Preserve local reviews and fallback to static testimonials
         const savedLocal = loadLocalReviews();
-        setTestimonials([...savedLocal, ...STATIC_TESTIMONIALS]);
+        setTestimonials(dedupeTestimonials([...savedLocal, ...STATIC_TESTIMONIALS]));
       });
   }, []);
 
@@ -272,7 +258,7 @@ export default function Testimonials() {
       };
 
       // Instantly prepend new review to testimonial section list
-      setTestimonials((prev) => [newTestimonial, ...prev]);
+      setTestimonials((prev) => dedupeTestimonials([newTestimonial, ...prev]));
       setActiveIndex(0); // Focus on the newly uploaded review card!
 
       // Persist to localStorage so it survives page refreshes
@@ -308,7 +294,7 @@ export default function Testimonials() {
         videoUrl: payload.videoUrl
       };
 
-      setTestimonials((prev) => [fallbackItem, ...prev]);
+      setTestimonials((prev) => dedupeTestimonials([fallbackItem, ...prev]));
       setActiveIndex(0);
 
       // Persist to localStorage so it survives page refreshes
