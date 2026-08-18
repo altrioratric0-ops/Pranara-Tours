@@ -44,7 +44,7 @@ export default function Booking() {
       <div className="booking-community-container">
         <div className="community-banner-card">
           <div className="community-content-left">
-            <h2 className="community-title">Begin Your Kerala Story</h2>
+            <h3 className="community-title">Begin Your Kerala Story</h3>
             <p className="community-subtitle" style={{ marginBottom: '16px' }}>
               WhatsApp is primary channel for booking enquiries,travel packages, and trip assistance.
             </p>
