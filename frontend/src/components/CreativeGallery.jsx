@@ -10,7 +10,7 @@ export const DESTINATIONS = [
     desc: 'A golden sunrise above the clouds, trek through high cliff, and explore tea plantations.',
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
     thumb: '/assets/munnar_kolukkumalaigallery.jpeg',
-    images: ['/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/tour_echo_ponit.jpeg']
+    images: ['/assets/munnar_kolukkumalaigallery.jpeg','/assets/munnar/Munnar_1.jpeg','/assets/munnar/Munnar_2.jpeg','/assets/munnar/Munnar_3.jpeg','/assets/munnar/Munnar_4.jpeg' ]
   },
   {
     id: 'Attukad Waterfalls',
@@ -20,8 +20,9 @@ export const DESTINATIONS = [
     desc: 'Experience the beauty of Attukad Waterfalls, surrounded by lush greenery and A perfect destination for photography and nature lovers.',
     bg: '/assets/tour_attukad_waterfalls.jpeg',
     thumb: '/assets/tour_attukad_waterfalls.jpeg',
-    images: ['/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_echo_ponit.jpeg']
+    images: ['/assets/tour_attukad_waterfalls.jpeg', '/assets/Attukad Waterfalls/Attukad_1.jpeg','/assets/Attukad Waterfalls/Attukad_2.jpeg','/assets/Attukad Waterfalls/Attukad_3.jpeg','/assets/Attukad Waterfalls/Attukad_4.jpeg','/assets/Attukad Waterfalls/Attukad_5.jpeg','/assets/Attukad Waterfalls/Attukad_6.jpeg','/assets/Attukad Waterfalls/Attukad_7.jpeg']
   },
+
   {
     id: 'Tea Estate',
     slug: 'tea-estate',
@@ -30,8 +31,9 @@ export const DESTINATIONS = [
     desc: 'Walk through endless green hills, breathe the fresh mountain air, and experience the timeless beauty of Munnar’s tea gardens.',
     bg: '/assets/tour_tea_estate.jpeg',
     thumb: '/assets/tour_tea_estate.jpeg',
-    images: ['/assets/tour_tea_estate.jpeg', '/assets/tour_mattupetty_dam.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_flower_garden.jpeg']
+    images: ['/assets/tour_tea_estate.jpeg','/assets/Tea_estate/Tea_estates_1.jpeg','/assets/Tea_estate/Tea_estates_2.jpeg','/assets/Tea_estate/Tea_estates_3.jpeg','/assets/Tea_estate/Tea_estates_4.jpeg','/assets/Tea_estate/Tea_estates_5.jpeg','/assets/Tea_estate/Tea_estates_6.jpeg','/assets/Tea_estate/Tea_estates_7.jpeg','/assets/Tea_estate/Tea_estates_8.jpeg','/assets/Tea_estate/Tea_estates_9.jpeg','/assets/Tea_estate/Tea_estates_10.jpeg']
   },
+
   {
     id: 'Pothamedu View',
     slug: 'pothamedu-view',
@@ -40,8 +42,9 @@ export const DESTINATIONS = [
     desc: 'Witness a endless tea plantations, rolling hills, and mist covered mountains from one of the most scenic viewpoints in Munnar.',
     bg: '/assets/tour_pothamedu.jpeg',
     thumb: '/assets/tour_pothamedu.jpeg',
-    images: ['/assets/tour_pothamedu.jpeg', '/assets/tour_echo_ponit.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_attukad_waterfalls.jpeg']
+    images: ['/assets/tour_pothamedu.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_1.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_2.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_3.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_4.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_5.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_6.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_7.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_8.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_9.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_10.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_11.jpeg', ]
   },
+
   {
     id: 'Kolukkumalai',
     slug: 'kolukkumalai',
@@ -50,7 +53,7 @@ export const DESTINATIONS = [
     desc: 'Witness a golden sunrise above the clouds at Kolukkumalai, trek through high cliff waterfall paths, and explore historic tea plantations.',
     bg: '/assets/tour_Kolukkumalai.jpg',
     thumb: '/assets/tour_Kolukkumalai.jpg',
-    images: ['/assets/tour_Kolukkumalai.jpg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_echo_ponit.jpeg']
+    images: ['/assets/tour_Kolukkumalai.jpg', '/assets/Kolukkumalai/Kolukkumalai_1.jpeg','/assets/Kolukkumalai/Kolukkumalai_2.jpeg','/assets/Kolukkumalai/Kolukkumalai_3.jpeg','/assets/Kolukkumalai/Kolukkumalai_4.jpeg','/assets/Kolukkumalai/Kolukkumalai_5.jpeg','/assets/Kolukkumalai/Kolukkumalai_6.jpeg','/assets/Kolukkumalai/Kolukkumalai_7.jpeg','/assets/Kolukkumalai/Kolukkumalai_8.jpeg',]
   },
   {
     id: ' Bamboo Hut',
@@ -60,7 +63,7 @@ export const DESTINATIONS = [
     desc: 'Immerse yourself in the charm of a traditional bamboo hut. A perfect escape from the hustle and bustle of city life.',
     bg: '/assets/tour_rustic_bamboo_hut.jpeg',
     thumb: '/assets/tour_rustic_bamboo_hut.jpeg',
-    images: ['/assets/tour_rustic_bamboo_hut.jpeg', '/assets/tour_flower_garden.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg']
+    images: ['/assets/tour_rustic_bamboo_hut.jpeg']
   },
   {
     id: 'Echo Point',
@@ -70,7 +73,7 @@ export const DESTINATIONS = [
     desc: 'Experience the stunning beauty of Munnar from one of the most popular viewpoints. Enjoy panoramic vistas and mist-covered mountains.',
     bg: '/assets/tour_echo_ponit.jpeg',
     thumb: '/assets/tour_echo_ponit.jpeg',
-    images: ['/assets/tour_echo_ponit.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_mattupetty_dam.jpeg']
+    images: ['/assets/tour_echo_ponit.jpeg', '/assets/Eco point/Echopoint_1.jpeg','/assets/Eco point/Echopoint_2.jpeg','/assets/Eco point/Echopoint_3.jpeg','/assets/Eco point/Echopoint_4.jpeg','/assets/Eco point/Echopoint_5.jpeg','/assets/Eco point/Echopoint_6.jpeg','/assets/Eco point/Echopoint_7.jpeg','/assets/Eco point/Echopoint_8.jpeg','/assets/Eco point/Echopoint_9.jpeg','/assets/Eco point/Echopoint_10.jpeg','/assets/Eco point/Echopoint_11.jpeg','/assets/Eco point/Echopoint_12.jpeg', ]
   },
   {
     id: 'Flower Garden',
@@ -80,7 +83,7 @@ export const DESTINATIONS = [
     desc: 'Stroll through the vibrant colors of the flower garden, where exotic blooms create a mesmerizing spectacle.',
     bg: '/assets/tour_flower_garden.jpeg',
     thumb: '/assets/tour_flower_garden.jpeg',
-    images: ['/assets/tour_flower_garden.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_rustic_bamboo_hut.jpeg', '/assets/tour_echo_ponit.jpeg', '/assets/tour_attukad_waterfalls.jpeg']
+    images: ['/assets/tour_flower_garden.jpeg','/assets/flower garden/garden_0.jpeg',  '/assets/flower garden/garden_1.jpeg','/assets/flower garden/garden_2.jpeg', '/assets/flower garden/garden_3.jpeg', '/assets/flower garden/garden_4.jpeg', '/assets/flower garden/garden_5.jpeg', '/assets/flower garden/garden_6.jpeg', '/assets/flower garden/garden_7.jpeg', '/assets/flower garden/garden_8.jpeg', '/assets/flower garden/garden_9.jpeg', '/assets/flower garden/garden_10.jpeg'  ]
   },
   {
     id: 'Mattupetty Dam',
@@ -90,7 +93,7 @@ export const DESTINATIONS = [
     desc: 'Enjoy the breathtaking views of Mattupetty Dam, surrounded by lush greenery and the soothing sounds of nature.',
     bg: '/assets/tour_mattupetty_dam.jpeg',
     thumb: '/assets/tour_mattupetty_dam.jpeg',
-    images: ['/assets/tour_mattupetty_dam.jpeg', '/assets/tour_attukad_waterfalls.jpeg', '/assets/tour_pothamedu.jpeg', '/assets/tour_tea_estate.jpeg', '/assets/tour_flower_garden.jpeg']
+    images: ['/assets/tour_mattupetty_dam.jpeg', '/assets/Mattupetty Dam/MattupettyDam_1.jpeg', '/assets/Mattupetty Dam/MattupettyDam_2.jpeg','/assets/Mattupetty Dam/MattupettyDam_3.jpeg','/assets/Mattupetty Dam/MattupettyDam_4.jpeg','/assets/Mattupetty Dam/MattupettyDam_5.jpeg','/assets/Mattupetty Dam/MattupettyDam_6.jpeg','/assets/Mattupetty Dam/MattupettyDam_7.jpeg','/assets/Mattupetty Dam/MattupettyDam_8.jpeg']
   },
   {
     id: 'Eravikulam National Park',
@@ -100,7 +103,7 @@ export const DESTINATIONS = [
     desc: 'Explore the diverse wildlife and stunning landscapes of Eravikulam National Park, home to the endangered Nilgiri Tahr.',
     bg: '/assets/tour_eravikulam_national_park.jpeg',
     thumb: '/assets/tour_eravikulam_national_park.jpeg',
-    images: ['/assets/tour_eravikulam_national_park.jpeg', '/assets/tour_Kolukkumalai.jpg', '/assets/tour_mattupetty_dam.jpeg', '/assets/munnar_kolukkumalaigallery.jpeg', '/assets/tour_pothamedu.jpeg']
+    images: ['/assets/tour_eravikulam_national_park.jpeg', '/assets/feravikulam/eravikulam_1.jpeg', '/assets/feravikulam/eravikulam_2.jpeg', '/assets/feravikulam/eravikulam_3.jpeg', '/assets/feravikulam/eravikulam_4.jpeg', '/assets/feravikulam/eravikulam_5.jpeg', '/assets/feravikulam/eravikulam_6.jpeg', '/assets/feravikulam/eravikulam_7.jpeg', '/assets/feravikulam/eravikulam_8.jpeg', '/assets/feravikulam/eravikulam_9.jpeg',]
   }
 ];
 

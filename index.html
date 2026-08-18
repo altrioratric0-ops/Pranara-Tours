@@ -408,7 +408,7 @@
 
     .about-stats {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
       margin-top: 32px;
     }
@@ -1182,7 +1182,7 @@
       }
 
       .about-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
     }
@@ -2119,6 +2119,10 @@
             <div class="stat-item">
               <div class="stat-num">5+</div>
               <div class="stat-label">Munnar Trails</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-num" id="visitor-count-num">500 +</div>
+              <div class="stat-label">visitors</div>
             </div>
           </div>
         </div>
@@ -3282,6 +3286,39 @@
         booking.scrollIntoView({ behavior: 'smooth' });
       }
     };
+
+    // ─── Live Visitor Counter ───
+    (function updateVisitorCounter() {
+      const visitorEl = document.getElementById('visitor-count-num');
+      if (!visitorEl) return;
+
+      const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? 'http://127.0.0.1:5000'
+        : '';
+
+      const savedCount = localStorage.getItem('pranara_visitor_count');
+      if (savedCount) {
+        visitorEl.textContent = savedCount + ' +';
+      }
+
+      const sessionCounted = sessionStorage.getItem('pranara_session_counted');
+      const method = sessionCounted ? 'GET' : 'POST';
+      if (!sessionCounted) {
+        sessionStorage.setItem('pranara_session_counted', 'true');
+      }
+
+      fetch(`${API_BASE}/api/visits`, { method: method })
+        .then(res => res.json())
+        .then(data => {
+          if (data && typeof data.count === 'number') {
+            visitorEl.textContent = data.count + ' +';
+            localStorage.setItem('pranara_visitor_count', data.count.toString());
+          }
+        })
+        .catch(err => {
+          console.warn('Visitor counter offline:', err);
+        });
+    })();
   </script>
   <!-- Floating WhatsApp Logo -->
   <a href="https://wa.me/916374502007" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Chat with us on WhatsApp">

@@ -10,10 +10,10 @@ const escapePackages = [
     tagline: 'Peaceful Hideouts & Tea Garden Retreats in Pristine Munnar',
     overview: 'Immerse yourself in total serenity with our exclusive escape packages. Wake up to mist-shrouded mountain views, stroll through private tea plantations, and unwind in handpicked luxury eco-resorts & boutique retreats designed for deep relaxation.',
     highlights: [
-      '🏡 Luxury Eco-Resorts & Private Plantation Cottages',
-      '🍵 Private Tea Tasting & Guided Estate Walks',
-      '🌅 Sunrise Viewpoint & Chilly Mountain Breakfast',
-      '🧘 Outdoor Yoga & Evening Campfire Under Stars'
+      ' Eco-Resorts & Private Plantation Cottages',
+      ' Private Tea Tasting & Guided Estate Walks',
+      ' Sunrise Viewpoint & Chilly Mountain Breakfast',
+      ' Outdoor Yoga & Evening Campfire Under Stars'
     ],
     sites: [
       { name: 'Tea Garden Estate Villa', image: '/assets/tour_munnar.png', desc: 'Lush greenery right outside your window.' },
@@ -37,10 +37,10 @@ const escapePackages = [
     tagline: 'Comprehensive Sightseeing & Cultural Discovery of Munnar',
     overview: 'Experience the finest sights, sounds, and stories of Munnar and surrounding hotspots. From misty peak viewpoints and historical tea museums to wildlife sanctuaries and spice gardens, our expert local guides ensure a rich, hassle-free journey.',
     highlights: [
-      '🚘 Private Chauffeur-Driven Vehicle Throughout',
-      '🎟 Skip-the-Line Entry Tickets to All Top Attractions',
-      '🦣 Eravikulam National Park & Rare Nilgiri Tahr Spotting',
-      '🍃 Spice Plantation Guided Sensory Walk & Tea Tasting'
+      ' Private Chauffeur-Driven Vehicle Throughout',
+      ' Skip-the-Line Entry Tickets to All Top Attractions',
+      ' Eravikulam National Park & Rare Nilgiri Tahr Spotting',
+      ' Spice Plantation Guided Sensory Walk & Tea Tasting'
     ],
     sites: [
       { name: 'Thekkady Wildlife Reserve', image: '/assets/tour_thekkady.png', desc: 'Dense spice forests & wildlife boating.' },
@@ -64,10 +64,10 @@ const escapePackages = [
     tagline: '4x4 Thar Mountain Expeditions & High-Altitude Trekking Trails',
     overview: 'Supercharge your adrenaline with high-octane 4x4 Jeep safaris into rugged terrains unreachable by standard cars. Navigate steep mountain tracks, trek to untouched summit points, and fly high on Munnar’s longest zip line.',
     highlights: [
-      '🚙 Open 4x4 Thar Jeep Mountain Safari',
-      '⛰ Visit Kolukkumalai - World’s Highest Tea Estate',
-      '🧗 Extreme High-Altitude Ridge Trekking',
-      '🦅 Zipline Canopy Aerial Glide over Valleys'
+      ' Open 4x4 Thar Jeep Mountain Safari',
+      ' Visit Kolukkumalai - World’s Highest Tea Estate',
+      ' Extreme High-Altitude Ridge Trekking',
+      ' Zipline Canopy Aerial Glide over Valleys'
     ],
     sites: [
       { name: 'Offroad Thar Safari', image: '/assets/tour_offroad.png', desc: 'Conquer rocky mountain trails in a 4x4 Thar.' },
@@ -325,7 +325,7 @@ export default function EscapeSection() {
       <div className="container">
         {/* Subsection 1: Packages */}
         <div className="escape-packages-container" id="packages">
-          <SectionTitle title="BOOK YOUR EXPERIENCES" />
+          <SectionTitle title="BOOK YOUR EXPERIENCES IN PRANARA" />
 
           <div className="escape-packages-grid">
             {escapePackages.map((pkg, idx) => (
@@ -443,7 +443,7 @@ export default function EscapeSection() {
                 </svg>
               </div>
               <div className="trust-feature-info">
-                <h5>HANDPICKED EXPERIENCES</h5>
+                <h5> OUR EXPERIENCE</h5>
                 <p>Curated with love & local insight</p>
               </div>
             </div>
