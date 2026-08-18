@@ -1726,24 +1726,36 @@ h4 {
   }
 
   .testimonial-cards-container {
-    height: 390px;
+    height: 400px;
   }
 
   .testimonial-card {
-    width: 290px;
-    height: 360px;
-    padding: 20px;
-  }
-
-  .testimonial-card.prev-1,
-  .testimonial-card.next-1 {
-    opacity: 0;
-    pointer-events: none;
+    width: 280px;
+    height: 365px;
+    padding: 18px 14px;
   }
 
   .testimonial-card.active {
-    transform: scale(1);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateX(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 12px 36px rgba(212, 175, 55, 0.18);
+  }
+
+  .testimonial-card.prev-1 {
+    transform: translateX(-110px) scale(0.84) rotate(-2deg);
+    opacity: 0.5;
+    z-index: 5;
+    pointer-events: auto;
+    filter: blur(0.5px);
+  }
+
+  .testimonial-card.next-1 {
+    transform: translateX(110px) scale(0.84) rotate(2deg);
+    opacity: 0.5;
+    z-index: 5;
+    pointer-events: auto;
+    filter: blur(0.5px);
   }
 }
 

@@ -79,22 +79,37 @@ const STATIC_TESTIMONIALS = [
 ];
 
 /* ─── Deduplication Helper ─── */
-const getTestimonialKey = (item) => {
-  if (!item) return '';
-  const name = (item.name || '').trim().toLowerCase();
-  const quote = (item.quote || item.review || '').trim().toLowerCase().replace(/^["'“]+|["'”]+$/g, '');
-  return `${name}:::${quote}`;
+const getNormalizedText = (str) => {
+  if (!str) return '';
+  return str
+    .toString()
+    .toLowerCase()
+    .replace(/[’‘`]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/^["'“]+|["'”]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
 };
 
 export const dedupeTestimonials = (list) => {
   if (!Array.isArray(list)) return [];
-  const seen = new Set();
+  const seenNames = new Set();
+  const seenQuotes = new Set();
   const result = [];
+
   for (const item of list) {
     if (!item) continue;
-    const key = getTestimonialKey(item);
-    if (key && key !== ':::' && !seen.has(key)) {
-      seen.add(key);
+    const nameKey = getNormalizedText(item.name);
+    const quoteKey = getNormalizedText(item.quote || item.review);
+
+    if (!nameKey && !quoteKey) continue;
+
+    const isDuplicateName = nameKey && seenNames.has(nameKey);
+    const isDuplicateQuote = quoteKey && seenQuotes.has(quoteKey);
+
+    if (!isDuplicateName && !isDuplicateQuote) {
+      if (nameKey) seenNames.add(nameKey);
+      if (quoteKey) seenQuotes.add(quoteKey);
       result.push(item);
     }
   }
@@ -106,6 +121,10 @@ export default function Testimonials() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [videoPlayingUrl, setVideoPlayingUrl] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  // Touch Swipe Refs
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   // Review Form Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -202,6 +221,27 @@ export default function Testimonials() {
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  // Mobile Touch Swipe Navigation
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    const distance = touchStartX.current - touchEndX.current;
+    if (distance > 40) {
+      handleNext();
+    } else if (distance < -40) {
+      handlePrev();
+    }
+    touchStartX.current = 0;
+    touchEndX.current = 0;
   };
 
   // Image Upload Handler
@@ -383,7 +423,12 @@ export default function Testimonials() {
 
         {/* 3D Testimonial Card Carousel */}
         <div className="testimonial-carousel-wrapper">
-          <div className="testimonial-cards-container">
+          <div 
+            className="testimonial-cards-container"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
             {testimonials.map((item, idx) => {
               // Calculate relative position
               let diff = idx - activeIndex;
