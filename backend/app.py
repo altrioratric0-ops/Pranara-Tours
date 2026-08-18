@@ -1024,7 +1024,7 @@ def handle_bookings():
 def handle_visits():
     # Retrieve Supabase connection
     table = db_table("visitor_stats")
-    count = 0  # default baseline
+    count = 500  # default baseline
     
     if table:
         try:
@@ -1041,7 +1041,7 @@ def handle_visits():
             if os.path.exists("visitor_count.json"):
                 with open("visitor_count.json", "r") as f:
                     data = json.load(f)
-                    count = data.get("visits", 0)
+                    count = data.get("visits", 500)
             else:
                 with open("visitor_count.json", "w") as f:
                     json.dump({"visits": count}, f)

@@ -21,17 +21,18 @@ export default function About() {
             </div>
             <div className="about-stats">
               <div className="stat-item">
-                <div className="stat-num">25+</div>
-                <div className="stat-label">Expeditions</div>
+                <div className="stat-num">10+</div>
+                <div className="stat-label">Experience</div>
               </div>
               <div className="stat-item">
                 <div className="stat-num">500+</div>
-                <div className="stat-label">Happy Explorers</div>
+                <div className="stat-label">Explorers</div>
               </div>
               <div className="stat-item">
                 <div className="stat-num">12+</div>
-                <div className="stat-label">Kerala Trails</div>
+                <div className="stat-label">Trails</div>
               </div>
+
             </div>
           </div>
         </div>
