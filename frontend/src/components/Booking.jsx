@@ -46,7 +46,7 @@ export default function Booking() {
           <div className="community-content-left">
             <h2 className="community-title">Begin Your Kerala Story</h2>
             <p className="community-subtitle" style={{ marginBottom: '16px' }}>
-              WhatsApp is our primary channel for instant booking enquiries, customized travel packages, and trip assistance.
+              WhatsApp is primary channel for booking enquiries,travel packages, and trip assistance.
             </p>
 
             {/* Direct WhatsApp Enquiry Button */}
@@ -68,11 +68,11 @@ export default function Booking() {
               <form className="community-input-box" onSubmit={handleJoinCommunity}>
                 <input
                   type="tel"
-                  placeholder="Enter mobile number"
+                  placeholder="Mobile number"
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
                   className="community-input"
-                  style={{ fontSize: '16px' }}
+                  style={{ fontSize: '14px' }}
                 />
                 <button type="submit" className="community-btn" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                   JOIN COMMUNITY

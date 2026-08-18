@@ -8,9 +8,9 @@ const STATIC_TESTIMONIALS = [
     id: 1,
     name: 'The Thompson Family',
     location: 'London, United Kingdom',
-    destination: 'Munnar Tea Safari, Kerala',
+    destination: 'Munnar , Kerala',
     avatar: '/assets/munnar_uk_family.jpg',
-    rating: 5,
+    rating: 4,
     quote: 'From the UK to the heart of Munnar! Every detail was handled with utmost elegance. The private tea estate tour and misty mountain views were breathtaking.',
     tagline: 'LUXURY FAMILY SAFARI',
     videoUrl: '/assets/munnar_video_testimonial.mp4'
@@ -28,7 +28,7 @@ const STATIC_TESTIMONIALS = [
   },
   {
     id: 3,
-    name: 'Mr. & Mrs. Sharma',
+    name: 'Mr. & Mrs.pradeep',
     location: 'Delhi, India',
     destination: 'Chokkarmudi & Private Estates',
     avatar: '/assets/munnar_pradeep_review.jpg',
@@ -38,8 +38,8 @@ const STATIC_TESTIMONIALS = [
   },
   {
     id: 4,
-    name: 'Sarah, Marc & Amit',
-    location: 'Berlin, Germany',
+    name: 'Sarah, Aman,Roshni & Amit',
+    location: 'Pune,Mumbai',
     destination: 'Chokkarmudi Summit Trek',
     avatar: '/assets/munnar_chokkarmudi_trek.jpg',
     rating: 5,
@@ -48,7 +48,7 @@ const STATIC_TESTIMONIALS = [
   },
   {
     id: 5,
-    name: 'Amal & Friends',
+    name: 'Amal david & Friends',
     location: 'Chennai, India',
     destination: 'High-Altitude Munnar Viewpoints',
     avatar: '/assets/tour_munnar.png',
@@ -58,12 +58,12 @@ const STATIC_TESTIMONIALS = [
   },
   {
     id: 6,
-    name: 'Ananya & Vikram',
+    name: 'Ashmija & Vikram',
     location: 'Bengaluru, India',
     destination: 'Alleppey Backwaters Cruise',
     avatar: '/assets/tour_alleppey.png',
     rating: 5,
-    quote: 'Gliding silently through the backwaters on a luxury private houseboat at sunset was pure bliss. Pranara exceeded every expectation.',
+    quote: 'Gliding silently through the backwaters on private houseboat at sunset was pure bliss. Pranara exceeded every expectation.',
     tagline: 'BACKWATER SANCTUARY',
   },
   {
@@ -74,7 +74,7 @@ const STATIC_TESTIMONIALS = [
     avatar: '/assets/tour_wayanad.png',
     rating: 5,
     quote: 'A magical immersion into Kerala’s rich wildlife and treehouse resorts. Warm hospitality, exquisite cuisine, and flawless curation.',
-    tagline: 'LUXURY ECO RETREAT',
+    tagline: 'ECO RETREAT',
   },
 ];
 
@@ -131,8 +131,8 @@ export default function Testimonials() {
   const [formData, setFormData] = useState({
     name: '',
     location: '',
-    destination: 'Munnar Tea Safari, Kerala',
-    rating: 5,
+    destination: '',
+    rating: '',
     tagline: '',
     quote: '',
     avatar: '',
@@ -311,8 +311,8 @@ export default function Testimonials() {
         setFormData({
           name: '',
           location: '',
-          destination: 'Munnar Tea Safari, Kerala',
-          rating: 5,
+          destination: '',
+          rating: '',
           tagline: '',
           quote: '',
           avatar: '',
@@ -347,8 +347,8 @@ export default function Testimonials() {
         setFormData({
           name: '',
           location: '',
-          destination: 'Munnar Tea Safari, Kerala',
-          rating: 5,
+          destination: '',
+          rating: '',
           tagline: '',
           quote: '',
           avatar: '',
@@ -363,8 +363,8 @@ export default function Testimonials() {
   if (testimonials.length === 0) return null;
 
   return (
-    <section 
-      className="testimonials-editorial-section" 
+    <section
+      className="testimonials-editorial-section"
       id="testimonials"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -379,10 +379,6 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="editorial-header">
           <div className="editorial-header-text">
-            <div className="editorial-badge">
-              <span className="badge-dot" />
-              <span>GUEST EXPERIENCES & STORIES</span>
-            </div>
             <h2 className="editorial-title">
               Voices of <span className="text-gold-gradient">Luxury Travel</span>
             </h2>
@@ -392,8 +388,8 @@ export default function Testimonials() {
           </div>
 
           <div className="header-nav-controls">
-            <button 
-              onClick={() => setIsModalOpen(true)} 
+            <button
+              onClick={() => setIsModalOpen(true)}
               className="write-review-btn"
               title="Share your review"
             >
@@ -423,7 +419,7 @@ export default function Testimonials() {
 
         {/* 3D Testimonial Card Carousel */}
         <div className="testimonial-carousel-wrapper">
-          <div 
+          <div
             className="testimonial-cards-container"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
@@ -473,7 +469,7 @@ export default function Testimonials() {
                       />
                       <div className="verified-badge" title="Verified Guest">
                         <svg viewBox="0 0 24 24" width="10" height="10" fill="white">
-                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                         </svg>
                       </div>
                     </div>
@@ -512,7 +508,7 @@ export default function Testimonials() {
 
                   {/* Play video trigger if available */}
                   {item.videoUrl && diff === 0 && (
-                    <button 
+                    <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setVideoPlayingUrl(item.videoUrl);
@@ -563,8 +559,8 @@ export default function Testimonials() {
               className="video-modal-content"
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                className="close-modal-btn" 
+              <button
+                className="close-modal-btn"
                 onClick={() => setVideoPlayingUrl(null)}
                 aria-label="Close video player"
               >
@@ -742,9 +738,9 @@ export default function Testimonials() {
                         ) : (
                           <div className="photo-placeholder">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2F5D50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                              <circle cx="8.5" cy="8.5" r="1.5"/>
-                              <polyline points="21 15 16 10 5 21"/>
+                              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <polyline points="21 15 16 10 5 21" />
                             </svg>
                             <span>Click to upload guest photo (PNG, JPG)</span>
                           </div>
