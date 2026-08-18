@@ -7410,94 +7410,252 @@ h4 {
   }
 }
 
-/* ───── Mobile S (320px) Viewport Adjustments ───── */
-@media (max-width: 350px) {
-  /* Container Padding */
+/* ───── Comprehensive Mobile S & Mobile M Optimizations (320px - 430px) ───── */
+
+@media (max-width: 640px) {
+  /* Global Container & Section Padding */
   .container {
-    padding: 0 15px;
+    padding: 0 16px;
+  }
+  .about,
+  .features,
+  .tours,
+  .gallery,
+  .escape-section,
+  .heritage-section,
+  .creative-gallery-section,
+  .testimonials-editorial-section,
+  .faq-section,
+  .booking-community-section,
+  .offers-page-section {
+    padding: 44px 0;
+  }
+
+  /* Section Typography */
+  .section-title {
+    font-size: 1.55rem;
+    margin-bottom: 6px;
+  }
+  .section-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
   }
 
   /* Hero Section */
+  .hero-content {
+    padding: 24px 16px;
+  }
   .hero h1 {
-    font-size: 1.75rem !important;
+    font-size: 1.6rem;
+    line-height: 1.25;
   }
   .hero p {
-    font-size: 0.9rem !important;
-    margin: 12px auto 24px;
+    font-size: 0.85rem;
+    margin: 10px auto 20px;
+    line-height: 1.45;
   }
-  .hero-content {
-    padding: 30px 16px;
+
+  /* About Stats */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
-  .hero-actions .btn {
+  .about-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .stat-item {
+    padding: 12px 8px;
+    border-radius: 10px;
+  }
+  .stat-num {
+    font-size: 1.35rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* Feature Cards */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .feature-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+  .feature-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+  .feature-card h4 {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+  .feature-card p {
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+
+  /* Tour Cards */
+  .tour-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .tour-card-image {
+    height: 170px;
+  }
+  .tour-card-body {
+    padding: 16px 14px;
+  }
+  .tour-card-body h3 {
+    font-size: 1.05rem;
+    margin-bottom: 4px;
+  }
+  .tour-card-body p {
+    font-size: 0.82rem;
+    margin-bottom: 12px;
+  }
+  .tour-price {
+    font-size: 1.15rem;
+  }
+  .tour-duration {
+    font-size: 0.8rem;
+  }
+
+  /* Escape Section Cards */
+  .escape-packages-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .escape-card-body {
+    padding: 16px 14px;
+  }
+  .escape-card-title {
+    font-size: 1.05rem;
+  }
+  .escape-card-tagline {
+    font-size: 0.82rem;
+  }
+  .escape-card-img-wrap {
+    height: 160px;
+  }
+  .adventure-card {
+    padding: 14px 12px;
+    border-radius: 12px;
+  }
+  .adventure-card-img {
+    height: 140px;
+  }
+
+  /* Seasonal Offer Banner & Countdown */
+  .offers-banner-overlay {
+    padding: 24px 16px;
+  }
+  .offers-heading {
+    font-size: 24px;
+  }
+  .offers-subheading {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .offers-banner-title {
+    font-size: 22px;
+    line-height: 28px;
+  }
+  .offers-countdown {
+    gap: 6px;
+  }
+  .countdown-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+  }
+  .countdown-num {
+    font-size: 15px;
+  }
+  .countdown-label {
+    font-size: 7.5px;
+  }
+  .countdown-separator {
+    font-size: 14px;
+  }
+  .offers-cta-btn {
     padding: 10px 20px;
     font-size: 0.85rem;
   }
 
-  /* About Section Stats */
-  .about-stats {
+  /* Local Heritage Cards */
+  .heritage-grid {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 16px;
   }
-  .stat-item {
-    padding: 14px;
-  }
-
-  /* Seasonal Offers Countdown */
-  .offers-countdown {
-    gap: 4px;
-  }
-  .countdown-box {
-    width: 56px;
-    height: 56px;
+  .heritage-card {
+    padding: 14px 12px;
     border-radius: 12px;
   }
-  .countdown-num {
-    font-size: 18px;
+  .heritage-card-img {
+    height: 150px;
   }
-  .countdown-label {
-    font-size: 8px;
+  .heritage-card h3 {
+    font-size: 0.98rem;
+    margin-bottom: 4px;
   }
-  .countdown-separator {
-    font-size: 16px;
-  }
-  .offers-cta-btn {
-    padding: 12px 24px;
-  }
-
-  /* Escape Section Cards & Grid */
-  .escape-packages-grid {
-    grid-template-columns: 1fr;
-  }
-  .escape-card-body {
-    padding: 20px 16px;
+  .heritage-card p {
+    font-size: 0.8rem;
+    line-height: 1.4;
   }
 
-  /* Adventures Carousel Header Controls */
-  .adventure-header-row {
-    flex-direction: column;
-    gap: 16px;
-    align-items: center;
+  /* Creative Gallery Cards */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
-  .adventure-header-row .adventure-carousel-controls {
-    position: static;
-    transform: none;
-  }
-
-  /* Creative Gallery Headings */
   .creative-gallery-section .gallery-copy h1 {
-    font-size: 2.2rem !important;
+    font-size: 1.6rem !important;
   }
   .creative-gallery-section .gallery-copy p {
-    font-size: 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+  .gallery-badge {
+    padding: 4px 8px;
+    font-size: 0.65rem;
+  }
+  .gallery-cta {
+    padding: 8px 14px;
+    font-size: 0.78rem;
   }
 
-  /* Testimonials Traveler Selector */
+  /* Testimonials & Editorial Cards */
+  .editorial-card,
+  .editorial-quote-card {
+    padding: 18px 14px;
+    border-radius: 14px;
+  }
+  .editorial-title {
+    font-size: 1.35rem;
+  }
+  .editorial-subtitle {
+    font-size: 0.8rem;
+  }
+  .card-quote-text {
+    font-size: 0.82rem;
+    line-height: 1.45;
+  }
+  .card-author-name {
+    font-size: 0.88rem;
+  }
+  .card-author-location {
+    font-size: 0.72rem;
+  }
   .navigator-grid {
     flex-wrap: nowrap;
     overflow-x: auto;
     justify-content: flex-start;
-    padding: 4px 4px 12px 4px;
-    width: 100%;
+    padding: 4px 4px 10px 4px;
+    gap: 8px;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
   }
@@ -7506,258 +7664,225 @@ h4 {
   }
   .navigator-tile {
     flex-shrink: 0;
-    min-width: 110px;
+    min-width: 100px;
     padding: 6px 10px;
   }
 
-  /* FAQ Accordion Padding */
+  /* FAQ Accordion */
   .faq-section button {
-    padding: 14px 16px !important;
+    padding: 12px 14px !important;
   }
   .faq-section button span:first-child {
-    font-size: 0.95rem !important;
+    font-size: 0.88rem !important;
   }
   .faq-section div[style*="maxHeight"] p {
-    padding: 14px 16px !important;
-    font-size: 0.82rem !important;
+    padding: 10px 14px !important;
+    font-size: 0.8rem !important;
   }
 
-  /* Booking/Community Section */
-  .booking-community-section {
-    padding: 32px 16px;
+  /* Booking & Community Section */
+  .booking-community-card,
+  .booking-form-card {
+    padding: 20px 14px;
+    border-radius: 16px;
   }
   .community-title {
-    font-size: 1.75rem !important;
+    font-size: 1.35rem !important;
+  }
+  .community-subtitle {
+    font-size: 0.8rem;
   }
   .community-input-box {
     padding: 6px;
   }
   .community-input {
     padding: 8px 12px;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
   }
   .community-btn {
-    padding: 14px 20px;
-    font-size: 0.92rem;
-    font-weight: 800;
+    padding: 10px 16px;
+    font-size: 0.85rem;
   }
 
-  /* Footer Section */
-  .footer-dark-section {
-    padding: 40px 16px 20px;
+  /* Auth Card */
+  .auth-card {
+    padding: 20px 16px !important;
+    border-radius: 16px;
+  }
+  .auth-card h2 {
+    font-size: 1.3rem !important;
+  }
+  .auth-card p {
+    font-size: 0.82rem !important;
   }
 }
 
-/* ───── Mobile S (320px) Compact Font & Section Size Optimizations ───── */
-@media (max-width: 320px) {
-  /* ── Root: scale rem-based sizes down by 25% (16px → 12px) ── */
-  :root,
-  html {
-    font-size: 12px !important; /* 25% reduction: 16px × 0.75 = 12px */
-  }
-
+/* ───── Mobile M (375px - 430px) ───── */
+@media (max-width: 430px) {
   .container {
-    padding: 0 10px !important;
+    padding: 0 12px;
   }
-
-  /* Compact Section Paddings for 320px screens */
-  .about {
-    padding: 32px 0 !important;
-  }
-
-  .features {
-    padding: 32px 0 !important;
-  }
-
-  .escape-section {
-    padding: 28px 0 !important;
-  }
-
-  .heritage-section {
-    padding: 24px 0 !important;
-  }
-
-  .creative-gallery-section {
-    padding: 24px 10px 20px !important;
-  }
-
-  .testimonials-editorial-section {
-    padding: 24px 0 !important;
-  }
-
-  .faq-section {
-    padding: 32px 0 !important;
-  }
-
-  .booking-community-section {
-    padding: 20px 10px !important;
-  }
-
+  .about,
+  .features,
+  .tours,
+  .gallery,
+  .escape-section,
+  .heritage-section,
+  .creative-gallery-section,
+  .testimonials-editorial-section,
+  .faq-section,
+  .booking-community-section,
   .offers-page-section {
-    padding: 24px 0 !important;
+    padding: 36px 0;
   }
 
-  .footer-dark-section {
-    padding: 24px 10px 15px !important;
-  }
-
-  .hero-content {
-    padding: 20px 10px !important;
-  }
-
-  /* Hero adjustments for tiny screen width */
-  .hero h1 {
-    font-size: 1.3rem !important;
-  }
-  .hero p {
-    font-size: 0.72rem !important;
-    margin: 10px auto 18px !important;
-  }
-  .hero-actions .btn {
-    padding: 8px 16px !important;
-    font-size: 0.72rem !important;
-  }
-
-  /* About section stats spacing */
-  .about-stats {
-    gap: 8px !important;
-  }
-  .stat-item {
-    padding: 10px !important;
-  }
-
-  /* Seasonal Offers Countdown & Banner adjustments */
-  .offers-countdown {
-    gap: 3px !important;
-  }
-  .countdown-box {
-    width: 44px !important;
-    height: 44px !important;
-    border-radius: 8px !important;
-  }
-  .countdown-num {
-    font-size: 10px !important;
-  }
-  .countdown-label {
-    font-size: 5px !important;
-  }
-  .countdown-separator {
-    font-size: 9px !important;
-  }
-  .offers-cta-btn {
-    padding: 10px 20px !important;
-  }
-
-  /* Seasonal Offers section px-based fonts (25% reduction) */
-  .offers-eyebrow {
-    font-size: 10px !important;
-  }
-  .offers-heading {
-    font-size: 22px !important;
-  }
-  .offers-subheading {
-    font-size: 12px !important;
-    line-height: 18px !important;
-  }
-  .offers-banner-title {
-    font-size: 20px !important;
-    line-height: 26px !important;
-  }
-  .offers-banner-sub {
-    font-size: 11px !important;
-  }
-  .offers-badge-text {
-    font-size: 9px !important;
-  }
-  .offers-cta-text {
-    font-size: 11px !important;
-  }
-
-  /* Escape packages card bodies */
-  .escape-card-body {
-    padding: 12px 10px !important;
-  }
-
-  /* Creative Gallery font size & button tweaks */
-  .creative-gallery-section .gallery-copy h1 {
-    font-size: 1.5rem !important;
-  }
-  .creative-gallery-section .gallery-copy p {
-    font-size: 0.72rem !important;
-  }
-  .gallery-badge {
-    padding: 4px 8px !important;
-    font-size: 0.65rem !important;
-  }
-  .gallery-cta {
-    padding: 10px 16px !important;
-    font-size: 0.72rem !important;
-  }
-
-  /* Testimonials slider control */
-  .navigator-tile {
-    padding: 4px 6px !important;
-  }
-
-  /* FAQ items */
-  .faq-section button {
-    padding: 10px 12px !important;
-  }
-  .faq-section button span:first-child {
-    font-size: 0.75rem !important;
-  }
-  .faq-section div[style*="maxHeight"] p {
-    padding: 10px 12px !important;
-  }
-
-  /* Booking & community inputs */
-  .community-title {
-    font-size: 1.3rem !important;
-  }
-  .community-input {
-    padding: 6px 10px !important;
-    font-size: 0.72rem !important;
-  }
-  .community-btn {
-    padding: 12px 16px !important;
-    font-size: 0.88rem !important;
-    font-weight: 800 !important;
-  }
-
-  /* Testimonials editorial section — card text (px-based) */
-  .editorial-title {
-    font-size: 1.5rem !important;
-  }
-  .editorial-subtitle {
-    font-size: 0.72rem !important;
-  }
-  .editorial-badge span {
-    font-size: 0.6rem !important;
-  }
-  .card-quote-text {
-    font-size: 0.72rem !important;
-  }
-  .card-author-name {
-    font-size: 0.82rem !important;
-  }
-  .card-author-location {
-    font-size: 0.65rem !important;
-  }
-  .dest-text {
-    font-size: 0.6rem !important;
-  }
-
-  /* Navbar brand & links on tiny screens */
-  .navbar-brand-text {
-    font-size: 0.85rem !important;
-  }
-
-  /* Section titles & subtitles (rem-based, but re-anchor at 12px root) */
   .section-title {
-    font-size: 1.6rem !important;
+    font-size: 1.35rem;
   }
   .section-subtitle {
-    font-size: 0.82rem !important;
+    font-size: 0.8rem;
+    margin-bottom: 18px;
+  }
+
+  .hero h1 {
+    font-size: 1.4rem;
+  }
+  .hero p {
+    font-size: 0.8rem;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .stat-item {
+    padding: 10px 12px;
+  }
+  .stat-num {
+    font-size: 1.25rem;
+  }
+
+  .feature-card {
+    padding: 16px 12px;
+  }
+  .feature-card h4 {
+    font-size: 0.9rem;
+  }
+  .feature-card p {
+    font-size: 0.78rem;
+  }
+
+  .offers-heading {
+    font-size: 20px;
+  }
+  .offers-banner-title {
+    font-size: 19px;
+    line-height: 24px;
+  }
+  .countdown-box {
+    width: 42px;
+    height: 42px;
+  }
+  .countdown-num {
+    font-size: 13.5px;
+  }
+  .countdown-label {
+    font-size: 6.5px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .editorial-card,
+  .editorial-quote-card {
+    padding: 14px 12px;
+  }
+  .editorial-title {
+    font-size: 1.2rem;
+  }
+
+  .community-title {
+    font-size: 1.25rem !important;
+  }
+}
+
+/* ───── Mobile S (320px - 360px) ───── */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 10px;
+  }
+  .about,
+  .features,
+  .tours,
+  .gallery,
+  .escape-section,
+  .heritage-section,
+  .creative-gallery-section,
+  .testimonials-editorial-section,
+  .faq-section,
+  .booking-community-section,
+  .offers-page-section {
+    padding: 28px 0;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+  .section-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: 1.25rem;
+  }
+  .hero p {
+    font-size: 0.75rem;
+  }
+  .hero-content {
+    padding: 16px 10px;
+  }
+  .hero-actions .btn {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  .escape-card-body {
+    padding: 12px 10px;
+  }
+
+  .countdown-box {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+  .countdown-num {
+    font-size: 12px;
+  }
+  .countdown-label {
+    font-size: 5.5px;
+  }
+  .offers-cta-btn {
+    padding: 8px 16px;
+    font-size: 0.78rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .editorial-title {
+    font-size: 1.1rem;
+  }
+  .card-quote-text {
+    font-size: 0.75rem;
+  }
+
+  .auth-card {
+    padding: 16px 12px !important;
+  }
+  .auth-card h2 {
+    font-size: 1.15rem !important;
   }
 }
 
