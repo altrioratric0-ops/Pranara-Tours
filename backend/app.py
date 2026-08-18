@@ -42,6 +42,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 @app.after_request
 def add_cors_headers(response):
     origin = request.headers.get("Origin")
+    
     if origin:
         response.headers["Access-Control-Allow-Origin"] = origin
         response.headers["Vary"] = "Origin"
@@ -452,7 +453,6 @@ _fallback_db = {
         }
     ],
     "testimonials": [
-        {"id": 0, "name": "Raja", "location": "Chennai, India", "destination": "Munnar Tea Safari, Kerala", "avatar": "/assets/logo.png", "rating": 5, "quote": "The journey is very exciting and more memorable.", "tagline": "MEMORABLE KERALA JOURNEY"},
         {"id": 1, "name": "The Thompson Family", "location": "London, United Kingdom", "avatar_initials": "TF", "rating": 5,
          "quote": "From the UK to the heart of Munnar. Thank you for letting us be part of your family's story. See you again, The Pranara Way."},
         {"id": 2, "name": "The Adhikari Family", "location": "Mumbai, India", "avatar_initials": "AF", "rating": 5,
