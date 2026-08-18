@@ -70,11 +70,11 @@ export default function About() {
               </div>
               <div className="stat-item">
                 <div className="stat-num">12+</div>
-                <div className="stat-label">Kerala Trails</div>
+                <div className="stat-label">KeralaTrails</div>
               </div>
               <div className="stat-item">
                 <div className="stat-num">{(visitorCount !== null && visitorCount !== undefined) ? `${visitorCount} +` : '500 +'}</div>
-                <div className="stat-label">visitors</div>
+                <div className="stat-label">visitors counts</div>
               </div>
             </div>
           </div>

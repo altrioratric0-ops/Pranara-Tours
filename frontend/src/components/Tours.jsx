@@ -43,8 +43,8 @@ export default function Tours() {
                 className="tour-card-image"
                 style={{
                   background: tour.image_url
-                     ? `url(${tour.image_url}) center/cover no-repeat`
-                     : 'linear-gradient(135deg, #0f172a, #065f46)',
+                    ? `url(${tour.image_url}) center/cover no-repeat`
+                    : 'linear-gradient(135deg, #0f172a, #065f46)',
                 }}
               >
                 {tour.tag && <span className={`tag ${getTagClass(tour.tag)}`}>{tour.tag}</span>}
