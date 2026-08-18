@@ -452,6 +452,7 @@ _fallback_db = {
         }
     ],
     "testimonials": [
+        {"id": 0, "name": "Raja", "location": "Chennai, India", "destination": "Munnar Tea Safari, Kerala", "avatar": "/assets/logo.png", "rating": 5, "quote": "The journey is very exciting and more memorable.", "tagline": "MEMORABLE KERALA JOURNEY"},
         {"id": 1, "name": "The Thompson Family", "location": "London, United Kingdom", "avatar_initials": "TF", "rating": 5,
          "quote": "From the UK to the heart of Munnar. Thank you for letting us be part of your family's story. See you again, The Pranara Way."},
         {"id": 2, "name": "The Adhikari Family", "location": "Mumbai, India", "avatar_initials": "AF", "rating": 5,
@@ -695,7 +696,7 @@ def handle_testimonials():
             try:
                 resp = table.select("*").eq("active", True).order("id", desc=True).execute()
                 # Specifically exclude test/spam entries
-                test_names = {"Test User", "Full Test User", "Integration Test Guest", "Insert Test Guest", "Test reviewer name", "Test", "raja", "Raja"}
+                test_names = {"Test User", "Full Test User", "Integration Test Guest", "Insert Test Guest", "Test reviewer name", "Test"}
                 supabase_data = [
                     r for r in (resp.data or [])
                     if r.get("name") not in test_names

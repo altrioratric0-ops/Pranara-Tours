@@ -6,6 +6,16 @@ import { fetchTestimonials, submitTestimonial } from '../api/client';
 const STATIC_TESTIMONIALS = [
   {
     id: 1,
+    name: 'Raja',
+    location: 'Chennai, India',
+    destination: 'Munnar Tea Safari, Kerala',
+    avatar: '/assets/logo.png',
+    rating: 5,
+    quote: 'The journey is very exciting and more memorable.',
+    tagline: 'MEMORABLE KERALA JOURNEY',
+  },
+  {
+    id: 2,
     name: 'The Thompson Family',
     location: 'London, United Kingdom',
     destination: 'Munnar Tea Safari, Kerala',
