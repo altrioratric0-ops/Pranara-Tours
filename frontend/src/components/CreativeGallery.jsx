@@ -231,7 +231,6 @@ export default function CreativeGallery() {
             transform: `translate(${parallax.x * 16}px, ${parallax.y * 16}px)`
           }}
         >
-          <span className="gallery-badge">Luxury Escape</span>
           <h1>{activeDest.name}</h1>
           <h2>{activeDest.tagline}</h2>
           <p>{activeDest.desc}</p>

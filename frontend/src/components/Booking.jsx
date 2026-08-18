@@ -44,23 +44,6 @@ export default function Booking() {
       <div className="booking-community-container">
         <div className="community-banner-card">
           <div className="community-content-left">
-            <span style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: 'rgba(37, 211, 102, 0.15)',
-              border: '1px solid rgba(37, 211, 102, 0.4)',
-              color: '#15803d',
-              padding: '6px 16px',
-              borderRadius: '50px',
-              fontSize: '0.8rem',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              marginBottom: '14px',
-              width: 'fit-content'
-            }}>
-            </span>
-
             <h2 className="community-title">Begin Your Kerala Story</h2>
             <p className="community-subtitle" style={{ marginBottom: '16px' }}>
               WhatsApp is our primary channel for instant booking enquiries, customized travel packages, and trip assistance.
