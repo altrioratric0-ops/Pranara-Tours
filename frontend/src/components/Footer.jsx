@@ -68,10 +68,10 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Explore</h4>
             <ul>
-              <li><a href="#tours">Destinations</a></li>
-              <li><a href="#tours">Tour Packages</a></li>
-              <li><a href="#features">Experiences</a></li>
-              <li><a href="#gallery">Gallery</a></li>
+              <li><Link to="/#tours">Destinations</Link></li>
+              <li><Link to="/#tours">Tour Packages</Link></li>
+              <li><Link to="/#features">Experiences</Link></li>
+              <li><Link to="/#gallery">Gallery</Link></li>
             </ul>
           </div>
 
@@ -79,9 +79,9 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Company</h4>
             <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#booking">Contact</a></li>
-              <li><a href="#testimonials">Reviews</a></li>
+              <li><Link to="/#about">About Us</Link></li>
+              <li><Link to="/#booking">Contact</Link></li>
+              <li><Link to="/#testimonials">Reviews</Link></li>
             </ul>
           </div>
 
@@ -91,7 +91,7 @@ export default function Footer() {
             <ul>
               <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/terms">Terms of Service</Link></li>
-              <li><Link to="/terms">Cookie Policies</Link></li>
+              <li><Link to="/cookies">Cookie Policies</Link></li>
             </ul>
           </div>
         </div>
