@@ -294,7 +294,7 @@ export default function LocalHeritage() {
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: `url("${foundersImg}")`, width: "630px", height: "300px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                <div className="modal-img" style={{ backgroundImage: `url("${foundersImg}")`, width: "620px", height: "320px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
               </div>
             </div>
 
