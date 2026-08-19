@@ -46,12 +46,12 @@ export default function Booking() {
         <div className="community-banner-card">
           <div className="community-content-left">
             <h4 className="community-title">Begin Your Munnar Story</h4>
-            <p className="community-subtitle" style={{ marginBottom: '16px' }}>
-              WhatsApp community is primary channel for booking enquiries,packages and trip assistance.
+            <p className="community-subtitle">
+              WhatsApp community is primary channel for booking enquiries, packages and trip assistance.
             </p>
 
             {/* Direct WhatsApp Enquiry Button */}
-            <div style={{ marginBottom: '24px' }}>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
               <button
                 type="button"
                 className="booking-wa-direct-btn"
@@ -65,7 +65,7 @@ export default function Booking() {
             </div>
 
             {/* Join Community Input Form */}
-            <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px stroke rgba(0,0,0,0.08)' }}>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
               <form className="community-input-box" onSubmit={handleJoinCommunity}>
                 <input
                   type="tel"
@@ -73,9 +73,8 @@ export default function Booking() {
                   value={mobileNumber}
                   onChange={(e) => setMobileNumber(e.target.value)}
                   className="community-input"
-                  style={{ fontSize: '14px' }}
                 />
-                <button type="submit" className="community-btn" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <button type="submit" className="community-btn">
                   JOIN COMMUNITY
                 </button>
               </form>

@@ -294,7 +294,11 @@ export default function LocalHeritage() {
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: `url("${foundersImg}")`, width: "100%", maxWidth: "100%", height: "240px", borderRadius: "14px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                <img
+                  src={foundersImg}
+                  alt="The Minds Behind Pranara"
+                  className="modal-img"
+                />
               </div>
             </div>
 
