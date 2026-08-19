@@ -135,7 +135,7 @@ export default function LocalHeritage() {
                 <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" strokeWidth="0.6" />
                 <path id="stamp-path" d="M 60,60 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" />
                 <text fill="currentColor" fontSize="6.8" fontWeight="600" letterSpacing="0.4">
-                  <textPath href="#stamp-path" startOffset="0%">BORN IN MUNNAR • 10+ YEARS OF EXPERIENCE • THE LOCAL EXPERTS •</textPath>
+                  <textPath href="#stamp-path" startOffset="0%">BORN IN MUNNAR • 10+ YEAR OF EXPERIENCE • THE LOCAL EXPERT •</textPath>
                 </text>
                 <g transform="translate(43, 44)" stroke="currentColor" strokeWidth="1.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   <polygon points="17 8 25 21 9 21" />
@@ -293,7 +293,7 @@ export default function LocalHeritage() {
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: "url('C:\Users\acer\Downloads\founders image.png')", width: "300px", height: "400px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                <div className="modal-img" style={{ backgroundImage: "url('C:/Users/acer/Downloads/founders image.png')", width: "300px", height: "400px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
               </div>
             </div>
 
