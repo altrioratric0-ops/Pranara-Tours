@@ -144,7 +144,11 @@ export default function Navbar() {
               <span className="nav-label">Home</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Tour Packages' ? ' active' : ''}`} onClick={() => handleSectionClick('packages')}>
-              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" /><polyline points="3.27 6.96 12 12.01 20.73 6.96" /><line x1="12" y1="22.08" x2="12" y2="12" /></svg>
+              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 21a9 9 0 1 0-9-9c0 1.48.36 2.88 1 4.11L3 21l4.89-1c1.23.64 2.63 1 4.11 1z" />
+                <line x1="12" y1="11" x2="12" y2="16" />
+                <circle cx="12" cy="8" r="1" fill="currentColor" stroke="none" />
+              </svg>
               <span className="nav-label">Tour Packages</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Experiences' ? ' active' : ''}`} onClick={() => handleSectionClick('heritage')}>
