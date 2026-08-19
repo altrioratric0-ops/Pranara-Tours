@@ -194,13 +194,9 @@ export default function CreativeGallery() {
     navigate(`/gallery/${destination.slug}`);
   };
 
-  const handlePlanTrip = (destinationId) => {
-    const event = new CustomEvent('pranaraSelectDestination', { detail: destinationId });
-    window.dispatchEvent(event);
-
-    const plannerEl = document.getElementById('planner');
-    if (plannerEl) {
-      plannerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const handleExploreClick = (destination) => {
+    if (destination && destination.slug) {
+      navigate(`/gallery/${destination.slug}`);
     }
   };
 
@@ -235,7 +231,7 @@ export default function CreativeGallery() {
           <h2>{activeDest.tagline}</h2>
           <p>{activeDest.desc}</p>
 
-          <button onClick={() => handlePlanTrip(activeDest.id)} className="gallery-cta">
+          <button onClick={() => handleExploreClick(activeDest)} className="gallery-cta">
             <span>Explore {activeDest.name}</span>
           </button>
         </div>

@@ -15,8 +15,8 @@ const images = destination.images;
   return (
     <section style={{ padding: '100px 20px 40px', minHeight: '100vh', background: '#07111d', color: '#f8fafc' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <Link to="/" style={{ display: 'inline-block', marginBottom: '16px', color: '#f59e0b', textDecoration: 'none', fontWeight: 700 }}>
-          ← Back to Home
+        <Link to="/#gallery" style={{ display: 'inline-block', marginBottom: '16px', color: '#f59e0b', textDecoration: 'none', fontWeight: 700 }}>
+          ← Back to Gallery
         </Link>
 
         <h1 style={{ fontSize: '1.8rem', margin: '0 0 20px' }}>{destination.name}</h1>

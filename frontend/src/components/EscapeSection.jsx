@@ -222,6 +222,11 @@ export default function EscapeSection() {
 
   const requestRef = useRef(null);
   const isScrollingRef = useRef(false);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftStartRef = useRef(0);
+  const wasDraggedRef = useRef(false);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
 
   // Card mini-slideshow autoplay effect
   useEffect(() => {
@@ -237,11 +242,9 @@ export default function EscapeSection() {
     return () => clearInterval(interval);
   }, []);
 
-
-
   // Main slider smooth marquee autoplay effect
   useEffect(() => {
-    if (isPaused) {
+    if (isPaused || isUserInteracting) {
       if (requestRef.current) {
         cancelAnimationFrame(requestRef.current);
       }
@@ -252,8 +255,8 @@ export default function EscapeSection() {
       if (carouselRef.current) {
         const container = carouselRef.current;
 
-        // Only run marquee crawl when not manual scrolling
-        if (!isScrollingRef.current) {
+        // Only run marquee crawl when not manual scrolling or dragging
+        if (!isScrollingRef.current && !isDraggingRef.current) {
           container.scrollLeft += 0.8; // 0.8px per frame crawl
 
           const halfWidth = container.scrollWidth / 2;
@@ -272,9 +275,13 @@ export default function EscapeSection() {
         cancelAnimationFrame(requestRef.current);
       }
     };
-  }, [isPaused]);
+  }, [isPaused, isUserInteracting]);
 
   const openLightbox = (itemIdx) => {
+    if (wasDraggedRef.current) {
+      wasDraggedRef.current = false;
+      return;
+    }
     setLightboxIndex(itemIdx);
     setLightboxImageIdx(0);
     setIsPaused(true); // pause slider during details inspection
@@ -295,6 +302,48 @@ export default function EscapeSection() {
     e.stopPropagation();
     const item = adventureItems[lightboxIndex];
     setLightboxImageIdx((prev) => (prev - 1 + item.images.length) % item.images.length);
+  };
+
+  const handleDragStart = (e) => {
+    if (!carouselRef.current) return;
+    isDraggingRef.current = true;
+    wasDraggedRef.current = false;
+    startXRef.current = e.touches ? e.touches[0].clientX : e.clientX;
+    scrollLeftStartRef.current = carouselRef.current.scrollLeft;
+    setIsUserInteracting(true);
+    isScrollingRef.current = true;
+  };
+
+  const handleDragMove = (e) => {
+    if (!isDraggingRef.current || !carouselRef.current) return;
+    const currentX = e.touches ? e.touches[0].clientX : e.clientX;
+    const diffX = currentX - startXRef.current;
+
+    if (Math.abs(diffX) > 6) {
+      wasDraggedRef.current = true;
+    }
+
+    const container = carouselRef.current;
+    container.scrollLeft = scrollLeftStartRef.current - diffX;
+
+    const halfWidth = container.scrollWidth / 2;
+    if (container.scrollLeft >= halfWidth) {
+      container.scrollLeft -= halfWidth;
+      scrollLeftStartRef.current -= halfWidth;
+    } else if (container.scrollLeft <= 0) {
+      container.scrollLeft += halfWidth;
+      scrollLeftStartRef.current += halfWidth;
+    }
+  };
+
+  const handleDragEnd = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      setIsUserInteracting(false);
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 300);
+    }
   };
 
   const scroll = (direction) => {
@@ -324,7 +373,7 @@ export default function EscapeSection() {
     <section className="escape-section" id="escapes">
       <div className="container">
         {/* Subsection 1: Packages */}
-        <div className="escape-packages-container" id="packages">
+        <div className="escape-packages-container" id="packages" data-alias="tours">
           <SectionTitle title="BOOK YOUR EXPERIENCES IN PRANARA" />
 
           <div className="escape-packages-grid">
@@ -397,7 +446,16 @@ export default function EscapeSection() {
             className="adventure-carousel-container"
             ref={carouselRef}
             onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
+            onMouseLeave={(e) => {
+              setIsPaused(false);
+              handleDragEnd(e);
+            }}
+            onMouseDown={handleDragStart}
+            onMouseMove={handleDragMove}
+            onMouseUp={handleDragEnd}
+            onTouchStart={handleDragStart}
+            onTouchMove={handleDragMove}
+            onTouchEnd={handleDragEnd}
           >
             <div className="adventure-carousel-track">
               {[...adventureItems, ...adventureItems].map((item, idx) => {

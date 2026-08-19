@@ -68,9 +68,9 @@ export default function Footer() {
           <div className="footer-col-nav">
             <h4>Explore</h4>
             <ul>
-              <li><Link to="/#tours">Destinations</Link></li>
-              <li><Link to="/#tours">Tour Packages</Link></li>
-              <li><Link to="/#features">Experiences</Link></li>
+              <li><Link to="/#heritage">Destinations</Link></li>
+              <li><Link to="/#packages">Tour Packages</Link></li>
+              <li><Link to="/#adventures">Adventures</Link></li>
               <li><Link to="/#gallery">Gallery</Link></li>
             </ul>
           </div>

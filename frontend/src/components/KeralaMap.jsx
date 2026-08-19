@@ -571,7 +571,7 @@ export default function KeralaMap() {
               flexWrap: 'wrap'
             }}>
               <a
-                href="#tours"
+                href="#packages"
                 onClick={(e) => {
                   e.preventDefault();
                   const tourSelect = document.getElementById('tour');

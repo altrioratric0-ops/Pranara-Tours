@@ -35,7 +35,7 @@ export default function TourDetail() {
         <div className="container" style={{ textAlign: 'center', padding: '120px 24px' }}>
           <h2>Tour Not Found</h2>
           <p style={{ color: '#64748b', margin: '16px 0' }}>The tour package you're looking for doesn't exist or has been removed.</p>
-          <Link to="/#tours" className="btn btn-primary">Back to Packages</Link>
+          <Link to="/#packages" className="btn btn-primary">Back to Packages</Link>
         </div>
       </div>
     );
@@ -62,7 +62,7 @@ export default function TourDetail() {
         }}
       >
         <div className="container">
-          <Link to="/#tours" className="back-link">
+          <Link to="/#packages" className="back-link">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
             Back to Packages
           </Link>
@@ -273,7 +273,7 @@ export default function TourDetail() {
               <button onClick={handleBooking} className="btn btn-primary btn-lg">
                 Book Now — &#8377;{tour.price.toLocaleString()}/person
               </button>
-              <Link to="/#tours" className="btn btn-outline">Browse All Packages</Link>
+              <Link to="/#packages" className="btn btn-outline">Browse All Packages</Link>
             </div>
           </div>
         </section>
