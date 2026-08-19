@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import footerPoster from '../assets/footrer poster.jpeg';
 
 export default function Booking() {
   const whatsappCommunityLink = 'https://chat.whatsapp.com/Lx1kXtArr4N8TKtv9jLSMr';
@@ -84,8 +85,8 @@ export default function Booking() {
           <div className="community-banner-right">
             <div className="community-image-frame">
               <img
-                src="C:\Users\acer\pranaraaaaaa\Pranara-Tours\frontend\src\assets\footrer poster.jpeg"
-                alt="Autumnvale Experience Munnar"
+                src={footerPoster}
+                alt="Pranara Experience Munnar"
                 className="community-banner-img"
               />
             </div>
