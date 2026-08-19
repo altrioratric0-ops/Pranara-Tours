@@ -12,7 +12,7 @@ const STATIC_TESTIMONIALS = [
     avatar: '/assets/munnar_uk_family.jpg',
     rating: 4,
     quote: 'From the UK to the heart of Munnar! Every detail was handled with utmost elegance. The private tea estate tour and misty mountain views were breathtaking.',
-    tagline: 'LUXURY FAMILY SAFARI',
+    tagline: 'FAMILY SAFARI',
     videoUrl: '/assets/munnar_video_testimonial.mp4'
   },
   {
@@ -62,7 +62,7 @@ const STATIC_TESTIMONIALS = [
     location: 'Bengaluru, India',
     destination: 'Alleppey Backwaters Cruise',
     avatar: '/assets/tour_alleppey.png',
-    rating: 5,
+    rating: 4,
     quote: 'Gliding silently through the backwaters on private houseboat at sunset was pure bliss. Pranara exceeded every expectation.',
     tagline: 'BACKWATER SANCTUARY',
   },
@@ -72,7 +72,7 @@ const STATIC_TESTIMONIALS = [
     location: 'Paris, France',
     destination: 'Wayanad Rainforest & Wildlife',
     avatar: '/assets/tour_wayanad.png',
-    rating: 5,
+    rating: 4,
     quote: 'A magical immersion into Kerala’s rich wildlife and treehouse resorts. Warm hospitality, exquisite cuisine, and flawless curation.',
     tagline: 'ECO RETREAT',
   },
@@ -380,10 +380,10 @@ export default function Testimonials() {
         <div className="editorial-header">
           <div className="editorial-header-text">
             <h2 className="editorial-title">
-              Voices of <span className="text-gold-gradient">Luxury Travel</span>
+              Voices of <span className="text-gold-gradient">WANDERLUST'S</span>
             </h2>
             <p className="editorial-subtitle">
-              Discover how explorers from around the globe experienced Kerala’s breathtaking beauty with Pranara’s bespoke journeys.
+              How explorers experienced Kerala’s breathtaking beauty with Pranara’s bespoke journeys.
             </p>
           </div>
 

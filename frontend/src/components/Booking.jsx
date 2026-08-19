@@ -44,9 +44,9 @@ export default function Booking() {
       <div className="booking-community-container">
         <div className="community-banner-card">
           <div className="community-content-left">
-            <h3 className="community-title">Begin Your Kerala Story</h3>
+            <h4 className="community-title">Begin Your Munnar Story</h4>
             <p className="community-subtitle" style={{ marginBottom: '16px' }}>
-              WhatsApp is primary channel for booking enquiries,travel packages, and trip assistance.
+              WhatsApp community is primary channel for booking enquiries,packages and trip assistance.
             </p>
 
             {/* Direct WhatsApp Enquiry Button */}
@@ -84,8 +84,8 @@ export default function Booking() {
           <div className="community-banner-right">
             <div className="community-image-frame">
               <img
-                src="/assets/Travel_poster.png"
-                alt="Autumnvale Experience Munnar"
+                src="\assets\footrer poster.jpeg"
+                alt="Pranara Experience Munnar"
                 className="community-banner-img"
               />
             </div>
