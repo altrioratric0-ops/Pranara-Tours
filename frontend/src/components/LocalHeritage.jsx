@@ -113,14 +113,14 @@ export default function LocalHeritage() {
     <section className="heritage-section" id="heritage">
       <div className="container">
         <div className="heritage-grid">
-          
+
           {/* Column 1: Our Story Card */}
           <div className="heritage-story-card">
             <div className="story-content">
               <span className="story-tagline">Our Story</span>
               <h2 className="story-heading">We know Munnar because we grew up here.</h2>
               <p className="story-paragraph">
-                For over 10 years, we've been exploring these roads, guiding travellers and collecting stories. 
+                For over 10 years, we've been exploring these roads, guiding travellers and collecting stories.
                 Pranara is our way of sharing the Munnar that maps don't show.
               </p>
             </div>
@@ -146,10 +146,10 @@ export default function LocalHeritage() {
 
             {/* Framed Picture in Story Card */}
             <div className="story-frame-container">
-              <img 
-                src="/assets/Preview.jpeg" 
-                alt="Pranara Local Guides Jeep" 
-                className="story-framed-img" 
+              <img
+                src="/assets/Preview.jpeg"
+                alt="Pranara Local Guides Jeep"
+                className="story-framed-img"
               />
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function LocalHeritage() {
               <div className="interactive-map-wrapper">
                 <svg viewBox="0 0 500 400" className="heritage-svg-map">
                   {/* Kerala Map Outline */}
-                  <path 
+                  <path
                     d="M325.8 877.2l-0.1 0.6-0.7 0 0-0.4 0.8-0.2zm0 0l0.8 0.2 0 0.4-0.8 0 0-0.6zm-0.6-0.4l0.3 0.4-1.1 0.4-0.1-0.2 0.9-0.6zm-1.8-8.6l0.5 0.5 0.1 0.6-0.6-0.1 0-1zm-2.4-2.7l0.4 0.2 0.4 0.8-0.6-0.1-0.2-0.9zm-0.5-1.2l0.3 0.2 0.2 0.7-0.4 0.2-0.1-1.1zm-37.7-76.5l0.5 0.1 0.3-0.2 1.6-0.6 0.5 0.2 0.9-0.4 0.1 0.7-0.4 0.6 0.3 0.7 0.9-0.1 0.3 0.1 0.2 0.8-0.3 0 0.1 0.7 0.6 0.1 0.4-0.2 0-0.7 0.5-0.1 0.3 0.5 0.8 0.1 0.5 0.2-0.3 0.6 0.1 0.7 0.4 0.1 0.4-0.4 0.5 0.1-0.1 0.5 0.3 0.3 0.1 0.7 0.7 0.2 1.1-1.3 0.6 0.3 0.4 0.9-0.6-0.2-0.6 0.6 0.3 1 0.6 0 0 0.6 0.5 0.2 0.4 0.1 0.1 0.6 0 0.3 0.4-0.1 0.5-0.5 0.1-0.3 0.1-0.1 0.2-0.1 0.3-0.1 0.1 0.2 0.3-0.2 0.3 0.9-0.3 0.3-0.3 0.2-0.3 0.1-0.7-0.2 0.1 0.1-0.1 1.1 0.3 0.6 0.5 0.2 0.2 0.1 0 0.1 0.4 0.1 0.1 0.2-0.2 0.5-0.1 0.2 0.4 0.8 0.2 0.2-0.3 0.4 0.3-0.1 0.3 0 0.7-0.1 0.4 0.2 0.3 0.6 0.3 0.1 0.2 0.2 0 0.1 0.2 0.4 0 0.1 0.1 0.1 0.1 0.3 0.3 0.3-0.1 0.3 0.2 0.1 0.1 0.1 0.2 0.2 0.3 0.5 0.5 0.4 0.3 0.2 0.1 0 0.3-0.1 0.5 0.1 0.1 0.1 0.2 0 0.2 0.3 0 0.3 0.5 0.8 0.3 0 0.5-0.3 0.3 0.4 0.1 0.1 0.2 0.4 0.1 0.2 1.3-0.5 0.9 0.2 0.1 1.2 0.7 0.7 0 0.6 0.5 0.4 0.2 0.3 0.7 0.5 1.5 0.3 0.4-0.1 0.8 0.2 0.6 0.1 0.2-0.3 0.7 0 1.2-0.8 0.5 0 0.4-0.2 0 3.3 0.5 0.2 0.4-0.4 1.2-0.2 0.5 0.5 0.1 0.8 0.3 0.5 0.8 0.2 0.8-0.2 0.2 0.4 0.5 0.3 0.3 0.9 0.6 0.4 0.6-0.3 0.5 0.1 0.8-0.4 0.4 0.8-0.4 0.4 0 0.7 0.2 0.5 0.4 0.2 0.2 0.7-0.3 0.2-1.1 0.1-0.3 0.8-1 0.4-0.1-0.3-0.9 0.7-0.2-0.4-0.5-0.4-1.3 0.8 0.5 1.1-0.3 0.2 0.4 0.7-0.2 0.9 0.5-0.3 0.6-0.1 1.1 0.9 0.4-0.4 0.8 0.3 0.8 0.5 0.5-0.1-0.1 0.5 1.1 0.9 1.7 0.6 0 0.4 0.8-0.1 0 0.8-0.7 1.7-1.8 0.8-0.1 0.9 0.3 0.5 0.3-0.5 1.1-0.1 0.4 0.4 1.6-0.2 0.6 0 0.6 0.3 2-1.3 0.9 0.7-0.2 0.6-0.4 0.2-0.6 0.6 0.3 0.7 1.2 0.6-0.1 0.5 0.3 0.2-0.3 0.6 0 0.4 0.4 0.1 0.2 0.6-1.2-0.2-0.6 0.4-0.3 0.5-0.1 0.5-0.5 0.6-0.2 1.1 0.9 0.5 0.4 0 0.9 0.6 1.1 0 0.4 0.3 0.8 0.2 0.8 1-0.2 0.3 0.6 0.5 0.8-0.1 0.2 0.9-0.1 0.5-0.5 1.2-0.5 1 0.4 0.2 0 1-1.8 0.1 0 0.3 0.3 0.7 0.4 0.1-0.2 1.4 0.2 0.2-0.3 1.1-0.1 1.4-0.2 0.7 0.4 0.6-0.2 0.2 0.6 0.7-0.3 0.6-0.2 1.2 0.3 0.3 0.9 0.1 0 0.4 0.6 0.3 0.2 0.6 0.5 0.3 0.5-0.2 0.8 0.3 0.6 0 1-0.6 0.6-0.2 0.2-0.7 0.7-0.6 1.2-0.4 1.3-1 1.6 0.1-0.2 1 1 1.5 0 0.8 0.5 0 0.3 0.4-0.4 0.8-0.2 0.7 0.1 0.7-0.2 0.5-0.7-0.2-1.1 0.7 0.2 0.6 0.2 0.1 1.3 1.5-0.3 0.3 0.3 0.9 0.3 0.2-0.3 0.6-0.3 0-0.5 0.6-0.5 0.8-0.1 0.7 0.7 0.7-0.2 0.8 0.4 0.7-0.6 0.2 0.1 0.7-0.2 0.9-0.5 0.2 0.1 0.8-0.3 0.7-0.4 0.4-0.3 0.9 0 0.4 0.5 0.1 0.3-0.2 1 0.9 1.1 0.2 0.7-0.6 0.5-0.2 0.4 0.7 0.8 0.8 0 0.4 0.6 0.5 0.7 0.3-0.4 0.5 0.1 0.3-0.4 0.6-0.5-0.1-0.5 0.5-0.4 0.7 0.2 0.3-0.2 0.5 0 0.7-0.9 1.2-0.6 0.5 0.1 0.8-0.3 1 0.2 0.5-0.4 0.5 0 1.3-0.5 0.7-0.6 0.3-0.4 0.5-0.1 0.7-0.3 0.5-0.8 0.3-0.5 0.6 0 0.4 0.7 0.6 0.1 0.4 0.5 0.4 0 0.9 0.3-0.2 0.4 0.8 0.5 0.3 0.4 0.4 0.2 1-0.8 1-0.1 0.6-1 1.1-0.6-0.1 0.3 0.9 0.3 0.2 0.6 1.6 0.8 0.8 0 0.4 0.6 0.8 0.4 0.9-0.5 1-0.7 0.3-0.4-0.4-0.4 0.4 0.5 1.4-0.6 0.1-0.2 0.7-0.8 0.9-0.5 0 0.6 0.9-0.2 0.6-0.7 0-0.5 0.6-0.4 0.1-2-1.6-0.4-0.4-0.6-0.3-0.5-1-2-2.4-0.7-0.9-2.1-2.6-0.5-0.7-1.8-2.2-0.6-1-1.7-2.2-0.7-0.6-0.7-0.2-0.4-0.4-0.3-0.6-0.4-1.4-0.2-1.4-0.3-0.3-0.7-1.8-0.6-1.3-1.4-3.1-1.6-3.5-0.6-2-0.5-2-0.3-1.8-0.5-4.5-0.6-3.6-0.7-2.4l0.7 0.1c0.2 0.8 0.7 0.3-0.2 0.5-0.8 0.1 0.3 0.9 0.4-0.1 0.2-0.6 1.1 0.6 0.3 0.4 0 0.6 0.8 0.5-0.3 0.6 0.2 0.5 0.1 1-0.1 0.4 0 0.9 0.2 0.3 0.5 0.1 0 0.6-0.7 1.3 0 0.8-0.2 0.2-0.2 1 0.1 0.4 4-0.1-2.3-0.9 0-0.3 0.3-1.1-0.3-0.7-0.4-0.3 0-0.7 0.3-0.7-0.8-0.2 0.2-1-0.2-0.5-0.3-0.4-0.1-0.6 0.4-0.4 0-0.9-0.6-1.4-0.2-0.5-0.6-0.1 0.3 0.8-0.7-0.1-0.1-0.7-0.4-0.6-0.2-0.2-0.6-1.3 0-0.7-0.5-0.7-0.1-0.4 0.3-0.5 0-0.4-1.1-1.1-0.5-0.2 1 2.9-0.1 0.6 0.2 0.6-0.5 0.3-0.2-0.9-0.4-1.3-0.6-2.1-0.6-1.6-0.6-2-0.6-2.3-1-2.4-2.2-4.5-0.1-0.3-1.7-3.8-0.6-1.5-0.9-4.3-0.6-2.3-0.3-1.1-0.3-1.1-0.7-1.6-0.2 0-0.8-2.2-0.7-2.1-0.3-0.5 0.1-0.4-1-1.9-0.6-0.9-0.9-0.5-0.4 0.2-0.4-0.4 0-0.4-0.9-2.5-0.8-2.1-0.7-1.4-0.6-0.8-1-0.8-0.5-0.2-0.3-0.8-1-1.1-0.8-0.6-0.3 -0.3 l0.2-1.1-1.5-0.7-1 0.1-0.6-0.4-0.7-0.7-0.6 0.4-0.4 0.6 0.2 0.3-1-0.2-0.1-0.1-0.1-0.1-0.2 0.5-0.6-0.2-0.4 0.3-0.2 0.3 0.2 0.2 0.1 0.4-0.3 0.5-0.4 0.3 0 0-0.2 0.3 0.1 0.3-0.2-0.1-0.2-0.3-0.2-0.3 0-0.1 0-0.2 0.3-0.5-0.1-0.6-0.1-0.1 0-0.3 0.2 0 0.1-0.7 0.5-0.2 0.4-0.3-0.1-0.3-0.1-0.2 0.1-0.2-0.1-0.1-0.1-0.4 0.2-0.1 0.1 0.1 0.4 0 0.2 0 0.1 0 0.6 0.1 0.3 0.1 0.6-0.7 0.5-0.5-0.9-0.3-1.3-0.1-0.9-0.5-0.9-0.1-0.6-0.4-0.5-0.2-0.7-0.3l0.2-1.2-3.2-0.8-1.7-0.8-1-0.6-1.5-0.5-0.8-0.4-1-1.4-3.5-0.7-1.5-0.5-1.2 0z"
                     fill="rgba(46, 125, 50, 0.1)"
                     stroke="none"
@@ -191,8 +191,8 @@ export default function LocalHeritage() {
                   {MAP_LOCATIONS.map((loc) => {
                     const isActive = activeLoc.id === loc.id;
                     return (
-                      <g 
-                        key={loc.id} 
+                      <g
+                        key={loc.id}
                         className={`map-marker-group ${isActive ? 'active' : ''}`}
                         onClick={() => setActiveLoc(loc)}
                         onMouseEnter={() => setActiveLoc(loc)}
@@ -200,32 +200,32 @@ export default function LocalHeritage() {
                       >
                         {/* Glowing backdrop circle */}
                         {isActive && (
-                          <circle 
-                            cx={loc.x} 
-                            cy={loc.y} 
-                            r="12" 
-                            fill="var(--primary)" 
-                            opacity="0.25" 
-                            className="marker-pulse-ring" 
+                          <circle
+                            cx={loc.x}
+                            cy={loc.y}
+                            r="12"
+                            fill="var(--primary)"
+                            opacity="0.25"
+                            className="marker-pulse-ring"
                           />
                         )}
                         {/* Point node */}
-                        <circle 
-                          cx={loc.x} 
-                          cy={loc.y} 
-                          r={isActive ? "6.5" : "5"} 
-                          fill={isActive ? "#1B5E20" : "var(--primary)"} 
-                          stroke="#ffffff" 
-                          strokeWidth="1.8" 
+                        <circle
+                          cx={loc.x}
+                          cy={loc.y}
+                          r={isActive ? "6.5" : "5"}
+                          fill={isActive ? "#1B5E20" : "var(--primary)"}
+                          stroke="#ffffff"
+                          strokeWidth="1.8"
                           style={{ transition: 'all 0.2s ease' }}
                         />
                         {/* Text Label Backdrop Shadow Stroke for legibility */}
-                        <text 
-                          x={loc.x + loc.dx} 
-                          y={loc.y + loc.dy} 
-                          textAnchor={loc.textAnchor} 
-                          fontSize="12.5" 
-                          fontWeight="700" 
+                        <text
+                          x={loc.x + loc.dx}
+                          y={loc.y + loc.dy}
+                          textAnchor={loc.textAnchor}
+                          fontSize="12.5"
+                          fontWeight="700"
                           stroke="#ffffff"
                           strokeWidth="4.5"
                           strokeLinejoin="round"
@@ -235,13 +235,13 @@ export default function LocalHeritage() {
                           {loc.label}
                         </text>
                         {/* Actual Text Label */}
-                        <text 
-                          x={loc.x + loc.dx} 
-                          y={loc.y + loc.dy} 
-                          textAnchor={loc.textAnchor} 
-                          fontSize="12.5" 
-                          fontWeight={isActive ? "800" : "700"} 
-                          fill={isActive ? "#1B5E20" : "#2E7D32"} 
+                        <text
+                          x={loc.x + loc.dx}
+                          y={loc.y + loc.dy}
+                          textAnchor={loc.textAnchor}
+                          fontSize="12.5"
+                          fontWeight={isActive ? "800" : "700"}
+                          fill={isActive ? "#1B5E20" : "#2E7D32"}
                           style={{ pointerEvents: 'none', transition: 'all 0.2s ease' }}
                         >
                           {loc.label}
@@ -255,8 +255,8 @@ export default function LocalHeritage() {
               {/* Overlapping Polaroid Preview Card */}
               <div className="map-polaroid-preview-container">
                 <div className="polaroid-preview-card">
-                  <div 
-                    className="polaroid-preview-img" 
+                  <div
+                    className="polaroid-preview-img"
                     style={{ backgroundImage: `url(${activeLoc.imageUrl})` }}
                   ></div>
                   <div className="polaroid-preview-body">
@@ -282,29 +282,28 @@ export default function LocalHeritage() {
             <button className="modal-close-btn" onClick={() => setIsModalOpen(false)}>&times;</button>
             <span className="modal-tagline">Since 2016</span>
             <h3 className="modal-heading">The Spirit of Pranara</h3>
-            
+
             <div className="modal-body">
               <p>
-                Pranara Tours was founded by a small group of childhood friends who spent their youth exploring the forest trails, tea corridors, and secret cascades of Munnar. 
+                Pranara Tours was founded by a small group of childhood friends who spent their youth exploring the forest trails, tea corridors, and secret cascades of Munnar.
                 We observed that standard travel packages often bypassed the real beauty of our homeland—the stories of tea harvesters, prehistoric dolmens, and pathless forest ridges.
               </p>
               <p>
-                We decided to share our passion and build a tour service built on <strong>conservation, local community integration, and authentic storytelling</strong>. 
+                We decided to share our passion and build a tour service built on <strong>conservation, local community integration, and authentic storytelling</strong>.
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: "url('/assets/Founder.jpeg')",width: "300px", height: "400px", backgroundSize: "cover",backgroundPosition: "center" }}></div>
-
-                <div className="modal-img" style={{ backgroundImage: "url('/assets/Co founder.jpeg')",width: "300px", height: "400px", backgroundSize: "cover",backgroundPosition: "center" }}></div>
-              </div>
+                <div className="modal-img" style={{ backgroundImage: "url('"C:\Users\acer\Downloads\founders image.png"')",width: "300px", height: "400px", backgroundSize: "cover",backgroundPosition: "center" }}></div>
             </div>
-            
-            <button className="btn-modal-close" onClick={() => setIsModalOpen(false)}>
-              Back to Exploration
-            </button>
           </div>
+
+          <button className="btn-modal-close" onClick={() => setIsModalOpen(false)}>
+            Back to Exploration
+          </button>
         </div>
-      )}
-    </section>
+        </div>
+  )
+}
+    </section >
   );
 }
