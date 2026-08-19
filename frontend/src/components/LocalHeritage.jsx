@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import foundersImg from '../assets/founders image.png';
 
 const MAP_LOCATIONS = [
   {
@@ -293,17 +294,17 @@ export default function LocalHeritage() {
                 Today, our team of guides are local residents who know the terrain as their own backyard, providing safe, rich, and truly unforgettable experiences.
               </p>
               <div className="modal-img-row">
-                <div className="modal-img" style={{ backgroundImage: "url('/assets/founders image.png')", width: "650px", height: "400px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+                <div className="modal-img" style={{ backgroundImage: `url("${foundersImg}")`, width: "650px", height: "300px", backgroundSize: "cover", backgroundPosition: "center" }}></div>
               </div>
-            </div>
-
-            <button className="btn-modal-close" onClick={() => setIsModalOpen(false)}>
-              Back to Exploration
-            </button>
           </div>
+
+          <button className="btn-modal-close" onClick={() => setIsModalOpen(false)}>
+            Back to Exploration
+          </button>
         </div>
-      )
-      }
+        </div>
+  )
+}
     </section >
   );
 }
