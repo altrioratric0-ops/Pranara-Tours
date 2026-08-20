@@ -10,7 +10,7 @@ export const DESTINATIONS = [
     desc: 'A golden sunrise above the clouds, trek through high cliff, and explore tea plantations.',
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
     thumb: '/assets/munnar_kolukkumalaigallery.jpeg',
-    images: ['/assets/munnar_kolukkumalaigallery.jpeg','/assets/munnar/Munnar_1.jpeg','/assets/munnar/Munnar_2.jpeg','/assets/munnar/Munnar_3.jpeg','/assets/munnar/Munnar_4.jpeg','/assets/munnar/Munnar_5.jpeg','/assets/munnar/Munnar_6.jpeg','/assets/munnar/Munnar_7.jpeg','/assets/munnar/Munnar_8.jpeg']
+    images: ['/assets/munnar_kolukkumalaigallery.jpeg','/assets/munnar/Munnar_1.jpeg','/assets/munnar/Munnar_2.jpeg','/assets/munnar/Munnar_3.jpeg','/assets/munnar/Munnar_4.jpeg','/assets/munnar/Munnar_5.jpeg','/assets/munnar/Munnar_6.jpeg','/assets/munnar/Munnar_7.jpeg','/assets/munnar/view2.jpeg','/assets/munnar/Munnar_8.jpeg']
   },
   {
     id: 'Attukad Waterfalls',
@@ -31,7 +31,7 @@ export const DESTINATIONS = [
     desc: 'Walk through endless green hills, breathe the fresh mountain air, and experience the timeless beauty of Munnar’s tea gardens.',
     bg: '/assets/tour_tea_estate.jpeg',
     thumb: '/assets/tour_tea_estate.jpeg',
-    images: ['/assets/tour_tea_estate.jpeg','/assets/Tea_estate/Tea_estates_1.jpeg','/assets/Tea_estate/Tea_estates_2.jpeg','/assets/Tea_estate/Tea_estates_3.jpeg','/assets/Tea_estate/Tea_estates_4.jpeg','/assets/Tea_estate/Tea_estates_5.jpeg','/assets/Tea_estate/Tea_estates_6.jpeg','/assets/Tea_estate/Tea_estates_7.jpeg','/assets/Tea_estate/Tea_estates_8.jpeg','/assets/Tea_estate/Tea_estates_9.jpeg','/assets/Tea_estate/Tea_estates_10.jpeg','/assets/Tea_estate/Tea_estates_11.jpeg']
+    images: ['/assets/tour_tea_estate.jpeg','/assets/Tea_estate/Tea_estates_1.jpeg','/assets/Tea_estate/Tea_estates_2.jpeg','/assets/Tea_estate/Tea_estates_3.jpeg','/assets/Tea_estate/Tea_estates_4.jpeg','/assets/Tea_estate/Tea_estates_5.jpeg','/assets/Tea_estate/Tea_estates_6.jpeg','/assets/Tea_estate/Tea_estates_7.jpeg','/assets/Tea_estate/Tea_estates_8.jpeg','/assets/Tea_estate/Tea_estates_9.jpeg','/assets/Tea_estate/Tea_estates_10.jpeg','/assets/Tea_estate/Tea_estates_11.jpg']
   },
 
   {
@@ -42,7 +42,7 @@ export const DESTINATIONS = [
     desc: 'Witness a endless tea plantations, rolling hills, and mist covered mountains from one of the most scenic viewpoints in Munnar.',
     bg: '/assets/tour_pothamedu.jpeg',
     thumb: '/assets/tour_pothamedu.jpeg',
-    images: ['/assets/tour_pothamedu.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_2.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_3.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_4.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_5.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_6.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_7.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_8.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_9.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_10.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_11.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_1.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_12.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_13.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_14.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_15.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_16.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_17.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_18.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_19.jpeg']
+    images: ['/assets/tour_pothamedu.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_2.jpeg','/assets/Pothamedu viewpoint/view1.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_3.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_4.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_5.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_6.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_7.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_8.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_9.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_10.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_11.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_1.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_12.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_13.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_14.jpg','/assets/Pothamedu viewpoint/pothamedu viewpoint_15.jpg','/assets/Pothamedu viewpoint/pothamedu viewpoint_16.jpg','/assets/Pothamedu viewpoint/pothamedu viewpoint_17.jpg','/assets/Pothamedu viewpoint/pothamedu viewpoint_18.jpg','/assets/Pothamedu viewpoint/pothamedu viewpoint_19.jpeg']
   },
 
   {
