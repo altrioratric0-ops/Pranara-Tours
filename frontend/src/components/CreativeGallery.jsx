@@ -10,7 +10,7 @@ export const DESTINATIONS = [
     desc: 'A golden sunrise above the clouds, trek through high cliff, and explore tea plantations.',
     bg: '/assets/munnar_kolukkumalaigallery.jpeg',
     thumb: '/assets/munnar_kolukkumalaigallery.jpeg',
-    images: ['/assets/munnar_kolukkumalaigallery.jpeg','/assets/munnar/Munnar_1.jpeg','/assets/munnar/Munnar_2.jpeg','/assets/munnar/Munnar_3.jpeg','/assets/munnar/Munnar_4.jpeg' ]
+    images: ['/assets/munnar_kolukkumalaigallery.jpeg','/assets/munnar/Munnar_1.jpeg','/assets/munnar/Munnar_2.jpeg','/assets/munnar/Munnar_3.jpeg']
   },
   {
     id: 'Attukad Waterfalls',
@@ -42,7 +42,7 @@ export const DESTINATIONS = [
     desc: 'Witness a endless tea plantations, rolling hills, and mist covered mountains from one of the most scenic viewpoints in Munnar.',
     bg: '/assets/tour_pothamedu.jpeg',
     thumb: '/assets/tour_pothamedu.jpeg',
-    images: ['/assets/tour_pothamedu.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_1.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_2.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_3.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_4.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_5.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_6.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_7.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_8.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_9.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_10.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_11.jpeg', ]
+    images: ['/assets/tour_pothamedu.jpeg', '/assets/Pothamedu viewpoint/pothamedu viewpoint_2.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_3.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_4.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_5.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_6.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_7.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_8.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_9.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_10.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_11.jpeg','/assets/Pothamedu viewpoint/pothamedu viewpoint_1.jpeg' ]
   },
 
   {
@@ -73,7 +73,7 @@ export const DESTINATIONS = [
     desc: 'Experience the stunning beauty of Munnar from one of the most popular viewpoints. Enjoy panoramic vistas and mist-covered mountains.',
     bg: '/assets/tour_echo_ponit.jpeg',
     thumb: '/assets/tour_echo_ponit.jpeg',
-    images: ['/assets/tour_echo_ponit.jpeg', '/assets/Eco point/Echopoint_1.jpeg','/assets/Eco point/Echopoint_2.jpeg','/assets/Eco point/Echopoint_3.jpeg','/assets/Eco point/Echopoint_4.jpeg','/assets/Eco point/Echopoint_5.jpeg','/assets/Eco point/Echopoint_6.jpeg','/assets/Eco point/Echopoint_7.jpeg','/assets/Eco point/Echopoint_8.jpeg','/assets/Eco point/Echopoint_9.jpeg','/assets/Eco point/Echopoint_10.jpeg','/assets/Eco point/Echopoint_11.jpeg','/assets/Eco point/Echopoint_12.jpeg', ]
+    images: ['/assets/tour_echo_ponit.jpeg', '/assets/Eco point/Echopoint_1.jpeg','/assets/Eco point/Echopoint_2.jpeg','/assets/Eco point/Echopoint_3.jpeg','/assets/Eco point/Echopoint_5.jpeg','/assets/Eco point/Echopoint_6.jpeg','/assets/Eco point/Echopoint_7.jpeg','/assets/Eco point/Echopoint_8.jpeg','/assets/Eco point/Echopoint_9.jpeg','/assets/Eco point/Echopoint_10.jpeg','/assets/Eco point/Echopoint_11.jpeg','/assets/Eco point/Echopoint_12.jpeg', ]
   },
   {
     id: 'Flower Garden',
@@ -83,7 +83,7 @@ export const DESTINATIONS = [
     desc: 'Stroll through the vibrant colors of the flower garden, where exotic blooms create a mesmerizing spectacle.',
     bg: '/assets/tour_flower_garden.jpeg',
     thumb: '/assets/tour_flower_garden.jpeg',
-    images: ['/assets/tour_flower_garden.jpeg','/assets/flower garden/garden_0.jpeg',  '/assets/flower garden/garden_1.jpeg','/assets/flower garden/garden_2.jpeg', '/assets/flower garden/garden_3.jpeg', '/assets/flower garden/garden_4.jpeg', '/assets/flower garden/garden_5.jpeg', '/assets/flower garden/garden_6.jpeg', '/assets/flower garden/garden_7.jpeg', '/assets/flower garden/garden_8.jpeg', '/assets/flower garden/garden_9.jpeg', '/assets/flower garden/garden_10.jpeg'  ]
+    images: ['/assets/tour_flower_garden.jpeg','/assets/flower garden/garden_1.jpeg','/assets/flower garden/garden_2.jpeg', '/assets/flower garden/garden_3.jpeg', '/assets/flower garden/garden_4.jpeg', '/assets/flower garden/garden_5.jpeg', '/assets/flower garden/garden_6.jpeg', '/assets/flower garden/garden_7.jpeg', '/assets/flower garden/garden_8.jpeg', '/assets/flower garden/garden_9.jpeg', '/assets/flower garden/garden_10.jpeg'  ]
   },
   {
     id: 'Mattupetty Dam',
@@ -103,7 +103,7 @@ export const DESTINATIONS = [
     desc: 'Explore the diverse wildlife and stunning landscapes of Eravikulam National Park, home to the endangered Nilgiri Tahr.',
     bg: '/assets/tour_eravikulam_national_park.jpeg',
     thumb: '/assets/tour_eravikulam_national_park.jpeg',
-    images: ['/assets/tour_eravikulam_national_park.jpeg', '/assets/feravikulam/eravikulam_1.jpeg', '/assets/feravikulam/eravikulam_2.jpeg', '/assets/feravikulam/eravikulam_3.jpeg', '/assets/feravikulam/eravikulam_4.jpeg', '/assets/feravikulam/eravikulam_5.jpeg', '/assets/feravikulam/eravikulam_6.jpeg', '/assets/feravikulam/eravikulam_7.jpeg', '/assets/feravikulam/eravikulam_8.jpeg', '/assets/feravikulam/eravikulam_9.jpeg',]
+    images: ['/assets/tour_eravikulam_national_park.jpeg', '/assets/eravikulam/eravikulam_1.jpeg', '/assets/eravikulam/eravikulam_2.jpeg', '/assets/eravikulam/eravikulam_3.jpeg', '/assets/eravikulam/eravikulam_4.jpeg', '/assets/eravikulam/eravikulam_5.jpeg', '/assets/eravikulam/eravikulam_6.jpeg', '/assets/eravikulam/eravikulam_7.jpeg', '/assets/eravikulam/eravikulam_8.jpeg', '/assets/eravikulam/eravikulam_9.jpeg',]
   }
 ];
 
@@ -159,7 +159,7 @@ export default function CreativeGallery() {
         setScrollMode('smooth');
         return next;
       });
-    }, 1200);
+    }, 1500);
 
     return () => window.clearInterval(interval);
   }, [isVisible]);
