@@ -112,6 +112,9 @@ export default function CreativeGallery() {
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
   const [scrollMode, setScrollMode] = useState('smooth');
+  const [isUserInterrupted, setIsUserInterrupted] = useState(false);
+  const isProgrammaticScroll = useRef(false);
+
   const sectionRef = useRef(null);
   const cardRowRef = useRef(null);
   const cardRefs = useRef([]);
@@ -144,8 +147,49 @@ export default function CreativeGallery() {
     };
   }, []);
 
+  // Listen for manual user scrolling or touch interaction to disable auto scroll
   useEffect(() => {
-    if (!isVisible) return;
+    const row = cardRowRef.current;
+    const section = sectionRef.current;
+
+    const stopAutoScroll = () => {
+      setIsUserInterrupted(true);
+    };
+
+    const handleWheel = () => stopAutoScroll();
+    const handleTouchMove = () => stopAutoScroll();
+    const handleScroll = () => {
+      if (!isProgrammaticScroll.current) {
+        stopAutoScroll();
+      }
+    };
+
+    if (row) {
+      row.addEventListener('wheel', handleWheel, { passive: true });
+      row.addEventListener('touchmove', handleTouchMove, { passive: true });
+      row.addEventListener('scroll', handleScroll, { passive: true });
+    }
+
+    if (section) {
+      section.addEventListener('wheel', handleWheel, { passive: true });
+      section.addEventListener('touchmove', handleTouchMove, { passive: true });
+    }
+
+    return () => {
+      if (row) {
+        row.removeEventListener('wheel', handleWheel);
+        row.removeEventListener('touchmove', handleTouchMove);
+        row.removeEventListener('scroll', handleScroll);
+      }
+      if (section) {
+        section.removeEventListener('wheel', handleWheel);
+        section.removeEventListener('touchmove', handleTouchMove);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible || isUserInterrupted) return;
 
     const interval = window.setInterval(() => {
       setActiveIdx((current) => {
@@ -162,19 +206,26 @@ export default function CreativeGallery() {
     }, 1500);
 
     return () => window.clearInterval(interval);
-  }, [isVisible]);
+  }, [isVisible, isUserInterrupted]);
 
   useEffect(() => {
     const row = cardRowRef.current;
     const activeCard = cardRefs.current[activeIdx];
 
-    if (!row || !activeCard) return;
+    if (!row || !activeCard || isUserInterrupted) return;
 
     const topOffset = activeCard.offsetTop - row.offsetTop;
     const targetTop = Math.max(0, Math.min(topOffset - 18, row.scrollHeight - row.clientHeight));
 
+    isProgrammaticScroll.current = true;
     row.scrollTo({ top: targetTop, behavior: scrollMode });
-  }, [activeIdx, scrollMode]);
+
+    const timer = setTimeout(() => {
+      isProgrammaticScroll.current = false;
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [activeIdx, scrollMode, isUserInterrupted]);
 
   const handleMouseMove = (event) => {
     if (!sectionRef.current) return;
