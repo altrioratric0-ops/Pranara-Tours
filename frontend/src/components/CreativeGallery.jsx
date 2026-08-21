@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const DESTINATIONS = [
@@ -111,10 +111,12 @@ export default function CreativeGallery() {
   const [activeIdx, setActiveIdx] = useState(DESTINATIONS.length);
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const [scrollMode, setScrollMode] = useState('smooth');
-  const [isUserInterrupted, setIsUserInterrupted] = useState(false);
-  const isProgrammaticScroll = useRef(false);
 
+  const isProgrammaticScroll = useRef(false);
+  const userInteractionTimer = useRef(null);
   const sectionRef = useRef(null);
   const cardRowRef = useRef(null);
   const cardRefs = useRef([]);
@@ -147,72 +149,47 @@ export default function CreativeGallery() {
     };
   }, []);
 
-  // Listen for manual user scrolling or touch interaction to disable auto scroll
-  useEffect(() => {
-    const row = cardRowRef.current;
-    const section = sectionRef.current;
-
-    const stopAutoScroll = () => {
-      setIsUserInterrupted(true);
-    };
-
-    const handleWheel = () => stopAutoScroll();
-    const handleTouchMove = () => stopAutoScroll();
-    const handleScroll = () => {
-      if (!isProgrammaticScroll.current) {
-        stopAutoScroll();
+  const handleNext = useCallback(() => {
+    setScrollMode('smooth');
+    setActiveIdx((current) => {
+      const next = current + 1;
+      if (next >= DESTINATIONS.length * 2) {
+        setScrollMode('auto');
+        return DESTINATIONS.length;
       }
-    };
-
-    if (row) {
-      row.addEventListener('wheel', handleWheel, { passive: true });
-      row.addEventListener('touchmove', handleTouchMove, { passive: true });
-      row.addEventListener('scroll', handleScroll, { passive: true });
-    }
-
-    if (section) {
-      section.addEventListener('wheel', handleWheel, { passive: true });
-      section.addEventListener('touchmove', handleTouchMove, { passive: true });
-    }
-
-    return () => {
-      if (row) {
-        row.removeEventListener('wheel', handleWheel);
-        row.removeEventListener('touchmove', handleTouchMove);
-        row.removeEventListener('scroll', handleScroll);
-      }
-      if (section) {
-        section.removeEventListener('wheel', handleWheel);
-        section.removeEventListener('touchmove', handleTouchMove);
-      }
-    };
+      return next;
+    });
   }, []);
 
+  const handlePrev = useCallback(() => {
+    setScrollMode('smooth');
+    setActiveIdx((current) => {
+      const prev = current - 1;
+      if (prev < 0) {
+        setScrollMode('auto');
+        return DESTINATIONS.length - 1;
+      }
+      return prev;
+    });
+  }, []);
+
+  // Auto-scroll loop effect
   useEffect(() => {
-    if (!isVisible || isUserInterrupted) return;
+    if (!isVisible || !isPlaying || isHovered) return;
 
-    const interval = window.setInterval(() => {
-      setActiveIdx((current) => {
-        const next = current + 1;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 2600);
 
-        if (next >= DESTINATIONS.length * 2) {
-          setScrollMode('auto');
-          return DESTINATIONS.length;
-        }
+    return () => clearInterval(interval);
+  }, [isVisible, isPlaying, isHovered, handleNext]);
 
-        setScrollMode('smooth');
-        return next;
-      });
-    }, 1500);
-
-    return () => window.clearInterval(interval);
-  }, [isVisible, isUserInterrupted]);
-
+  // Scroll active destination card into view inside card stack
   useEffect(() => {
     const row = cardRowRef.current;
     const activeCard = cardRefs.current[activeIdx];
 
-    if (!row || !activeCard || isUserInterrupted) return;
+    if (!row || !activeCard) return;
 
     const topOffset = activeCard.offsetTop - row.offsetTop;
     const targetTop = Math.max(0, Math.min(topOffset - 18, row.scrollHeight - row.clientHeight));
@@ -225,7 +202,18 @@ export default function CreativeGallery() {
     }, 400);
 
     return () => clearTimeout(timer);
-  }, [activeIdx, scrollMode, isUserInterrupted]);
+  }, [activeIdx, scrollMode]);
+
+  // Temporary pause auto-scroll during manual user scrolling
+  const handleCardRowScroll = () => {
+    if (!isProgrammaticScroll.current) {
+      setIsHovered(true);
+      if (userInteractionTimer.current) clearTimeout(userInteractionTimer.current);
+      userInteractionTimer.current = setTimeout(() => {
+        setIsHovered(false);
+      }, 3500);
+    }
+  };
 
   const handleMouseMove = (event) => {
     if (!sectionRef.current) return;
@@ -287,8 +275,47 @@ export default function CreativeGallery() {
           </button>
         </div>
 
-        <div className="gallery-card-stack" aria-label="Gallery previews">
-          <div className="gallery-card-row" ref={cardRowRef}>
+        <div 
+          className="gallery-card-stack" 
+          aria-label="Gallery previews"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <div className="gallery-controls-inline">
+            <button 
+              type="button" 
+              className="gallery-inline-nav" 
+              onClick={handlePrev}
+              aria-label="Previous Destination"
+              title="Previous Destination"
+            >
+              ↑
+            </button>
+            <button 
+              type="button" 
+              className="gallery-inline-nav" 
+              onClick={() => setIsPlaying(!isPlaying)}
+              aria-label={isPlaying ? "Pause Auto Scroll" : "Play Auto Scroll"}
+              title={isPlaying ? "Pause Auto Scroll" : "Play Auto Scroll"}
+            >
+              {isPlaying ? '⏸' : '▶'}
+            </button>
+            <button 
+              type="button" 
+              className="gallery-inline-nav" 
+              onClick={handleNext}
+              aria-label="Next Destination"
+              title="Next Destination"
+            >
+              ↓
+            </button>
+          </div>
+
+          <div 
+            className="gallery-card-row" 
+            ref={cardRowRef}
+            onScroll={handleCardRowScroll}
+          >
             {loopedDestinations.map((destination, idx) => {
               const isActive = idx === activeIdx;
               const isPrev = idx < activeIdx;
@@ -313,8 +340,7 @@ export default function CreativeGallery() {
           </div>
         </div>
       </div>
-
-
     </section>
   );
 }
+
