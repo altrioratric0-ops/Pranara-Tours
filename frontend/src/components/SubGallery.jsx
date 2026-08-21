@@ -154,7 +154,7 @@ export default function SubGallery() {
                 style={{ maxWidth: '100%', maxHeight: '75vh', objectFit: 'contain', borderRadius: '16px' }}
               />
 
-              {/* Navigation & Auto Play Controls */}
+              {/* Navigation Controls */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '16px' }}>
                 <button
                   type="button"
@@ -172,23 +172,6 @@ export default function SubGallery() {
                   title="Previous Photo"
                 >
                   ←
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  style={{
-                    background: isAutoPlaying ? '#059669' : 'rgba(255, 255, 255, 0.15)',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    color: '#fff',
-                    borderRadius: '20px',
-                    padding: '8px 16px',
-                    cursor: 'pointer',
-                    fontWeight: 600,
-                    fontSize: '0.9rem'
-                  }}
-                >
-                  {isAutoPlaying ? '⏸ Pause Auto Scroll' : '▶ Auto Scroll'}
                 </button>
 
                 <button

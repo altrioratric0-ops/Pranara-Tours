@@ -294,15 +294,6 @@ export default function CreativeGallery() {
             <button 
               type="button" 
               className="gallery-inline-nav" 
-              onClick={() => setIsPlaying(!isPlaying)}
-              aria-label={isPlaying ? "Pause Auto Scroll" : "Play Auto Scroll"}
-              title={isPlaying ? "Pause Auto Scroll" : "Play Auto Scroll"}
-            >
-              {isPlaying ? '⏸' : '▶'}
-            </button>
-            <button 
-              type="button" 
-              className="gallery-inline-nav" 
               onClick={handleNext}
               aria-label="Next Destination"
               title="Next Destination"
