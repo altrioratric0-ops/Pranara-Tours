@@ -1,0 +1,14 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /tour/
+Allow: /gallery/
+
+# Disallow private auth and API endpoints
+Disallow: /signin
+Disallow: /login
+Disallow: /api/
+
+# Sitemap reference
+Sitemap: https://pranaratours.com/sitemap.xml

@@ -34,8 +34,22 @@ export default function FAQ() {
     }
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": FAQS.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
   return (
     <section className="faq-section" id="faq" style={{ padding: '90px 0', background: 'var(--cream)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <div className="container" style={{ maxWidth: '800px' }}>
         <h2 className="section-title">Frequently Asked <span className="accent">Questions</span></h2>
         <p className="section-subtitle">Got questions? We have compiled answers to help you plan your journey</p>

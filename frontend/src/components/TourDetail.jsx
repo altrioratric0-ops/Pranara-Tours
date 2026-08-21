@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { fetchTour } from '../api/client';
-
+import SEO from './SEO';
 
 export default function TourDetail() {
   const { id } = useParams();
@@ -21,6 +21,7 @@ export default function TourDetail() {
   if (loading) {
     return (
       <div className="tour-detail-loading">
+        <SEO title="Loading Tour Details | Pranara Travel Co." noindex={true} />
         <div className="container" style={{ textAlign: 'center', padding: '120px 24px' }}>
           <div className="spinner"></div>
           <p style={{ marginTop: '16px', color: '#64748b' }}>Loading tour details...</p>
@@ -32,6 +33,7 @@ export default function TourDetail() {
   if (!tour) {
     return (
       <div className="tour-detail-error">
+        <SEO title="Tour Package Not Found | Pranara Travel Co." noindex={true} />
         <div className="container" style={{ textAlign: 'center', padding: '120px 24px' }}>
           <h2>Tour Not Found</h2>
           <p style={{ color: '#64748b', margin: '16px 0' }}>The tour package you're looking for doesn't exist or has been removed.</p>
@@ -49,8 +51,63 @@ export default function TourDetail() {
     navigate('/?book=' + tour.id);
   };
 
+  const tourSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TouristTrip",
+        "@id": `https://pranaratours.com/tour/${id}#trip`,
+        "name": tour.title,
+        "description": tour.description,
+        "image": tour.image_url ? [tour.image_url] : [],
+        "offers": {
+          "@type": "Offer",
+          "price": tour.price,
+          "priceCurrency": "INR",
+          "availability": "https://schema.org/InStock",
+          "url": `https://pranaratours.com/tour/${id}`
+        },
+        "provider": {
+          "@type": "TravelAgency",
+          "name": "Pranara Travel Co.",
+          "url": "https://pranaratours.com"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://pranaratours.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Packages",
+            "item": "https://pranaratours.com/#packages"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": tour.title,
+            "item": `https://pranaratours.com/tour/${id}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="tour-detail-page">
+      <SEO
+        title={`${tour.title} | Kerala Tour Packages | Pranara Travel Co.`}
+        description={tour.description ? tour.description.substring(0, 160) : `Book ${tour.title} with Pranara Travel Co. Customized Kerala tour experience in ${tour.location || 'Kerala'}.`}
+        canonical={`https://pranaratours.com/tour/${id}`}
+        ogImage={tour.image_url || '/assets/insta_resort.png'}
+        jsonLd={tourSchema}
+      />
 
       {/* ─── Hero Banner ─── */}
       <section

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function TermsConditions() {
   const [accepted, setAccepted] = useState(false);
@@ -29,6 +30,11 @@ export default function TermsConditions() {
 
   return (
     <section className="terms-page-section">
+      <SEO
+        title="Terms & Conditions | Pranara Travel Co."
+        description="Read the terms and conditions for booking Kerala tour packages and travel experiences with Pranara Travel Co."
+        canonical="https://pranaratours.com/terms"
+      />
       <div className="container terms-container-box">
         <div className="terms-header">
           <span className="terms-badge">LEGAL COMPLIANCE</span>

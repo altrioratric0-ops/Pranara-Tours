@@ -278,8 +278,8 @@ export default function CreativeGallery() {
             transform: `translate(${parallax.x * 16}px, ${parallax.y * 16}px)`
           }}
         >
-          <h1>{activeDest.name}</h1>
-          <h2>{activeDest.tagline}</h2>
+          <h2 className="gallery-title">{activeDest.name}</h2>
+          <h3 className="gallery-tagline">{activeDest.tagline}</h3>
           <p>{activeDest.desc}</p>
 
           <button onClick={() => handleExploreClick(activeDest)} className="gallery-cta">
@@ -304,7 +304,7 @@ export default function CreativeGallery() {
                   className={`gallery-card-item ${isActive ? 'active' : ''} ${isPrev ? 'prev' : isNext ? 'next' : ''}`}
                   onClick={() => handleSelect(destination, idx)}
                 >
-                  <img src={destination.thumb} alt={destination.name} />
+                  <img src={destination.thumb} alt={`${destination.name} - Munnar Kerala Destination`} loading="lazy" />
                   <div className="gallery-card-gradient" />
                   <span className="gallery-card-title">{destination.name}</span>
                 </button>

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from './SEO';
 
 export default function PrivacyPolicy() {
   useEffect(() => {
@@ -8,6 +9,11 @@ export default function PrivacyPolicy() {
 
   return (
     <section className="terms-page-section">
+      <SEO
+        title="Privacy Policy | Pranara Travel Co."
+        description="Read the Privacy Policy of Pranara Travel Co. to learn how we protect your personal information and privacy."
+        canonical="https://pranaratours.com/privacy"
+      />
       <div className="container terms-container-box">
         <div className="terms-header">
           <span className="terms-badge">PRIVACY &amp; DATA PROTECTION</span>

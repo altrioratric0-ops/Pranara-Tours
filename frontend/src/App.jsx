@@ -25,15 +25,66 @@ import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
 import TermsConditions from './components/TermsConditions';
 import PrivacyPolicy from './components/PrivacyPolicy';
-import CookiePolicy from './components/CookiePolicy';
+import SEO from './components/SEO';
+import NotFoundPage from './components/NotFoundPage';
 
 const API_BASE = import.meta.env.PROD
   ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
   : '';
 
 function HomePage() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TravelAgency",
+        "@id": "https://pranaratours.com/#organization",
+        "name": "Pranara Travel Co.",
+        "url": "https://pranaratours.com",
+        "logo": "https://pranaratours.com/assets/logo.png",
+        "image": "https://pranaratours.com/assets/insta_resort.png",
+        "description": "Premium Kerala travel planner specializing in customized tour packages for Munnar, Kolukkumalai, Alleppey backwaters, Thekkady, and Wayanad.",
+        "telephone": "+91-6374502007",
+        "email": "pranara@travel.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Munnar",
+          "addressLocality": "Munnar",
+          "addressRegion": "Kerala",
+          "postalCode": "685612",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 10.0616615,
+          "longitude": 77.0129831
+        },
+        "sameAs": [
+          "https://www.instagram.com/pranara_co",
+          "https://facebook.com",
+          "https://wa.me/916374502007"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://pranaratours.com/#website",
+        "url": "https://pranaratours.com",
+        "name": "Pranara Travel Co.",
+        "publisher": {
+          "@id": "https://pranaratours.com/#organization"
+        }
+      }
+    ]
+  };
+
   return (
     <>
+      <SEO
+        title="Pranara | Premium Kerala Travel Planner & Customized Tour Packages"
+        description="Plan your dream Kerala vacation with Pranara. Handcrafted tour packages for Munnar tea hills, Kolukkumalai sunrise, Alleppey backwater houseboats, and Wayanad."
+        canonical="https://pranaratours.com/"
+        jsonLd={homeSchema}
+      />
       <Hero />
       <About />
       <SeasonalOffer />
@@ -148,6 +199,11 @@ function AuthPage({ mode }) {
 
   return (
     <div className="auth-page-shell">
+      <SEO
+        title={mode === 'signin' ? 'Sign Up | Pranara Travel Co.' : 'Login | Pranara Travel Co.'}
+        description="Access your Pranara Travel account to manage bookings and customized Kerala tour packages."
+        noindex={true}
+      />
       <div className="auth-card">
         <Link to="/" className="auth-back-link">← Back Home</Link>
         {pendingVerification ? (
@@ -418,6 +474,7 @@ function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/cookies" element={<CookiePolicy />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
       {/* Floating WhatsApp Logo */}
