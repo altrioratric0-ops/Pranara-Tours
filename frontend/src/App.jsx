@@ -25,6 +25,7 @@ import Footer from './components/Footer';
 import TourDetail from './components/TourDetail';
 import TermsConditions from './components/TermsConditions';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import CookiePolicy from './components/CookiePolicy';
 import SEO from './components/SEO';
 import NotFoundPage from './components/NotFoundPage';
 
