@@ -97,7 +97,7 @@ export default function SeasonalOffer() {
 
               {/* CTA Button */}
               <a 
-                href="https://wa.me/916374502007" 
+                href={`https://wa.me/916374502007?text=${encodeURIComponent('Hello Pranara Travel Co.! I would like to inquire about your seasonal package deal and tour offers.')}`}
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="offers-cta-btn"
