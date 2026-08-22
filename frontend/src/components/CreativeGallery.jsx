@@ -211,7 +211,7 @@ export default function CreativeGallery() {
       if (userInteractionTimer.current) clearTimeout(userInteractionTimer.current);
       userInteractionTimer.current = setTimeout(() => {
         setIsHovered(false);
-      }, 3500);
+      }, 2000);
     }
   };
 
