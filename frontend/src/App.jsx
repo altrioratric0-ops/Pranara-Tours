@@ -480,7 +480,7 @@ function App() {
       <Footer />
       {/* Floating WhatsApp Logo */}
       <a
-        href={`https://wa.me/916374502007?text=${encodeURIComponent('Hello Pranara Travel Co.! I would like to inquire about your Kerala tour packages and customized itineraries. Please share details and pricing.')}`}
+        href={`https://wa.me/916374502007?text=${encodeURIComponent('Hello Pranara! I would like to inquire about your Kerala tour packages and customized itineraries. Please share details and pricing.')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
