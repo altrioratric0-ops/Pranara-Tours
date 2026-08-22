@@ -5,36 +5,6 @@ import { fetchTestimonials, submitTestimonial } from '../api/client';
 /* ─── Static fallback testimonials ─── */
 const STATIC_TESTIMONIALS = [
   {
-    id: 'raja-review',
-    name: 'Raja & Family',
-    location: 'Chennai, Tamil Nadu',
-    destination: 'Munnar Tea Estates & Kolukkumalai Safari',
-    avatar: '/assets/tour_munnar.png',
-    rating: 5,
-    quote: 'Booking our Munnar holiday with Pranara Tours was an absolute highlight! The 4x4 Thar jeep drive to Kolukkumalai cloud sunrise, guided tea plantation walks, and local warmth made this trip truly unforgettable for our family.',
-    tagline: 'FAMILY TEA SAFARI',
-  },
-  {
-    id: 'mala-review',
-    name: 'Mala & Friends',
-    location: 'Bengaluru, India',
-    destination: 'Attukad Waterfall & Hidden Trails',
-    avatar: '/assets/tour_attukad_waterfalls.jpeg',
-    rating: 5,
-    quote: 'From misty morning trails to private tea estate retreats, Pranara curated every single detail with immense care. Highly recommended for anyone visiting Munnar!',
-    tagline: 'NATURE & WATERFALL ESCAPE',
-  },
-  {
-    id: 'arthi-review',
-    name: 'Arthi S.',
-    location: 'Coimbatore, India',
-    destination: 'High-Altitude Viewpoints & Trekking',
-    avatar: '/assets/tour_Kolukkumalai.jpg',
-    rating: 5,
-    quote: 'Standing above the clouds and watching the golden sunrise in Munnar was surreal. Pranara’s local guides know every secret trail and history spot!',
-    tagline: 'SUNRISE SUMMIT RETREAT',
-  },
-  {
     id: 1,
     name: 'The Thompson Family',
     location: 'London, United Kingdom',
