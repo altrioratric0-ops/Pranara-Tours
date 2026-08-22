@@ -8247,320 +8247,124 @@ h4 {
 }
 
 /* ==========================================================================
-   MUNNAR EXPERIENCE MAP SECTION (LUXURY DARK & HIGH-RES RESPONSIVE)
+   MUNNAR EXPERIENCE MAP CARD (MATCHING HERITAGE STORY CARD DIMENSIONS)
    ========================================================================== */
 
-.munnar-map-section {
-  position: relative;
-  width: 100%;
-  padding: clamp(32px, 5vw, 56px) clamp(16px, 4vw, 40px);
-  background: radial-gradient(circle at 50% 20%, #0d1e30 0%, #040911 100%);
-  border-radius: 28px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  color: #f8fafc;
-  overflow: hidden;
-  margin: 10px 0;
-}
-
-.munnar-map-container {
-  max-width: 1320px;
-  margin: 0 auto;
+.munnar-map-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.munnar-map-header {
-  text-align: center;
-  max-width: 720px;
-  margin: 0 auto 8px;
+.munnar-map-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
 }
 
-.munnar-map-header .map-badge {
-  display: inline-block;
-  padding: 5px 14px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  color: #f59e0b;
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  border-radius: 20px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
+.munnar-map-card .map-header {
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 5;
 }
 
-.munnar-map-header .map-title {
+.munnar-map-card .map-heading {
   font-family: var(--font-heading);
-  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
-  font-weight: 800;
-  color: #ffffff;
+  color: var(--primary-dark);
+  font-size: 1.45rem;
+  margin: 0 0 4px 0;
+  font-weight: 700;
   letter-spacing: 0.04em;
-  margin: 0 0 8px;
-  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
-.munnar-map-header .map-subtitle {
-  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
-  color: #94a3b8;
-  line-height: 1.5;
+.munnar-map-card .map-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.4;
   margin: 0;
 }
 
-/* Card Wrapper with Map Image and Sidebar Drawer */
-.munnar-map-card-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.munnar-map-card .map-visual-container {
+  flex: 1;
   width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-top: 4px;
 }
 
-.map-image-container {
+.munnar-map-card .map-image-wrapper {
   position: relative;
   width: 100%;
-  border-radius: 20px;
+  height: 100%;
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   background: #070e17;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.map-image-container:hover {
-  transform: translateY(-2px);
-  border-color: rgba(245, 158, 11, 0.45);
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.65);
-}
-
-.munnar-map-img {
+.munnar-map-card .munnar-map-img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  object-fit: contain;
-  border-radius: 20px;
+  border-radius: 16px;
   transition: transform 0.4s ease;
 }
 
-.map-image-container:hover .munnar-map-img {
-  transform: scale(1.015);
+.munnar-map-card:hover .munnar-map-img {
+  transform: scale(1.03);
 }
 
-.map-hover-overlay {
+.munnar-map-card .map-hover-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(4, 9, 17, 0) 50%, rgba(4, 9, 17, 0.85) 100%);
+  background: rgba(4, 9, 17, 0.4);
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding: 20px;
-  opacity: 0.95;
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.map-zoom-prompt {
+.munnar-map-card:hover .map-hover-overlay {
+  opacity: 1;
+}
+
+.munnar-map-card .map-zoom-prompt {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(15, 23, 42, 0.88);
-  border: 1px solid rgba(245, 158, 11, 0.45);
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(245, 158, 11, 0.6);
   color: #f59e0b;
   font-weight: 700;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   border-radius: 30px;
   backdrop-filter: blur(8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transform: translateY(4px);
+  transition: transform 0.25s ease;
 }
 
-.map-image-container:hover .map-zoom-prompt {
-  background: rgba(245, 158, 11, 0.25);
-  color: #ffffff;
-  transform: scale(1.04);
-}
-
-/* Experience Drawer and Chips */
-.map-exp-drawer {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: clamp(16px, 3vw, 24px);
-  backdrop-filter: blur(12px);
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.map-exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.exp-drawer-title {
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: #f59e0b;
-  margin: 0;
-}
-
-.exp-drawer-tip {
-  font-size: 0.8rem;
-  color: #94a3b8;
-}
-
-.map-exp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 10px;
-}
-
-.exp-chip {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #e2e8f0;
-  text-align: left;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.exp-chip:hover, .exp-chip.active {
-  background: rgba(245, 158, 11, 0.18);
-  border-color: rgba(245, 158, 11, 0.5);
-  transform: translateY(-2px);
-}
-
-.chip-num {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #f59e0b;
-  background: rgba(245, 158, 11, 0.2);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 4px;
-}
-
-.chip-name {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-}
-
-.chip-dist {
-  font-size: 0.72rem;
-  color: #94a3b8;
-  margin-top: 3px;
-}
-
-.map-selected-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 14px 18px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(15, 23, 42, 0.8) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  border-radius: 14px;
-  margin-top: 6px;
-  flex-wrap: wrap;
-}
-
-.selected-card-badge {
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #f59e0b;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 2px;
-}
-
-.selected-card-title {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #ffffff;
-  margin: 0 0 2px;
-}
-
-.selected-card-dist {
-  font-size: 0.8rem;
-  color: #cbd5e1;
-  font-weight: 600;
-}
-
-.selected-card-desc {
-  font-size: 0.85rem;
-  color: #94a3b8;
-  margin: 4px 0 0;
-}
-
-.selected-card-cta {
-  padding: 10px 18px;
-  background: #f59e0b;
-  color: #070e17;
-  font-weight: 700;
-  font-size: 0.85rem;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.2s;
-  white-space: nowrap;
-}
-
-.selected-card-cta:hover {
-  background: #fbbf24;
-  transform: translateX(3px);
-}
-
-/* Legend Footer */
-.map-footer-legend {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 14px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.legend-icon {
-  font-size: 1.3rem;
-}
-
-.legend-item strong {
-  display: block;
-  font-size: 0.82rem;
-  color: #f59e0b;
-}
-
-.legend-item p {
-  font-size: 0.78rem;
-  color: #94a3b8;
-  margin: 0;
+.munnar-map-card:hover .map-zoom-prompt {
+  transform: translateY(0);
 }
 
 /* Fullscreen Lightbox Modal */
@@ -8644,19 +8448,9 @@ h4 {
 }
 
 @media (max-width: 768px) {
-  .munnar-map-section {
-    border-radius: 20px;
-    padding: 24px 14px;
+  .munnar-map-card {
+    height: 400px;
+    padding: 24px;
   }
-  .map-exp-grid {
-    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  }
-  .map-selected-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .selected-card-cta {
-    width: 100%;
-    text-align: center;
-  }
-}
+}
+
