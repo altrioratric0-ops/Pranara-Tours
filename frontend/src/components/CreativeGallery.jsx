@@ -179,7 +179,7 @@ export default function CreativeGallery() {
 
     const interval = setInterval(() => {
       handleNext();
-    }, 2600);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [isVisible, isPlaying, isHovered, handleNext]);
