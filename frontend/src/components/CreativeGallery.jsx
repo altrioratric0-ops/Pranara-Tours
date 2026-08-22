@@ -281,27 +281,6 @@ export default function CreativeGallery() {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="gallery-controls-inline">
-            <button 
-              type="button" 
-              className="gallery-inline-nav" 
-              onClick={handlePrev}
-              aria-label="Previous Destination"
-              title="Previous Destination"
-            >
-              ↑
-            </button>
-            <button 
-              type="button" 
-              className="gallery-inline-nav" 
-              onClick={handleNext}
-              aria-label="Next Destination"
-              title="Next Destination"
-            >
-              ↓
-            </button>
-          </div>
-
           <div 
             className="gallery-card-row" 
             ref={cardRowRef}
