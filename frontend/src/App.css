@@ -8373,11 +8373,18 @@ h4 {
   inset: 0;
   background: rgba(3, 8, 15, 0.94);
   backdrop-filter: blur(16px);
-  z-index: 2000;
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 99999;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(16px, 3vw, 32px);
+  animation: mapModalFadeIn 0.2s ease-out;
+}
+
+@keyframes mapModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .map-lightbox-content {
@@ -8392,6 +8399,12 @@ h4 {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  animation: mapModalZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes mapModalZoom {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .map-lightbox-close {

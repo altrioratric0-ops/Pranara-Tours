@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function KeralaMap() {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -9,14 +10,22 @@ export default function KeralaMap() {
         setIsLightboxOpen(false);
       }
     };
+
     if (isLightboxOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
       window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
+
     return () => {
       document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isLightboxOpen]);
@@ -50,31 +59,33 @@ export default function KeralaMap() {
         </div>
       </div>
 
-      {/* Fullscreen Lightbox Modal */}
-      {isLightboxOpen && (
-        <div className="map-lightbox-overlay" onClick={() => setIsLightboxOpen(false)}>
-          <div className="map-lightbox-content" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="map-lightbox-close"
-              onClick={() => setIsLightboxOpen(false)}
-              aria-label="Close Map View"
-            >
-              &times;
-            </button>
-            <div className="map-lightbox-scroll">
-              <img
-                src="/assets/munnar_experience_map.jpg"
-                alt="Munnar Experience Map - Full Resolution"
-                className="map-lightbox-img"
-              />
+      {/* Fullscreen Lightbox Modal mounted at document.body via Portal */}
+      {isLightboxOpen &&
+        createPortal(
+          <div className="map-lightbox-overlay" onClick={() => setIsLightboxOpen(false)}>
+            <div className="map-lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button
+                type="button"
+                className="map-lightbox-close"
+                onClick={() => setIsLightboxOpen(false)}
+                aria-label="Close Map View"
+              >
+                &times;
+              </button>
+              <div className="map-lightbox-scroll">
+                <img
+                  src="/assets/munnar_experience_map.jpg"
+                  alt="Munnar Experience Map - Full Resolution"
+                  className="map-lightbox-img"
+                />
+              </div>
+              <div className="map-lightbox-caption">
+                <span>PRANARA BASE CAMP — MUNNAR EXPERIENCE MAP</span>
+              </div>
             </div>
-            <div className="map-lightbox-caption">
-              <span>PRANARA BASE CAMP — MUNNAR EXPERIENCE MAP</span>
-            </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </div>
   );
 }
