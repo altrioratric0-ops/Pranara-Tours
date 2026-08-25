@@ -152,13 +152,12 @@ export default function Navbar() {
               <span className="nav-label">About</span>
             </button>
             <button type="button" className={`nav-link${activeMenu === 'Tour Packages' ? ' active' : ''}`} onClick={() => handleSectionClick('packages')}>
-              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="13.5" cy="4" r="1.8" fill="currentColor" stroke="none" />
-                <path d="M19 4v16" />
-                <path d="M7 8.5C5.8 8.5 4.5 9.5 4.5 12c0 2.5 1.3 3.5 2.5 3.5" />
-                <path d="M12 7.5L9.5 13l3.5 3.5v4.5" />
-                <path d="M9.5 13L5.5 19.5" />
-                <path d="M10.5 9l3.5 2 5-1" />
+              <svg className="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="13.5" cy="3.5" r="2.3" />
+                <rect x="18" y="3.5" width="1.8" height="17" rx="0.9" />
+                <path d="M 6.8 8 C 5.3 8 4.2 9.2 4.2 11.5 C 4.2 13.8 5.3 15 6.8 15 C 7.5 15 8.1 14.7 8.5 14.1 L 8.5 10.9 C 8.1 10.3 7.5 8 6.8 8 Z" />
+                <path d="M 11.5 7 C 10.8 7 10.2 7.4 9.8 8 L 8.5 10 C 8.2 10.4 8.2 11 8.5 11.4 L 9.8 13.2 V 15.5 C 9.8 16 10.1 16.4 10.6 16.7 L 12.2 17.8 V 21 C 12.2 21.6 12.6 22 13.2 22 C 13.8 22 14.2 21.6 14.2 21 V 17.2 C 14.2 16.7 13.9 16.3 13.5 16 L 12.2 15.1 L 12.8 13.5 L 15.2 14.8 C 15.7 15.1 16.3 15 16.7 14.6 L 18 13 V 11 L 16.2 12.5 L 13.8 11.2 L 14.2 9.8 L 13.2 8.2 C 12.8 7.5 12.2 7 11.5 7 Z" />
+                <path d="M 9.5 14 L 6.2 19.5 C 5.9 20 6 20.6 6.5 21 C 7 21.3 7.6 21.2 8 20.7 L 11 15.5 Z" />
               </svg>
               <span className="nav-label">Tour Packages</span>
             </button>
