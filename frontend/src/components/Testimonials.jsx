@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { fetchTestimonials, submitTestimonial } from '../api/client';
 
+const FEATURED_VIDEO_URL = '/assets/munnar_video_testimonial.mp4';
+
 /* ─── Static fallback testimonials ─── */
 const STATIC_TESTIMONIALS = [
   {
@@ -388,6 +390,17 @@ export default function Testimonials() {
 
           <div className="header-nav-controls">
             <button
+              onClick={() => setVideoPlayingUrl(FEATURED_VIDEO_URL)}
+              className="write-review-btn"
+              title="Watch guest review"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              <span>Watch Review</span>
+            </button>
+
+            <button
               onClick={() => setIsModalOpen(true)}
               className="write-review-btn"
               title="Share your review"
@@ -518,7 +531,7 @@ export default function Testimonials() {
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z" />
                       </svg>
-                      <span>Watch Journey</span>
+                      <span>Watch Review</span>
                     </button>
                   )}
                 </div>
