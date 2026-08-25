@@ -518,22 +518,20 @@ export default function Testimonials() {
                     <p className="card-author-location">{item.location}</p>
                   </div>
 
-                  {/* Play video trigger if available */}
-                  {item.videoUrl && diff === 0 && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setVideoPlayingUrl(item.videoUrl);
-                      }}
-                      className="video-play-trigger-card"
-                      aria-label="Play video testimonial"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                      <span>Watch Review</span>
-                    </button>
-                  )}
+                  {/* Watch the featured review from every testimonial card */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVideoPlayingUrl(item.videoUrl || FEATURED_VIDEO_URL);
+                    }}
+                    className="video-play-trigger-card"
+                    aria-label="Watch guest review video"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span>Watch Review</span>
+                  </button>
                 </div>
               );
             })}
