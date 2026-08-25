@@ -1628,8 +1628,9 @@ h4 {
 
 /* Play video trigger overlay card */
 .video-play-trigger-card {
-  position: absolute;
-  bottom: 12px;
+  position: static;
+  margin-top: 10px;
+  flex-shrink: 0;
   background: rgba(47, 93, 80, 0.9);
   border: none;
   padding: 6px 12px;
@@ -8466,4 +8467,4 @@ h4 {
     padding: 24px;
   }
 }
-
+
