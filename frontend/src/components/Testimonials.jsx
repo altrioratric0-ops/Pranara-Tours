@@ -13,7 +13,7 @@ const STATIC_TESTIMONIALS = [
     rating: 4,
     quote: 'From the UK to the heart of Munnar! Every detail was handled with utmost elegance. The private tea estate tour and misty mountain views were breathtaking.',
     tagline: 'FAMILY SAFARI',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/munnar_video_testimonial.mp4'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.',
     tagline: 'RIVER & NATURE RETREAT',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/Ecopoint.mp4'
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'A perfect blend of luxury, adventure, and authentic Kerala heritage. Every detail was handled with care, making this our most memorable trip ever.',
     tagline: 'HERITAGE & COMFORT',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/Ecopoint_1.mp4'
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Standing above the clouds at Chokkarmudi Peak was surreal! It was more than just a trek—it was a soulful journey through untouched wilderness.',
     tagline: 'SUMMIT TREK EXPEDITION',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/Elephant.mp4'
   },
   {
     id: 5,
@@ -57,7 +57,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Our group trip to Munnar was an absolute blast! High-altitude viewpoints, walking through emerald tea gardens, and flawless private planning.',
     tagline: 'FRIENDSHIP ESCAPE',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/munnar_video_testimonial.mp4'
   },
   {
     id: 6,
@@ -68,7 +68,7 @@ const STATIC_TESTIMONIALS = [
     rating: 4,
     quote: 'Gliding silently through the backwaters on private houseboat at sunset was pure bliss. Pranara exceeded every expectation.',
     tagline: 'BACKWATER SANCTUARY',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/munnar_video_testimonial.mp4'
   },
   {
     id: 7,
@@ -79,7 +79,7 @@ const STATIC_TESTIMONIALS = [
     rating: 4,
     quote: 'A magical immersion into Kerala’s rich wildlife and treehouse resorts. Warm hospitality, exquisite cuisine, and flawless curation.',
     tagline: 'ECO RETREAT',
-    videoUrl: '/assets/munnar_video_testimonial.mp4'
+    videoUrl: '/assets/Testimonials/munnar_video_testimonial.mp4'
   },
 ];
 
