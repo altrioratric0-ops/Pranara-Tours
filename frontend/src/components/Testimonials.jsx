@@ -23,8 +23,7 @@ const STATIC_TESTIMONIALS = [
     avatar: '/assets/munnar_river_family.jpg',
     rating: 5,
     quote: 'Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.',
-    tagline: 'RIVER & NATURE RETREAT',
-    videoUrl: '/assets/munnar_video_testimonial_5.mp4'
+    tagline: 'RIVER & NATURE RETREAT'
   },
   {
     id: 3,
