@@ -5,9 +5,9 @@ Allow: /assets/
 Allow: /tour/
 Allow: /gallery/
 
-# Disallow private auth endpoints
-Disallow: /signin
-Disallow: /login
+# Allow auth and API endpoints
+Allow: /signin
+Allow: /login
 Allow: /api/
 
 # Sitemap reference
