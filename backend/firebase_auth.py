@@ -53,7 +53,7 @@ def firebase_required(f):
             # Map clerk_user_id to the Firebase UID to support existing database schema
             request.clerk_user_id = decoded_token.get("uid")
         except Exception as e:
-            return jsonify({"error": f"Unauthorized: Invalid or expired token: {str(e)}"}), 401
+            return jsonify({"error": "Unauthorized: Invalid or expired authentication token"}), 401
 
         return f(*args, **kwargs)
     return decorated
