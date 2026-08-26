@@ -50,13 +50,14 @@ export default function About() {
               loading="lazy"
               decoding="async"
               width="600"
-              height="400"
+              height="450"
               style={{
+                position: 'absolute',
+                inset: 0,
                 width: '100%',
                 height: '100%',
-                maxHeight: '420px',
                 objectFit: 'cover',
-                borderRadius: '16px'
+                display: 'block'
               }}
             />
           </div>
