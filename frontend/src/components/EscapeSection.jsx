@@ -33,7 +33,7 @@ const escapePackages = [
     title: 'TOUR & TRAVEL PACKAGES',
     subtitle: 'Curated journeys. Local stories.',
     checklist: ['Sightseeing', 'Local Experiences', 'Comfortable Travel'],
-    imageUrl: '/assets/tour_thekkady.png',
+    imageUrl: '/assets/Kolukkumalai/Kolukkumalai_4.jpeg',
     tagline: 'Comprehensive Sightseeing & Cultural Discovery of Munnar',
     overview: 'Experience the finest sights, sounds, and stories of Munnar and surrounding hotspots. From misty peak viewpoints and historical tea museums to wildlife sanctuaries and spice gardens, our expert local guides ensure a rich, hassle-free journey.',
     highlights: [
