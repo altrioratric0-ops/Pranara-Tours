@@ -63,7 +63,7 @@ export const DESTINATIONS = [
     desc: 'Immerse yourself in the charm of a traditional bamboo hut. A perfect escape from the hustle and bustle of city life.',
     bg: '/assets/tour_rustic_bamboo_hut.jpeg',
     thumb: '/assets/tour_rustic_bamboo_hut.jpeg',
-    images: ['/assets/tour_rustic_bamboo_hut.jpeg','/assets/bamboo_hut/bamboo_hut_1.jpeg','/assets/bamboo_hut/bamboo_hut_2.jpeg','/assets/bamboo_hut/bamboo_hut_3.jpeg','/assets/bamboo_hut/bamboo_hut_4.jpeg','/assets/bamboo_hut/bamboo_hut_5.jpeg','/assets/bamboo_hut/bamboo_hut_6.jpeg']
+    images: ['/assets/tour_rustic_bamboo_hut.jpeg','/assets/bamboo_hut/bamboo_hut_0.jpeg','/assets/bamboo_hut/bamboo_hut_2.jpeg','/assets/bamboo_hut/bamboo_hut_3.jpeg','/assets/bamboo_hut/bamboo_hut_1.jpeg']
   },
   {
     id: 'Echo Point',
@@ -71,9 +71,9 @@ export const DESTINATIONS = [
     name: 'Echo Point',
     tagline: 'Breathtaking Scenic Views',
     desc: 'Experience the stunning beauty of Munnar from one of the most popular viewpoints. Enjoy panoramic vistas and mist-covered mountains.',
-    bg: '/assets/tour_echo_ponit.jpeg',
-    thumb: '/assets/tour_echo_ponit.jpeg',
-    images: ['/assets/tour_echo_ponit.jpeg', '/assets/Eco point/Echopoint_1.jpeg','/assets/Eco point/Echopoint_2.jpeg','/assets/Eco point/Echopoint_3.jpeg','/assets/Eco point/Echopoint_5.jpeg','/assets/Eco point/Echopoint_6.jpeg','/assets/Eco point/Echopoint_7.jpeg','/assets/Eco point/Echopoint_8.jpeg','/assets/Eco point/Echopoint_9.jpeg','/assets/Eco point/Echopoint_10.jpeg','/assets/Eco point/Echopoint_11.jpeg','/assets/Eco point/Echopoint_12.jpeg', ]
+    bg: '/assets/tour_echo_point.jpeg',
+    thumb: '/assets/tour_echo_point.jpeg',
+    images: ['/assets/tour_echo_point.jpeg', '/assets/Eco point/Echopoint_1.jpeg','/assets/Eco point/Echopoint_2.jpeg','/assets/Eco point/Echopoint_3.jpeg','/assets/Eco point/Echopoint_5.jpeg','/assets/Eco point/Echopoint_6.jpeg','/assets/Eco point/Echopoint_7.jpeg','/assets/Eco point/Echopoint_8.jpeg','/assets/Eco point/Echopoint_9.jpeg','/assets/Eco point/Echopoint_10.jpeg','/assets/Eco point/Echopoint_11.jpeg','/assets/Eco point/Echopoint_12.jpeg', ]
   },
   {
     id: 'Flower Garden',
