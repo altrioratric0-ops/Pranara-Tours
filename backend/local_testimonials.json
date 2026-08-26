@@ -1,56 +1,62 @@
 [
-    {
-        "name": "raja",
-        "location": "Chennai",
-        "destination": "Munnar Tea Safari, Kerala",
-        "tagline": "MUNNAR \u2013 TEA GARDENS, ATTUKAD WATERFALLS & KOLUKKUMALAI",
-        "avatar": "/assets/logo.png",
-        "avatar_initials": "R",
-        "rating": 5,
-        "quote": "qwertuioplkjhgfdszxcvbnm",
-        "videoUrl": "",
-        "active": true,
-        "created_at": "2026-08-15T04:38:32.327219",
-        "id": 7
-    },
-    {
-        "id": 1,
-        "name": "The Thompson Family",
-        "location": "London, United Kingdom",
-        "avatar_initials": "TF",
-        "rating": 5,
-        "quote": "From the UK to the heart of Munnar. Thank you for letting us be part of your family's story. See you again, The Pranara Way."
-    },
-    {
-        "id": 2,
-        "name": "The Adhikari Family",
-        "location": "Mumbai, India",
-        "avatar_initials": "AF",
-        "rating": 5,
-        "quote": "Every journey becomes special because of the people in it. The pristine river streams, the lush green forests, and the memories we shared in Munnar. Thank you for letting Pranara be a part of yours. Until Next Time..."
-    },
-    {
-        "id": 3,
-        "name": "Mr. & Mrs. Sharma",
-        "location": "Delhi, India",
-        "avatar_initials": "MS",
-        "rating": 5,
-        "quote": "We are extremely satisfied with the excellent service provided by Mr. Pradeep. He was very patient and answered all our questions. His impressive knowledge of Munnar - history, culture, attractions & local insights - was outstanding. Professional, friendly, and dedicated throughout the trip, he made our visit to Munnar truly enjoyable and memorable. Highly recommend his services to all visitors!"
-    },
-    {
-        "id": 4,
-        "name": "Sarah, Marc & Amit",
-        "location": "Berlin, Germany",
-        "avatar_initials": "SMA",
-        "rating": 5,
-        "quote": "The trek to Chokkarmudi Peak was absolutely unforgettable! Every step was a new experience \u2014 the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful. It was more than just a trek, it was an emotion! Highly recommended for anyone who loves nature and adventure."
-    },
-    {
-        "id": 5,
-        "name": "Amal & Friends",
-        "location": "Chennai, India",
-        "avatar_initials": "AF",
-        "rating": 5,
-        "quote": "Our group trip to Munnar with Pranara was an absolute blast! From the high-altitude viewpoints to walking through the green tea gardens, the entire experience was perfectly planned and executed. The team made sure we captured the best memories."
-    }
+  {
+    "id": 1,
+    "name": "The Thompson Family",
+    "location": "London, United Kingdom",
+    "destination": "Munnar, Kerala",
+    "avatar_initials": "TF",
+    "rating": 5,
+    "quote": "Our journey from the UK to the beautiful hills of Munnar was truly unforgettable. From the stunning tea gardens to the peaceful mountain views, every moment was thoughtfully planned. Thank you to the Pranara team for making our family trip so special.",
+    "active": true
+  },
+  {
+    "id": 2,
+    "name": "The Adhikari Family",
+    "location": "Mumbai, India",
+    "destination": "Munnar, Kerala",
+    "avatar_initials": "AF",
+    "rating": 5,
+    "quote": "Munnar was even more beautiful than we imagined. The lush green forests, pristine streams, and peaceful surroundings made this trip truly memorable. The Pranara team made everything comfortable and enjoyable for our family.",
+    "active": true
+  },
+  {
+    "id": 3,
+    "name": "Mr. & Mrs. Sharma",
+    "location": "Delhi, India",
+    "destination": "Munnar, Kerala",
+    "avatar_initials": "MS",
+    "rating": 5,
+    "quote": "We were extremely satisfied with the service provided by the Pranara team. Our guide was patient, professional, and very knowledgeable about Munnar's history, culture, attractions, and local experiences. His friendly approach made our trip enjoyable and memorable. Highly recommended.",
+    "active": true
+  },
+  {
+    "id": 4,
+    "name": "Sarah, Marc & Amit",
+    "location": "Berlin, Germany",
+    "destination": "Chokkarmudi Peak, Munnar",
+    "avatar_initials": "SMA",
+    "rating": 5,
+    "quote": "The trek to Chokkarmudi Peak was absolutely unforgettable. The fresh mountain air, breathtaking views, and sense of achievement at the summit made every step worthwhile. Our guide was supportive, patient, and ensured that the entire experience was safe and enjoyable. A wonderful adventure for anyone who loves nature and the mountains.",
+    "active": true
+  },
+  {
+    "id": 5,
+    "name": "Amal & Friends",
+    "location": "Chennai, India",
+    "destination": "Munnar, Kerala",
+    "avatar_initials": "AF",
+    "rating": 5,
+    "quote": "Our group trip to Munnar with Pranara was an amazing experience. From the beautiful viewpoints and scenic tea gardens to the well-planned activities, everything was handled perfectly. The team was friendly, professional, and made sure we created plenty of wonderful memories together.",
+    "active": true
+  },
+  {
+    "id": 6,
+    "name": "Raja",
+    "location": "Chennai, India",
+    "destination": "Munnar Tea Safari, Kerala",
+    "avatar_initials": "R",
+    "rating": 5,
+    "quote": "The Munnar Tea Safari was a wonderful experience. Exploring the beautiful tea gardens and enjoying the peaceful mountain scenery made the journey truly memorable. The experience was well organized and the Pranara team was very helpful throughout the trip.",
+    "active": true
+  }
 ]
