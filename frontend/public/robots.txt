@@ -11,4 +11,4 @@ Disallow: /login
 Disallow: /api/
 
 # Sitemap reference
-Sitemap: https://pranaratours.com/sitemap.xml
+Sitemap: https://www.pranaramunnar.com/sitemap.xml

@@ -38,11 +38,11 @@ export default function SubGallery() {
     "@graph": [
       {
         "@type": "ImageGallery",
-        "@id": `https://pranaratours.com/gallery/${categoryId}#gallery`,
+        "@id": `https://www.pranaramunnar.com/gallery/${categoryId}#gallery`,
         "name": `${destination.name} Gallery`,
         "description": destination.desc,
-        "url": `https://pranaratours.com/gallery/${categoryId}`,
-        "image": images.map((img) => `https://pranaratours.com${img.startsWith('/') ? '' : '/'}${img}`)
+        "url": `https://www.pranaramunnar.com/gallery/${categoryId}`,
+        "image": images.map((img) => `https://www.pranaramunnar.com${img.startsWith('/') ? '' : '/'}${img}`)
       },
       {
         "@type": "BreadcrumbList",
@@ -51,19 +51,19 @@ export default function SubGallery() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://pranaratours.com/"
+            "item": "https://www.pranaramunnar.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Gallery",
-            "item": "https://pranaratours.com/#gallery"
+            "item": "https://www.pranaramunnar.com/#gallery"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": destination.name,
-            "item": `https://pranaratours.com/gallery/${categoryId}`
+            "item": `https://www.pranaramunnar.com/gallery/${categoryId}`
           }
         ]
       }
@@ -73,9 +73,9 @@ export default function SubGallery() {
   return (
     <section style={{ padding: '100px 20px 40px', minHeight: '100vh', background: '#07111d', color: '#f8fafc' }}>
       <SEO
-        title={`${destination.name} Photos & Gallery | Kerala Tourism | Pranara`}
+        title={`${destination.name} Photos & Travel Guide | Kerala Tourism | Prana Munnar`}
         description={`Explore stunning photos and scenic views of ${destination.name} in Kerala. ${destination.desc}`}
-        canonical={`https://pranaratours.com/gallery/${categoryId}`}
+        canonical={`https://www.pranaramunnar.com/gallery/${categoryId}`}
         ogImage={destination.bg || images[0]}
         jsonLd={gallerySchema}
       />

@@ -60,7 +60,15 @@ export default function NotFoundPage() {
             border: '1px solid #cbd5e1',
             color: '#334155'
           }}>
-            Browse Tour Packages
+            Browse Packages
+          </Link>
+          <Link to="/#gallery" className="btn btn-secondary" style={{
+            textDecoration: 'none',
+            background: '#ffffff',
+            border: '1px solid #cbd5e1',
+            color: '#334155'
+          }}>
+            Photo Gallery
           </Link>
         </div>
       </div>

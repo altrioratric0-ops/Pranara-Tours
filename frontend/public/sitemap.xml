@@ -4,132 +4,132 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://pranaratours.com/</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://pranaratours.com/assets/logo.png</image:loc>
+      <image:loc>https://www.pranaramunnar.com/assets/logo.png</image:loc>
       <image:title>Pranara Travel Co. Logo</image:title>
     </image:image>
   </url>
 
   <!-- Tour Packages -->
   <url>
-    <loc>https://pranaratours.com/tour/munnar-mist</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/munnar-mist</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/tour/kolukkumalai-jeep-safari</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/kolukkumalai-jeep-safari</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/tour/alleppey-houseboat-cruises</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/alleppey-houseboat-cruises</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/tour/thekkady-wildlife-safari</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/thekkady-wildlife-safari</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/tour/wayanad-hills-waterfalls</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/wayanad-hills-waterfalls</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/tour/vagamon-pine-forests-meadows</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/tour/vagamon-pine-forests-meadows</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Destination Galleries -->
   <url>
-    <loc>https://pranaratours.com/gallery/munnar</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/munnar</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/kolukkumalai</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/kolukkumalai</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/attukad-waterfalls</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/attukad-waterfalls</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/tea-estate</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/tea-estate</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/pothamedu-view</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/pothamedu-view</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/bamboo-hut</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/bamboo-hut</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/echo-point</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/echo-point</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/flower-garden</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/flower-garden</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/mattupetty-dam</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/mattupetty-dam</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/gallery/eravikulam-national-park</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/gallery/eravikulam-national-park</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Legal & Policy Pages -->
   <url>
-    <loc>https://pranaratours.com/terms</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/terms</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/privacy</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/privacy</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://pranaratours.com/cookies</loc>
-    <lastmod>2026-08-21</lastmod>
+    <loc>https://www.pranaramunnar.com/cookies</loc>
+    <lastmod>2026-08-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>

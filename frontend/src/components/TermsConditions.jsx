@@ -33,7 +33,7 @@ export default function TermsConditions() {
       <SEO
         title="Terms & Conditions | Pranara Travel Co."
         description="Read the terms and conditions for booking Kerala tour packages and travel experiences with Pranara Travel Co."
-        canonical="https://pranaratours.com/terms"
+        canonical="https://www.pranaramunnar.com/terms"
       />
       <div className="container terms-container-box">
         <div className="terms-header">

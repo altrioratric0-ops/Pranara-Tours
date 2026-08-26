@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 
-const DEFAULT_DOMAIN = 'https://pranaratours.com';
+const DEFAULT_DOMAIN = 'https://www.pranaramunnar.com';
 
 export default function SEO({
-  title = "Pranara | Premium Kerala Travel Planner & Tour Packages",
-  description = "Discover the magic of Kerala with Pranara. Customized tour packages for Munnar, Kolukkumalai, Alleppey backwaters, Thekkady, and Wayanad with 24/7 travel support.",
-  keywords = "Kerala travel, Munnar tours, Kolukkumalai sunrise trek, Alleppey houseboat, Kerala tour packages, Wayanad trips, Pranara Tours",
+  title = "Pranara | Premium Kerala & Munnar Tour Packages | Customized Travel Planner",
+  description = "Discover the magic of Kerala with Prana Munnar. Customized tour packages for Munnar tea hills, Kolukkumalai jeep safari, Alleppey backwaters, Thekkady, and Wayanad.",
+  keywords = "Kerala travel, Munnar tour packages, Prana Munnar, Kolukkumalai jeep safari, Alleppey houseboat cruise, Wayanad tours, Pranara Travel",
   canonical,
   noindex = false,
   ogTitle,
   ogDescription,
-  ogImage = "/assets/insta_resort.png",
+  ogImage = "/assets/logo.png",
   ogType = "website",
   jsonLd = null,
 }) {
@@ -36,10 +36,7 @@ export default function SEO({
     updateMetaTag('meta[name="robots"]', 'name', 'robots', noindex ? 'noindex, follow' : 'index, follow');
 
     // 3. Canonical URL
-    const currentOrigin = window.location.origin && window.location.origin.startsWith('http')
-      ? window.location.origin
-      : DEFAULT_DOMAIN;
-    const targetCanonical = canonical || `${currentOrigin}${window.location.pathname}`;
+    const targetCanonical = canonical || `${DEFAULT_DOMAIN}${window.location.pathname}`;
     let canonicalEl = document.head.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
@@ -53,7 +50,7 @@ export default function SEO({
     const finalOgDesc = ogDescription || description;
     const absoluteOgImage = ogImage.startsWith('http')
       ? ogImage
-      : `${currentOrigin}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
+      : `${DEFAULT_DOMAIN}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`;
 
     updateMetaTag('meta[property="og:title"]', 'property', 'og:title', finalOgTitle);
     updateMetaTag('meta[property="og:description"]', 'property', 'og:description', finalOgDesc);

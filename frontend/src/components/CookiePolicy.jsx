@@ -12,7 +12,7 @@ export default function CookiePolicy() {
       <SEO
         title="Cookie Policy | Pranara Travel Co."
         description="Read the Cookie Policy of Pranara Travel Co. to learn how we use cookies and essential tracking technologies."
-        canonical="https://pranaratours.com/cookies"
+        canonical="https://www.pranaramunnar.com/cookies"
       />
       <div className="container terms-container-box">
         <div className="terms-header">

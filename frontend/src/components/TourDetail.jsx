@@ -56,21 +56,21 @@ export default function TourDetail() {
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://pranaratours.com/tour/${id}#trip`,
+        "@id": `https://www.pranaramunnar.com/tour/${id}#trip`,
         "name": tour.title,
         "description": tour.description,
-        "image": tour.image_url ? [tour.image_url] : [],
+        "image": tour.image_url ? [tour.image_url.startsWith('http') ? tour.image_url : `https://www.pranaramunnar.com${tour.image_url}`] : [],
         "offers": {
           "@type": "Offer",
           "price": tour.price,
           "priceCurrency": "INR",
           "availability": "https://schema.org/InStock",
-          "url": `https://pranaratours.com/tour/${id}`
+          "url": `https://www.pranaramunnar.com/tour/${id}`
         },
         "provider": {
           "@type": "TravelAgency",
           "name": "Pranara Travel Co.",
-          "url": "https://pranaratours.com"
+          "url": "https://www.pranaramunnar.com"
         }
       },
       {
@@ -80,19 +80,19 @@ export default function TourDetail() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://pranaratours.com/"
+            "item": "https://www.pranaramunnar.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Packages",
-            "item": "https://pranaratours.com/#packages"
+            "item": "https://www.pranaramunnar.com/#packages"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": tour.title,
-            "item": `https://pranaratours.com/tour/${id}`
+            "item": `https://www.pranaramunnar.com/tour/${id}`
           }
         ]
       }
@@ -102,10 +102,10 @@ export default function TourDetail() {
   return (
     <div className="tour-detail-page">
       <SEO
-        title={`${tour.title} | Kerala Tour Packages | Pranara Travel Co.`}
-        description={tour.description ? tour.description.substring(0, 160) : `Book ${tour.title} with Pranara Travel Co. Customized Kerala tour experience in ${tour.location || 'Kerala'}.`}
-        canonical={`https://pranaratours.com/tour/${id}`}
-        ogImage={tour.image_url || '/assets/insta_resort.png'}
+        title={`${tour.title} | Kerala Tour Packages | Prana Munnar`}
+        description={tour.description ? tour.description.substring(0, 160) : `Book ${tour.title} with Prana Munnar. Customized Kerala tour experience in ${tour.location || 'Kerala'}.`}
+        canonical={`https://www.pranaramunnar.com/tour/${id}`}
+        ogImage={tour.image_url || '/assets/logo.png'}
         jsonLd={tourSchema}
       />
 
@@ -217,27 +217,33 @@ export default function TourDetail() {
           <h2 className="detail-section-title">Photo Gallery</h2>
           <div className="tour-gallery-grid">
             {[
-              { src: '/assets/munnar_top_station.png', alt: 'Top Station Valley View' },
-              { src: '/assets/munnar_kolukkumalai.png', alt: 'Kolukkumalai Sunrise above the clouds' },
-              { src: '/assets/munnar_tea_museum.png', alt: 'Munnar Tea Museum & Gardens' },
-              { src: '/assets/munnar_eravikulam.png', alt: 'Eravikulam National Park Nilgiri Tahr' },
-              { src: '/assets/munnar_mattupetty.png', alt: 'Mattupetty Dam & Lake' },
-              { src: '/assets/munnar_attukad.png', alt: 'Attukad Waterfalls' }
+              { src: '/assets/munnar_top_station.png', alt: 'Munnar Top Station Valley View - Pranara Tours' },
+              { src: '/assets/munnar_kolukkumalai.png', alt: 'Kolukkumalai Sunrise above the clouds jeep safari' },
+              { src: '/assets/munnar_tea_museum.png', alt: 'Munnar Tea Museum & Gardens experience' },
+              { src: '/assets/munnar_eravikulam.png', alt: 'Eravikulam National Park Nilgiri Tahr wildlife' },
+              { src: '/assets/munnar_mattupetty.png', alt: 'Mattupetty Dam & Lake boating' },
+              { src: '/assets/munnar_attukad.png', alt: 'Attukad Waterfalls scenic spot' }
             ].map((img, i) => (
               <div className="tour-gallery-item" key={i}>
-                <div
+                <img
+                  src={img.src}
+                  alt={img.alt}
                   className="tour-gallery-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="266"
                   style={{
-                    background: `url(${img.src}) center/cover no-repeat`,
-                    paddingBottom: '66%',
+                    width: '100%',
+                    height: '220px',
+                    objectFit: 'cover',
                     borderRadius: '12px',
-                    overflow: 'hidden',
-                    transition: 'transform 0.3s',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    transition: 'transform 0.3s'
                   }}
                   onClick={() => window.open(img.src, '_blank')}
                   title={img.alt}
-                ></div>
+                />
               </div>
             ))}
           </div>

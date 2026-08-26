@@ -59,6 +59,10 @@ export default function Footer() {
                   src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0a2a19&data=${encodeURIComponent("https://www.google.com/maps/place/Pranara+Munnar/@10.0616148,77.0025719,15z/data=!4m6!3m5!1s0x3b07998bc4d950a7:0xcba33f03627c5605!8m2!3d10.0616615!4d77.0129831!16s%2Fg%2F11zh69596t?entry=ttu&g_ep=EgoyMDI2MDgwMy4wIKXMDSoASAFQAw%3D%3D")}`}
                   alt="Pranara Munnar Google Maps Location QR Code"
                   className="footer-qr-img"
+                  loading="lazy"
+                  decoding="async"
+                  width="160"
+                  height="160"
                 />
               </div>
             </a>
