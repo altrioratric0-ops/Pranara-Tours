@@ -63,7 +63,7 @@ export const DESTINATIONS = [
     desc: 'Immerse yourself in the charm of a traditional bamboo hut. A perfect escape from the hustle and bustle of city life.',
     bg: '/assets/tour_rustic_bamboo_hut.jpeg',
     thumb: '/assets/tour_rustic_bamboo_hut.jpeg',
-    images: ['/assets/tour_rustic_bamboo_hut.jpeg','/assets/bamboo_hut/bamboo_hut_0.jpeg','/assets/bamboo_hut/bamboo_hut_2.jpeg','/assets/bamboo_hut/bamboo_hut_3.jpeg','/assets/bamboo_hut/bamboo_hut_1.jpeg']
+    images: ['/assets/tour_rustic_bamboo_hut.jpeg','/assets/bamboo_hut/bamboo_hut_0.jpeg','/assets/bamboo_hut/bamboo_hut_1.jpeg','/assets/bamboo_hut/bamboo_hut_2.jpeg','/assets/bamboo_hut/bamboo_hut_3.jpeg']
   },
   {
     id: 'Echo Point',
