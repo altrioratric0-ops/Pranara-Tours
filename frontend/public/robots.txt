@@ -5,10 +5,10 @@ Allow: /assets/
 Allow: /tour/
 Allow: /gallery/
 
-# Disallow private auth and API endpoints
+# Disallow private auth endpoints
 Disallow: /signin
 Disallow: /login
-Disallow: /api/
+Allow: /api/
 
 # Sitemap reference
 Sitemap: https://www.pranaramunnar.com/sitemap.xml
