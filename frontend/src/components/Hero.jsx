@@ -12,7 +12,8 @@ export default function Hero() {
       <div className="hero-mist"></div>
       <div className="hero-content">
         <h1>
-          Pranara Tourism | Kerala Tour Packages &amp; Travel Planner
+          Explore the Magic of<br />
+          <span>Munnar</span> with Pranara
         </h1>
         <p>
           Discover handcrafted Kerala travel experiences with Pranara Tourism. Plan customized tour packages for Munnar tea hills, Kolukkumalai sunrise, Alleppey houseboat cruises, and Wayanad.
