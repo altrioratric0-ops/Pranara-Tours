@@ -28,6 +28,12 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import CookiePolicy from './components/CookiePolicy';
 import SEO from './components/SEO';
 import NotFoundPage from './components/NotFoundPage';
+import PranaraTourism from './components/PranaraTourism';
+import PranaraStays from './components/PranaraStays';
+import PranaraMunnar from './components/PranaraMunnar';
+import KeralaPackages from './components/KeralaPackages';
+import DestinationDetail from './components/DestinationDetail';
+import TravelGuides from './components/TravelGuides';
 
 const API_BASE = import.meta.env.PROD
   ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
@@ -481,6 +487,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/pranara-tourism" element={<PranaraTourism />} />
+        <Route path="/pranara-stays" element={<PranaraStays />} />
+        <Route path="/pranara-munnar" element={<PranaraMunnar />} />
+        <Route path="/kerala-tour-packages" element={<KeralaPackages />} />
+        <Route path="/destinations/:slug" element={<DestinationDetail />} />
+        <Route path="/travel-guides" element={<TravelGuides />} />
         <Route path="/signin" element={<AuthPage mode="signin" />} />
         <Route path="/login" element={<AuthPage mode="login" />} />
         <Route path="/gallery/:categoryId" element={<SubGallery />} />

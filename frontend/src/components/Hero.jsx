@@ -12,11 +12,10 @@ export default function Hero() {
       <div className="hero-mist"></div>
       <div className="hero-content">
         <h1>
-          Explore the Magic of<br />
-          <span>Kerala</span> with Pranara
+          Pranara Tourism | Kerala Tour Packages &amp; Travel Planner
         </h1>
         <p>
-          Discover handcrafted journeys through Munnar Kerala's hidden gem. We create personalized travel experiences that let you relax while we take care of every detail.
+          Discover handcrafted Kerala travel experiences with Pranara Tourism. Plan customized tour packages for Munnar tea hills, Kolukkumalai sunrise, Alleppey houseboat cruises, and Wayanad.
         </p>
         <div className="hero-actions">
           <a

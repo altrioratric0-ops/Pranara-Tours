@@ -66,32 +66,36 @@ export default function Footer() {
 
           {/* Column 3: Explore */}
           <div className="footer-col-nav">
-            <h4>Explore</h4>
+            <h4>Explore Destinations</h4>
             <ul>
-              <li><Link to="/#heritage">Destinations</Link></li>
-              <li><Link to="/#packages">Tour Packages</Link></li>
-              <li><Link to="/#adventures">Adventures</Link></li>
-              <li><Link to="/#gallery">Gallery</Link></li>
+              <li><Link to="/destinations/munnar">Munnar Tourism</Link></li>
+              <li><Link to="/destinations/alleppey">Alleppey Houseboats</Link></li>
+              <li><Link to="/destinations/thekkady">Thekkady Wildlife</Link></li>
+              <li><Link to="/destinations/wayanad">Wayanad Trails</Link></li>
+              <li><Link to="/kerala-tour-packages">Kerala Tour Packages</Link></li>
             </ul>
           </div>
 
-          {/* Column 4: Company */}
+          {/* Column 4: Brand Offerings */}
           <div className="footer-col-nav">
-            <h4>Company</h4>
+            <h4>Brand Services</h4>
             <ul>
+              <li><Link to="/pranara-tourism">Pranara Tourism</Link></li>
+              <li><Link to="/pranara-stays">Pranara Stays</Link></li>
+              <li><Link to="/pranara-munnar">Pranara Munnar</Link></li>
+              <li><Link to="/travel-guides">Travel Guides</Link></li>
               <li><Link to="/#about">About Us</Link></li>
-              <li><Link to="/#booking">Contact</Link></li>
-              <li><Link to="/#testimonials">Reviews</Link></li>
             </ul>
           </div>
 
           {/* Column 5: Policies */}
           <div className="footer-col-nav">
-            <h4>Policies</h4>
+            <h4>Policies & Legal</h4>
             <ul>
               <li><Link to="/privacy">Privacy Policy</Link></li>
               <li><Link to="/terms">Terms of Service</Link></li>
-              <li><Link to="/cookies">Cookie Policies</Link></li>
+              <li><Link to="/cookies">Cookie Policy</Link></li>
+              <li><Link to="/#booking">Contact Support</Link></li>
             </ul>
           </div>
         </div>

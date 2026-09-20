@@ -1,31 +1,22 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import SEO from './SEO';
 
 export default function PranaraTourism() {
-  const schema = {
+  const tourismSchema = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "TravelAgency",
-        "@id": "https://www.pranaramunnar.com/",
+        "@id": "https://www.pranaramunnar.com/pranara-tourism#service",
         "name": "Pranara Tourism",
-        "url": "https://www.pranaramunnar.com/",
-        "description": "Pranara Tourism is your trusted Kerala travel planner offering customized tour packages, guided sightseeing, and boutique accommodation bookings in Munnar, Alleppey, Thekkady, and Wayanad.",
+        "url": "https://www.pranaramunnar.com/pranara-tourism",
+        "logo": "https://www.pranaramunnar.com/assets/logo.png",
+        "image": "https://www.pranaramunnar.com/assets/insta_resort.png",
+        "description": "Pranara Tourism provides customized Kerala travel packages, private sightseeing tours, honeymoon itineraries, and resort stays across Munnar, Alleppey, Thekkady, and Wayanad.",
         "telephone": "+91-6374502007",
         "email": "pranara@travel.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Munnar",
-          "addressLocality": "Munnar",
-          "addressRegion": "Kerala",
-          "postalCode": "685612",
-          "addressCountry": "IN"
-        },
-        "areaServed": {
-          "@type": "AdministrativeArea",
-          "name": "Kerala, India"
-        }
+        "areaServed": "Kerala, India",
+        "priceRange": "₹₹"
       },
       {
         "@type": "BreadcrumbList",
@@ -40,7 +31,7 @@ export default function PranaraTourism() {
             "@type": "ListItem",
             "position": 2,
             "name": "Pranara Tourism",
-            "item": "https://www.pranaramunnar.com/"
+            "item": "https://www.pranaramunnar.com/pranara-tourism"
           }
         ]
       }
@@ -48,98 +39,92 @@ export default function PranaraTourism() {
   };
 
   return (
-    <div className="seo-page-shell" style={{ paddingTop: '110px', paddingBottom: '80px' }}>
+    <div className="seo-page-shell" style={{ padding: '120px 24px 80px', background: '#faf9f5', color: '#1e293b' }}>
       <SEO
         title="Pranara Tourism | Kerala Travel Planner & Customized Tour Packages"
-        description="Plan your Kerala trip with Pranara Tourism. Discover handcrafted itineraries for Munnar, Alleppey backwaters, Thekkady safaris, and Wayanad hills."
-        canonical="https://www.pranaramunnar.com/"
-        jsonLd={schema}
+        description="Discover God's Own Country with Pranara Tourism. We craft customized travel itineraries, private sightseeing tours, and luxury stays across Munnar, Alleppey, and Wayanad."
+        canonical="https://www.pranaramunnar.com/pranara-tourism"
+        jsonLd={tourismSchema}
       />
-      <div className="container" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 24px' }}>
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" style={{ marginBottom: '24px', fontSize: '0.9rem', color: '#64748b' }}>
-          <Link to="/" style={{ color: '#166534', fontWeight: '600' }}>Home</Link> &nbsp;/&nbsp; <span style={{ color: '#1e293b', fontWeight: '500' }}>Pranara Tourism</span>
+
+      <div className="container" style={{ maxWidth: '1000px', margin: '0 auto' }}>
+        <nav className="breadcrumb" style={{ marginBottom: '24px', fontSize: '0.9rem', color: '#64748b' }}>
+          <Link to="/" style={{ color: '#166534', textDecoration: 'none' }}>Home</Link>
+          <span style={{ margin: '0 8px' }}>/</span>
+          <span>Pranara Tourism</span>
         </nav>
 
-        {/* Primary Page Heading */}
-        <h1 style={{ fontSize: '2.5rem', fontWeight: '800', color: '#166534', marginBottom: '16px', lineHeight: '1.2' }}>
-          Pranara Tourism | Kerala Travel Planner & Customized Experiences
-        </h1>
+        <header style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <span style={{ color: '#d97706', fontWeight: '700', letterSpacing: '0.1em', fontSize: '0.85rem', textTransform: 'uppercase' }}>Official Brand Services</span>
+          <h1 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-heading)', color: '#166534', marginTop: '8px' }}>
+            Pranara Tourism — Handcrafted Kerala Travel Experiences
+          </h1>
+          <p style={{ fontSize: '1.15rem', color: '#475569', maxWidth: '750px', margin: '16px auto 0', lineHeight: '1.7' }}>
+            At <strong>Pranara Tourism</strong>, we design unforgettable Kerala journeys tailored to your budget, travel style, and preferences. From misty hill stations to tranquil backwaters, experience seamless travel planning backed by local expertise.
+          </p>
+        </header>
 
-        <p style={{ fontSize: '1.15rem', color: '#475569', marginBottom: '32px', lineHeight: '1.7' }}>
-          Welcome to <strong>Pranara Tourism</strong>, your premier local travel planner and destination manager in Kerala. We specialize in creating personalized, memorable vacation experiences across God's Own Country — from mist-shrouded tea plantations in Munnar to serene houseboat backwaters in Alleppey and wildlife safaris in Thekkady.
-        </p>
-
-        {/* Key Offerings Grid */}
-        <section style={{ marginBottom: '48px' }}>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#0f172a', marginBottom: '20px' }}>
-            Why Plan Your Kerala Journey with Pranara Tourism?
-          </h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-            <div style={{ padding: '24px', borderRadius: '16px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#166534', marginBottom: '8px' }}>Handcrafted Itineraries</h3>
-              <p style={{ color: '#64748b', fontSize: '0.95rem' }}>Every trip is tailored to your preferences, budget, and travel style — whether for honeymoons, family holidays, or solo escapes.</p>
+        <section style={{ background: '#ffffff', borderRadius: '20px', padding: '36px', boxShadow: '0 4px 25px rgba(0,0,0,0.04)', marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '1.6rem', color: '#166534', marginBottom: '16px' }}>What Pranara Tourism Offers</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginTop: '24px' }}>
+            <div style={{ background: '#f8fafc', padding: '24px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+              <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '8px' }}>Customized Kerala Tour Packages</h3>
+              <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Handpicked holiday itineraries covering Munnar, Alleppey houseboats, Thekkady wildlife safaris, and Wayanad waterfalls with dedicated private transportation.
+              </p>
             </div>
-
-            <div style={{ padding: '24px', borderRadius: '16px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#166534', marginBottom: '8px' }}>Local Expertise</h3>
-              <p style={{ color: '#64748b', fontSize: '0.95rem' }}>Our experienced local guides and chauffeurs ensure authentic cultural insights and hassle-free navigation.</p>
+            <div style={{ background: '#f8fafc', padding: '24px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+              <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '8px' }}>Pranara Stays &amp; Accommodation</h3>
+              <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                Boutique resorts, tea estate villas, and eco-friendly stays in Munnar curated specifically for comfort, breathtaking scenery, and warm local hospitality.
+              </p>
             </div>
-
-            <div style={{ padding: '24px', borderRadius: '16px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: '600', color: '#166534', marginBottom: '8px' }}>Pranara Stays</h3>
-              <p style={{ color: '#64748b', fontSize: '0.95rem' }}>Direct booking access to handpicked tea estate villas, boutique eco-resorts, and serene mountain hideouts.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Destinations Link Network */}
-        <section style={{ marginBottom: '48px' }}>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#0f172a', marginBottom: '20px' }}>
-            Explore Top Kerala Destinations with Pranara
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
-            <Link to="/pranara-munnar" style={{ padding: '20px', borderRadius: '12px', background: '#ecfdf5', border: '1px solid #a7f3d0', textDecoration: 'none', color: '#065f46', fontWeight: '700' }}>
-              🌲 Pranara Munnar &rarr;
-              <span style={{ display: 'block', fontWeight: '400', fontSize: '0.85rem', color: '#047857', marginTop: '4px' }}>Munnar tour packages, tea gardens & sunrise Jeep safaris.</span>
-            </Link>
-
-            <Link to="/pranara-stays" style={{ padding: '20px', borderRadius: '12px', background: '#fef3c7', border: '1px solid #fde68a', textDecoration: 'none', color: '#92400e', fontWeight: '700' }}>
-              🏡 Pranara Stays &rarr;
-              <span style={{ display: 'block', fontWeight: '400', fontSize: '0.85rem', color: '#b45309', marginTop: '4px' }}>Boutique mountain retreats & tea estate accommodations.</span>
-            </Link>
-
-            <Link to="/destinations/alleppey" style={{ padding: '20px', borderRadius: '12px', background: '#e0f2fe', border: '1px solid #bae6fd', textDecoration: 'none', color: '#0369a1', fontWeight: '700' }}>
-              🛶 Alleppey Houseboats &rarr;
-              <span style={{ display: 'block', fontWeight: '400', fontSize: '0.85rem', color: '#0284c7', marginTop: '4px' }}>Luxury backwater cruises & lagoon stays.</span>
-            </Link>
-
-            <Link to="/destinations/thekkady" style={{ padding: '20px', borderRadius: '12px', background: '#f0fdf4', border: '1px solid #bbf7d0', textDecoration: 'none', color: '#15803d', fontWeight: '700' }}>
-              🐅 Thekkady Wildlife &rarr;
-              <span style={{ display: 'block', fontWeight: '400', fontSize: '0.85rem', color: '#16a34a', marginTop: '4px' }}>Periyar tiger reserve safaris & spice garden tours.</span>
-            </Link>
-          </div>
-        </section>
-
-        {/* Frequently Asked Questions */}
-        <section style={{ marginTop: '40px', paddingTop: '32px', borderTop: '1px solid #e2e8f0' }}>
-          <h2 style={{ fontSize: '1.75rem', fontWeight: '700', color: '#0f172a', marginBottom: '20px' }}>
-            Frequently Asked Questions about Pranara Tourism
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <div style={{ padding: '16px 20px', borderRadius: '12px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: '600', color: '#1e293b' }}>How do I plan a customized Kerala tour with Pranara Tourism?</h3>
-              <p style={{ color: '#64748b', marginTop: '6px', fontSize: '0.95rem' }}>You can select one of our curated package templates or reach out directly via WhatsApp to customize your trip duration, stays, and activities.</p>
-            </div>
-
-            <div style={{ padding: '16px 20px', borderRadius: '12px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: '600', color: '#1e293b' }}>Are transportation and guide services included?</h3>
-              <p style={{ color: '#64748b', marginTop: '6px', fontSize: '0.95rem' }}>Yes, all tour packages with Pranara Tourism include a dedicated, comfortable vehicle with an experienced local driver/guide.</p>
+            <div style={{ background: '#f8fafc', padding: '24px', borderRadius: '14px', border: '1px solid #e2e8f0' }}>
+              <h3 style={{ fontSize: '1.2rem', color: '#0f172a', marginBottom: '8px' }}>Pranara Munnar Adventures</h3>
+              <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                4x4 Thar Jeep expeditions to Kolukkumalai cloud sunrise, high-altitude trekking, ziplining, tea plantation walks, and campfire evenings.
+              </p>
             </div>
           </div>
         </section>
+
+        <section style={{ background: '#ffffff', borderRadius: '20px', padding: '36px', boxShadow: '0 4px 25px rgba(0,0,0,0.04)', marginBottom: '40px' }}>
+          <h2 style={{ fontSize: '1.6rem', color: '#166534', marginBottom: '16px' }}>Top Kerala Destinations Covered</h2>
+          <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', listStyle: 'none', padding: 0 }}>
+            <li style={{ background: '#f0fdf4', padding: '16px', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
+              <Link to="/destinations/munnar" style={{ textDecoration: 'none', color: '#166534', fontWeight: '700' }}>
+                Munnar Tourism Packages &rarr;
+              </Link>
+            </li>
+            <li style={{ background: '#f0fdf4', padding: '16px', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
+              <Link to="/destinations/alleppey" style={{ textDecoration: 'none', color: '#166534', fontWeight: '700' }}>
+                Alleppey Houseboat Tours &rarr;
+              </Link>
+            </li>
+            <li style={{ background: '#f0fdf4', padding: '16px', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
+              <Link to="/destinations/thekkady" style={{ textDecoration: 'none', color: '#166534', fontWeight: '700' }}>
+                Thekkady Wildlife Safaris &rarr;
+              </Link>
+            </li>
+            <li style={{ background: '#f0fdf4', padding: '16px', borderRadius: '12px', border: '1px solid #bbf7d0' }}>
+              <Link to="/destinations/wayanad" style={{ textDecoration: 'none', color: '#166534', fontWeight: '700' }}>
+                Wayanad Nature Trips &rarr;
+              </Link>
+            </li>
+          </ul>
+        </section>
+
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <a
+            href={`https://wa.me/916374502007?text=${encodeURIComponent('Hello Pranara Tourism! I would like to plan a customized Kerala tour package.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-primary"
+            style={{ padding: '14px 32px', fontSize: '1.05rem', borderRadius: '12px' }}
+          >
+            Plan Your Kerala Trip via WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   );

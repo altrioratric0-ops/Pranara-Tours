@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const API_BASE = import.meta.env.PROD
   ? (import.meta.env.VITE_API_URL || 'https://pranara-tours.onrender.com')
@@ -57,7 +58,7 @@ export default function About() {
                 <strong>Pranara Tourism</strong> is your trusted local travel planner for God's Own Country. We specialize in crafting immersive travel experiences that blend adventure, nature, and luxury stay experiences across Munnar, Alleppey, Thekkady, and Wayanad.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: '1.7', color: '#475569' }}>
-                Whether you're trekking through mist-laden tea plantations with <a href="/pranara-munnar" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Munnar</a>, staying in tranquil plantation villas with <a href="/pranara-stays" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Stays</a>, or cruising luxury houseboats in Alleppey backwaters, our guided tours ensure every detail is seamlessly taken care of.
+                Whether you're trekking through mist-laden tea plantations with <Link to="/pranara-munnar" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Munnar</Link>, staying in tranquil plantation villas with <Link to="/pranara-stays" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Stays</Link>, or cruising luxury houseboats in Alleppey backwaters, our guided tours ensure every detail is seamlessly taken care of.
               </p>
             </div>
             <div className="about-stats">
