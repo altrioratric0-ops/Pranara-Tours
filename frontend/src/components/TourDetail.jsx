@@ -56,7 +56,7 @@ export default function TourDetail() {
     "@graph": [
       {
         "@type": "TouristTrip",
-        "@id": `https://pranaratours.com/tour/${id}#trip`,
+        "@id": `https://www.pranaramunnar.com/tour/${id}#trip`,
         "name": tour.title,
         "description": tour.description,
         "image": tour.image_url ? [tour.image_url] : [],
@@ -65,12 +65,12 @@ export default function TourDetail() {
           "price": tour.price,
           "priceCurrency": "INR",
           "availability": "https://schema.org/InStock",
-          "url": `https://pranaratours.com/tour/${id}`
+          "url": `https://www.pranaramunnar.com/tour/${id}`
         },
         "provider": {
           "@type": "TravelAgency",
-          "name": "Pranara Travel Co.",
-          "url": "https://pranaratours.com"
+          "name": "Pranara Tourism",
+          "url": "https://www.pranaramunnar.com"
         }
       },
       {
@@ -80,19 +80,19 @@ export default function TourDetail() {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://pranaratours.com/"
+            "item": "https://www.pranaramunnar.com/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Packages",
-            "item": "https://pranaratours.com/#packages"
+            "item": "https://www.pranaramunnar.com/#packages"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": tour.title,
-            "item": `https://pranaratours.com/tour/${id}`
+            "item": `https://www.pranaramunnar.com/tour/${id}`
           }
         ]
       }
@@ -102,9 +102,9 @@ export default function TourDetail() {
   return (
     <div className="tour-detail-page">
       <SEO
-        title={`${tour.title} | Kerala Tour Packages | Pranara Travel Co.`}
-        description={tour.description ? tour.description.substring(0, 160) : `Book ${tour.title} with Pranara Travel Co. Customized Kerala tour experience in ${tour.location || 'Kerala'}.`}
-        canonical={`https://pranaratours.com/tour/${id}`}
+        title={`${tour.title} | Kerala Tour Packages | Pranara Tourism`}
+        description={tour.description ? tour.description.substring(0, 160) : `Book ${tour.title} with Pranara Tourism. Customized Kerala tour experience in ${tour.location || 'Kerala'}.`}
+        canonical={`https://www.pranaramunnar.com/tour/${id}`}
         ogImage={tour.image_url || '/assets/insta_resort.png'}
         jsonLd={tourSchema}
       />

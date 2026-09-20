@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const DEFAULT_DOMAIN = 'https://pranaratours.com';
+const DEFAULT_DOMAIN = 'https://www.pranaramunnar.com';
 
 export default function SEO({
   title = "Pranara | Premium Kerala Travel Planner & Tour Packages",

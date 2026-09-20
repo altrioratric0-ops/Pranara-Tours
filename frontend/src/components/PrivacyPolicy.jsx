@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
       <SEO
         title="Privacy Policy | Pranara Travel Co."
         description="Read the Privacy Policy of Pranara Travel Co. to learn how we protect your personal information and privacy."
-        canonical="https://pranaratours.com/privacy"
+        canonical="https://www.pranaramunnar.com/privacy"
       />
       <div className="container terms-container-box">
         <div className="terms-header">

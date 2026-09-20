@@ -51,12 +51,13 @@ export default function About() {
           }}>
           </div>
           <div>
-            <h2>Welcome to <span className="accent">Pranara</span></h2>
+            <h2>Explore Kerala with <span className="accent">Pranara Tourism</span></h2>
             <div>
-              Pranara is your trusted gateway to the breathtaking landscapes of
-              God's Own Country. We specialize in crafting immersive travel experiences that blend adventure, nature, and cultural discovery across Munnar
-              <p>
-                Whether you're trekking through mist-laden tea plantations, cruising on luxury houseboats in quiet lagoons, exploring spice gardens, or soaking in coastal cliff views, our guided tours ensure every moment is unforgettable.
+              <p style={{ marginBottom: '12px', fontSize: '1.05rem', lineHeight: '1.7', color: '#475569' }}>
+                <strong>Pranara Tourism</strong> is your trusted local travel planner for God's Own Country. We specialize in crafting immersive travel experiences that blend adventure, nature, and luxury stay experiences across Munnar, Alleppey, Thekkady, and Wayanad.
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: '1.7', color: '#475569' }}>
+                Whether you're trekking through mist-laden tea plantations with <a href="/pranara-munnar" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Munnar</a>, staying in tranquil plantation villas with <a href="/pranara-stays" style={{ color: '#166534', fontWeight: '600', textDecoration: 'underline' }}>Pranara Stays</a>, or cruising luxury houseboats in Alleppey backwaters, our guided tours ensure every detail is seamlessly taken care of.
               </p>
             </div>
             <div className="about-stats">

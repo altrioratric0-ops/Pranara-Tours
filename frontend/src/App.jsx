@@ -39,11 +39,11 @@ function HomePage() {
     "@graph": [
       {
         "@type": "TravelAgency",
-        "@id": "https://pranaratours.com/#organization",
-        "name": "Pranara Travel Co.",
-        "url": "https://pranaratours.com",
-        "logo": "https://pranaratours.com/assets/logo.png",
-        "image": "https://pranaratours.com/assets/insta_resort.png",
+        "@id": "https://www.pranaramunnar.com/#organization",
+        "name": "Pranara Tourism",
+        "url": "https://www.pranaramunnar.com",
+        "logo": "https://www.pranaramunnar.com/assets/logo.png",
+        "image": "https://www.pranaramunnar.com/assets/insta_resort.png",
         "description": "Premium Kerala travel planner specializing in customized tour packages for Munnar, Kolukkumalai, Alleppey backwaters, Thekkady, and Wayanad.",
         "telephone": "+91-6374502007",
         "email": "pranara@travel.com",
@@ -68,11 +68,11 @@ function HomePage() {
       },
       {
         "@type": "WebSite",
-        "@id": "https://pranaratours.com/#website",
-        "url": "https://pranaratours.com",
-        "name": "Pranara Travel Co.",
+        "@id": "https://www.pranaramunnar.com/#website",
+        "url": "https://www.pranaramunnar.com",
+        "name": "Pranara Tourism",
         "publisher": {
-          "@id": "https://pranaratours.com/#organization"
+          "@id": "https://www.pranaramunnar.com/#organization"
         }
       }
     ]
@@ -81,9 +81,9 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="Pranara | Premium Kerala Travel Planner & Customized Tour Packages"
-        description="Plan your dream Kerala vacation with Pranara. Handcrafted tour packages for Munnar tea hills, Kolukkumalai sunrise, Alleppey backwater houseboats, and Wayanad."
-        canonical="https://pranaratours.com/"
+        title="Pranara Tourism | Kerala Tour Packages & Travel Planner"
+        description="Plan your dream Kerala vacation with Pranara Tourism. Handcrafted tour packages for Munnar tea hills, Kolukkumalai sunrise, Alleppey backwater houseboats, and Wayanad."
+        canonical="https://www.pranaramunnar.com/"
         jsonLd={homeSchema}
       />
       <Hero />
