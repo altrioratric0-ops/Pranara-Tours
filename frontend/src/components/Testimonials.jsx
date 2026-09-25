@@ -24,7 +24,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.',
     tagline: 'RIVER & NATURE RETREAT',
-    videoUrl: '/assets/Review.mp4'
+    videoUrl: ''
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ const STATIC_TESTIMONIALS = [
   },
 ];
 
-/* ─── Deduplication Helper ─── */
+/* ─── Deduplication Helper (Smart Merge) ─── */
 const getNormalizedText = (str) => {
   if (!str) return '';
   return str
@@ -94,8 +94,6 @@ const getNormalizedText = (str) => {
 
 export const dedupeTestimonials = (list) => {
   if (!Array.isArray(list)) return [];
-  const seenNames = new Set();
-  const seenQuotes = new Set();
   const result = [];
 
   for (const item of list) {
@@ -105,13 +103,38 @@ export const dedupeTestimonials = (list) => {
 
     if (!nameKey && !quoteKey) continue;
 
-    const isDuplicateName = nameKey && seenNames.has(nameKey);
-    const isDuplicateQuote = quoteKey && seenQuotes.has(quoteKey);
+    const itemVideo = (item.videoUrl || item.video_url || '').trim();
 
-    if (!isDuplicateName && !isDuplicateQuote) {
-      if (nameKey) seenNames.add(nameKey);
-      if (quoteKey) seenQuotes.add(quoteKey);
-      result.push(item);
+    const existingIndex = result.findIndex((r) => {
+      const rNameKey = getNormalizedText(r.name);
+      const rQuoteKey = getNormalizedText(r.quote || r.review);
+      return (nameKey && rNameKey && nameKey === rNameKey) ||
+        (quoteKey && rQuoteKey && quoteKey === rQuoteKey);
+    });
+
+    if (existingIndex >= 0) {
+      // Merge: retain videoUrl, avatar, destination if existing is missing it
+      const existing = result[existingIndex];
+      const existingVideo = (existing.videoUrl !== undefined ? existing.videoUrl : (existing.video_url || '')).trim();
+      const resolvedVideo = existing.videoUrl !== undefined ? existingVideo : itemVideo;
+
+      result[existingIndex] = {
+        ...item,
+        ...existing,
+        videoUrl: resolvedVideo,
+        video_url: resolvedVideo,
+        avatar: (existing.avatar && !existing.avatar.includes('logo.png'))
+          ? existing.avatar
+          : (item.avatar || existing.avatar || '/assets/logo.png'),
+        destination: existing.destination || item.destination || 'Kerala Journey',
+        tagline: existing.tagline || item.tagline || 'GUEST EXPERIENCE',
+      };
+    } else {
+      result.push({
+        ...item,
+        videoUrl: itemVideo,
+        video_url: itemVideo,
+      });
     }
   }
   return result;
@@ -153,7 +176,12 @@ export default function Testimonials() {
     try {
       const raw = localStorage.getItem(LS_KEY);
       const list = raw ? JSON.parse(raw) : [];
-      return dedupeTestimonials(list);
+      const staticNames = new Set(STATIC_TESTIMONIALS.map(s => getNormalizedText(s.name)));
+      const userOnly = list.filter(item => item && !staticNames.has(getNormalizedText(item.name)));
+      if (userOnly.length !== list.length) {
+        localStorage.setItem(LS_KEY, JSON.stringify(userOnly));
+      }
+      return dedupeTestimonials(userOnly);
     } catch {
       return [];
     }
@@ -172,7 +200,7 @@ export default function Testimonials() {
   useEffect(() => {
     // Load localStorage reviews immediately & merge with static without duplicates
     const localReviews = loadLocalReviews();
-    setTestimonials(dedupeTestimonials([...localReviews, ...STATIC_TESTIMONIALS]));
+    setTestimonials(dedupeTestimonials([...STATIC_TESTIMONIALS, ...localReviews]));
 
     fetchTestimonials()
       .then((data) => {
@@ -187,16 +215,17 @@ export default function Testimonials() {
           rating: t.rating || 5,
           quote: t.quote || t.review,
           tagline: t.tagline || 'GUEST EXPERIENCE',
-          videoUrl: t.videoUrl || t.video_url || ''
+          videoUrl: t.videoUrl || t.video_url || '',
+          video_url: t.videoUrl || t.video_url || ''
         }));
 
         const savedLocal = loadLocalReviews();
-        setTestimonials(dedupeTestimonials([...savedLocal, ...formattedBackend, ...STATIC_TESTIMONIALS]));
+        setTestimonials(dedupeTestimonials([...STATIC_TESTIMONIALS, ...savedLocal, ...formattedBackend]));
       })
       .catch((err) => {
         console.warn('Testimonials API offline, using static fallback:', err.message);
         const savedLocal = loadLocalReviews();
-        setTestimonials(dedupeTestimonials([...savedLocal, ...STATIC_TESTIMONIALS]));
+        setTestimonials(dedupeTestimonials([...STATIC_TESTIMONIALS, ...savedLocal]));
       });
   }, []);
 
@@ -442,10 +471,12 @@ export default function Testimonials() {
               else if (diff === 2) positionClass = 'next-2';
               else positionClass = 'hidden';
 
+              const videoSrc = (item.videoUrl || item.video_url || '').trim();
+
               return (
                 <div
-                  key={item.id}
-                  className={`testimonial-card ${positionClass}`}
+                  key={item.id || idx}
+                  className={`testimonial-card ${positionClass} ${videoSrc ? 'has-video-card' : ''}`}
                   onClick={() => {
                     if (diff !== 0) setActiveIndex(idx);
                   }}
@@ -508,19 +539,21 @@ export default function Testimonials() {
                   </div>
 
                   {/* Play video trigger if available */}
-                  {item.videoUrl && diff === 0 && (
+                  {videoSrc && (
                     <button
+                      type="button"
                       onClick={(e) => {
                         e.stopPropagation();
-                        setVideoPlayingUrl(item.videoUrl);
+                        if (diff !== 0) setActiveIndex(idx);
+                        setVideoPlayingUrl(videoSrc);
                       }}
-                      className="video-play-trigger-card"
+                      className="card-watch-video-btn"
                       aria-label="Play video testimonial"
                     >
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z" />
+                        <polygon points="7 4 19 12 7 20 7 4" />
                       </svg>
-                      <span>Watch Journey</span>
+                      <span>Watch Journey Video</span>
                     </button>
                   )}
                 </div>

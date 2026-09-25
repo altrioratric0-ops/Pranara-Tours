@@ -25,9 +25,13 @@
         "id": 2,
         "name": "The Adhikari Family",
         "location": "Mumbai, India",
+        "destination": "River Streams & Valley, Munnar",
+        "tagline": "RIVER & NATURE RETREAT",
+        "avatar": "/assets/munnar_river_family.jpg",
         "avatar_initials": "AF",
         "rating": 5,
-        "quote": "Every journey becomes special because of the people in it. The pristine river streams, the lush green forests, and the memories we shared in Munnar. Thank you for letting Pranara be a part of yours. Until Next Time..."
+        "quote": "Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.",
+        "videoUrl": ""
     },
     {
         "id": 3,
@@ -39,11 +43,15 @@
     },
     {
         "id": 4,
-        "name": "Sarah, Marc & Amit",
-        "location": "Berlin, Germany",
-        "avatar_initials": "SMA",
+        "name": "Sarah, Aman, Roshni & Amit",
+        "location": "Pune, Mumbai",
+        "destination": "Chokkarmudi Summit Trek",
+        "tagline": "SUMMIT TREK EXPEDITION",
+        "avatar": "/assets/munnar_chokkarmudi_trek.jpg",
+        "avatar_initials": "SAR",
         "rating": 5,
-        "quote": "The trek to Chokkarmudi Peak was absolutely unforgettable! Every step was a new experience \u2014 the fresh mountain air, the breathtaking views, and the sense of achievement at the top made it truly special. Our guide was incredibly supportive, patient and made the whole journey safe, fun and meaningful. It was more than just a trek, it was an emotion! Highly recommended for anyone who loves nature and adventure."
+        "quote": "Standing above the clouds at Chokkarmudi Peak was surreal! It was more than just a trek—it was a soulful journey through untouched wilderness.",
+        "videoUrl": "/assets/Review.mp4"
     },
     {
         "id": 5,
