@@ -13,6 +13,7 @@ const STATIC_TESTIMONIALS = [
     rating: 4,
     quote: 'From the UK to the heart of Munnar! Every detail was handled with utmost elegance. The private tea estate tour and misty mountain views were breathtaking.',
     tagline: 'FAMILY SAFARI',
+    videoUrl: ''
   },
   {
     id: 2,
@@ -23,6 +24,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Pristine river streams, lush green forests, and unforgettable moments. Pranara made us feel like family while delivering an ultra-luxurious experience.',
     tagline: 'RIVER & NATURE RETREAT',
+    videoUrl: '/assets/Review.mp4'
   },
   {
     id: 3,
@@ -43,7 +45,7 @@ const STATIC_TESTIMONIALS = [
     rating: 5,
     quote: 'Standing above the clouds at Chokkarmudi Peak was surreal! It was more than just a trek—it was a soulful journey through untouched wilderness.',
     tagline: 'SUMMIT TREK EXPEDITION',
-    video_url: '/assets/Review.mp4'
+    videoUrl: '/assets/Review.mp4'
   },
   {
     id: 5,
