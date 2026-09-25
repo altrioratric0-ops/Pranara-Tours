@@ -56,14 +56,20 @@ export const DESTINATIONS = [
     images: ['/assets/tour_Kolukkumalai.jpg', '/assets/Kolukkumalai/Kolukkumalai_1.jpeg','/assets/Kolukkumalai/Kolukkumalai_2.jpeg','/assets/Kolukkumalai/Kolukkumalai_3.jpeg','/assets/Kolukkumalai/Kolukkumalai_4.jpeg','/assets/Kolukkumalai/Kolukkumalai_5.jpeg','/assets/Kolukkumalai/Kolukkumalai_6.jpeg','/assets/Kolukkumalai/Kolukkumalai_7.jpeg','/assets/Kolukkumalai/Kolukkumalai_8.jpeg','/assets/Kolukkumalai/Kolukkumalai_9.jpg','/assets/Kolukkumalai/Kolukkumalai_10.jpg','/assets/Kolukkumalai/Kolukkumalai_11.jpg','/assets/Kolukkumalai/Kolukkumalai_12.jpg','/assets/Kolukkumalai/Kolukkumalai_13.jpg','/assets/Kolukkumalai/Kolukkumalai_14.jpg','/assets/Kolukkumalai/Kolukkumalai_15.jpg','/assets/Kolukkumalai/Kolukkumalai_16.jpg','/assets/Kolukkumalai/Kolukkumalai_17.jpg','/assets/Kolukkumalai/Kolukkumalai_18.jpg','/assets/Kolukkumalai/Kolukkumalai_19.jpg','/assets/Kolukkumalai/Kolukkumalai_20.jpg','/assets/Kolukkumalai/Kolukkumalai_21.jpg','/assets/Kolukkumalai/Kolukkumalai_22.jpg','/assets/Kolukkumalai/Kolukkumalai_23.jpg']
   },
   {
-    id: ' Bamboo Hut',
+    id: 'Bamboo Hut',
     slug: 'bamboo-hut',
     name: 'Bamboo Hut',
     tagline: 'Tranquil Retreat in the Hills',
     desc: 'Immerse yourself in the charm of a traditional bamboo hut. A perfect escape from the hustle and bustle of city life.',
     bg: '/assets/tour_rustic_bamboo_hut.jpeg',
     thumb: '/assets/tour_rustic_bamboo_hut.jpeg',
-    images: ['/assets/tour_rustic_bamboo_hut.jpeg','/assets/bamboo_hut/bamboo_hut_1.jpeg','/assets/bamboo_hut/bamboo_hut_2.jpeg','/assets/bamboo_hut/bamboo_hut_3.jpeg','/assets/bamboo_hut/bamboo_hut_4.jpeg','/assets/bamboo_hut/bamboo_hut_5.jpeg','/assets/bamboo_hut/bamboo_hut_6.jpeg']
+    images: [
+      '/assets/tour_rustic_bamboo_hut.jpeg',
+      '/assets/Bamboo_hut/bamboo_hut_0.jpeg',
+      '/assets/Bamboo_hut/bamboo_hut_1.jpeg',
+      '/assets/Bamboo_hut/bamboo_hut_2.jpeg',
+      '/assets/Bamboo_hut/bamboo_hut_3.jpeg'
+    ]
   },
   {
     id: 'Echo Point',
